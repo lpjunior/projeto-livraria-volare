@@ -1,7 +1,6 @@
-function pegarValor(token){
-  // Pega o valor do token do facebook e joga pro php
-  dados = JSON.stringify(token);
-  xmlhttp = new XMLHttpRequest();
-  xmlhttp.open("GET", "php/CRUDS/sessaoFacebook.php?x=" + dados, true);
-  xmlhttp.send();
+function pegarValor(pToken, pID){
+  $.post( "php/CRUDS/sessaoFacebook.php", { token: pToken, id: pID })
+    .done(function( data ) {
+    alert( "Data Loaded: " + data );
+  });
 }
