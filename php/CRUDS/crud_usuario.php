@@ -4,6 +4,21 @@ require_once 'conexao.php';
 function registrarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $cep, $end, $num, $complemento, $bairro, $cidade, $estado){
 	$datanascimento = date('Y-m-d', strtotime($datanascimento));
 	$conexao = getConnection();
+	$nome = filtrarString($nome);
+	$sobrenome = filtrarString($sobrenome);
+	$email = filtrarEmail($email);
+	$cpf = mysqli_escape_string($conexao, $cpf);
+	$cpf = htmlspecialchars($cpf);
+	$datanascimento = mysqli_escape_string($conexao, $datanascimento);
+	$datanascimento = htmlspecialchars($datanascimento);
+	$genero = filtrarInt($genero);
+	$cep = filtrarInt($cep);
+	$end = filtrarString($end);
+	$num = filtrarInt($num);
+	$complemento = filtrarString($complemento);
+	$bairro = filtrarString($bairro);
+	$cidade = filtrarString($cidade);
+	$estado = filtrarString($estado);
 	$sql = "INSERT INTO usuarios VALUES (NULL, '$nome', '$sobrenome', '$email', '$cpf', '$datanascimento', 1, md5('$senha'), 1 , $genero, 1)";
 	$resultado = mysqli_query($conexao, $sql);
 	$id = mysqli_insert_id($conexao);
@@ -17,8 +32,9 @@ function registrarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $gen
 }
 function logarUsuario($email, $senha){
 	$conexao = getConnection();
+	$email = mysqli_escape_string($conexao, $email);
+	$senha = mysqli_escape_string($conexao, $senha);
 	$sql = "SELECT nome, email, id FROM usuarios where email = '$email' and senha = md5('$senha')";
-	$nome = htmlspecialchars ($sql['nome']);
 	$resultado = mysqli_query($conexao, $sql);
 	if (mysqli_affected_rows($conexao) >= 1) {
 		$_SESSION['user'] = mysqli_fetch_assoc($resultado);
@@ -31,6 +47,22 @@ function logarUsuario($email, $senha){
 }
 function editarInformacoes($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $cep, $end, $num, $complemento, $bairro, $cidade, $estado, $id){
 	$conexao = getConnection();
+	$datanascimento = date('Y-m-d', strtotime($datanascimento));
+	$nome = filtrarString($nome);
+	$sobrenome = filtrarString($sobrenome);
+	$email = filtrarEmail($email);
+	$cpf = mysqli_escape_string($conexao, $cpf);
+	$cpf = htmlspecialchars($cpf);
+	$datanascimento = mysqli_escape_string($conexao, $datanascimento);
+	$datanascimento = htmlspecialchars($datanascimento);
+	$genero = filtrarInt($genero);
+	$cep = filtrarInt($cep);
+	$end = filtrarString($end);
+	$num = filtrarInt($num);
+	$complemento = filtrarString($complemento);
+	$bairro = filtrarString($bairro);
+	$cidade = filtrarString($cidade);
+	$estado = filtrarString($estado);
 	$sql = "UPDATE usuarios SET nome = '$nome', sobrenome = '$sobrenome', email = '$email', cpf = '$cpf, datanascimento = $datanascimento, senha = md5('$senha') where id = $id";
 	$resultado = mysqli_query($conexao, $sql);
 	$sql = "UPDATE endereco SET cep = '$cep', endereco = '$end', numero = '$num', complemento = '$complemento', bairro = '$bairro', estado = '$estado', cidade = '$cidade' where usuarios_id = $id";
@@ -86,4 +118,13 @@ if (mysqli_affected_rows($conexao) >= 1) {
 	}
 	return $arr;
 }
+}
+function filtrarEmail($var){
+	return filter_var($var, FILTER_SANITIZE_EMAIL);
+}
+function filtrarString($var){
+	return filter_var($var, FILTER_SANITIZE_STRING);
+}
+function filtrarInt($var){
+	return filter_var($var, FILTER_SANITIZE_NUMBER_INT);
 }
