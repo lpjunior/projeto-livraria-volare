@@ -225,8 +225,15 @@ O Bootstrap foi importante para deixar o site responsivo e de fácil acesso para
 
 Mysql é a base de dados em código aberto utilizada no projeto. O banco de dados é onde fica armazenados todos os nosso cadastros de clientes, produtos, fornecedores, pedidos, status de compra e de entrega entre outros.
 
-## JavaScript/Jquery
-
+<table>
+    <td>
+      <img src="https://github.com/lpjunior/projeto-livraria-volare/blob/master/img/javascript.jpg"/><br />
+      <sub>
+      <a href =""></a>
+     </sub>
+   </td>   
+ </table>
+ 
 Utilizamos o JavaScript para efetuar o login do usuário através do Facebook. Além disso, foi feita a limitação da quantidade de produtos pelo usuário no carrinho de compras. Foi utilizado o JQuery, que é uma biblioteca JavaScript de código aberto em integração com o HTML, para simplificar os scripts interpretados pelop usuário.
 
 <table>
