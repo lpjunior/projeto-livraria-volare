@@ -204,9 +204,9 @@ O Bootstrap foi importante para deixar o site responsivo e de fácil acesso para
 ## MySql
 
 
-Mysql é a base de dados em código aberto utilizada no projeto. O banco de dados é oinde fica armazenados todos os nosso cadastros de clientes, produtos, fornecedores, pedidos, status de compra e de entrega entre outros.
+Mysql é a base de dados em código aberto utilizada no projeto. O banco de dados é onde fica armazenados todos os nosso cadastros de clientes, produtos, fornecedores, pedidos, status de compra e de entrega entre outros.
 
-## JavaScript
+## JavaScript/Jquery
 
 Utilizamos o JavaScript para efetuar o login do usuário através do Facebook. Além disso, foi feita a limitação da quantidade de produtos pelo usuário no carrinho de compras. Foi utilizado o JQuery, que é uma biblioteca JavaScript de código aberto em integração com o HTML, para simplificar os scripts interpretados pelop usuário.
 
