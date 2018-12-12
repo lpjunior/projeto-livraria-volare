@@ -180,10 +180,10 @@
   </tr>
  </table>
 
-* No Projeto da livraria utilizamos algumas linguagens e tecnologias como por exemplo: **PHP 7**|**Bootstrap 4**|**Mysql**| **JavaScript**|**HTML5**|**CSS3**|.
+# No Projeto da livraria utilizamos algumas linguagens e tecnologias como por exemplo: **PHP 7**|**Bootstrap 4**|**Mysql**| **JavaScript**|**HTML5**|**CSS3**|.
 
 
-
+ <h2>PHP</h2> 
     <table>
       <td>
       <img src="https://github.com/lpjunior/projeto-livraria-volare/blob/master/img/php_logo2.png"/><br />
@@ -204,19 +204,19 @@ Uma boa comparação é a da **caixa de ferramentas**. Só que, em vez de _chave
 
 Nesse sentido, como parte da tendência de buscar reduzir custos e aumentar a produtividade, o uso desse recurso tem se tornado cada vez mais popular. Hoje, já existe uma grande variedade de soluções disponíveis para as mais diversas linguagens, com comunidades que testam e a criam diferentes funções. [Leia mais][https://gaea.com.br/entenda-o-que-e-framework/]
 
-## Bootstrap
-
-
-O Bootstrap foi importante para deixar o site responsivo e de fácil acesso para todas as plataformas, além de funcionalidades como o favicon que facilta a visualização do site.
-
- <table>
+ 
+    <table>
       <td>
-      <img src="https://github.com/lpjunior/projeto-livraria-volare/blob/master/img/mysql.png"/><br />
+      <img src="https://github.com/lpjunior/projeto-livraria-volare/blob/master/img/bootstrap.png"/><br />
       <sub>
       <a href =""></a>
       </sub>
     </td>   
     </table>
+
+O Bootstrap foi importante para deixar o site responsivo e de fácil acesso para todas as plataformas, além de funcionalidades como o favicon que facilta a visualização do site.
+
+## MySql
 
 
 Mysql é a base de dados em código aberto utilizada no projeto. O banco de dados é onde fica armazenados todos os nosso cadastros de clientes, produtos, fornecedores, pedidos, status de compra e de entrega entre outros.
