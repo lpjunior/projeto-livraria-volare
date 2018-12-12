@@ -258,7 +258,7 @@ Utilizamos o JavaScript para efetuar o login do usuário através do Facebook. A
 <div align="justify">
 HTML5 é a base de todo site. Foi com ele que fizemos todo o front-end do site. Com a ajuda do Bootstrap, inserimos todos os textos, imagens e muitas funcionalidades que estruturaram o projeto. É a integração do HTML5 com o PHP e o MySql que foram feitas as compras. Todos os formulários para cadastros de clientes,  produtos e compras foram feitos em  HTML.
 </div>
-
+<br>
 
 <table>
     <td>
