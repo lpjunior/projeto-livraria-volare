@@ -184,9 +184,14 @@
 
 
 ## PHP 
-    
-      <img src="https://raw.githubusercontent.com/lpjunior/projeto-livraria-volare/master/img/php_logo.png"/><br />
-     
+    <table>
+      <td>
+      <img src="https://github.com/lpjunior/projeto-livraria-volare/blob/master/img/php_logo.png"/><br />
+      <sub>
+      <a href =""></a>
+      </sub>
+    </td>   
+    </table>
 
 O PHP foi utilizado na integração entre front-end com o back-end, como por exemplo sistemas de autenticação de usuários, de fornecedores, produtos e efetuar as compras e pagamento, entre outras coisas.
 
