@@ -1,8 +1,8 @@
 <?php require_once("header.php"); ?>
             <section>
                 <div class="container-fluid col-md-10 centraliza margintop">
-                    <div class="row">    
-                        <div class="col-md-2 bordasc">
+                    <div class="row">
+                        <div class="col-sm-4 col-md-2 col-lg-2 bordasc">
                             <h1 class="fontevinte">Categorias</h1>
                             <hr/>
                             <h3 class="fontedezesseis">Categoria 1</h3>
@@ -11,10 +11,13 @@
                             <h3 class="fontedezesseis">Categoria 5</h3>
                             <hr/>
                             <h4 class="fontedezesseis">Adicionar filtro</h4>
-                            <h4 class="fontedezesseis">Faixa de preço:</h4>
-                            <h4 class="fontedezesseis">Idioma:</h4>
-                        </div> <!-- FIM DA DIV LATERAL DIREITA--> 
-                        <div class="col-md-8"> <!-- DIV ONDE VAI ENTRAR O CONTEÚDO DA PAG-->                          
+                            <form>
+                                <label for="formControlRange"><h4 class="fontedezesseis">Faixa de preço:</h4></label>
+                                <input type="range" class="form-control-range" id="formControlRange">
+                            </form>
+
+                        </div> <!-- FIM DA DIV LATERAL DIREITA-->
+                        <div class="col-md-8"> <!-- DIV ONDE VAI ENTRAR O CONTEÚDO DA PAG-->
                             <div class="card-deck mb-4 text-center ">
                             <!-- começo dos cards PRIMEIRA LINHA-->
 
@@ -44,7 +47,7 @@
                                         <button type="button" class="btn btn-sm btn-outline-secondary">&nbsp;&nbsp;&nbsp;<i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;&nbsp;</button>
                                     </div>
                                 </div>
-                            </div><!--fim da coluna 2-->    
+                            </div><!--fim da coluna 2-->
                             <!--coluna 3-->
                             <div class="card mb-4 shadow-sm">
                                 <img class="card-img-top" src="img/placeholder1.jpg" alt="Card image cap">
@@ -103,7 +106,7 @@
                                         <button type="button" class="btn btn-sm btn-outline-secondary">&nbsp;&nbsp;&nbsp;<i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;&nbsp;</button>
                                     </div>
                                 </div>
-                            </div><!--fim da coluna 2-->    
+                            </div><!--fim da coluna 2-->
                             <!--coluna 3-->
                             <div class="card mb-4 shadow-sm">
                                 <img class="card-img-top" src="img/placeholder1.jpg" alt="Card image cap">
@@ -132,10 +135,10 @@
                                     </div>
                                 </div>
                             </div> <!--fim da coluna 4-->
-                           </div> <!-- fim dos cards segunda linha-->     
-                                                     
+                           </div> <!-- fim dos cards segunda linha-->
+
                        </div> <!-- FIM DA DIV CONTEÚDO DA PAG -->
                     </div> <!-- fim da row -->
-                </div> <!-- FIM DO CONTAINER -->   
-            </section><!-- FIM DA PRIMEIRA SECTION -->                 
-<?php require_once("footer.php"); ?>                
+                </div> <!-- FIM DO CONTAINER -->
+            </section><!-- FIM DA PRIMEIRA SECTION -->
+<?php require_once("footer.php"); ?>

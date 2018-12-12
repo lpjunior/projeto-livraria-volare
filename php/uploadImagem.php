@@ -2,7 +2,7 @@
   include 'bibliotecagd.php';
   function uploadImg($Imgfile) {
   	$file = $Imgfile;
-  	$dirUploads = 'upload';
+  	$dirUploads = './upload';
   	if(!is_dir($dirUploads)) {
   		mkdir($dirUploads);
   	}
