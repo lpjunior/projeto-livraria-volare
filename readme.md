@@ -200,7 +200,7 @@ Basicamente é um template com diversas funções que podem ser usadas pelo dese
 
 Uma boa comparação é a da **caixa de ferramentas**. Só que, em vez de _chaves de fenda_ e _martelos_, há bases para _formulários de login_, _validação de campos_ e _conexão com bancos de dados_.
 
-Nesse sentido, como parte da tendência de buscar reduzir custos e aumentar a produtividade, o uso desse recurso tem se tornado cada vez mais popular. Hoje, já existe uma grande variedade de soluções disponíveis para as mais diversas linguagens, com comunidades que testam e a criam diferentes funções. [Leia mais][https://gaea.com.br/entenda-o-que-e-framework/]
+Nesse sentido, como parte da tendência de buscar reduzir custos e aumentar a produtividade, o uso desse recurso tem se tornado cada vez mais popular. Hoje, já existe uma grande variedade de soluções disponíveis para as mais diversas linguagens, com comunidades que testam e a criam diferentes funções. 
 
 <table>
     <td>
@@ -258,14 +258,14 @@ HTML5 é a base de todo site. Foi com ele que fizemos todo o front-end do site. 
    </td>   
 </table>
 
-CSS3 é a mais recente evolução da linguagem Cascading Style Sheets (Folhas de Estilo em Cascata) que estende o CSS2.1. Ela traz uma série de novidades bastante esperadas, como cantos arredondados, sombras, gradientes , transições ou animações , bem como novos layouts como multi-colunas , caixas flexíveis ou layouts de grade.[Leia mais] https://developer.mozilla.org/pt-BR/docs/Web/CSS/CSS3
+CSS3 é a mais recente evolução da linguagem Cascading Style Sheets (Folhas de Estilo em Cascata) que estende o CSS2.1. Ela traz uma série de novidades bastante esperadas, como cantos arredondados, sombras, gradientes , transições ou animações , bem como novos layouts como multi-colunas , caixas flexíveis ou layouts de grade.
 
 
 
 ## Slim Framework
 
 
-O Slim é um micro-framework PHP que ajuda você a escrever rapidamente aplicações web e APIs simples, porém poderosas. [Leia mais][https://www.slimframework.com/]
+O Slim é um micro-framework PHP que ajuda você a escrever rapidamente aplicações web e APIs simples, porém poderosas. 
 
 - **Roteador HTTP**. O Slim fornece um roteador rápido e poderoso que mapeia os retornos de chamadas de rota para métodos de solicitação de HTTP e URIs específicos. Suporta parâmetros e correspondência de padrões.
 
