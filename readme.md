@@ -183,10 +183,15 @@
 # No Projeto da livraria utilizamos algumas linguagens e tecnologias como por exemplo: **PHP 7**|**Bootstrap 4**|**Mysql**| **JavaScript**|**HTML5**|**CSS3**|.
 
 
-## PHP 
-<td>
-      <img src="https://www.google.com.br/search?q=php&rlz=1C1GCEU_pt-BRBR821BR822&biw=1920&bih=969&tbm=isch&source=lnt&tbs=isz:ex,iszw:200,iszh:100#imgrc=eNvb3yCi0iNQhM:"/><br />
-    </td>  
+ <h2>PHP</h2> 
+    <table>
+      <td>
+      <img src="https://github.com/lpjunior/projeto-livraria-volare/blob/master/img/php_logo2.png"/><br />
+      <sub>
+      <a href =""></a>
+      </sub>
+    </td>   
+    </table>
 
 O PHP foi utilizado na integração entre front-end com o back-end, como por exemplo sistemas de autenticação de usuários, de fornecedores, produtos e efetuar as compras e pagamento, entre outras coisas.
 
