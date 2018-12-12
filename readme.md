@@ -200,7 +200,7 @@ Basicamente é um template com diversas funções que podem ser usadas pelo dese
 
 Uma boa comparação é a da **caixa de ferramentas**. Só que, em vez de _chaves de fenda_ e _martelos_, há bases para _formulários de login_, _validação de campos_ e _conexão com bancos de dados_.
 
-Nesse sentido, como parte da tendência de buscar reduzir custos e aumentar a produtividade, o uso desse recurso tem se tornado cada vez mais popular. Hoje, já existe uma grande variedade de soluções disponíveis para as mais diversas linguagens, com comunidades que testam e a criam diferentes funções. 
+Nesse sentido, como parte da tendência de buscar reduzir custos e aumentar a produtividade, o uso desse recurso tem se tornado cada vez mais popular. Hoje, já existe uma grande variedade de soluções disponíveis para as mais diversas linguagens, com comunidades que testam e a criam diferentes funções. [Leia mais][https://gaea.com.br/entenda-o-que-e-framework/]
 
 <table>
     <td>
@@ -225,8 +225,15 @@ O Bootstrap foi importante para deixar o site responsivo e de fácil acesso para
 
 Mysql é a base de dados em código aberto utilizada no projeto. O banco de dados é onde fica armazenados todos os nosso cadastros de clientes, produtos, fornecedores, pedidos, status de compra e de entrega entre outros.
 
-## JavaScript/Jquery
-
+<table>
+    <td>
+      <img src="https://github.com/lpjunior/projeto-livraria-volare/blob/master/img/javascript.jpg"/><br />
+      <sub>
+      <a href =""></a>
+     </sub>
+   </td>   
+ </table>
+ 
 Utilizamos o JavaScript para efetuar o login do usuário através do Facebook. Além disso, foi feita a limitação da quantidade de produtos pelo usuário no carrinho de compras. Foi utilizado o JQuery, que é uma biblioteca JavaScript de código aberto em integração com o HTML, para simplificar os scripts interpretados pelop usuário.
 
 <table>
@@ -251,14 +258,14 @@ HTML5 é a base de todo site. Foi com ele que fizemos todo o front-end do site. 
    </td>   
 </table>
 
-CSS3 é a mais recente evolução da linguagem Cascading Style Sheets (Folhas de Estilo em Cascata) que estende o CSS2.1. Ela traz uma série de novidades bastante esperadas, como cantos arredondados, sombras, gradientes , transições ou animações , bem como novos layouts como multi-colunas , caixas flexíveis ou layouts de grade.
+CSS3 é a mais recente evolução da linguagem Cascading Style Sheets (Folhas de Estilo em Cascata) que estende o CSS2.1. Ela traz uma série de novidades bastante esperadas, como cantos arredondados, sombras, gradientes , transições ou animações , bem como novos layouts como multi-colunas , caixas flexíveis ou layouts de grade.[Leia mais] https://developer.mozilla.org/pt-BR/docs/Web/CSS/CSS3
 
 
 
 ## Slim Framework
 
 
-O Slim é um micro-framework PHP que ajuda você a escrever rapidamente aplicações web e APIs simples, porém poderosas. 
+O Slim é um micro-framework PHP que ajuda você a escrever rapidamente aplicações web e APIs simples, porém poderosas. [Leia mais][https://www.slimframework.com/]
 
 - **Roteador HTTP**. O Slim fornece um roteador rápido e poderoso que mapeia os retornos de chamadas de rota para métodos de solicitação de HTTP e URIs específicos. Suporta parâmetros e correspondência de padrões.
 
