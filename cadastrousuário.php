@@ -19,7 +19,7 @@
 							<div class="row">
 								<div class="col">
 									<label for="iDataNasc">Data de nascimento:</label>
-									<input type="date" id="iDataNasc" name="txtDataNasc" class="form-control date" required>
+									<input type="text" id="iDataNasc" name="txtDataNasc" class="form-control date" required>
 									<br/>
 								</div>
 								<div class="col">
