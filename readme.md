@@ -180,7 +180,7 @@
   </tr>
  </table>
 
- <h2>## No Projeto da livraria utilizamos algumas linguagens e tecnologias abaixo:</h2>
+ <h2>No Projeto da livraria utilizamos algumas linguagens e tecnologias abaixo:</h2>
 
 <table>
     <td>
