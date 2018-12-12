@@ -182,25 +182,8 @@ Desenvolvemos um projeto de site dinâmico, harmônico e principalmente simples 
   </tr>
  </table>
 
-# Projeto de uma livraria em _PHP 7_ utilizando as tecnologias **Bootstrap 4**, **Mysql**, **JavaScript**, **HTML5**, **CSS3**  e **Slim Framework**
+# No Projeto da livraria utilizamos algumas linguagens e tecnologias como por exemplo: **PHP 7**|**Bootstrap 4**|**Mysql**| **JavaScript**|**HTML5**|**CSS3**|.
 
-[![PHP Version](./svg/php-version.svg)](http://php.net/downloads.php)
-[![Bootstrap](./svg/bootstrap.svg)](https://getbootstrap.com/docs/4.1/getting-started/download/)
-[![Slim](./svg/slim-version.svg)](https://www.slimframework.com/)
-[![Latest Unstable Version](./svg/unstable.svg)](./svg/unstable.svg)
-[![License](./svg/license.svg)](./svg/license.svg)
-
-
-Este projeto tem por finalidade criar uma livraria virtual para venda de livros online, como projeto final do curso de Programador Web do Senac da Unidade Niterói.
-
-## Por que usar o PHP 7 com frameworks?
-
-
-Usar frameworks é algo que já faz parte do dia a dia da maioria dos desenvolvedores, especialmente de quem trabalha com um grande número de projetos que usam funções similares. Afinal, a possibilidade de reutilizar códigos com poucas alterações ajuda a poupar tempo.
-
-Isso porque, o framework dá uma caixa de ferramentas para o programador que vai além do que é oferecido pela linguagem. Seu conceito, porém, pode ser confuso em relação a outras formas de aproveitar códigos em vários projetos, como a orientação a objetos e as classes, por exemplo.
-
-A grande diferença é que o método opera de forma muito mais profunda, com vantagens e desvantagens. Por isso, neste post  explicamos o que é framework e qual é seu impacto no desenvolvimento de projetos.
 
 ## PHP
 
