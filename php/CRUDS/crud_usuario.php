@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once 'conexao.php';
+## Registrar Cliente
 function registrarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $cep, $end, $num, $complemento, $bairro, $cidade, $estado){
 	date_default_timezone_set('America/Sao_Paulo');
 	$datanascimento = implode('-',array_reverse(explode('/',$datanascimento)));
@@ -18,7 +19,7 @@ function registrarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $gen
 	$bairro = filtrarString($bairro);
 	$cidade = filtrarString($cidade);
 	$estado = filtrarString($estado);
-	$sql = "INSERT INTO usuarios VALUES (NULL, '$nome', '$sobrenome', '$email', '$cpf', '$datanascimento', 1, md5('$senha'), 1 , $genero, 1)";
+	$sql = "INSERT INTO usuarios VALUES (NULL, '$nome', '$sobrenome', '$email', '$cpf', '$datanascimento', 1, md5('$senha'), 1 , $genero)";
 	$resultado = mysqli_query($conexao, $sql);
 	$id = mysqli_insert_id($conexao);
 	$sql = "INSERT INTO endereco VALUES (NULL, '$cep', '$end', '$num', '$complemento', '$bairro', '$estado', '$cidade', $id, 1)";
@@ -29,6 +30,7 @@ function registrarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $gen
 		return false;
 	}
 }
+## Logar Usuário
 function logarUsuario($email, $senha){
 	$conexao = getConnection();
 	$email = mysqli_escape_string($conexao, $email);
@@ -44,10 +46,11 @@ function logarUsuario($email, $senha){
 	}
 
 }
+## Editar informações do cliente
 function editarInformacoes($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $cep, $end, $num, $complemento, $bairro, $cidade, $estado, $id){
 	$conexao = getConnection();
 	date_default_timezone_set('America/Sao_Paulo');
-	$datanascimento = implode('-',array_reverse(explode('/',$datanascimento)));));
+	$datanascimento = implode('-',array_reverse(explode('/',$datanascimento)));
 	$nome = filtrarString($nome);
 	$sobrenome = filtrarString($sobrenome);
 	$email = filtrarEmail($email);
@@ -71,6 +74,7 @@ function editarInformacoes($nome, $sobrenome, $email, $cpf, $datanascimento, $ge
 		return false;
 	}
 }
+## Perfil do usuário
 function listarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $cep, $end, $num, $complemento, $bairro, $cidade, $estado, $limit){
 	$conexao = getConnection();
 	# Select do perfil do usuário
@@ -116,13 +120,48 @@ if (mysqli_affected_rows($conexao) >= 1) {
 	}
 	return $arr;
 }
+## Filtros para o cadastro
 }
 function filtrarEmail($var){
-	return filter_var($var, FILTER_SANITIZE_EMAIL);
+	$var = filter_var($var, FILTER_SANITIZE_EMAIL);
+	$var = mysqli_escape_string($conexao, $var);
+	return $var;
 }
 function filtrarString($var){
-	return filter_var($var, FILTER_SANITIZE_STRING);
+	$var = filter_var($var, FILTER_SANITIZE_STRING);
+	$var = mysqli_escape_string($conexao, $var);
+	return $var;
 }
 function filtrarInt($var){
 	return filter_var($var, FILTER_SANITIZE_NUMBER_INT);
+}
+## Cadastro de admin
+
+function registrarAdmin($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $cep, $end, $num, $complemento, $bairro, $cidade, $estado){
+	date_default_timezone_set('America/Sao_Paulo');
+	$datanascimento = implode('-',array_reverse(explode('/',$datanascimento)));
+	$conexao = getConnection();
+	$nome = filtrarString($nome);
+	$sobrenome = filtrarString($sobrenome);
+	$email = filtrarEmail($email);
+	$cpf = mysqli_escape_string($conexao, $cpf);
+	$cpf = htmlspecialchars($cpf);
+	$genero = filtrarInt($genero);
+	$cep = filtrarInt($cep);
+	$end = filtrarString($end);
+	$num = filtrarInt($num);
+	$complemento = filtrarString($complemento);
+	$bairro = filtrarString($bairro);
+	$cidade = filtrarString($cidade);
+	$estado = filtrarString($estado);
+	$sql = "INSERT INTO usuarios VALUES (NULL, '$nome', '$sobrenome', '$email', '$cpf', '$datanascimento', 1, md5('$senha'), 2 , $genero, 1)";
+	$resultado = mysqli_query($conexao, $sql);
+	$id = mysqli_insert_id($conexao);
+	$sql = "INSERT INTO endereco VALUES (NULL, '$cep', '$end', '$num', '$complemento', '$bairro', '$estado', '$cidade', $id, 1)";
+	$resultado = mysqli_query($conexao, $sql);
+	if (mysqli_affected_rows($conexao) >= 1) {
+		return true;
+	} else {
+		return false;
+	}
 }

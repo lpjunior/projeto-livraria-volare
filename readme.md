@@ -183,7 +183,10 @@
 # No Projeto da livraria utilizamos algumas linguagens e tecnologias como por exemplo: **PHP 7**|**Bootstrap 4**|**Mysql**| **JavaScript**|**HTML5**|**CSS3**|.
 
 
-## PHP
+## PHP 
+<td>
+      <img src="https://www.google.com.br/search?q=php&rlz=1C1GCEU_pt-BRBR821BR822&biw=1920&bih=969&tbm=isch&source=lnt&tbs=isz:ex,iszw:200,iszh:100#imgrc=eNvb3yCi0iNQhM:"/><br />
+    </td>  
 
 O PHP foi utilizado na integração entre front-end com o back-end, como por exemplo sistemas de autenticação de usuários, de fornecedores, produtos e efetuar as compras e pagamento, entre outras coisas.
 
@@ -204,9 +207,9 @@ O Bootstrap foi importante para deixar o site responsivo e de fácil acesso para
 ## MySql
 
 
-Mysql é a base de dados em código aberto utilizada no projeto. O banco de dados é oinde fica armazenados todos os nosso cadastros de clientes, produtos, fornecedores, pedidos, status de compra e de entrega entre outros.
+Mysql é a base de dados em código aberto utilizada no projeto. O banco de dados é onde fica armazenados todos os nosso cadastros de clientes, produtos, fornecedores, pedidos, status de compra e de entrega entre outros.
 
-## JavaScript
+## JavaScript/Jquery
 
 Utilizamos o JavaScript para efetuar o login do usuário através do Facebook. Além disso, foi feita a limitação da quantidade de produtos pelo usuário no carrinho de compras. Foi utilizado o JQuery, que é uma biblioteca JavaScript de código aberto em integração com o HTML, para simplificar os scripts interpretados pelop usuário.
 
