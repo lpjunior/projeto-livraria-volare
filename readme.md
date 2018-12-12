@@ -1,6 +1,6 @@
 # Projeto Livraria Volare
 
-<font face="arial">O Projeto da livraria foi criado com intuito de colocarmos em prática todo nosso conhecimento e aprendizado ao longo de todo o nosso curso de programador web. Ai vem um questionamento importante porque uma livraria? Porque acreditamos que é através dos livros que agregamos conhecimento e aprendizagem; e aprendemos também a ser pessoas melhores em todos os sentidos das nossas vidas. O intuito era fazer um projeto simples, porém com qualidade e que não devesse nada a nenhuma livraria online que conhecemos hoje no mercado. Desenvolvemos um projeto de site dinâmico, harmônico e principalmente simples de ser navegado.</font>    
+<font face="arial">O Projeto da livraria foi criado com intuito de colocarmos em prática todo nosso conhecimento e aprendizado ao longo de todo o nosso curso de Programador Web. Ai vem um questionamento importante: Porque uma livraria? Pois acreditamos que é através dos livros que agregamos conhecimento e aprendizagem; e aprendemos também a ser pessoas melhores em todos os sentidos de nossas vidas. O intuito era fazer um projeto simples, porém com qualidade, eficiência e que não devesse nada a nenhuma livraria online que conhecemos hoje no mercado. Desenvolvemos um projeto de site dinâmico, harmônico e principalmente simples de ser navegado.</font>    
 
 # Link do Site
 
@@ -185,8 +185,7 @@
 
 ## PHP
 
-O PHP (um acrônimo recursivo para PHP: Hypertext Preprocessor) é uma linguagem de script open source de uso geral, muito utilizada, e especialmente adequada para o desenvolvimento web e que pode ser embutida dentro do HTML.[Leia mais] http://www.php.net/
-
+O PHP foi utilizado na integração entre front-end com o back-end, como por exemplo sistemas de autenticação de usuários, de fornecedores, produtos e efetuar as compras e pagamento, entre outras coisas.
 
 ## Framework
 
@@ -200,22 +199,21 @@ Nesse sentido, como parte da tendência de buscar reduzir custos e aumentar a pr
 ## Bootstrap
 
 
-O Bootstrap é uma ferramenta gratuta para desenvolvimento HTML, CSS e JS. Com ele criamos protótipos rápidamente ou aplicações completas com variáveis e mixins Sass, sistemas de grid responsivo, componentes pré-construídos e poderosos plugins com jQuery. [Leia mais][https://getbootstrap.com.br/docs/4.1/getting-started/introduction/]
+O Bootstrap foi importante para deixar o site responsivo e de fácil acesso para todas as plataformas, além de funcionalidades como o favicon que facilta a visualização do site.
 
 ## MySql
 
 
-Mysql é a base de dados em código aberto numero um, é a numero um para a web e uma excelente base dados para embarcar. Muitas das maiores e mais crescentes organizações do mundo, incluindo facebook, google, adobe, alcatel lucent e zappos, confiam no Mysql para economizar tempo e dinheiro.[Leia mais][https://www.mysql.com/why-mysql/]
+Mysql é a base de dados em código aberto utilizada no projeto. O banco de dados é oinde fica armazenados todos os nosso cadastros de clientes, produtos, fornecedores, pedidos, status de compra e de entrega entre outros.
 
 ## JavaScript
 
-O JavaScript é uma linguagem de programação que permite implementar funcionalidades mais complexas em páginas web. A cada momento que uma página web faz mais do que apenas mostrar informações estáticas para você - elas mostram em tempo real conteúdos atualizados, ou mapas interativos, ou animações gráficas em 2D/3D, ou vídeos em movimento, etc.,  você pode apostar que o javascript provavelmente está envolvido.[Leia mais][https://www.javascript.com/about]
-
+Utilizamos o JavaScript para efetuar o login do usuário através do Facebook. Além disso, foi feita a limitação da quantidade de produtos pelo usuário no carrinho de compras. Foi utilizado o JQuery, que é uma biblioteca JavaScript de código aberto em integração com o HTML, para simplificar os scripts interpretados pelop usuário.
 
 ## HTML5
 
 
-HTML5 é a mais recente evolução do padrão que define o HTML. O termo representa dois conceitos diferentes: É uma nova versão da linguagem HTML, com novos elementos, atributos, e comportamentos.[[Leia mais][https://developer.mozilla.org/pt-BR/docs/Web/HTML/HTML5]
+HTML5 é a base de todo site. Foi com ele que fizemos todo o front-end do site. Com a ajuda do Bootstrap, inserimos todos os textos, imagens e muitas funcionalidades que estruturaram o projeto. É a integração do HTML5 com o PHP e o MySql que foram feitas as compras. Todos os formulários para cadastros de clientes,  produtos e compras foram feitos em  HTML.
 
 
 
