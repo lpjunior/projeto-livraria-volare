@@ -2,15 +2,14 @@
 session_start();
 require_once 'conexao.php';
 function registrarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $cep, $end, $num, $complemento, $bairro, $cidade, $estado){
-	$datanascimento = date('Y-m-d', strtotime($datanascimento));
+	date_default_timezone_set('America/Sao_Paulo');
+	$datanascimento = implode('-',array_reverse(explode('/',$datanascimento)));
 	$conexao = getConnection();
 	$nome = filtrarString($nome);
 	$sobrenome = filtrarString($sobrenome);
 	$email = filtrarEmail($email);
 	$cpf = mysqli_escape_string($conexao, $cpf);
 	$cpf = htmlspecialchars($cpf);
-	$datanascimento = mysqli_escape_string($conexao, $datanascimento);
-	$datanascimento = htmlspecialchars($datanascimento);
 	$genero = filtrarInt($genero);
 	$cep = filtrarInt($cep);
 	$end = filtrarString($end);
@@ -47,14 +46,13 @@ function logarUsuario($email, $senha){
 }
 function editarInformacoes($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $cep, $end, $num, $complemento, $bairro, $cidade, $estado, $id){
 	$conexao = getConnection();
-	$datanascimento = date('Y-m-d', strtotime($datanascimento));
+	date_default_timezone_set('America/Sao_Paulo');
+	$datanascimento = implode('-',array_reverse(explode('/',$datanascimento)));));
 	$nome = filtrarString($nome);
 	$sobrenome = filtrarString($sobrenome);
 	$email = filtrarEmail($email);
 	$cpf = mysqli_escape_string($conexao, $cpf);
 	$cpf = htmlspecialchars($cpf);
-	$datanascimento = mysqli_escape_string($conexao, $datanascimento);
-	$datanascimento = htmlspecialchars($datanascimento);
 	$genero = filtrarInt($genero);
 	$cep = filtrarInt($cep);
 	$end = filtrarString($end);
