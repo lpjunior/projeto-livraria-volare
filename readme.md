@@ -180,9 +180,7 @@
   </tr>
  </table>
 
-* No Projeto da livraria utilizamos algumas linguagens e tecnologias como por exemplo: **PHP 7**|**Bootstrap 4**|**Mysql**| **JavaScript**|**HTML5**|**CSS3**|.
-
-
+ <h2>## No Projeto da livraria utilizamos algumas linguagens e tecnologias abaixo:</h2>
 
 <table>
     <td>
