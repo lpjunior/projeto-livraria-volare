@@ -1,11 +1,11 @@
 /***** classes referentes a cor *******/
 
 .COLORE{
-    background-color: white;
+    background-color: white;     
 }
 
 .COLORE1{
-    background-color: white;
+    background-color: white; 
 }
 
 .COLORETEXTO{
@@ -54,7 +54,7 @@
 /******* fonte ********/
 
 body{
-    font-family: "arial", "trebuchet";
+    font-family: "trebuchet";
     position: relative;
     min-height: 100%;
 }
@@ -145,6 +145,14 @@ body{
 .rating > span:hover ~ span:before {
    content: "\2605";
    position: absolute;
-   left: 0;
+   left: 0; 
    color: lightblue;
+}
+
+.table td, .table th {
+    border: none;
+}
+
+.total {
+    border-top: 1px solid #dee2e6 !important;
 }
