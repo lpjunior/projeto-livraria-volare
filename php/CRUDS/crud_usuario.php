@@ -18,6 +18,7 @@ function registrarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $gen
 function logarUsuario($email, $senha){
 	$conexao = getConnection();
 	$sql = "SELECT nome, email, id FROM usuarios where email = '$email' and senha = md5('$senha')";
+	$nome = htmlspecialchars ($sql['nome']);
 	$resultado = mysqli_query($conexao, $sql);
 	if (mysqli_affected_rows($conexao) >= 1) {
 		$_SESSION['user'] = mysqli_fetch_assoc($resultado);
