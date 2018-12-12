@@ -183,10 +183,10 @@
 # No Projeto da livraria utilizamos algumas linguagens e tecnologias como por exemplo: **PHP 7**|**Bootstrap 4**|**Mysql**| **JavaScript**|**HTML5**|**CSS3**|.
 
 
- <h2>PHP</h2>
+ <h2>PHP</h2> 
     <table>
       <td>
-      <img src="https://github.com/lpjunior/projeto-livraria-volare/blob/master/img/php_logo.png"/><br />
+      <img src="https://github.com/lpjunior/projeto-livraria-volare/blob/master/img/php_logo2.png"/><br />
       <sub>
       <a href =""></a>
       </sub>
