@@ -242,7 +242,14 @@ HTML5 é a base de todo site. Foi com ele que fizemos todo o front-end do site. 
 
 
 
-## CSS3
+<table>
+    <td>
+      <img src="https://github.com/lpjunior/projeto-livraria-volare/blob/master/img/css.jpg"/><br />
+      <sub>
+      <a href =""></a>
+      </sub>
+   </td>   
+</table>
 
 CSS3 é a mais recente evolução da linguagem Cascading Style Sheets (Folhas de Estilo em Cascata) que estende o CSS2.1. Ela traz uma série de novidades bastante esperadas, como cantos arredondados, sombras, gradientes , transições ou animações , bem como novos layouts como multi-colunas , caixas flexíveis ou layouts de grade.[Leia mais] https://developer.mozilla.org/pt-BR/docs/Web/CSS/CSS3
 
