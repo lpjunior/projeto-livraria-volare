@@ -1,8 +1,10 @@
 # Projeto Livraria Volare
 
-<font face="arial">O Projeto da livraria foi criado com intuito de colocarmos em prática todo nosso conhecimento e aprendizado ao longo de todo o nosso curso de Programador Web. Ai vem um questionamento importante: Porque uma livraria? Pois acreditamos que é através dos livros que agregamos conhecimento e aprendizagem; e aprendemos também a ser pessoas melhores em todos os sentidos de nossas vidas. O intuito era fazer um projeto simples, porém com qualidade, eficiência e que não devesse nada a nenhuma livraria online que conhecemos hoje no mercado. Desenvolvemos um projeto de site dinâmico, harmônico e principalmente simples de ser navegado.</font>    
+<div align="justify">
+O Projeto da livraria foi criado com intuito de colocarmos em prática todo nosso conhecimento e aprendizado ao longo de todo o nosso curso de Programador Web. Ai vem um questionamento importante: Porque uma livraria? Pois acreditamos que é através dos livros que agregamos conhecimento e aprendizagem; e aprendemos também a ser pessoas melhores em todos os sentidos de nossas vidas. O intuito era fazer um projeto simples, porém com qualidade, eficiência e que não devesse nada a nenhuma livraria online que conhecemos hoje no mercado. Desenvolvemos um projeto de site dinâmico, harmônico e principalmente simples de ser navegado.</font>    
+</div>
 
-# Link do Site
+# Site
 
 <a href="http://livrariavolare.herokuapp.com/index.php">Livraria Volare</a>
 
@@ -21,7 +23,7 @@
 
 # Equipe
 
-<h2> Front-end </h2>
+<h2>Front-end</h2>
 
 <table align="center">
   <tr>
@@ -52,7 +54,7 @@
   </tr>
  </table>
  
-<h2> Back-end </h2>
+<h2>Back-end</h2>
 
 <table align="center">
   <tr>
@@ -83,7 +85,7 @@
   </tr>    
  </table>
  
- <h2> Banco de Dados</h2>
+ <h2>Banco de Dados</h2>
 
 <table align="center">
   <tr>
@@ -103,7 +105,7 @@
 </table>
 
 
-  <h2> Segurança e Versionamento</h2>
+  <h2>Segurança e Versionamento</h2>
 
 <table align="center">
   <tr>
@@ -129,7 +131,7 @@
  </table>
 
 
- <h2> Documentação</h2>
+ <h2>Documentação</h2>
 
 <table align="center">
   <tr>
@@ -180,61 +182,102 @@
   </tr>
  </table>
 
-# No Projeto da livraria utilizamos algumas linguagens e tecnologias como por exemplo: **PHP 7**|**Bootstrap 4**|**Mysql**| **JavaScript**|**HTML5**|**CSS3**|.
+ <h2>No Projeto da livraria utilizamos algumas linguagens e tecnologias abaixo:</h2>
 
-
- <h2>PHP</h2> 
-    <table>
-      <td>
+<table>
+    <td>
       <img src="https://github.com/lpjunior/projeto-livraria-volare/blob/master/img/php_logo2.png"/><br />
       <sub>
       <a href =""></a>
       </sub>
-    </td>   
-    </table>
+   </td>   
+</table>
 
+<div align="justify">
 O PHP foi utilizado na integração entre front-end com o back-end, como por exemplo sistemas de autenticação de usuários, de fornecedores, produtos e efetuar as compras e pagamento, entre outras coisas.
+</div>
 
 ## Framework
 
-
+<div align="justify">
 Basicamente é um template com diversas funções que podem ser usadas pelo desenvolvedor. Com ele, é desnecessário gastar tempo para reproduzir a mesma função em diferentes projetos.
 
 Uma boa comparação é a da **caixa de ferramentas**. Só que, em vez de _chaves de fenda_ e _martelos_, há bases para _formulários de login_, _validação de campos_ e _conexão com bancos de dados_.
 
-Nesse sentido, como parte da tendência de buscar reduzir custos e aumentar a produtividade, o uso desse recurso tem se tornado cada vez mais popular. Hoje, já existe uma grande variedade de soluções disponíveis para as mais diversas linguagens, com comunidades que testam e a criam diferentes funções. [Leia mais][https://gaea.com.br/entenda-o-que-e-framework/]
+Nesse sentido, como parte da tendência de buscar reduzir custos e aumentar a produtividade, o uso desse recurso tem se tornado cada vez mais popular. Hoje, já existe uma grande variedade de soluções disponíveis para as mais diversas linguagens, com comunidades que testam e a criam diferentes funções. 
+</div>
 
-## Bootstrap
+<table>
+    <td>
+      <img src="https://github.com/lpjunior/projeto-livraria-volare/blob/master/img/bootstrap.png"/><br />
+      <sub>
+      <a href =""></a>
+     </sub>
+   </td>   
+ </table>
 
-
+<div align="justify">
 O Bootstrap foi importante para deixar o site responsivo e de fácil acesso para todas as plataformas, além de funcionalidades como o favicon que facilta a visualização do site.
+</div>  
+<br>
+ <table>
+    <td>
+      <img src="https://github.com/lpjunior/projeto-livraria-volare/blob/master/img/mysql.png"/><br />
+      <sub>
+      <a href =""></a>
+     </sub>
+   </td>   
+ </table>
 
-## MySql
-
-
+<div align="justify">
 Mysql é a base de dados em código aberto utilizada no projeto. O banco de dados é onde fica armazenados todos os nosso cadastros de clientes, produtos, fornecedores, pedidos, status de compra e de entrega entre outros.
-
-## JavaScript/Jquery
-
+</div>  
+<br>
+<table>
+    <td>
+      <img src="https://github.com/lpjunior/projeto-livraria-volare/blob/master/img/javascript.jpg"/><br />
+      <sub>
+      <a href =""></a>
+     </sub>
+   </td>   
+ </table>
+<br>
+<div align="justify">
 Utilizamos o JavaScript para efetuar o login do usuário através do Facebook. Além disso, foi feita a limitação da quantidade de produtos pelo usuário no carrinho de compras. Foi utilizado o JQuery, que é uma biblioteca JavaScript de código aberto em integração com o HTML, para simplificar os scripts interpretados pelop usuário.
-
-## HTML5
-
-
+</div>  
+<br>
+<table>
+    <td>
+      <img src="https://github.com/lpjunior/projeto-livraria-volare/blob/master/img/html5-logo.png"/><br />
+      <sub>
+      <a href =""></a>
+     </sub>
+   </td>   
+ </table>
+<br>
+<div align="justify">
 HTML5 é a base de todo site. Foi com ele que fizemos todo o front-end do site. Com a ajuda do Bootstrap, inserimos todos os textos, imagens e muitas funcionalidades que estruturaram o projeto. É a integração do HTML5 com o PHP e o MySql que foram feitas as compras. Todos os formulários para cadastros de clientes,  produtos e compras foram feitos em  HTML.
+</div>
+<br>
 
+<table>
+    <td>
+      <img src="https://github.com/lpjunior/projeto-livraria-volare/blob/master/img/css.jpg"/><br />
+      <sub>
+      <a href =""></a>
+      </sub>
+   </td>   
+</table>
 
-
-## CSS3
-
-CSS3 é a mais recente evolução da linguagem Cascading Style Sheets (Folhas de Estilo em Cascata) que estende o CSS2.1. Ela traz uma série de novidades bastante esperadas, como cantos arredondados, sombras, gradientes , transições ou animações , bem como novos layouts como multi-colunas , caixas flexíveis ou layouts de grade.[Leia mais] https://developer.mozilla.org/pt-BR/docs/Web/CSS/CSS3
-
+<div align="justify">
+CSS3 é a mais recente evolução da linguagem Cascading Style Sheets (Folhas de Estilo em Cascata) que estende o CSS2.1. Ela traz uma série de novidades bastante esperadas, como cantos arredondados, sombras, gradientes , transições ou animações , bem como novos layouts como multi-colunas , caixas flexíveis ou layouts de grade.
+</div>
 
 
 ## Slim Framework
 
-
-O Slim é um micro-framework PHP que ajuda você a escrever rapidamente aplicações web e APIs simples, porém poderosas. [Leia mais][https://www.slimframework.com/]
+<div align="justify">
+O Slim é um micro-framework PHP que ajuda você a escrever rapidamente aplicações web e APIs simples, porém poderosas. 
 
 - **Roteador HTTP**. O Slim fornece um roteador rápido e poderoso que mapeia os retornos de chamadas de rota para métodos de solicitação de HTTP e URIs específicos. Suporta parâmetros e correspondência de padrões.
 
@@ -243,6 +286,7 @@ O Slim é um micro-framework PHP que ajuda você a escrever rapidamente aplicaç
 - **Suporte PSR-7**. O Slim suporta qualquer implementação de mensagem HTTP do PSR-7 para que você possa inspecionar e manipular o método, o status, o URI, os cabeçalhos, os cookies e o corpo da mensagem HTTP.
 
 - **Injeção de dependência**. O Slim suporta injeção de dependência para que você tenha controle total de suas ferramentas externas. Use qualquer contêiner Container-Interop.
+</div>
 
 ## Licença
 

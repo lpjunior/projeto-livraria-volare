@@ -7,7 +7,7 @@
     $thumbnail_width = 180;
     $thumbnail = imagecreatetruecolor($thumbnail_width, $thumbnail_height);
     // checa o diretório do thumbnail
-    $dirThumbnails = 'upload' . DIRECTORY_SEPARATOR . 'miniaturas';
+    $dirThumbnails = './upload' . DIRECTORY_SEPARATOR . 'miniaturas';
     if(!is_dir($dirThumbnails)) {
       mkdir($dirThumbnails);
     }

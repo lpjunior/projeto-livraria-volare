@@ -25,8 +25,8 @@ session_start();
         <!-- TOPO DO SITE -->
         <nav class="navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid topoformatacao">
-            <a class="text-dark opacidade" href="#"><i class="fas fa-users"></i> Sobre a Volare</a>&nbsp;&nbsp;
-            <a class="text-dark opacidade" href="#"> <i class="fas fa-phone-volume"></i> Fale Conosco</a>
+            <a class="text-dark opacidade" href="sobre.php"><i class="fas fa-users"></i> Sobre a Volare</a>&nbsp;&nbsp;
+            <a class="text-dark opacidade" href="faleconosco.php"> <i class="fas fa-phone-volume"></i> Fale Conosco</a>
             </div>
         </nav>
         <!-- fim do topo -->
