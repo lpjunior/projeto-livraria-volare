@@ -1,5 +1,6 @@
 <?php
-  function createThumbnail($filename) {
+  function createThumbnail($filename, $nomedacaceta) {
+    // $filename = upload/(nome da imagem)
     //header("Content-type: image/jpeg");
     // dimensões do thumbnail
     $thumbnail_height = 170;
@@ -29,7 +30,7 @@
     $nomeThumbnail = $filename;
     // gera o thumbnail
     imagecopyresampled($thumbnail, $src_img, 0, 0, 0, 0, $thumbnail_width, $thumbnail_height, $src_img_size_width, $src_img_size_height);
-    imagejpeg($thumbnail, $dirThumbnails . DIRECTORY_SEPARATOR . $nomeThumbnail);
+    imagejpeg($thumbnail, $dirThumbnails . DIRECTORY_SEPARATOR . $nomedacaceta);
     // apaga as img do cache
     imagedestroy($thumbnail);
     imagedestroy($src_img);

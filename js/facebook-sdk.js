@@ -10,9 +10,11 @@
     // Full docs on the response object can be found in the documentation
     // for FB.getLoginStatus().
     if (response.status === 'connected') {
+      // Id do usuário
       var uid = response.authResponse.userID;
+      // Token do usuário
       var token = response.authResponse.accessToken;
-      pegarValor(token);
+      pegarValor(token, uid);
       // Logged into your app and Facebook.
       testAPI();
     }
