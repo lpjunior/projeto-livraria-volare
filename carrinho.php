@@ -78,6 +78,10 @@
           document.getElementById("quantidadeProduto").value = parseInt('0');
           exit;
         }
+        if (document.getElementById("quantidadeProduto").value > 99){
+          document.getElementById("quantidadeProduto").value = parseInt('99');
+          exit;
+        }
         quantProduto = quantProduto - 1;
 
           document.getElementById("quantidadeProduto").value = (quantProduto);
@@ -87,12 +91,15 @@
       quantProduto = parseInt(quantProdutoo);
       if (document.getElementById("quantidadeProduto").value == ""){
       document.getElementById("quantidadeProduto").value = 1;
-      console.log('TARAMM')
       exit;
 
       }
       if (document.getElementById("quantidadeProduto").value < 0){
         document.getElementById("quantidadeProduto").value = parseInt('0');
+      }
+      if (document.getElementById("quantidadeProduto").value >= 99){
+        document.getElementById("quantidadeProduto").value = parseInt('99');
+        exit;
       }
       quantProduto = quantProduto + 1;
 
