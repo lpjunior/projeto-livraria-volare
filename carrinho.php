@@ -61,6 +61,8 @@
 </script>
 <script>
 
+
+
       document.getElementById("quantidadeProduto").addEventListener("keyup", function () {
           if (isNaN(document.getElementById("quantidadeProduto").value)){
           document.getElementById("quantidadeProduto").value = 0;
@@ -105,4 +107,10 @@
 
         document.getElementById("quantidadeProduto").value = (quantProduto);
     }
+
+    document.getElementById("quantidadeProduto").addEventListener("keyup", function () {
+        if (document.getElementById("quantidadeProduto").value >= 99){
+        document.getElementById("quantidadeProduto").value = 99;
+      }
+    });
 </script>
