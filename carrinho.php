@@ -67,17 +67,9 @@
         }
       });
 
-      
-
     if(document.getElementById("quantidadeProduto").value == ""){
       document.getElementById("quantidadeProduto").value = parseInt('1');
    }
-
-
-
-
-
-
 
     function funcaoParaExecutarMenos (){
         quantProdutoo = document.getElementById("quantidadeProduto").value;
@@ -86,19 +78,31 @@
           document.getElementById("quantidadeProduto").value = parseInt('0');
           exit;
         }
+        if (document.getElementById("quantidadeProduto").value > 99){
+          document.getElementById("quantidadeProduto").value = parseInt('99');
+          exit;
+        }
         quantProduto = quantProduto - 1;
-        console.log(quantProduto);
 
           document.getElementById("quantidadeProduto").value = (quantProduto);
     }
     function funcaoParaExecutarMais (){
       quantProdutoo = document.getElementById("quantidadeProduto").value;
       quantProduto = parseInt(quantProdutoo);
+      if (document.getElementById("quantidadeProduto").value == ""){
+      document.getElementById("quantidadeProduto").value = 1;
+      exit;
+
+      }
       if (document.getElementById("quantidadeProduto").value < 0){
         document.getElementById("quantidadeProduto").value = parseInt('0');
       }
+      if (document.getElementById("quantidadeProduto").value >= 99){
+        document.getElementById("quantidadeProduto").value = parseInt('99');
+        exit;
+      }
       quantProduto = quantProduto + 1;
-      console.log(quantProduto);
+
         document.getElementById("quantidadeProduto").value = (quantProduto);
     }
 </script>
