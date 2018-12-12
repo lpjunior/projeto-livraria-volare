@@ -204,7 +204,7 @@ Uma boa comparação é a da **caixa de ferramentas**. Só que, em vez de _chave
 
 Nesse sentido, como parte da tendência de buscar reduzir custos e aumentar a produtividade, o uso desse recurso tem se tornado cada vez mais popular. Hoje, já existe uma grande variedade de soluções disponíveis para as mais diversas linguagens, com comunidades que testam e a criam diferentes funções. [Leia mais][https://gaea.com.br/entenda-o-que-e-framework/]
 
- 
+ *
     <table>
       <td>
       <img src="https://github.com/lpjunior/projeto-livraria-volare/blob/master/img/bootstrap.png"/><br />
