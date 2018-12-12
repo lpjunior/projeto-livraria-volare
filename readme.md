@@ -21,7 +21,7 @@
 
 # Equipe
 
-<h2> Front-end </h2>
+<h2>Front-end</h2>
 
 <table align="center">
   <tr>
@@ -52,7 +52,7 @@
   </tr>
  </table>
  
-<h2> Back-end </h2>
+<h2>Back-end</h2>
 
 <table align="center">
   <tr>
@@ -83,7 +83,7 @@
   </tr>    
  </table>
  
- <h2> Banco de Dados</h2>
+ <h2>Banco de Dados</h2>
 
 <table align="center">
   <tr>
@@ -103,7 +103,7 @@
 </table>
 
 
-  <h2> Segurança e Versionamento</h2>
+  <h2>Segurança e Versionamento</h2>
 
 <table align="center">
   <tr>
@@ -129,7 +129,7 @@
  </table>
 
 
- <h2> Documentação</h2>
+ <h2>Documentação</h2>
 
 <table align="center">
   <tr>
@@ -184,14 +184,14 @@
 
 
 
-    <table>
-      <td>
+<table>
+    <td>
       <img src="https://github.com/lpjunior/projeto-livraria-volare/blob/master/img/php_logo2.png"/><br />
       <sub>
       <a href =""></a>
       </sub>
-    </td>   
-    </table>
+   </td>   
+</table>
 
 O PHP foi utilizado na integração entre front-end com o back-end, como por exemplo sistemas de autenticação de usuários, de fornecedores, produtos e efetuar as compras e pagamento, entre outras coisas.
 
@@ -210,13 +210,13 @@ Nesse sentido, como parte da tendência de buscar reduzir custos e aumentar a pr
 O Bootstrap foi importante para deixar o site responsivo e de fácil acesso para todas as plataformas, além de funcionalidades como o favicon que facilta a visualização do site.
 
  <table>
-      <td>
+    <td>
       <img src="https://github.com/lpjunior/projeto-livraria-volare/blob/master/img/mysql.png"/><br />
       <sub>
       <a href =""></a>
-      </sub>
-    </td>   
-    </table>
+     </sub>
+   </td>   
+ </table>
 
 
 Mysql é a base de dados em código aberto utilizada no projeto. O banco de dados é onde fica armazenados todos os nosso cadastros de clientes, produtos, fornecedores, pedidos, status de compra e de entrega entre outros.
