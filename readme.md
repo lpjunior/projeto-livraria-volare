@@ -2,7 +2,7 @@
 
 <font face="arial">O Projeto da livraria foi criado com intuito de colocarmos em prática todo nosso conhecimento e aprendizado ao longo de todo o nosso curso de Programador Web. Ai vem um questionamento importante: Porque uma livraria? Pois acreditamos que é através dos livros que agregamos conhecimento e aprendizagem; e aprendemos também a ser pessoas melhores em todos os sentidos de nossas vidas. O intuito era fazer um projeto simples, porém com qualidade, eficiência e que não devesse nada a nenhuma livraria online que conhecemos hoje no mercado. Desenvolvemos um projeto de site dinâmico, harmônico e principalmente simples de ser navegado.</font>    
 
-# Link do Site
+# Site
 
 <a href="http://livrariavolare.herokuapp.com/index.php">Livraria Volare</a>
 
@@ -180,10 +180,10 @@
   </tr>
  </table>
 
-# No Projeto da livraria utilizamos algumas linguagens e tecnologias como por exemplo: **PHP 7**|**Bootstrap 4**|**Mysql**| **JavaScript**|**HTML5**|**CSS3**|.
+* No Projeto da livraria utilizamos algumas linguagens e tecnologias como por exemplo: **PHP 7**|**Bootstrap 4**|**Mysql**| **JavaScript**|**HTML5**|**CSS3**|.
 
 
- <h2>PHP</h2> 
+
     <table>
       <td>
       <img src="https://github.com/lpjunior/projeto-livraria-volare/blob/master/img/php_logo2.png"/><br />
@@ -204,19 +204,19 @@ Uma boa comparação é a da **caixa de ferramentas**. Só que, em vez de _chave
 
 Nesse sentido, como parte da tendência de buscar reduzir custos e aumentar a produtividade, o uso desse recurso tem se tornado cada vez mais popular. Hoje, já existe uma grande variedade de soluções disponíveis para as mais diversas linguagens, com comunidades que testam e a criam diferentes funções. [Leia mais][https://gaea.com.br/entenda-o-que-e-framework/]
 
- *
-    <table>
+## Bootstrap
+
+
+O Bootstrap foi importante para deixar o site responsivo e de fácil acesso para todas as plataformas, além de funcionalidades como o favicon que facilta a visualização do site.
+
+ <table>
       <td>
-      <img src="https://github.com/lpjunior/projeto-livraria-volare/blob/master/img/bootstrap.png"/><br />
+      <img src="https://github.com/lpjunior/projeto-livraria-volare/blob/master/img/mysql.png"/><br />
       <sub>
       <a href =""></a>
       </sub>
     </td>   
     </table>
-
-O Bootstrap foi importante para deixar o site responsivo e de fácil acesso para todas as plataformas, além de funcionalidades como o favicon que facilta a visualização do site.
-
-## MySql
 
 
 Mysql é a base de dados em código aberto utilizada no projeto. O banco de dados é onde fica armazenados todos os nosso cadastros de clientes, produtos, fornecedores, pedidos, status de compra e de entrega entre outros.
