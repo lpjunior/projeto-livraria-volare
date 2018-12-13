@@ -22,8 +22,8 @@ require_once 'crud_book.php';
 			return false;
 		}
 	}
-	function serviceListarLivro(){
-		if ($livro = listarLivro()) {
+	function serviceListarLivro($limit){
+		if ($livro = listarLivro($limit)) {
 			return $livro;
 		} else {
 			return false;
@@ -36,3 +36,17 @@ require_once 'crud_book.php';
 			return false;
 		}
 	}
+	function serviceBuscarLivro($n, $value){
+		if ($livro = pesquisarLivro($n, $value)) {
+			return $livro;
+		} else {
+			return false;
+		}
+		}
+		function serviceDetalhesLivro($id){
+			if ($livro = detalhesLivro($id)) {
+				return $livro;
+			} else {
+				return false;
+			}
+		}
