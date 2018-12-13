@@ -44,10 +44,8 @@ function deleteCarrinho($quant_total, $id){
 function updateAlt($qtd, $id, $quant_total){
 	$conexao = getConnection();
   $sql = "update itens_reservados set quantidade = $qtd where produto_id = $id";
-	echo $sql."<br>";
   $resultado = mysqli_query($conexao, $sql);
   $sql = "update produto set quantidade = quantidade + $quant_total - $qtd where id = $id";
-	echo $sql;
   $resultado = mysqli_query($conexao, $sql);
   if (mysqli_affected_rows($conexao) >= 1) {
 		return true;
