@@ -37,6 +37,7 @@ function excluirLivro($id){
 		$conexao = getConnection();
 		# Fazer toda a listagem do livro
 		$sql = "SELECT
+		prod.id,
 		prod.titulo,
 		prod.autor,
 		prod.editora,
