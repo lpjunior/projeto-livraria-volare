@@ -77,22 +77,22 @@ require_once 'php/CRUDS/serviceBook.php';
             </div>
             </div> <!-- FIM DA DIV COLLAPSE HAMBURGER -->
         <!-- CAMPO DE BUSCA -->
-            <form class="form-inline mt-2 mt-md-0 col-md-4 col-lg-4 centraliza">
+            <form class="form-inline mt-2 mt-md-0 col-md-4 col-lg-4 centraliza" action="vitrine.php" method="POST">
                 <div class="input-group">
                     <span class="input-group-append">
 
-                            <select class="form-control py-2 COLORE1 fonteonze bordas">
-                            <option class="COLORE1 bordas fontecatorze d-none">BUSCAR POR</option>
-                            <option class="COLORE1 bordas fontedezesseis">busca livre</option>
-                            <option class="COLORE1 bordas fontedezesseis">título</option>
-                            <option class="COLORE1 bordas fontedezesseis">autor</option>
-                            <option class="COLORE1 bordas fontedezesseis">ano</option>
+                            <select class="form-control py-2 COLORE1 fonteonze bordas" name="buscaCategoria">
+                            <option value=" " class="COLORE1 bordas fontecatorze d-none">BUSCAR POR</option>
+                            <option value=" " class="COLORE1 bordas fontedezesseis">busca livre</option>
+                            <option value="titulo" class="COLORE1 bordas fontedezesseis">título</option>
+                            <option value="autor" class="COLORE1 bordas fontedezesseis">autor</option>
+                            <option value="ano" class="COLORE1 bordas fontedezesseis">ano</option>
                             </select>
 
                     </span>
-                    <input class="form-control py-2 border-right-0 border noradius" href="#" type="search" value="" id="">
+                    <input class="form-control py-2 border-right-0 border noradius" href="#" type="search" value="" id="" name="txtBusca">
                     <span class="input-group-append">
-                        <div class="input-group-text bg-white noradius"><i class="fa fa-search"></i></div>
+                        <button type="submit" class="fa fa-search input-group-text bg-white noradius"></button>
                     </span>
                 </div>
             </form> <!--fim do campo de busca-->

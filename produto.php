@@ -3,6 +3,10 @@
             <div class="row">
                 <section class="col-xs-12 col-sm-4 col-md-4 col-lg-4 margintop">
                     <!--imagem do livro-->
+                    <?php
+                    if (isset($_GET['id'])) {
+                    $livro = serviceDetalhesLivro($_GET['id']);
+                    foreach ($livro as $i) { ?>
                     <img class="d-block w-100" src="img/placeholder2.jpg" alt="capa do livro">
                     <h4 class="text-center fontedezesseis paddingtexto"> Avalie este livro:</h4>
                     <!-- RATING STARS -->
@@ -10,14 +14,14 @@
                         <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
                     </div>
                     <br/>
-                    <h4 class="fontedezesseis"><i class="far fa-bookmark"></i>&nbsp;Sinopse:</h4> <p class="fontedezesseis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. vitae sodales diam. Etiam a ligula convallis, lobortis velit consectetur, varius ex. Nulla facilisi. Nunc congue, eros a accumsan volutpat, diam arcu tristique dui, eget vehicula metus ipsum vitae ligula.</p>
+                    <h4 class="fontedezesseis"><i class="far fa-bookmark"></i>&nbsp;Sinopse:</h4> <p class="fontedezesseis"><?=$i['sinopse']?></p>
                 </section>
                 <!-- div para informações -->
                 <section class="col-xs-12 col-sm-8 col-md-8 col-lg-8 margintop bordasb">
                     <div class="col-md-12 paddingtexto">
-                        <h1 class="paddingtexto fontevinteecinco">Título</h1>
-                        <h2 class="fontevinte">Autor: Nome sobrenome </h2>
-                        <h2><span style="font-size: 20px;"><i class="fas fa-dollar-sign"></i></span>&nbsp;<span style="font-size: 24px;">00,00</span></h2>
+                        <h1 class="paddingtexto fontevinteecinco"><?=$i['titulo']?></h1>
+                        <h2 class="fontevinte">Autor: <?=$i['autor']?> </h2>
+                        <h2><span style="font-size: 20px;"><i class="fas fa-dollar-sign"></i></span>&nbsp;<span style="font-size: 24px;"><?=$i['preco']?></span></h2>
                         <!--frete--><h4 class="paddingtexto fontedezesseis"><i class="fas fa-dollar-sign"></i></span>&nbsp;Frete:</h4>
                         <div class="input-group mb-4 input-sm col-xs-4 largurainput">
                             <input type="text" class="form-control cep" placeholder="Digite o CEP" aria-label="Digite o cep" aria-describedby="button-addon2">
@@ -32,15 +36,16 @@
                     <div class="col-md-12 margintop">
                     <hr/>
                     <h4 class="fontedezoito">Detalhes do produto:</h4><br/>
-                    <h4 class="fontedezesseis">ISBN:</h4>
-                    <h4 class="fontedezesseis">Editora:</h4>
-                    <h4 class="fontedezesseis">Idioma:</h4>
-                    <h4 class="fontedezesseis">Dimensões:</h4>
-                    <h4 class="fontedezesseis">Tipo de capa:</h4>
-                    <h4 class="fontedezesseis">Ano de publicação:</h4>
-                    <h4 class="fontedezesseis">Número de Páginas:</h4>
+                    <h4 class="fontedezesseis">ISBN: <?=$i['isbn']?></h4>
+                    <h4 class="fontedezesseis">Editora: <?=$i['editora']?></h4>
+                    <h4 class="fontedezesseis">Idioma: <?='não tem ainda'?></h4>
+                    <h4 class="fontedezesseis">Dimensões: <?='tb não tem'?></h4>
+                    <h4 class="fontedezesseis">Tipo de capa: <?=$i['tipo_capa']?></h4>
+                    <h4 class="fontedezesseis">Ano de publicação: <?='n tem'?></h4>
+                    <h4 class="fontedezesseis">Número de Páginas: <?=$i['numero_paginas']?></h4>
                     </div>
                 </section>
+              <?php } } ?>
                 <!-- COMEÇO DOS CARDS-->
                 <section class="d-none d-sm-block">
                     <h4 class="fontedezoito text-center margintop bg-light opacidade">Clientes que compraram este livro também aprovam:</h4><br/>
@@ -48,7 +53,7 @@
                     <!-- começo dos cards PRIMEIRA LINHA-->
                         <div class="card-deck mb-4 text-center ">
                           <?php
-                          $livro = serviceListarLivro();
+                          $livro = serviceListarLivro(4);
                           foreach ($livro as $i) {
                           ?>
                         <div class="card mb-4 shadow-sm">
