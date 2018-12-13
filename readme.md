@@ -194,7 +194,7 @@ O Projeto da livraria foi criado com intuito de colocarmos em prática todo noss
 </table>
 
 <div align="justify">
-O PHP foi utilizado na integração entre front-end com o back-end, como por exemplo sistemas de autenticação de usuários, de fornecedores, produtos e efetuar as compras e pagamento, entre outras coisas.
+O PHP foi utilizado na integração entre front-end com o back-end, como por exemplo sistemas de autenticação de usuários, de fornecedores, produtos e efetuar as compras e os pagamentos, entre outras coisas.
 </div>
 
 ## Framework
@@ -217,7 +217,7 @@ Nesse sentido, como parte da tendência de buscar reduzir custos e aumentar a pr
  </table>
 
 <div align="justify">
-O Bootstrap foi importante para deixar o site responsivo e de fácil acesso para todas as plataformas, além de funcionalidades como o favicon que facilta a visualização do site.
+O Bootstrap foi importante para deixar o site responsivo e de fácil acesso para todas as plataformas, usamos também funcionalidades como o favicon que facilta a visualização do site.
 </div>  
 <br>
  <table>
@@ -230,7 +230,7 @@ O Bootstrap foi importante para deixar o site responsivo e de fácil acesso para
  </table>
 
 <div align="justify">
-Mysql é a base de dados em código aberto utilizada no projeto. O banco de dados é onde fica armazenados todos os nosso cadastros de clientes, produtos, fornecedores, pedidos, status de compra e de entrega entre outros.
+Mysql é a base de dados em código aberto utilizada no projeto. O banco de dados é onde ficam armazenados todos os nossos cadastros de clientes, produtos, fornecedores, pedidos, status de compra e de entrega entre outros.
 </div>  
 <br>
 <table>
@@ -243,7 +243,7 @@ Mysql é a base de dados em código aberto utilizada no projeto. O banco de dado
  </table>
 <br>
 <div align="justify">
-Utilizamos o JavaScript para efetuar o login do usuário através do Facebook. Além disso, foi feita a limitação da quantidade de produtos pelo usuário no carrinho de compras. Foi utilizado o JQuery, que é uma biblioteca JavaScript de código aberto em integração com o HTML, para simplificar os scripts interpretados pelop usuário.
+Utilizamos o JavaScript para efetuar o login do usuário através do Facebook. Além disso, foi feita a limitação da quantidade de produtos escolhidos pelo usuário no carrinho de compras. Foi utilizado o JQuery, que é uma biblioteca JavaScript de código aberto em integração com o HTML, para simplificar os scripts interpretados pelop usuário.
 </div>  
 <br>
 <table>
@@ -256,7 +256,7 @@ Utilizamos o JavaScript para efetuar o login do usuário através do Facebook. A
  </table>
 <br>
 <div align="justify">
-HTML5 é a base de todo site. Foi com ele que fizemos todo o front-end do site. Com a ajuda do Bootstrap, inserimos todos os textos, imagens e muitas funcionalidades que estruturaram o projeto. É a integração do HTML5 com o PHP e o MySql que foram feitas as compras. Todos os formulários para cadastros de clientes,  produtos e compras foram feitos em  HTML.
+HTML5 é a base de todo site. Foi com ele que desenvolvemos todo o front-end. Com a ajuda do Bootstrap, inserimos todos os textos, imagens e muitas funcionalidades como formulários para cadastros de clientes,  produtos e compras que estruturaram o projeto.A partir da integração dos formulários do HTML5 com o PHP e o MySql que foram feitas as compras.
 </div>
 <br>
 
