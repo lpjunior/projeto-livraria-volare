@@ -20,11 +20,6 @@
 			return $livro;
 		}
 	}
-	function serviceListarLancamento(){
-		if ($livro = listarLancamentos()) {
-			return $livro;
-		}
-	}
 	function serviceBuscarLivro($n, $value){
 		if ($livro = pesquisarLivro($n, $value)) {
 			return $livro;

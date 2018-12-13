@@ -15,14 +15,13 @@ if(!isset($_SESSION['carrinho'])) {
     $_SESSION['carrinho'] = array();
 }
 if(isset($_GET['id'])){
-  $_POST['id_produto'] = $_GET['id'];
+    $id = intval($_GET['id']);
   # Array que joga pros itens reservados no banco
-  $carrinho_info = array('id' => $_POST['id_produto'], 'qtd' => $quant);
+  $carrinho_info = array('id' => $id, 'qtd' => $quant);
 }
 if(isset($_GET['acao'])) {
     # Adiciona o produto
     if($_GET['acao'] == 'add') {
-        $id = intval($_POST['id_produto']);
         if(!isset($_SESSION['carrinho'][$id])) {
             # Caso o produto não exista no carrinho, bote ele no carrinho
             $_SESSION['carrinho'][$id] = $quant;
@@ -62,19 +61,20 @@ if(isset($_GET['acao'])) {
     # Altera quantidade
     if($_GET['acao'] == 'atu') {
         if(is_array($carrinho_info)) {
+                $quant_total = $_SESSION['carrinho'][$id];
                 $id = intval($carrinho_info['id']);
                 $qtd = intval($carrinho_info['qtd']);
-                if(!empty($qtd) || $qtd != 0) {
+                if($qtd != 0) {
                     $_SESSION['carrinho'][$id] = $qtd;
                     # Se o usuário estiver logado, mandar pro banco o item reservado.
                     if (isset($_SESSION['user_id'])){
-                      serviceUpdateAlt($qtd, $id);
+                      serviceUpdateAlt($qtd, $id, $quant_total);
                     }
                 } else {
                     unset($_SESSION['carrinho'][$id]);
             }
         }
-        header('location: testeCarrinho.php');
+        header("Location: testeCarrinho.php");
         die();
     }
 }

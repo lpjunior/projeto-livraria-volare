@@ -1,5 +1,7 @@
 <?php
 require_once 'conexao.php';
+
+## INSERIR LIVROS
 function inserirLivro($categoria, $titulo, $autor, $editora, $isbn, $numeroPaginas, $sinopse, $peso, $data, $fornecedor, $preco, $subcategorias, $capa, $quantidade, $imagem){
 	$data = date('Y-m-d', strtotime($data));
 	$conexao = getConnection();
@@ -11,7 +13,7 @@ function inserirLivro($categoria, $titulo, $autor, $editora, $isbn, $numeroPagin
 		return "Falha ao inserir o livro";
 	}
 }
-
+## EDITAR LIVROS
 function editarLivro($categoria, $titulo, $autor, $editora, $isbn, $numeroPaginas, $sinopse, $peso, $fornecedor, $preco, $subcategorias, $capa, $id, $quantidade, $imagem){
 	$conexao = getConnection();
 	$sql = "UPDATE produto SET Categoria_id = $categoria, titulo = '$titulo', autor = '$autor', editora = '$editora', isbn = '$isbn', numeroPaginas = '$numeroPaginas', sinopse = '$sinopse', peso = '$peso', fornecedor = '$fornecedor', preco = '$preco', SubCategorias_id = $subcategorias, TipoDeCapa_id = $capa, quantidade = $quantidade, imagem = $imagem WHERE id = $id";
@@ -22,6 +24,7 @@ function editarLivro($categoria, $titulo, $autor, $editora, $isbn, $numeroPagina
 		return "Falha ao editar o livro";
 	}
 }
+## EXCLUIR LIVROS
 function excluirLivro($id){
 	$conexao = getConnection();
 	$sql = "DELETE FROM produto where id = $id";
@@ -57,9 +60,11 @@ function excluirLivro($id){
 		inner join categoria cat on cat.id = prod.categoria_id
 		inner join subcategorias subc on subc.id = prod.subcategorias_id
 		inner join tipodecapa tcap on tcap.id = prod.tipodecapa_id";
+		## Botar um limite na lista dos livros
 		if ($limit != NULL) {
 			$sql .= " LIMIT $limit";
 		}
+		## Caso seja a aba de lançamentos, liste os últimos que botaram no site
 		if ($lancamento != NULL) {
 			$sql .= " ORDER BY data_publicacao asc;";
 		}

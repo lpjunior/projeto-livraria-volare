@@ -13,9 +13,9 @@
   </head>
   <body>
   	<?php
-  		$livros = array('livro1' => array('titulo' => 'Livro 1', 'categoria' => 'ação', 'autor' => 'Thiago', 'qtd' => 10, 'id' => 1),
-  		'livro2' => array('titulo' => 'Livro 2', 'categoria' => 'aventura', 'autor' => 'Reinaldo', 'qtd' => 3, 'id' => 2),
-  		'livro3' => array('titulo' => 'Livro 3', 'categoria' => 'Didatico', 'autor' => 'Roberto', 'qtd' => 7, 'id' => 3));
+  		$livros = array('livro1' => array('titulo' => 'Livro 1', 'categoria' => 'ação', 'autor' => 'Thiago', 'qtd' => 10, 'id' => 6),
+  		'livro2' => array('titulo' => 'Livro 2', 'categoria' => 'aventura', 'autor' => 'Reinaldo', 'qtd' => 3, 'id' => 4),
+  		'livro3' => array('titulo' => 'Livro 3', 'categoria' => 'Didatico', 'autor' => 'Roberto', 'qtd' => 7, 'id' => 5));
 
   	?>
   	<hr class="mt-5">
