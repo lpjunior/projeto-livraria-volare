@@ -22,9 +22,9 @@ require_once 'crud_book.php';
 			return false;
 		}
 	}
-	function serviceListarLivro($categoria, $titulo, $autor, $editora, $isbn, $numeroPaginas, $sinopse, $peso, $data, $fornecedor, $preco, $subcategorias, $capa, $quantidade, $imagem){
-		if ($livro = listarLivro($categoria, $titulo, $autor, $editora, $isbn, $numeroPaginas, $sinopse, $peso, $data, $fornecedor, $preco, $subcategorias, $capa, $quantidade, $imagem)) {
-			$_SESSION['livro'][$id] = $livro;
+	function serviceListarLivro(){
+		if ($livro = listarLivro()) {
+			return $livro;
 		} else {
 			return false;
 		}

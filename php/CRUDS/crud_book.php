@@ -32,7 +32,7 @@ function excluirLivro($id){
 		return false;
 	}
 }
-	function listarLivro($id){
+	function listarLivro(){
 		$conexao = getConnection();
 		# Fazer toda a listagem do livro
 		$sql = "SELECT
@@ -44,11 +44,9 @@ function excluirLivro($id){
 		prod.sinopse,
 		prod.peso,
 		prod.datapublicacao as data_publicacao,
-		prod.fornecedor,
 		tcap.tipodecapa as tipo_capa,
 		prod.preco,
 		prod.quantidade,
-		prod.imagem,
 		cat.categoria,
 		subc.assunto
 
@@ -56,14 +54,14 @@ function excluirLivro($id){
 
 		inner join categoria cat on cat.id = prod.categoria_id
 		inner join subcategorias subc on subc.id = prod.subcategorias_id
-		inner join tipodecapa tcap on tcap.id = prod.tipodecapa_id
-		where prod.id = $id;";
+		inner join tipodecapa tcap on tcap.id = prod.tipodecapa_id";
 		$resultado = mysqli_query($conexao, $sql);
 		if (mysqli_affected_rows($conexao) >= 1) {
-			$arr[] = NULL;
+			$arr = array();
 			while ($linha = mysqli_fetch_assoc($resultado)){
-				$arr[] = $linha;
+				array_push($arr, $linha);
 			}
+			return $arr;
 		} else {
 			return false;
 		}

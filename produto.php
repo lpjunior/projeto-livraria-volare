@@ -31,27 +31,31 @@
                     </div>
                     <div class="col-md-12 margintop">
                     <hr/>
-                    <h4 class="fontedezoito">Detalhes do produto:</h4><br/>  
+                    <h4 class="fontedezoito">Detalhes do produto:</h4><br/>
                     <h4 class="fontedezesseis">ISBN:</h4>
-                    <h4 class="fontedezesseis">Editora:</h4> 
-                    <h4 class="fontedezesseis">Idioma:</h4> 
-                    <h4 class="fontedezesseis">Dimensões:</h4> 
+                    <h4 class="fontedezesseis">Editora:</h4>
+                    <h4 class="fontedezesseis">Idioma:</h4>
+                    <h4 class="fontedezesseis">Dimensões:</h4>
                     <h4 class="fontedezesseis">Tipo de capa:</h4>
-                    <h4 class="fontedezesseis">Ano de publicação:</h4> 
+                    <h4 class="fontedezesseis">Ano de publicação:</h4>
                     <h4 class="fontedezesseis">Número de Páginas:</h4>
                     </div>
                 </section>
                 <!-- COMEÇO DOS CARDS-->
                 <section class="d-none d-sm-block">
                     <h4 class="fontedezoito text-center margintop bg-light opacidade">Clientes que compraram este livro também aprovam:</h4><br/>
-                    
+
                     <!-- começo dos cards PRIMEIRA LINHA-->
                         <div class="card-deck mb-4 text-center ">
-                        
+                          <?php
+                          $livro = serviceListarLivro();
+                          foreach ($livro as $i) {
+                          ?>
                         <div class="card mb-4 shadow-sm">
+
                             <img class="card-img-top" src="img/placeholder1.jpg" alt="Card image cap">
                             <div class="card-header">
-                                <h4 class="my-0 font-weight-normal fontedezoito">Título</h4>
+                                <h4 class="my-0 font-weight-normal fontedezoito"><?=$i['titulo']?></h4>
                             </div>
                             <div class="card-body">
                                 <h4 class="fontedezesseis">Nome Sobrenome</h4>
@@ -61,59 +65,16 @@
                                 </div>
                             </div>
                         </div> <!--fim da coluna 1-->
-                        <!--coluna 2 -->
-                        <div class="card mb-4 shadow-sm">
-                            <img class="card-img-top" src="img/placeholder1.jpg" alt="Card image cap">
-                            <div class="card-header">
-                                <h4 class="my-0 font-weight-normal fontedezoito">Título</h4>
-                            </div>
-                            <div class="card-body">
-                                <h4 class="fontedezesseis">Nome Sobrenome</h4>
-                                <h3 class="fontevinte">R$ 00,00</h3>
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">&nbsp;&nbsp;&nbsp;<i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;&nbsp;</button>
-                                </div>
-                            </div>
-                        </div><!--fim da coluna 2-->    
-                        <!--coluna 3-->
-                        <div class="card mb-4 shadow-sm">
-                            <img class="card-img-top" src="img/placeholder1.jpg" alt="Card image cap">
-                            <div class="card-header">
-                                <h4 class="my-0 font-weight-normal fontedezoito">Título</h4>
-                            </div>
-                            <div class="card-body">
-                                <h4 class="fontedezesseis">Nome Sobrenome</h4>
-                                <h3 class="fontevinte">R$ 00,00</h3>
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">&nbsp;&nbsp;&nbsp;<i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;&nbsp;</button>
-                                </div>
-                            </div>
-                        </div><!--fim da coluna 3-->
-                         <!--coluna 4-->
-                        <div class="card mb-4 shadow-sm">
-                            <img class="card-img-top" src="img/placeholder1.jpg" alt="Card image cap">
-                            <div class="card-header">
-                                <h4 class="my-0 font-weight-normal fontedezoito">Título</h4>
-                            </div>
-                            <div class="card-body">
-                                <h4 class="fontedezesseis">Nome Sobrenome</h4>
-                                <h3 class="fontevinte">R$ 00,00</h3>
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">&nbsp;&nbsp;&nbsp;<i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;&nbsp;</button>
-                                </div>
-                            </div>
-                        </div> <!--fim da coluna 4-->
-                       </div> <!-- fim dos cards primeira linha-->      
-                </section> <!-- fim da section dos cards -->   
+                      <?php }?>
+                       </div> <!-- fim dos cards primeira linha-->
+                </section> <!-- fim da section dos cards -->
                 </div><!-- fim da row -->
             </div><!-- fim do container -->
             <!-- COMEÇO DA SECTION DE COMENTÁRIOS -->
             <section class="container-fluid col-xs-12 col-sm-8 col-md-8 col-lg-8 centraliza marginbottom bordasb paddingtexto">
                 <h4><i class="far fa-comments"></i>&nbsp;Comentários:</h4>
                 <div class="row">
-                    
-                </div>
-            </section> <!-- fim da section comentários --> 
- <?php require_once("footer.php"); ?>           
-             
 
+                </div>
+            </section> <!-- fim da section comentários -->
+ <?php require_once("footer.php"); ?>

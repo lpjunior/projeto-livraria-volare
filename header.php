@@ -1,6 +1,9 @@
 <?php
 session_start();
 ?>
+<?php
+require_once 'php/CRUDS/serviceBook.php';
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
