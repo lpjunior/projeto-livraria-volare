@@ -5,7 +5,7 @@
     "minimum-stability": "dev",
     "require": {
         "phpmailer/phpmailer": "dev-master",
-            "facebook/graph-sdk": "^5.6.3"
+        "slim/slim": "^3.1",
 
     }
 }
