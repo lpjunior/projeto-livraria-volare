@@ -2,31 +2,23 @@
 require_once 'crud_usuario.php';
 	function serviceLogin($email, $senha){
 		if ($user = logarUsuario($email, $senha)){
-			return true;
-		} else {
-			return false;
+			return $user;
 		}
 	}
 
 	function serviceRegistro($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $cep, $end, $num, $complemento, $bairro, $cidade, $estado){
 		if ($user = registrarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $cep, $end, $num, $complemento, $bairro, $cidade, $estado)){
 			return $user;
-		} else {
-			return false;
 		}
 	}
-	function serviceEditar($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $cep, $end, $num, $complemento, $bairro, $cidade, $estado){
-		if ($user = registrarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $cep, $end, $num, $complemento, $bairro, $cidade, $estado, $id)){
+	function serviceEditar($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $cep, $end, $num, $complemento, $bairro, $cidade, $estado, $id){
+		if ($user = editarInformacoes($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $cep, $end, $num, $complemento, $bairro, $cidade, $estado, $id)){
 			return $user;
-		} else {
-			return false;
 		}
 	}
 	function serviceListarUsu($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $cep, $end, $num, $complemento, $bairro, $cidade, $estado, $limit){
 		if ($user = listarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $cep, $end, $num, $complemento, $bairro, $cidade, $estado, $limit)){
 			return $user;
-		} else {
-			return false;
 		}
 	}
 	function serviceDeslogar(){

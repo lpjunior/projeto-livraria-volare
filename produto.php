@@ -1,4 +1,5 @@
-<?php require_once("header.php"); ?>
+<?php require_once("header.php");
+?>
         <div class="container-fluid col-md-8 col-xs-12 centraliza">
             <div class="row">
                 <section class="col-xs-12 col-sm-4 col-md-4 col-lg-4 margintop">
@@ -6,6 +7,7 @@
                     <?php
                     if (isset($_GET['id'])) {
                     $livro = serviceDetalhesLivro($_GET['id']);
+                    if (is_array($livro)) {
                     foreach ($livro as $i) { ?>
                     <img class="d-block w-100" src="img/placeholder2.jpg" alt="capa do livro">
                     <h4 class="text-center fontedezesseis paddingtexto"> Avalie este livro:</h4>
@@ -45,7 +47,15 @@
                     <h4 class="fontedezesseis">Número de Páginas: <?=$i['numero_paginas']?></h4>
                     </div>
                 </section>
-              <?php } } ?>
+              <?php } } else {
+                echo '<h1 class="text-center">Livro não existente</h1>';
+                require_once 'footer.php';
+                exit();
+              } }else {
+                echo '<h1 class="text-center">Livro não existente</h1>';
+                require_once 'footer.php';
+                exit();
+              } ?>
                 <!-- COMEÇO DOS CARDS-->
                 <section class="d-none d-sm-block">
                     <h4 class="fontedezoito text-center margintop bg-light opacidade">Clientes que compraram este livro também aprovam:</h4><br/>
@@ -53,7 +63,7 @@
                     <!-- começo dos cards PRIMEIRA LINHA-->
                         <div class="card-deck mb-4 text-center ">
                           <?php
-                          $livro = serviceListarLivro(4);
+                          $livro = serviceListarLivro(4, NULL);
                           foreach ($livro as $i) {
                           ?>
                         <div class="card mb-4 shadow-sm">

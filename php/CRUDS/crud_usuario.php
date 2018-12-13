@@ -25,9 +25,9 @@ function registrarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $gen
 	$sql = "INSERT INTO endereco VALUES (NULL, '$cep', '$end', '$num', '$complemento', '$bairro', '$estado', '$cidade', $id, 1)";
 	$resultado = mysqli_query($conexao, $sql);
 	if (mysqli_affected_rows($conexao) >= 1) {
-		return true;
+		return header('location: ../../login.php');
 	} else {
-		return false;
+		return "Falha ao registrar";
 	}
 }
 ## Logar Usuário
@@ -42,7 +42,7 @@ function logarUsuario($email, $senha){
 		$_SESSION['user_id'] = $_SESSION['user']['id'];
 		return true;
 	} else {
-		return false;
+		return "Falha ao logar";
 	}
 
 }
@@ -64,14 +64,14 @@ function editarInformacoes($nome, $sobrenome, $email, $cpf, $datanascimento, $ge
 	$bairro = filtrarString($bairro);
 	$cidade = filtrarString($cidade);
 	$estado = filtrarString($estado);
-	$sql = "UPDATE usuarios SET nome = '$nome', sobrenome = '$sobrenome', email = '$email', cpf = '$cpf, datanascimento = $datanascimento, senha = md5('$senha') where id = $id";
+	$sql = "UPDATE usuarios SET nome = '$nome', sobrenome = '$sobrenome', email = '$email', cpf = '$cpf', datanascimento = '$datanascimento', senha = md5('$senha') where id = $id";
 	$resultado = mysqli_query($conexao, $sql);
 	$sql = "UPDATE endereco SET cep = '$cep', endereco = '$end', numero = '$num', complemento = '$complemento', bairro = '$bairro', estado = '$estado', cidade = '$cidade' where usuarios_id = $id";
 	$resultado = mysqli_query($conexao, $sql);
 	if (mysqli_affected_rows($conexao) >= 1) {
 		return true;
 	} else {
-		return false;
+		return "<script>alert('Falha ao editar informações')</script>";
 	}
 }
 ## Perfil do usuário
@@ -123,13 +123,15 @@ if (mysqli_affected_rows($conexao) >= 1) {
 ## Filtros para o cadastro
 }
 function filtrarEmail($var){
-	$var = filter_var($var, FILTER_SANITIZE_EMAIL);
+	$conexao = getConnection();
 	$var = mysqli_escape_string($conexao, $var);
+	$var = filter_var($var, FILTER_SANITIZE_EMAIL);
 	return $var;
 }
 function filtrarString($var){
-	$var = filter_var($var, FILTER_SANITIZE_STRING);
+	$conexao = getConnection();
 	$var = mysqli_escape_string($conexao, $var);
+	$var = filter_var($var, FILTER_SANITIZE_STRING);
 	return $var;
 }
 function filtrarInt($var){
@@ -162,6 +164,6 @@ function registrarAdmin($nome, $sobrenome, $email, $cpf, $datanascimento, $gener
 	if (mysqli_affected_rows($conexao) >= 1) {
 		return true;
 	} else {
-		return false;
+		return "Falha ao exibir informações";
 	}
 }

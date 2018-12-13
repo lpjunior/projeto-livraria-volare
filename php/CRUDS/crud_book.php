@@ -8,7 +8,7 @@ function inserirLivro($categoria, $titulo, $autor, $editora, $isbn, $numeroPagin
 	if (mysqli_affected_rows($conexao) >= 1) {
 		return true;
 	} else {
-		return false;
+		return "Falha ao inserir o livro";
 	}
 }
 
@@ -19,7 +19,7 @@ function editarLivro($categoria, $titulo, $autor, $editora, $isbn, $numeroPagina
 	if (mysqli_affected_rows($conexao) >= 1) {
 		return true;
 	} else {
-		return false;
+		return "Falha ao editar o livro";
 	}
 }
 function excluirLivro($id){
@@ -29,11 +29,11 @@ function excluirLivro($id){
 	if (mysqli_affected_rows($conexao) >= 1) {
 		return true;
 	} else {
-		return false;
+		return "Falha ao excluir o livro";
 	}
 }
 ## LISTAR LIVROS
-	function listarLivro($limit){
+	function listarLivro($limit, $lancamento){
 		$conexao = getConnection();
 		# Fazer toda a listagem do livro
 		$sql = "SELECT
@@ -60,6 +60,9 @@ function excluirLivro($id){
 		if ($limit != NULL) {
 			$sql .= " LIMIT $limit";
 		}
+		if ($lancamento != NULL) {
+			$sql .= " ORDER BY data_publicacao asc;";
+		}
 		$resultado = mysqli_query($conexao, $sql);
 		if (mysqli_affected_rows($conexao) >= 1) {
 			$arr = array();
@@ -68,7 +71,7 @@ function excluirLivro($id){
 			}
 			return $arr;
 		} else {
-			return false;
+			return "Falha ao exibir resultados";
 		}
 	}
 	## BUSCA
@@ -93,9 +96,11 @@ function excluirLivro($id){
 	      break;
 	    case "ano":
 				// $sql .= " WHERE ano like '%$n'";
+				$sql .= " WHERE autor like '%$n%'";
 	      break;
 			default:
 				$sql .= " WHERE titulo like '%$n%' or autor like '%$n%' or editora like '%$n%'";
+				$padrao = true;
 				break;
 	}
 		$sql .= " order by datapublicacao asc;";
@@ -107,43 +112,8 @@ function excluirLivro($id){
 			}
 			return $arr;
 		} else {
-			return false;
+			return "<h1 class='text-center'>A busca não teve resultados.</h1>";
 		}
-	}
-	## LANÇAMENTOS
-	function listarLancamentos(){
-		$conexao = getConnection();
-		$sql = "SELECT
-		prod.titulo,
-		prod.autor,
-		prod.editora,
-		prod.isbn,
-		prod.numeropaginas as numero_paginas,
-		prod.sinopse,
-		prod.peso,
-		prod.datapublicacao as data_publicacao,
-		tcap.tipodecapa as tipo_capa,
-		prod.preco,
-		prod.quantidade,
-		cat.categoria,
-		subc.assunto
-
-		from produto prod
-
-		inner join categoria cat on cat.id = prod.categoria_id
-		inner join subcategorias subc on subc.id = prod.subcategorias_id
-		inner join tipodecapa tcap on tcap.id = prod.tipodecapa_id
-		order by datapublicacao asc;";
-		$resultado = mysqli_query($conexao, $sql);
-		if (mysqli_affected_rows($conexao) >= 1) {
-			$arr = NULL;
-			while ($linha = mysqli_fetch_assoc($resultado)){
-			$arr[] = $linha;
-		}
-	} else {
-		return false;
-	}
-		return $arr;
 	}
 	## Detalhes do livro
 	function detalhesLivro($id){

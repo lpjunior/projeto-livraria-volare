@@ -22,6 +22,10 @@ if (isset($_SESSION['token_face']) || isset($_SESSION['user'])) {
                                     <input type="password" class="form-control" id="isenha" name="isenha" placeholder="Digite a senha" required>
                                 </div>
                             </div>
+                            <?php
+                            if (isset($_SESSION['erro'])) { ?>
+                              <p class="ml-4 text-danger"><?=$_SESSION['erro']?></p>
+                          <?php } ?>
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-md-10">
                                     <button type="submit" class="btn COLORE" name="btn-enviar" onclick="return validarSenha()">Entrar</button>

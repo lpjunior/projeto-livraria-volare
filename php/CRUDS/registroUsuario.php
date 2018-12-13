@@ -5,11 +5,9 @@ require_once 'serviceUsuario.php';
 				$_POST['txtCPF'], $_POST['txtDataNasc'], $_POST['txtGenero'], $_POST['isenha'],
 				$_POST['txtCEP'], $_POST['txtEndCobr'], $_POST['txtNum'], $_POST['txtComplemento'],
 				$_POST['txtBairro'], $_POST['txtCidade'], $_POST['txtEstado'])){
-
-				echo 'funcionou';
-			} else {
-				echo "nao funcionou";
-			}
-		} else {
-			echo 'Confirmação de senha diferente da senha original';
+					echo $user;
 		}
+	} else {
+		$_SESSION['erroSenha'] = 'Confirmação de senha diferente da senha original';
+		header('location: index.php');
+	}
