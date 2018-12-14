@@ -1,11 +1,11 @@
 /***** classes referentes a cor *******/
 
 .COLORE{
-    background-color: white;     
+    background-color: rgb(248,251,255);    
 }
 
 .COLORE1{
-    background-color: white; 
+    background-color: rgb(248,251,255);   
 }
 
 .COLORETEXTO{
@@ -22,11 +22,18 @@
 }
 
 .bordas {
-    border: 2px solid white;
+    border: 2px solid rgb(248,251,255);
     border-radius: 0px;
 }
 
-/********** bordas *******/
+.bordaspraconteudo{
+    border-top: 1px solid rgb(244,248,259);
+    padding-top: 25px;
+    margin-bottom: 30px;
+/*usado na index*/
+}
+
+/********** bordas cor fixa*******/
 .bordasb {
     border: 1px solid lightgray;
     border-radius: 6px;
@@ -38,27 +45,27 @@
     height: 290px;
 }
 
-.bordaspraconteudo{
-    border-top: 1px solid lightskyblue;
-    padding-top: 25px;
-    margin-bottom: 30px;
-/*usado na index*/
-}
-
-/**** opacidade ****/
-
 .opacidade{
     opacity: 0.7;
 }
-
-/******* fonte ********/
+/******* importante ********/
 
 body{
-    font-family: "trebuchet";
-    position: relative;
-    min-height: 100%;
+    font-family: "georgia", "trebuchet";
+    margin-bottom: 80px;
 }
 
+    .rodape {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+
+html {
+      position: relative;
+      min-height: 100%;
+    }
+    
 /******* tamanho de fonte ******/
 
 .fonteonze{
@@ -74,7 +81,7 @@ body{
 }
 
 .fontedezesseis{
-    font-size: 16px;
+    font-size: 90%;
 }
 
 .fontedezoito{
@@ -98,24 +105,12 @@ body{
     margin:auto;
 }
 
-.margintop{
-    margin-top: 29px;
-}
-
-.marginbottom{
-    margin-bottom: 29px;
-}
-
 .paddingtexto{
     padding-top: 10px;
 }
 
 .largurainput{
     width: 185px;
-}
-
-.margindocard{
-    margin-bottom: 0px;
 }
 
 .noradius{
