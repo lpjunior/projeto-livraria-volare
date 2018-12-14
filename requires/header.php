@@ -25,12 +25,12 @@ require_once 'php/CRUDS/serviceBook.php';
         <!-- TOPO DO SITE -->
         <nav class="navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid topoformatacao">
-            <a class="text-dark opacidade" href="sobre.php"><i class="fas fa-users"></i> Sobre a Volare</a>&nbsp;&nbsp;
-            <a class="text-dark opacidade" href="faleconosco.php"> <i class="fas fa-phone-volume"></i> Fale Conosco</a>
+            <a class="text-dark opacidade" href="sobre"><i class="fas fa-users"></i> Sobre a Volare</a>&nbsp;&nbsp;
+            <a class="text-dark opacidade" href="faleConosco"> <i class="fas fa-phone-volume"></i> Fale Conosco</a>
             </div>
         </nav>
         <!-- fim do topo -->
-        <nav class="navbar navbar-expand-md navbar-light COLORE">
+        <nav class="navbar navbar-expand-md navbar-dark COLORE">
             <!-- HAMBURGER -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -55,12 +55,12 @@ require_once 'php/CRUDS/serviceBook.php';
             <!-- LINKS NAVBAR -->
               <ul class="navbar-nav mr-auto fontedezesseis">
                 <li class="nav-item ">
-                  <a class="nav-link text-dark opacidade" href="index.php"><i class="fas fa-home"></i>&nbsp;Início</a>
+                  <a class="nav-link text-dark opacidade" href="home"><i class="fas fa-home"></i>&nbsp;Início</a>
                 </li>
                 <?php
                 if (!isset($_SESSION['user']) && !isset($_SESSION['token_face'])) { ?>
                 <li class="nav-item">
-                  <a class="nav-link text-dark opacidade" href="entrar.php"><i class="fas fa-user-circle"></i>&nbsp;Entre ou cadastre-se</a>
+                  <a class="nav-link text-dark opacidade" href="entrar"><i class="fas fa-user-circle"></i>&nbsp;Entre ou cadastre-se</a>
                 </li>
               <?php } else { ?>
                 <li class="nav-item">
@@ -68,7 +68,7 @@ require_once 'php/CRUDS/serviceBook.php';
                 </li>
               <?php } ?>
                 <li class="nav-item">
-                  <a class="nav-link text-dark opacidade" href="carrinho.php"><i class="fas fa-shopping-cart"></i>&nbsp;Carrinho de compras</a>
+                  <a class="nav-link text-dark opacidade" href="carrinho"><i class="fas fa-shopping-cart"></i>&nbsp;Carrinho de compras</a>
                 </li>
               </ul>
             </div>

@@ -1,5 +1,6 @@
 <?php
-require_once 'header.php';
+require_once 'requires/header.php';
+  $app->get('/entrar', function ($request, $response, $args) {
 if (isset($_SESSION['token_face']) || isset($_SESSION['user'])) {
   echo "<script>window.location.assign('index.php')</script>";
 } else {
@@ -52,4 +53,7 @@ if (isset($_SESSION['token_face']) || isset($_SESSION['user'])) {
         </div>
     </div>
 </div>
-<?php require_once 'footer.php'; } ?>
+<?php
+}
+});
+ ?>

@@ -1,4 +1,6 @@
-<?php require_once("header.php"); ?>
+<?php
+$app->get('/cadastro', function ($request, $response, $args) {
+?>
             <div class="container-fluid col-md-8 centraliza margintop">
                 <fieldset><!-- *************início do formulário ********************** -->
                     <legend><h1>Cadastro</h1></legend>
@@ -133,4 +135,4 @@
 
                     </form>
                 </fieldset><!--********fim do formulário*************-->
-<?php require_once("footer.php"); ?>
+<?php }); ?>

@@ -5,7 +5,7 @@
     "minimum-stability": "dev",
     "require": {
         "phpmailer/phpmailer": "dev-master",
-        "slim/slim": "^3.1",
+        "slim/slim": "^3.1"
 
     }
 }

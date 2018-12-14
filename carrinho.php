@@ -1,4 +1,6 @@
-<?php require_once("header.php"); ?>
+<?php
+$app->get('/carrinho', function ($request, $response, $args) {
+?>
     <div class="container-fluid col-8 margintop">
         <div class="row">
             <div class="col-8">
@@ -22,9 +24,9 @@
                                 Nome do produto
                             </td>
                             <td>
-                                <button id="btnPlus" class="btn btn-light btn-sm">+</button>
-                                <input type="text" id="qtdProd" style="display:inline" maxlength="2" class="text-center form-control col-2" value="1">
-                                <button id="btnMenus" class="btn btn-light btn-sm">-</button>
+                                <button id="btnPlus" class="btn btn-light">+</button>
+                                <span id="qtdProd" class="badge badge-secondary" contenteditable>1</span>
+                                <button id="btnMenus" class="btn btn-light">-</button>
                             </td>
                             <td>R$ <span id="idpreco">100,00</span></td>
                             <td><!--fazer um js-->R$00,00</td>
@@ -60,73 +62,59 @@
             </div>
         </div>
     </div>
-<?php require_once("footer.php"); ?>
+    <div class="form-group"><!--tentar alinhar-->
+                                    <div class="row">
+                                        <button onclick="funcaoParaExecutarMenos()" type="button" class="btn btn-light" id="btnMenos">-</button>
+                                        <input type="text" class="form-control col-2 light" name="qtdProduto" min="1" id=quantidadeProduto>
+                                        <button onclick="funcaoParaExecutarMais()" type="button" class="btn btn-light" id="btnMais">+</button>
+                                    </div>
+                                </div>
+                                <?php
+                              });
+                               ?>
 <script>
 
     $(function(){
         $("#qtdProd").keyup(function() {
-            $txtQtd = $("#qtdProd").val();
-            $qtd = parseInt($txtQtd);
-            if($txtQtd.length > 2) {
-                $("#qtdProd").val(99);
-            } else if($qtd >= 99) {
-                $("#qtdProd").val(99);
+            $qtd = parseInt($("#qtdProd").html());
+            if($qtd >= 99) {
+                $("#qtdProd").html(99);
             } else if($qtd <= 0) {
-                $("#qtdProd").val(0);
+                $("#qtdProd").html(0);
             }
         });
     });
 
     $(function(){
         $("#qtdProd").keyup(function() {
-            $qtd = parseInt($("#qtdProd").val());
+            $qtd = parseInt($("#qtdProd").html());
             if($qtd == "") {
-                $("#qtdProd").val(0);
+                $("#qtdProd").html(0);
             } else if(isNaN($qtd)) {
-                $("#qtdProd").val(0);
+                $("#qtdProd").html(0);
             }
         });
     });
 
     $(function(){
         $("#btnPlus").click(function() {
-            $qtd = parseInt($("#qtdProd").val());
+            $qtd = parseInt($("#qtdProd").html());
             if($qtd >= 99) {
-                $("#qtdProd").val(99);
+                $("#qtdProd").html(99);
             } else {
-                $("#qtdProd").val(++$qtd);
+                $("#qtdProd").html(++$qtd);
             }
         });
     });
 
     $(function(){
         $("#btnMenus").click(function() {
-            $qtd = parseInt($("#qtdProd").val());
+            $qtd = parseInt($("#qtdProd").html());
             if($qtd <= 0) {
-                $("#qtdProd").val(0);
+                $("#qtdProd").html(0);
             } else {
-                $("#qtdProd").val(--$qtd);
+                $("#qtdProd").html(--$qtd);
             }
         });
     });
-
-    // Install input filters.
-    setInputFilter(document.getElementById("qtdProd"), function(value) {
-    return /^-?\d*$/.test(value); });
-
-    // Restricts input for the given textbox to the given inputFilter.
-    function setInputFilter(textbox, inputFilter) {
-        ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
-            textbox.addEventListener(event, function() {
-            if (inputFilter(this.value)) {
-                this.oldValue = this.value;
-                this.oldSelectionStart = this.selectionStart;
-                this.oldSelectionEnd = this.selectionEnd;
-            } else if (this.hasOwnProperty("oldValue")) {
-                this.value = this.oldValue;
-                this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
-            }
-            });
-        });
-    }
 </script>

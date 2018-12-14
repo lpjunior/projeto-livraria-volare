@@ -1,4 +1,6 @@
-<?php require_once("header.php"); ?>
+<?php
+$app->get('/busca', function ($request, $response, $args) {
+?>
             <section>
                 <div class="container-fluid col-md-10 centraliza mt-4 margintop">
                     <div class="row">
@@ -12,25 +14,8 @@
                             <hr/>
                             <h4 class="fontedezesseis">Adicionar filtro</h4>
                             <form>
-                                <h4 class="fontedezesseis">Idioma:</h4>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                    <label class="form-check-label" for="defaultCheck1">
-                                      Português
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-                                    <label class="form-check-label" for="defaultCheck2">
-                                      Inglês
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-                                    <label class="form-check-label" for="defaultCheck2">
-                                      Espanhol
-                                    </label>
-                                </div>
+                                <label for="formControlRange"><h4 class="fontedezesseis">Faixa de preço:</h4></label>
+                                <input type="range" class="form-control-range" id="formControlRange">
                             </form>
 
                         </div> <!-- FIM DA DIV LATERAL DIREITA-->
@@ -77,4 +62,4 @@
             </section><!-- FIM DA PRIMEIRA SECTION -->
             <!-- pra jogar o footer pra baixo -->
 
-<?php require_once("footer.php"); ?>
+<?php }); ?>
