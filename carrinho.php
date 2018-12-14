@@ -67,7 +67,6 @@
         $("#qtdProd").keyup(function() {
             $txtQtd = $("#qtdProd").val();
             $qtd = parseInt($txtQtd);
-            alert($txtQtd);
             if($txtQtd.length > 2) {
                 $("#qtdProd").val(99);
             } else if($qtd >= 99) {
