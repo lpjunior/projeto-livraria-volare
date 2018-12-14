@@ -1,15 +1,15 @@
-<?php require_once("header.php");
+<?php
+$app->get('/produto/{produto}', function ($request, $response, $args) {
 ?>
         <div class="container-fluid col-md-8 col-xs-12 centraliza">
             <div class="row">
                 <section class="col-xs-12 col-sm-4 col-md-4 col-lg-4 mt-4">
                     <!--imagem do livro-->
                     <?php
-                    if (isset($_GET['id'])) {
-                    $livro = serviceDetalhesLivro($_GET['id']);
+                    $livro = serviceDetalhesLivro($args['produto']);
                     if (is_array($livro)) {
                     foreach ($livro as $i) { ?>
-                    <img class="d-block w-100" src="img/placeholder2.jpg" alt="capa do livro">
+                    <img class="d-block w-100" src="../img/placeholder2.jpg" alt="capa do livro">
                     <h4 class="text-center fontedezesseis paddingtexto"> Avalie este livro:</h4>
                     <!-- RATING STARS -->
                     <div class="rating fontevinteecinco">
@@ -48,14 +48,8 @@
                     </div>
                 </section>
               <?php } } else {
-                echo '<h1 class="text-center">Livro não existente</h1>';
-                require_once 'footer.php';
-                exit();
-              } }else {
-                echo '<h1 class="text-center">Livro não existente</h1>';
-                require_once 'footer.php';
-                exit();
-              } ?>
+                header('location: produto/error');
+              }?>
                 <!-- COMEÇO DOS CARDS-->
                 <section class="d-none d-sm-block">
                     <h4 class="fontedezoito text-center mt-4 bg-light opacidade">Clientes que compraram este livro também aprovam:</h4><br/>
@@ -73,8 +67,8 @@
                                 <h4 class="my-0 font-weight-normal fontedezoito"><?=$i['titulo']?></h4>
                             </div>
                             <div class="card-body">
-                                <h4 class="fontedezesseis">Nome Sobrenome</h4>
-                                <h3 class="fontevinte">R$ 00,00</h3>
+                                <h4 class="fontedezesseis"><?=$i['autor']?></h4>
+                                <h3 class="fontevinte">R$ <?=$i['preco']?></h3>
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-sm btn-outline-secondary">&nbsp;&nbsp;&nbsp;<i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;&nbsp;</button>
                                 </div>
@@ -92,4 +86,6 @@
 
                 </div>
             </section> <!-- fim da section comentários -->
- <?php require_once("footer.php"); ?>
+            <?php
+            });
+             ?>

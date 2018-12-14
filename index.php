@@ -1,5 +1,7 @@
-<?php require_once("header.php");
-require_once 'php/CRUDS/serviceBook.php'; ?>
+<?php
+require_once 'php/CRUDS/serviceBook.php';
+$app->get('/home', function ($request, $response, $args) {
+?>
             <!-- CAROUSEL -->
             <section class="row container-fluid mx-auto d-none d-sm-block">
                 <div class="col-md-10 col-lg-10 mx-auto">
@@ -51,14 +53,14 @@ require_once 'php/CRUDS/serviceBook.php'; ?>
                                 <h4 class="fontedezesseis"><?=$i['autor']?></h4>
                                 <h3 class="fontevinte">R$ <?=$i['preco']?></h3>
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">&nbsp;&nbsp;&nbsp;<i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;&nbsp;</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">   <i class="fa fa-shopping-cart"></i>   </button>
                                 </div>
                             </div>
                         </div>
                         </div>
                       <?php } ?>
-
-
                     </div>  <!-- FIM DA DIV QUE JUNTA OS CARDS -->
                 </section>
-<?php require_once("footer.php"); ?>
+<?php
+});
+ ?>

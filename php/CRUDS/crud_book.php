@@ -97,12 +97,12 @@ function excluirLivro($id){
 				$sql .= " order by autor asc;";
 	      break;
 	    case "ano":
-				// $sql .= " WHERE ano like '%$n'";
-				$sql .= " WHERE autor like '%$n%'";
+				$sql .= " WHERE datapublicacao like '%$n'";
+				$sql .= " order by datapublicacao asc;";
 	      break;
 			default:
 				$sql .= " WHERE titulo like '%$n%' or autor like '%$n%' or editora like '%$n%'";
-				$sql .= " order by datapublicacao asc;";
+				$sql .= " ORDER BY datapublicacao asc;";
 				$padrao = true;
 				break;
 	}

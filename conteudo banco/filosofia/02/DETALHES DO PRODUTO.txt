@@ -1,0 +1,8 @@
+NOME : Eu e Tu
+ISBN :8588208164
+Editora: Centauro
+Idioma: PORTUGUÊS
+Encadernação: 	BROCHURA
+Ano: 	2012
+Nº de Páginas: 	152
+categoria: filosofia
