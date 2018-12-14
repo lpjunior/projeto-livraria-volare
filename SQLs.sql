@@ -178,6 +178,12 @@ from produto
 where titulo like '%n%' or autor like '%n%' or editora like '%n%' or ano = '%79'
 order by datapublicacao asc;
 
+--sql de produtos--
+select p.isbn, p.editora, i.idioma, p.dimensoes, t.tipodecapa, p.anopublicacao, p.numeropaginas
+from produto p
+join Produto_has_Idioma p1 on p.id = p1.Produto_id
+join idioma i on i.id = p1.Idioma_id
+join tipodecapa t on p.TipoDeCapa_id = t.id
 
 
 
