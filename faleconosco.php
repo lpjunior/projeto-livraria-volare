@@ -16,7 +16,7 @@
                     <!-- TITULO -->
                     <div class="wow fadeInUp section-title" data-wow-delay="0.2s">
                          <h2>Fale Conosco</h2>
-                         <p>Sua mensagem ser· encaminhada e respondida com mais agilidade..</p>
+                         <p>Sua mensagem ser√° encaminhada e respondida com mais agilidade..</p>
                     </div>
                </div>
 
@@ -41,13 +41,13 @@
                </div>
 
                <div class="col-md-5 col-sm-8">
-                    <!-- INFORMA«OES DO CONTATO -->
+                    <!-- INFORMAÔøΩOES DO CONTATO -->
                     <div class="wow fadeInUp contact-info" data-wow-delay="0.4s">
                          <div class="section-title">
-                              <h2>InformaÁıes de Contatos</h2>
-                              <p>Hor·rio de atendimento, das 8:30 ‡s 18:00 horas de segunda a sexta-feira, exceto feriados.</p>
+                              <h2>Informa√ß√µes de Contatos</h2>
+                              <p>Hor√°rio de atendimento, das 8:30 √†s 18:00 horas de segunda a sexta-feira, exceto feriados.</p>
                          </div>
-                         
+
                          <p><i class="fa fa-map-marker"></i> 456 New Street 22000, New York City, USA</p>
                          <p><i class="fa fa-comment"></i> <a href="mailto:livrariavolare@mail.com">livrariavolare@mail.com</a></p>
                          <p><i class="fa fa-phone"></i> (000) 0000-0000</p>
@@ -58,14 +58,9 @@
      </div>
 </section>
 
-            
+
 
 
 
 
 <?php require_once("footer.php"); ?>
-                    
-                    
-
-
-
