@@ -22,9 +22,9 @@
                                 Nome do produto
                             </td>
                             <td>
-                                <button id="btnPlus" class="btn btn-light">+</button>
-                                <span id="qtdProd" class="badge badge-secondary" contenteditable>1</span>
-                                <button id="btnMenus" class="btn btn-light">-</button>
+                                <button id="btnPlus" class="btn btn-light btn-sm">+</button>
+                                <div id="qtdProd" style="display:inline" contenteditable class="badge-secondary px-1 py-1 rounded">1</div>
+                                <button id="btnMenus" class="btn btn-light btn-sm">-</button>
                             </td>
                             <td>R$ <span id="idpreco">100,00</span></td>
                             <td><!--fazer um js-->R$00,00</td>
@@ -60,13 +60,6 @@
             </div>
         </div>
     </div>
-    <div class="form-group"><!--tentar alinhar-->
-                                    <div class="row">
-                                        <button onclick="funcaoParaExecutarMenos()" type="button" class="btn btn-light" id="btnMenos">-</button>
-                                        <input type="text" class="form-control col-2 light" name="qtdProduto" min="1" id=quantidadeProduto>
-                                        <button onclick="funcaoParaExecutarMais()" type="button" class="btn btn-light" id="btnMais">+</button>
-                                    </div>
-                                </div>
 <?php require_once("footer.php"); ?>
 <script>
 
