@@ -33,7 +33,7 @@ require_once 'php/CRUDS/serviceBook.php'; ?>
 </section>
 <!-- ********************** FIM DO CAROUSEL ****************** -->
 <!-- COMEÇO DA PRIMEIRA SECTION-->
-<h1 class="fontedezesseis COLORETEXTO col-md-8 centraliza margintop"><b>LANÇAMENTOS</b></h1>
+<h1 class="fontevinte COLORETEXTO col-md-8 centraliza margintop"><i>Lançamentos</i></h1>
 <section class="bordaspraconteudo col-md-8 centraliza">
   <!-- começo dos cards PRIMEIRA LINHA-->
   <div class="card-deck mb-4 text-center ">
@@ -169,4 +169,7 @@ require_once 'php/CRUDS/serviceBook.php'; ?>
     </div> <!--fim da coluna 4-->
   </div> <!-- fim dos cards primeira linha-->
 </section><!-- FIM DA PRIMEIRA SECTION -->
+<!-- pra jogar o footer pra baixo -->            
+<style>
+ </style>
 <?php require_once("footer.php"); ?>
