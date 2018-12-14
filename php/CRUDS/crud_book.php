@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once 'conexao.php';
 
 ## INSERIR LIVROS
@@ -60,13 +61,13 @@ function excluirLivro($id){
 		inner join categoria cat on cat.id = prod.categoria_id
 		inner join subcategorias subc on subc.id = prod.subcategorias_id
 		inner join tipodecapa tcap on tcap.id = prod.tipodecapa_id";
-		## Botar um limite na lista dos livros
-		if ($limit != NULL) {
-			$sql .= " LIMIT $limit";
-		}
 		## Caso seja a aba de lançamentos, liste os últimos que botaram no site
 		if ($lancamento != NULL) {
-			$sql .= " ORDER BY data_publicacao asc;";
+			$sql .= " ORDER BY data_publicacao desc";
+		}
+		## Botar um limite na lista dos livros
+		if ($limit != NULL) {
+			$sql .= " LIMIT $limit;";
 		}
 		$resultado = mysqli_query($conexao, $sql);
 		if (mysqli_affected_rows($conexao) >= 1) {
@@ -79,25 +80,21 @@ function excluirLivro($id){
 			return "Falha ao exibir resultados";
 		}
 	}
+	pesquisarLivro('a', 'titulo');
 	## BUSCA
 	function pesquisarLivro($n, $value){
 		$conexao = getConnection();
-		$sql = "select
-		id,
-		titulo,
-		autor,
-		editora,
-		sinopse,
-		datapublicacao,
-		preco
+		$sql = "select id, titulo, autor, editora, sinopse, datapublicacao, preco
 		from produto";
 
 		switch ($value) {
 	    case "titulo":
 				$sql .= " WHERE titulo like '%$n%'";
+				$sql .= " order by titulo asc;";
 	      break;
 	    case "autor":
 				$sql .= " WHERE autor like '%$n%'";
+				$sql .= " order by autor asc;";
 	      break;
 	    case "ano":
 				// $sql .= " WHERE ano like '%$n'";
@@ -105,10 +102,10 @@ function excluirLivro($id){
 	      break;
 			default:
 				$sql .= " WHERE titulo like '%$n%' or autor like '%$n%' or editora like '%$n%'";
+				$sql .= " order by datapublicacao asc;";
 				$padrao = true;
 				break;
 	}
-		$sql .= " order by datapublicacao asc;";
 		$resultado = mysqli_query($conexao, $sql);
 		if (mysqli_affected_rows($conexao) >= 1) {
 			$arr = array();
