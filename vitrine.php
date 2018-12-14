@@ -12,8 +12,25 @@
                             <hr/>
                             <h4 class="fontedezesseis">Adicionar filtro</h4>
                             <form>
-                                <label for="formControlRange"><h4 class="fontedezesseis">Faixa de preço:</h4></label>
-                                <input type="range" class="form-control-range" id="formControlRange">
+                                <h4 class="fontedezesseis">Idioma:</h4>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                      Português
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+                                    <label class="form-check-label" for="defaultCheck2">
+                                      Inglês
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+                                    <label class="form-check-label" for="defaultCheck2">
+                                      Espanhol
+                                    </label>
+                                </div>
                             </form>
 
                         </div> <!-- FIM DA DIV LATERAL DIREITA-->
