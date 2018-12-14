@@ -145,3 +145,10 @@ html {
 .total {
     border-top: 1px solid #dee2e6 !important;
 }
+
+/********** comportamento media *************/
+@media only screen and (max-width: 575px) {
+  body {
+    margin-bottom: 250px;
+  }
+}

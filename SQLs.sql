@@ -77,7 +77,6 @@ per.perfil,
 ge.genero,
 tel.numero as numero_tel,
 tipotel.tipo as tipo_telefone,
-logs.datahora as ultimo_login,
 ender.endereco, 
 ender.numero, 
 ender.complemento, 
@@ -93,7 +92,6 @@ inner join genero ge on ge.id = usu.genero_id
 inner join perfil per on per.id = usu.perfil_id
 left join telefone tel on tel.usuarios_id = usu.id
 left join tipotelefone tipotel on tipotel.telefone_id = tel.id
-left join login logs  on logs.id = usu.login_id
 left join endereco ender on ender.usuarios_id = usu.id
 left join tipoendereco tipoend	on tipoend.id = ender.tipoendereco_id
 left join interesses inte on inte.usuarios_id = usu.id
@@ -113,7 +111,7 @@ prod.numeropaginas as numero_paginas,
 prod.sinopse, 
 prod.peso, 
 prod.datapublicacao as data_publicacao, 
-prod.fornecedor, 
+forn.nome as fornecedor, 
 tcap.tipodecapa as tipo_capa,
 prod.preco, 
 prod.quantidade,
@@ -122,9 +120,10 @@ subc.assunto
 
 from produto prod
 
-inner join categoria cat on cat.id = prod.categoria_id
-inner join subcategorias subc on subc.id = prod.subcategorias_id
-inner join tipodecapa tcap on tcap.id = prod.tipodecapa_id;
+join categoria cat on cat.id = prod.categoria_id
+join subcategorias subc on subc.id = prod.subcategorias_id
+join tipodecapa tcap on tcap.id = prod.tipodecapa_id
+join fornecedores forn on prod.fornecedores_id = forn.id;
 
 
 
@@ -175,7 +174,7 @@ preco
 
 from produto
 
-where titulo like '%n%' or autor like '%n%' or editora like '%n%' or ano = '%79'
+where titulo like '%n%' or autor like '%n%' or editora like '%n%' or anopublicacao = '%79'
 order by datapublicacao asc;
 
 --sql de produtos--
