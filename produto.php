@@ -2,7 +2,7 @@
 ?>
         <div class="container-fluid col-md-8 col-xs-12 centraliza">
             <div class="row">
-                <section class="col-xs-12 col-sm-4 col-md-4 col-lg-4 margintop">
+                <section class="col-xs-12 col-sm-4 col-md-4 col-lg-4 mt-4">
                     <!--imagem do livro-->
                     <?php
                     if (isset($_GET['id'])) {
@@ -19,7 +19,7 @@
                     <h4 class="fontedezesseis"><i class="far fa-bookmark"></i>&nbsp;Sinopse:</h4> <p class="fontedezesseis"><?=$i['sinopse']?></p>
                 </section>
                 <!-- div para informações -->
-                <section class="col-xs-12 col-sm-8 col-md-8 col-lg-8 margintop bordasb">
+                <section class="col-xs-12 col-sm-8 col-md-8 col-lg-8 mt-4 bordasb">
                     <div class="col-md-12 paddingtexto">
                         <h1 class="paddingtexto fontevinteecinco"><?=$i['titulo']?></h1>
                         <h2 class="fontevinte">Autor: <?=$i['autor']?> </h2>
@@ -35,7 +35,7 @@
                         <!-- BOTÃO -->
                         <a class="btn COLORE btn-outline-secondary" href="#">Adicione ao carrinho</a>
                     </div>
-                    <div class="col-md-12 margintop">
+                    <div class="col-md-12 mt-4">
                     <hr/>
                     <h4 class="fontedezoito">Detalhes do produto:</h4><br/>
                     <h4 class="fontedezesseis">ISBN: <?=$i['isbn']?></h4>
@@ -58,7 +58,7 @@
               } ?>
                 <!-- COMEÇO DOS CARDS-->
                 <section class="d-none d-sm-block">
-                    <h4 class="fontedezoito text-center margintop bg-light opacidade">Clientes que compraram este livro também aprovam:</h4><br/>
+                    <h4 class="fontedezoito text-center mt-4 bg-light opacidade">Clientes que compraram este livro também aprovam:</h4><br/>
 
                     <!-- começo dos cards PRIMEIRA LINHA-->
                         <div class="card-deck mb-4 text-center ">
@@ -86,7 +86,7 @@
                 </div><!-- fim da row -->
             </div><!-- fim do container -->
             <!-- COMEÇO DA SECTION DE COMENTÁRIOS -->
-            <section class="container-fluid col-xs-12 col-sm-8 col-md-8 col-lg-8 centraliza marginbottom bordasb paddingtexto">
+            <section class="container-fluid col-xs-12 col-sm-8 col-md-8 col-lg-8 centraliza mb-5 bordasb paddingtexto">
                 <h4><i class="far fa-comments"></i>&nbsp;Comentários:</h4>
                 <div class="row">
 
