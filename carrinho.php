@@ -65,8 +65,11 @@
 
     $(function(){
         $("#qtdProd").keyup(function() {
-            $qtd = parseInt($("#qtdProd").html());
-            if($qtd >= 99) {
+            $txtQtd = $("#qtdProd").html();
+            $qtd = parseInt($txtQtd);
+            if($txtQtd.length >2) {
+                $("#qtdProd").html(99);
+            } else if($qtd >= 99) {
                 $("#qtdProd").html(99);
             } else if($qtd <= 0) {
                 $("#qtdProd").html(0);
