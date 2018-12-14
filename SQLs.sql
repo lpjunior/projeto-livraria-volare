@@ -174,7 +174,7 @@ preco
 
 from produto
 
-where titulo like '%n%' or autor like '%n%' or editora like '%n%' or ano = '%79'
+where titulo like '%n%' or autor like '%n%' or editora like '%n%' or anopublicacao = '%79'
 order by datapublicacao asc;
 
 --sql de produtos--
