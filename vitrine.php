@@ -2,8 +2,8 @@
             <section>
                 <div class="container-fluid col-md-10 centraliza mt-4 margintop">
                     <div class="row">
-                        <div class="col-sm-4 col-md-2 col-lg-2 bordasc">
-                            <h1 class="fontevinte">Categorias</h1>
+                        <div class="col-sm-4 col-md-2 col-lg-2 bordasb">
+                            <h1 class="fontevinte paddingtexto">Categorias</h1>
                             <hr/>
                             <h3 class="fontedezesseis">Categoria 1</h3>
                             <h3 class="fontedezesseis">Categoria 2</h3>
@@ -11,10 +11,7 @@
                             <h3 class="fontedezesseis">Categoria 5</h3>
                             <hr/>
                             <h4 class="fontedezesseis">Adicionar filtro</h4>
-                            <form>
-                                <label for="formControlRange"><h4 class="fontedezesseis">Faixa de preço:</h4></label>
-                                <input type="range" class="form-control-range" id="formControlRange">
-                            </form>
+                            
 
                         </div> <!-- FIM DA DIV LATERAL DIREITA-->
                         <div class="col-md-8"> <!-- DIV ONDE VAI ENTRAR O CONTEÚDO DA PAG-->
