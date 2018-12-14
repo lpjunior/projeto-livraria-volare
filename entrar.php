@@ -4,7 +4,7 @@ if (isset($_SESSION['token_face']) || isset($_SESSION['user'])) {
   echo "<script>window.location.assign('index.php')</script>";
 } else {
  ?>
-    <div class="container-fluid col-md-8 centraliza margintop">
+    <div class="container-fluid col-md-8 centraliza mt-4">
         <div class="row">
             <div class="col-md-6 centraliza">
                 <fieldset><!-- *************início do formulário ********************** -->
@@ -28,7 +28,7 @@ if (isset($_SESSION['token_face']) || isset($_SESSION['user'])) {
                           <?php } ?>
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-md-10">
-                                    <button type="submit" class="btn COLORE" name="btn-enviar" onclick="return validarSenha()">Entrar</button>
+                                    <button type="submit" class="btn COLORE " name="btn-enviar" onclick="return validarSenha()">Entrar</button>
                                 </div>
                             </div>
                         </form>

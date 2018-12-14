@@ -1,6 +1,6 @@
 <?php require_once("header.php"); ?>
             <section>
-                <div class="container-fluid col-md-10 centraliza margintop">
+                <div class="container-fluid col-md-10 centraliza mt-4 margintop">
                     <div class="row">
                         <div class="col-sm-4 col-md-2 col-lg-2 bordasc">
                             <h1 class="fontevinte">Categorias</h1>
@@ -57,4 +57,6 @@
                     </div> <!-- fim da row -->
                 </div> <!-- FIM DO CONTAINER -->
             </section><!-- FIM DA PRIMEIRA SECTION -->
+            <!-- pra jogar o footer pra baixo -->            
+
 <?php require_once("footer.php"); ?>

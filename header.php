@@ -45,7 +45,7 @@ require_once 'php/CRUDS/serviceBook.php';
 
             <!-- DROPDOWN CATEGORIAS DA NAVBAR -->
                 <div class="dropdown navbar-form navbar-left">
-                    <button class="btn dropdown-toggle COLORE bordas fontedoze text-light" type="button" id="menu1" data-toggle="dropdown"><i class="fas fa-bars"></i>&nbsp;&nbsp;<b>CATEGORIAS</b>
+                    <button class="btn dropdown-toggle COLORE bordas fontedoze" type="button" id="menu1" data-toggle="dropdown">&nbsp;&nbsp;CATEGORIAS
                     <span class="caret"></span></button>
                     <ul class="dropdown-menu COLORE1" role="menu" aria-labelledby="menu1">
                         <li role="presentation"><a role="menuitem" class="fontedezesseis" href="#">cat 1</a></li>
