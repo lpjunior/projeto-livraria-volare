@@ -1,5 +1,5 @@
 <?php require_once("header.php"); ?>
-    <div class="container-fluid col-8 margintop">
+    <div class="container-fluid col-8 mt-4">
         <div class="row">
             <div class="col-8">
                 <h1>Meu carrinho</h1>
@@ -55,7 +55,13 @@
                 </div>
                 <div class="col bordasc mt-3">
                     <h5 class="text-center mt-3">Calcule o frete</h5>
-
+                         <div class="input-group mb-4 input-sm col-xs-4 mt-4">
+                            <input type="text" class="text-center form-control col cep " placeholder="Digite o CEP" aria-label="Digite o cep" aria-describedby="button-addon2">
+                            <div class="input-group-append">
+                              <button class="btn btn-outline-secondary" type="button" id="button-addon2">calcule</button>
+                            </div>
+                        </div>
+                        <!-- /frete -->
                 </div>
             </div>
         </div>
