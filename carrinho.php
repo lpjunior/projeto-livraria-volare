@@ -23,7 +23,7 @@
                             </td>
                             <td>
                                 <button id="btnPlus" class="btn btn-light btn-sm">+</button>
-                                <div id="qtdProd" style="display:inline" contenteditable class="badge-secondary px-1 py-1 rounded">1</div>
+                                <input type="text" id="qtdProd" style="display:inline" maxlength="2" class="text-center form-control col-2" value="1">
                                 <button id="btnMenus" class="btn btn-light btn-sm">-</button>
                             </td>
                             <td>R$ <span id="idpreco">100,00</span></td>
@@ -65,48 +65,69 @@
 
     $(function(){
         $("#qtdProd").keyup(function() {
-            $txtQtd = $("#qtdProd").html();
+            $txtQtd = $("#qtdProd").val();
             $qtd = parseInt($txtQtd);
-            if($txtQtd.length >2) {
-                $("#qtdProd").html(99);
+            alert($txtQtd);
+            if($txtQtd.length > 2) {
+                $("#qtdProd").val(99);
             } else if($qtd >= 99) {
-                $("#qtdProd").html(99);
+                $("#qtdProd").val(99);
             } else if($qtd <= 0) {
-                $("#qtdProd").html(0);
+                $("#qtdProd").val(0);
             }
         });
     });
 
     $(function(){
         $("#qtdProd").keyup(function() {
-            $qtd = parseInt($("#qtdProd").html());
+            $qtd = parseInt($("#qtdProd").val());
             if($qtd == "") {
-                $("#qtdProd").html(0);
+                $("#qtdProd").val(0);
             } else if(isNaN($qtd)) {
-                $("#qtdProd").html(0);
+                $("#qtdProd").val(0);
             }
         });
     });
 
     $(function(){
         $("#btnPlus").click(function() {
-            $qtd = parseInt($("#qtdProd").html());
+            $qtd = parseInt($("#qtdProd").val());
             if($qtd >= 99) {
-                $("#qtdProd").html(99);
+                $("#qtdProd").val(99);
             } else {
-                $("#qtdProd").html(++$qtd);
+                $("#qtdProd").val(++$qtd);
             }
         });
     });
 
     $(function(){
         $("#btnMenus").click(function() {
-            $qtd = parseInt($("#qtdProd").html());
+            $qtd = parseInt($("#qtdProd").val());
             if($qtd <= 0) {
-                $("#qtdProd").html(0);
+                $("#qtdProd").val(0);
             } else {
-                $("#qtdProd").html(--$qtd);
+                $("#qtdProd").val(--$qtd);
             }
         });
     });
+
+    // Install input filters.
+    setInputFilter(document.getElementById("qtdProd"), function(value) {
+    return /^-?\d*$/.test(value); });
+
+    // Restricts input for the given textbox to the given inputFilter.
+    function setInputFilter(textbox, inputFilter) {
+        ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
+            textbox.addEventListener(event, function() {
+            if (inputFilter(this.value)) {
+                this.oldValue = this.value;
+                this.oldSelectionStart = this.selectionStart;
+                this.oldSelectionEnd = this.selectionEnd;
+            } else if (this.hasOwnProperty("oldValue")) {
+                this.value = this.oldValue;
+                this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+            }
+            });
+        });
+    }
 </script>
