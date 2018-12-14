@@ -1,5 +1,5 @@
 <?php
-require_once 'php/vendor/autoload.php';
+require_once 'vendor/autoload.php';
 $app = new \Slim\App;
 require_once "requires/header.php";
 ## Página de produtos
