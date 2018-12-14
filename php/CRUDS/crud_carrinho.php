@@ -11,7 +11,7 @@ function inserirCarrinho($user_id, $id, $quant){
 	if (mysqli_affected_rows($conexao) >= 1) {
 		return true;
 	} else {
-		return false;
+		return "Falha ao adicionar ao carrinho";
 	}
 }
 # Aumentar o número de produtos reservados
@@ -24,7 +24,7 @@ function updateAdd($quant, $id){
   if (mysqli_affected_rows($conexao) >= 1) {
 		return true;
 	} else {
-		return false;
+		return 'Falha em botar produtos no carrinho';
 	}
 }
 # Deletar os produto reservados
@@ -37,7 +37,7 @@ function deleteCarrinho($quant_total, $id){
   if (mysqli_affected_rows($conexao) >= 1) {
 		return true;
 	} else {
-		return false;
+		return "Falha em deletar o carrinho";
 	}
 }
 # Alterar o número de produto reservados
@@ -50,7 +50,7 @@ function updateAlt($qtd, $id, $quant_total){
   if (mysqli_affected_rows($conexao) >= 1) {
 		return true;
 	} else {
-		return false;
+		return 'Falha ao alterar o número de itens do carrinho';
 	}
 }
 function listarCarrinho(){
@@ -65,6 +65,6 @@ function listarCarrinho(){
 			$arr[] = $linha;
 		}
 	} else {
-		return false;
+		return "Falha ao listar o carrinho";
 	}
 }
