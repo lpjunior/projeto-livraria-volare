@@ -10,19 +10,16 @@ insert into perfil (perfil) values (1);
 insert into login (datahora) values ('2018/12/06');
 
 
-insert into usuarios (nome, sobrenome, email, cpf, datanascimento, ativo, senha, perfil_id, genero_id, login_id)
-values ('Thiago', 'Chaves', 'tchaves34@gmail.com', '123456789-00', '2018/02/17', 1, md5(12345678), 2, 1, 1);
+insert into usuarios (nome, sobrenome, email, cpf, datanascimento, ativo, senha, perfil_id, genero_id)
+values ('Thiago', 'Chaves', 'tchaves34@gmail.com', '123456789-00', '2018/02/17', 1, md5(12345678), 2, 1);
 
 
 insert into endereco (cep, endereco, numero, complemento, bairro, estado, cidade, usuarios_id, TipoEndereco_id)
 values ('25715-000', 'R Sem Nome', 1234, 'Casa', 'Jardim Catarina', 'Rio de Janeiro', 'São Gonçalo', 1, 1);
 
-
-insert into tipotelefone(tipo, Telefone_id) values ('Celular', 1);
-
-
 insert into telefone (numero, usuarios_id) values ('(21) 9 7958-6294', 1);
 
+insert into tipotelefone(tipo, Telefone_id) values ('Celular', 1);
 
 insert into tipodecapa (tipodecapa) values ('Dura');
 
@@ -35,18 +32,21 @@ insert into idioma (idioma) values ('POR');
 
 insert into subcategorias (assunto) values ('Ufologia');
 
+insert into fornecedores (nome, razao_social, cnpj, inscricao_estadual, endereco, telefone, email, forma_pagamento)
+values ('Fornecedor1', 'xxxxxxx', '111111111', '1111111111', 'endereço do fornecedor', '9782302024618', 'fornecedor@gmail.com', 'dinheiro')
 
-insert into produto (Categoria_id, titulo, autor, editora, isbn, numeropaginas, sinopse, peso, datapublicacao, fornecedor, preco, quantidade, subcategorias_id, TipoDeCapa_id)
+
+insert into produto (Categoria_id, titulo, autor, editora, isbn, numeropaginas, sinopse, peso, datapublicacao, fornecedores_id, preco, quantidade, subcategorias_id, TipoDeCapa_id)
 values (1, 'Alien', 'Alan Dean Foster', 'Warner Books', '9782302024618', 271, 'A princípio, mais uma missão como tantas do rebocador Nostromo: abastecer a terra com minério recolhido do espaço exterior. 
 Em sua tripulação, formada por sete competentes profissionais, apenas um novato: o oficial de ciências, designado de última hora para compor aquela expedição.
 No entanto, o que eles não sabiam era que o Nostromo estava programado para cumprir uma rota diferente, um curso que os levaria a receber um oitavo passageiro, que, com o intuito de se reproduzir, espalharia o asco e o pavor.',
-500.0, '1979/06/22', 'Fornecedor_1', 12.99, 10, 1, 1);
+500.0, '1979/06/22', 1, 12.99, 10, 1, 1);
 
 insert into status_entrega (status_entrega) values ('Postado');
 
 insert into status_compra (status_compra) values ('Em análise');
 
-insert into pedidos (usuarios_id, data_pedido) values (1, '2018/06/12');
+insert into pedidos (usuarios_id, data_pedido, id_status_entrega, id_status_compra) values (3, '2018/06/12', 1, 1);
 
 
 insert into itens_pedido (pedidos_id, produto_id, quantidade, preco) values (1,1,1,'12,99');
