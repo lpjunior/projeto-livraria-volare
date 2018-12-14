@@ -1,6 +1,6 @@
     </main>
             <footer class="rodape container-fluid fontedoze">           
-                <section class="row rodape COLORE">
+                <section class="row rodape COLORE COLORETEXTO">
                     <div class="col-sm-4 col-md-3 col-lg-3  d-none d-sm-block paddingtop">
                         <p class="text-left"> Volare Livraria <br/> Todos os direitos reservados <br/> Copyrights 2018</p>
                     </div>
