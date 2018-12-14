@@ -47,7 +47,7 @@ if (isset($_SESSION['token_face']) || isset($_SESSION['user'])) {
                 <h2>Conectar com sua rede social</h2>
                 <div class="form-group">
                                 <div class="col-sm-offset-2 col-md-10">
-                                    <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
+                                    <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false" onlogin="checkLoginState();"></div>
                                 </div>
         </div>
     </div>
