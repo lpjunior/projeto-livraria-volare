@@ -1,5 +1,6 @@
 <?php
 $app->get('/carrinho', function ($request, $response, $args) {
+  require_once 'php/CRUDS/crud_carrinho.php';
 ?>
     <div class="container-fluid col-8 mt-4">
         <div class="row">
@@ -9,30 +10,35 @@ $app->get('/carrinho', function ($request, $response, $args) {
                     <thead>
                         <tr>
                         <th scope="col">Produto</th>
-                        <th scope="col">#</th>
+                        <th scope="col">Titulo</th>
                         <th scope="col">Quantidade</th>
                         <th scope="col">Preço</th>
                         <th scope="col">Subtotal</th>
                         </tr>
                     </thead>
+                    <?php
+                    $carrinho = listarCarrinho();
+                    foreach ($carrinho as $i) {
+                    ?>
                     <tbody>
                         <tr>
                             <td>
                                 <a href="https://placeholder.com"><img src="http://via.placeholder.com/150"></a>
                             </td>
                             <td>
-                                Nome do produto
+                              <?=$i['titulo']?>
                             </td>
                             <td>
                                 <button id="btnPlus" class="btn btn-light btn-sm">+</button>
-                                <input type="text" id="qtdProd" style="display:inline" maxlength="2" class="text-center form-control col-2" value="1">
+                                <input type="text" id="qtdProd" style="display:inline" maxlength="2" class="text-center form-control col-3" value="<?=$i['quantidade']?>">
                                 <button id="btnMenus" class="btn btn-light btn-sm">-</button>
                             </td>
-                            <td>R$ <span id="idpreco">100,00</span></td>
+                            <td>R$ <span id="idpreco"><?=$i['preco']?></span></td>
                             <td><!--fazer um js-->R$00,00</td>
                         </tr>
                         <tr>
                     </tbody>
+                  <?php } ?>
                 </table>
             </div>
             <div class="col-4">

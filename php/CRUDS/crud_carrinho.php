@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (!isset($_SESSION)) {
+	session_start();
+}
 require_once 'conexao.php';
 # Inserir nos produtos reservados
 function inserirCarrinho($user_id, $id, $quant){
@@ -55,7 +57,7 @@ function updateAlt($qtd, $id, $quant_total){
 }
 function listarCarrinho(){
   $conexao = getConnection();
-  $sql = "SELECT usu.nome, prod.titulo, itres.quantidade from usuarios usu
+  $sql = "SELECT usu.nome, prod.titulo, itres.quantidade, prod.preco from usuarios usu
   inner join itens_reservados itres on itres.usuarios_id = usu.id
   inner join produto prod on prod.id = itres.produto_id;";
   $resultado = mysqli_query($conexao, $sql);
@@ -64,6 +66,7 @@ function listarCarrinho(){
 		while ($linha = mysqli_fetch_assoc($resultado)){
 			$arr[] = $linha;
 		}
+		return $arr;
 	} else {
 		return "Falha ao listar o carrinho";
 	}

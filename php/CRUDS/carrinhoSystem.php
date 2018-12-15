@@ -38,7 +38,10 @@ if(isset($_GET['acao'])) {
               serviceUpdateAdd($quant, $id);
             }
         }
-        header("Location: testeCarrinho.php");
+        if (isset($_POST['URL'])) {
+          $rota = $_POST['URL'];
+        header("Location: ../../$rota");
+      }
         die();
     }
     # Remove o produto

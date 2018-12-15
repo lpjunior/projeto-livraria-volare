@@ -1,7 +1,6 @@
 <?php
 require_once 'php/CRUDS/serviceBook.php';
-$app->get('/home', function ($request, $response, $args) {
-?>
+$app->get('/home', function ($request, $response, $args) {?>
             <!-- CAROUSEL -->
             <section class="row container-fluid mx-auto d-none d-sm-block">
                 <div class="col-md-10 col-lg-10 mx-auto">
@@ -53,7 +52,11 @@ $app->get('/home', function ($request, $response, $args) {
                                 <h4 class="fontedezesseis"><?=$i['autor']?></h4>
                                 <h3 class="fontevinte">R$ <?=$i['preco']?></h3>
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">   <i class="fa fa-shopping-cart"></i>   </button>
+                                  <form action="php/CRUDS/carrinhoSystem.php?acao=add&id=<?=$i['id']?>" method="POST">
+                                    <?php $rota = 'home'; ?>
+                                    <input name="URL" type="hidden" value="<?=$rota?>">
+                                    <button type="submit" class="btn btn-sm btn-outline-secondary">   <i class="fa fa-shopping-cart"></i>   </button>
+                                  </form>
                                 </div>
                             </div>
                         </div>

@@ -1,6 +1,7 @@
 <?php
 $app->get('/sobre', function ($request, $response, $args) {
 ?>
+<script type="text/javascript" src="js/sobre.js"></script>
 <section class="col-md-4 col-lg-4 centraliza text-center pt-4">
     <div class="has-animation animation-ltr" data-delay="10">
       <p class="bigger">Sobre a Volare </p>
