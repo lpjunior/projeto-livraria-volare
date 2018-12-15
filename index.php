@@ -61,6 +61,4 @@ $app->get('/home', function ($request, $response, $args) {
                       <?php } ?>
                     </div>  <!-- FIM DA DIV QUE JUNTA OS CARDS -->
                 </section>
-<?php
-});
- ?>
+<?php }); ?>

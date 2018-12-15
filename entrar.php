@@ -1,5 +1,4 @@
 <?php
-require_once 'requires/header.php';
   $app->get('/entrar', function ($request, $response, $args) {
 if (isset($_SESSION['token_face']) || isset($_SESSION['user'])) {
   echo "<script>window.location.assign('index.php')</script>";

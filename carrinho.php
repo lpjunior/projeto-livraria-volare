@@ -1,4 +1,6 @@
-<?php require_once("header.php"); ?>
+<?php
+$app->get('/carrinho', function ($request, $response, $args) {
+?>
     <div class="container-fluid col-8 mt-4">
         <div class="row">
             <div class="col-8">
@@ -66,7 +68,7 @@
             </div>
         </div>
     </div>
-<?php require_once("footer.php"); ?>
+<?php }); ?>
 <script>
 
     $(function(){

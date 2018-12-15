@@ -10,19 +10,16 @@ insert into perfil (perfil) values (1);
 insert into login (datahora) values ('2018/12/06');
 
 
-insert into usuarios (nome, sobrenome, email, cpf, datanascimento, ativo, senha, perfil_id, genero_id, login_id)
-values ('Thiago', 'Chaves', 'tchaves34@gmail.com', '123456789-00', '2018/02/17', 1, md5(12345678), 2, 1, 1);
+insert into usuarios (nome, sobrenome, email, cpf, datanascimento, ativo, senha, perfil_id, genero_id)
+values ('Thiago', 'Chaves', 'tchaves34@gmail.com', '123456789-00', '2018/02/17', 1, md5(12345678), 2, 1);
 
 
 insert into endereco (cep, endereco, numero, complemento, bairro, estado, cidade, usuarios_id, TipoEndereco_id)
 values ('25715-000', 'R Sem Nome', 1234, 'Casa', 'Jardim Catarina', 'Rio de Janeiro', 'São Gonçalo', 1, 1);
 
-
-insert into tipotelefone(tipo, Telefone_id) values ('Celular', 1);
-
-
 insert into telefone (numero, usuarios_id) values ('(21) 9 7958-6294', 1);
 
+insert into tipotelefone(tipo, Telefone_id) values ('Celular', 1);
 
 insert into tipodecapa (tipodecapa) values ('Dura');
 
@@ -35,18 +32,21 @@ insert into idioma (idioma) values ('POR');
 
 insert into subcategorias (assunto) values ('Ufologia');
 
+insert into fornecedores (nome, razao_social, cnpj, inscricao_estadual, endereco, telefone, email, forma_pagamento)
+values ('Fornecedor1', 'xxxxxxx', '111111111', '1111111111', 'endereço do fornecedor', '9782302024618', 'fornecedor@gmail.com', 'dinheiro')
 
-insert into produto (Categoria_id, titulo, autor, editora, isbn, numeropaginas, sinopse, peso, datapublicacao, fornecedor, preco, quantidade, subcategorias_id, TipoDeCapa_id)
+
+insert into produto (Categoria_id, titulo, autor, editora, isbn, numeropaginas, sinopse, peso, datapublicacao, fornecedores_id, preco, quantidade, subcategorias_id, TipoDeCapa_id)
 values (1, 'Alien', 'Alan Dean Foster', 'Warner Books', '9782302024618', 271, 'A princípio, mais uma missão como tantas do rebocador Nostromo: abastecer a terra com minério recolhido do espaço exterior. 
 Em sua tripulação, formada por sete competentes profissionais, apenas um novato: o oficial de ciências, designado de última hora para compor aquela expedição.
 No entanto, o que eles não sabiam era que o Nostromo estava programado para cumprir uma rota diferente, um curso que os levaria a receber um oitavo passageiro, que, com o intuito de se reproduzir, espalharia o asco e o pavor.',
-500.0, '1979/06/22', 'Fornecedor_1', 12.99, 10, 1, 1);
+500.0, '1979/06/22', 1, 12.99, 10, 1, 1);
 
 insert into status_entrega (status_entrega) values ('Postado');
 
 insert into status_compra (status_compra) values ('Em análise');
 
-insert into pedidos (usuarios_id, data_pedido) values (1, '2018/06/12');
+insert into pedidos (usuarios_id, data_pedido, id_status_entrega, id_status_compra) values (3, '2018/06/12', 1, 1);
 
 
 insert into itens_pedido (pedidos_id, produto_id, quantidade, preco) values (1,1,1,'12,99');
@@ -77,7 +77,6 @@ per.perfil,
 ge.genero,
 tel.numero as numero_tel,
 tipotel.tipo as tipo_telefone,
-logs.datahora as ultimo_login,
 ender.endereco, 
 ender.numero, 
 ender.complemento, 
@@ -93,7 +92,6 @@ inner join genero ge on ge.id = usu.genero_id
 inner join perfil per on per.id = usu.perfil_id
 left join telefone tel on tel.usuarios_id = usu.id
 left join tipotelefone tipotel on tipotel.telefone_id = tel.id
-left join login logs  on logs.id = usu.login_id
 left join endereco ender on ender.usuarios_id = usu.id
 left join tipoendereco tipoend	on tipoend.id = ender.tipoendereco_id
 left join interesses inte on inte.usuarios_id = usu.id
@@ -113,7 +111,7 @@ prod.numeropaginas as numero_paginas,
 prod.sinopse, 
 prod.peso, 
 prod.datapublicacao as data_publicacao, 
-prod.fornecedor, 
+forn.nome as fornecedor, 
 tcap.tipodecapa as tipo_capa,
 prod.preco, 
 prod.quantidade,
@@ -122,9 +120,10 @@ subc.assunto
 
 from produto prod
 
-inner join categoria cat on cat.id = prod.categoria_id
-inner join subcategorias subc on subc.id = prod.subcategorias_id
-inner join tipodecapa tcap on tcap.id = prod.tipodecapa_id;
+join categoria cat on cat.id = prod.categoria_id
+join subcategorias subc on subc.id = prod.subcategorias_id
+join tipodecapa tcap on tcap.id = prod.tipodecapa_id
+join fornecedores forn on prod.fornecedores_id = forn.id;
 
 
 
@@ -175,9 +174,15 @@ preco
 
 from produto
 
-where titulo like '%n%' or autor like '%n%' or editora like '%n%' or ano = '%79'
+where titulo like '%n%' or autor like '%n%' or editora like '%n%' or anopublicacao = '%79'
 order by datapublicacao asc;
 
+--sql de produtos--
+select p.isbn, p.editora, i.idioma, p.dimensoes, t.tipodecapa, p.anopublicacao, p.numeropaginas
+from produto p
+join Produto_has_Idioma p1 on p.id = p1.Produto_id
+join idioma i on i.id = p1.Idioma_id
+join tipodecapa t on p.TipoDeCapa_id = t.id
 
 
 

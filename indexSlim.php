@@ -9,7 +9,7 @@ require_once 'index.php';
 ## Página de Login
 require_once 'entrar.php';
 ## Fale Conosco
-require_once 'faleConosco.php';
+require_once 'faleconosco.php';
 ## Cadastro de usuário
 require_once 'cadastrousuario.php';
 ## Página do usuário
@@ -20,5 +20,6 @@ require_once 'vitrine.php';
 require_once 'sobre.php';
 ## carrinho
 require_once 'carrinho.php';
+## FOOTER
 require_once "requires/footer.php";
 $app->run();

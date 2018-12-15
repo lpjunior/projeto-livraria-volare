@@ -1,7 +1,6 @@
-<?php require_once("header.php"); ?>
-
-<!------ tags inclusas  ---------->
-
+<?php
+$app->get('/faleConosco', function ($request, $response, $args) {
+?>
 <!-- CONTACT SECTION -->
 <section id="contact" class="parallax-section">
      <div class="container col-md-6 col-lg-6">
@@ -10,7 +9,7 @@
                <div class="col-md-7 col-sm-10">
                     <!-- FROM DO CONTATO -->
                     <h1 class="fontevinteecinco">&nbsp;&nbsp;&nbsp;&nbsp;Fale conosco</h1>
-                    
+
                         <form id="contact-form" action="mail.php" method="get">
                               <div class="col-md-6 col-sm-6">
                                    <input type="text" class="form-control" name="name" placeholder="Name" required="">
@@ -27,7 +26,7 @@
                                 </div>
                             </div>
                         </form>
-                    
+
                </div>
 
                <div class="col-md-5 col-sm-8">
@@ -37,7 +36,7 @@
                               <h2 class="fontevinteecinco">Informações de Contato</h2><br/>
                               <p>Horário de atendimento, das 8:30 às 18:00 horas de segunda a sexta-feira, exceto feriados.</p>
                          </div>
-                         
+
                          <p><i class="fas fa-map-marker-alt"></i> endereço xxxx xxxx</p>
                          <p><i class="fas fa-envelope-square"></i> <a href="mailto:livrariavolare@mail.com">livrariavolare@mail.com</a></p>
                          <p><i class="fas fa-phone-square"></i> (000) 0000-0000</p>
@@ -47,15 +46,4 @@
           </div>
      </div>
 </section>
-
-            
-
-
-
-
-<?php require_once("footer.php"); ?>
-                    
-                    
-
-
-
+<?php }); ?>
