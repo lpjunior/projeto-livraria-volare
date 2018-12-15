@@ -43,7 +43,9 @@ if (isset($_SESSION['token_face']) || isset($_SESSION['user'])) {
                                     <input type="text" class="form-control" id="iCPF" placeholder="Digite o cpf" name="txtCPF" class="form-control cpf" required>
                                 <br/>
                                 </div>
-
+                                <div class="col-sm-offset-2 col-md-10">
+                                    <button type="submit" class="btn COLORE " name="btn-enviar" onclick="return validarSenha()">Entrar</button>
+                                </div>
                 <h2>Conectar com sua rede social</h2>
                 <div class="form-group">
                                 <div class="col-sm-offset-2 col-md-10">
