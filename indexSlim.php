@@ -20,6 +20,8 @@ require_once 'vitrine.php';
 require_once 'sobre.php';
 ## carrinho
 require_once 'carrinho.php';
+## Página de erro
+require_once 'error.php';
 ## FOOTER
 require_once "requires/footer.php";
 $app->run();
