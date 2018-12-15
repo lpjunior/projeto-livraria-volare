@@ -48,11 +48,7 @@ $app->get('/produto', function ($request, $response, $args) {
                     <h4 class="fontedezesseis">Número de Páginas: <?=$i['numero_paginas']?></h4>
                     </div>
                 </section>
-              <?php } } else {
-                header('location: error');
-              } } else {
-                header('location: error');
-              } ?>
+              <?php } } }  ?>
                 <!-- COMEÇO DOS CARDS-->
                 <section class="d-none d-sm-block">
                     <h4 class="fontedezoito text-center mt-4 bg-light opacidade">Clientes que compraram este livro também aprovam:</h4><br/>
