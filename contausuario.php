@@ -1,10 +1,13 @@
 <?php
 $app->get('/user', function ($request, $response, $args) {
 ?>
-    <h3> Olá, [Nome do Usuário]</h3> <br>
-    <div class="container-fluid row col-md-10 col centraliza">
+    
+    <div class="container-fluid col-md-10 col centraliza">
+    <div class="col-md-12">
+        <h3> Olá, [Nome do Usuário]</h3> <br>
+        </div>
         <div class="row">
-            <div class="col-md-5 ">
+            <div class="col-md-5">
             <!-- Nav pills -->
                 <ul class="nav flex-column nav-pills" role="tablist">
                     <li class="nav-item">
@@ -31,7 +34,7 @@ $app->get('/user', function ($request, $response, $args) {
                 </ul>
                 </div>
                 <!-- Tab panes -->
-                <div class="tab-content col-md-8">
+                <div class="tab-content col-md-6">
                     <div id="meusdados" class="tab-pane active"><br>
                     <h3>Meus dados</h3>
                     <fieldset><!-- *************início do formulário ********************** -->
@@ -159,7 +162,7 @@ $app->get('/user', function ($request, $response, $args) {
                                 <br/>
                                 <div class="row">
                                 <div class="col">
-                                        <button type="submit" class="btn COLORE" name="btn-enviar" >Criar sua conta</button><!--value??-->
+                                        <button type="submit" class="btn COLORE" name="btn-enviar" >Salvar Alterações</button><!--value??-->
                                     </div>
                                 </div>
                             </div>
