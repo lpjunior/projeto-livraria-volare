@@ -1,15 +1,16 @@
 <?php
-$app->get('/produto/{produto}', function ($request, $response, $args) {
+$app->get('/produto', function ($request, $response, $args) {
 ?>
         <div class="container-fluid col-md-8 col-xs-12 centraliza">
             <div class="row">
                 <section class="col-xs-12 col-sm-4 col-md-4 col-lg-4 mt-4">
                     <!--imagem do livro-->
                     <?php
-                    $livro = serviceDetalhesLivro($args['produto']);
+                    if (isset($_GET['id'])) {
+                    $livro = serviceDetalhesLivro($_GET['id']);
                     if (is_array($livro)) {
                     foreach ($livro as $i) { ?>
-                    <img class="d-block w-100" src="../img/placeholder2.jpg" alt="capa do livro">
+                    <img class="d-block w-100" src="img/placeholder2.jpg" alt="capa do livro">
                     <h4 class="text-center fontedezesseis paddingtexto"> Avalie este livro:</h4>
                     <!-- RATING STARS -->
                     <div class="rating fontevinteecinco">
@@ -48,8 +49,10 @@ $app->get('/produto/{produto}', function ($request, $response, $args) {
                     </div>
                 </section>
               <?php } } else {
-                header('location: produto/error');
-              }?>
+                header('location: error');
+              } } else {
+                header('location: error');
+              } ?>
                 <!-- COMEÇO DOS CARDS-->
                 <section class="d-none d-sm-block">
                     <h4 class="fontedezoito text-center mt-4 bg-light opacidade">Clientes que compraram este livro também aprovam:</h4><br/>

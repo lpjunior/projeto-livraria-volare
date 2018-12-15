@@ -38,7 +38,7 @@ $app->map(['GET', 'POST'], '/busca', function ($request, $response, $args) {?>
                     <div class="card mb-4 shadow-sm">
                      <img class="card-img-top" src="img/placeholder1.jpg" alt="Card image cap">
                      <div class="card-header">
-                         <h4 class="my-0 font-weight-normal fontedezoito"><a href="produto.php?id=<?=$i['id']?>"><?=$i['titulo']?></a></h4>
+                         <h4 class="my-0 font-weight-normal fontedezoito"><a href="produto?id=<?=$i['id']?>"><?=$i['titulo']?></a></h4>
                      </div>
                      <div class="card-body">
                          <h4 class="fontedezesseis"><?=$i['autor']?></h4>
