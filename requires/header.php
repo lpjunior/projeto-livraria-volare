@@ -74,7 +74,7 @@ require_once 'php/CRUDS/serviceBook.php';
             </div>
             </div> <!-- FIM DA DIV COLLAPSE HAMBURGER -->
         <!-- CAMPO DE BUSCA -->
-            <form class="form-inline mt-2 mt-md-0 col-md-4 col-lg-4 centraliza" action="vitrine.php" method="POST">
+            <form class="form-inline mt-2 mt-md-0 col-md-4 col-lg-4 centraliza" action="busca" method="POST">
                 <div class="input-group">
                     <span class="input-group-append">
 
