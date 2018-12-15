@@ -2,4 +2,4 @@ RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule . indexSlim.php [L]
-DirectoryIndex home
+Redirect /index.php https://livrariavolare.herokuapp.com/home
