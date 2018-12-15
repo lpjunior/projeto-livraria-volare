@@ -44,7 +44,7 @@ if (isset($_SESSION['token_face']) || isset($_SESSION['user'])) {
                                 <br/>
                                 </div>
                                 <div class="col-sm-offset-2 col-md-10">
-                                    <button type="submit" class="btn COLORE " name="btn-enviar" onclick="">Cadastrar</button>
+                                    <button type="submit" class="btn COLORE " name="" onclick="">Cadastrar</button>
                                 </div>
                 <h2>Conectar com sua rede social</h2>
                 <div class="form-group">
