@@ -46,7 +46,15 @@ $app->get('/produto', function ($request, $response, $args) {
                     <h4 class="fontedezesseis">Tipo de capa: <?=$i['tipo_capa']?></h4>
                     <h4 class="fontedezesseis">Ano de publicação: <?='n tem'?></h4>
                     <h4 class="fontedezesseis">Número de Páginas: <?=$i['numero_paginas']?></h4>
-                    </div>
+                    <!-- INICIO FORMULARIO BOTAO PAGSEGURO -->
+                    <form action="https://pagseguro.uol.com.br/checkout/v2/payment.html" method="post">
+                    <!-- NÃO EDITE OS COMANDOS DAS LINHAS ABAIXO -->
+                    <input type="hidden" name="code" value="<?=$i['valuePagseguro']?>" />
+                    <input type="hidden" name="iot" value="button" />
+                    <input type="image" src="https://stc.pagseguro.uol.com.br/public/img/botoes/pagamentos/209x48-comprar-assina.gif" name="submit" alt="Pague com PagSeguro - é rápido, grátis e seguro!" />
+                    </form>
+                    <!-- FINAL FORMULARIO BOTAO PAGSEGURO -->
+                  </div>
                 </section>
               <?php } } }  ?>
                 <!-- COMEÇO DOS CARDS-->
