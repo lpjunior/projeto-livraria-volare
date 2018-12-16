@@ -40,10 +40,12 @@ if(isset($_GET['acao'])) {
               serviceUpdateAdd($quant, $id);
             }
         }
+        ## Pegar a quantidade total
         $quant_total = $_SESSION['carrinho'][$id];
+        ## Listar todos os livros que estão no carrinho
         $_SESSION['produto'][$id] = serviceDetalhesLivroCarrinho($id);
         $_SESSION['produto'][$id]['qtd'] = $quant_total;
-        header("Location: ../../carrinho");
+        header("Location: ../../home");
         die();
     }
     # Remove o produto
@@ -61,7 +63,7 @@ if(isset($_GET['acao'])) {
             serviceDelete($quant_total, $id);
           }
         }
-        header("Location: testeCarrinho.php");
+        header("Location: ../../carrinho");
         die();
     }
     # Altera quantidade
@@ -81,6 +83,7 @@ if(isset($_GET['acao'])) {
             }
         }
         $quant_total = $_SESSION['carrinho'][$id];
+        ## Listar todos os livros que estão no carrinho
         $_SESSION['produto'][$id] = serviceDetalhesLivroCarrinho($id);
         $_SESSION['produto'][$id]['qtd'] = $quant_total;
         header("Location: ../../carrinho");

@@ -3,8 +3,8 @@ session_start();
 require_once 'serviceBook.php';
 	if (isset($_POST['livro-excluir'])) {
 			if ($livro = serviceExcluir($_POST['id'])){
-				echo "funcionou";
+				echo $livro;
 			} else {
-				echo 'não funcionou';
+				echo $livro;
 			}
 }

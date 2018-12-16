@@ -44,7 +44,9 @@ $app->map(['GET', 'POST'], '/busca', function ($request, $response, $args) {?>
                          <h4 class="fontedezesseis"><?=$i['autor']?></h4>
                          <h3 class="fontevinte">R$ <?=$i['preco']?></h3>
                          <div class="btn-group">
-                             <button type="button" class="btn btn-sm btn-outline-secondary">&nbsp;&nbsp;&nbsp;<i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;&nbsp;</button>
+                           <form action="php/CRUDS/carrinhoSystem.php?acao=add&id=<?=$i['id']?>" method="POST">
+                             <button type="submit" class="btn btn-sm btn-outline-secondary">&nbsp;&nbsp;&nbsp;<i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;&nbsp;</button>
+                           </form>
                          </div>
                      </div>
                    </div>

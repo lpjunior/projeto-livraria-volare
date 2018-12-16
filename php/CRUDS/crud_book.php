@@ -82,7 +82,6 @@ function excluirLivro($id){
 			return "Falha ao exibir resultados";
 		}
 	}
-	pesquisarLivro('a', 'titulo');
 	## BUSCA
 	function pesquisarLivro($n, $value){
 		$conexao = getConnection();
