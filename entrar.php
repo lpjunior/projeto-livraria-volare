@@ -1,7 +1,7 @@
 <?php
   $app->get('/entrar', function ($request, $response, $args) {
 if (isset($_SESSION['token_face']) || isset($_SESSION['user'])) {
-  echo "<script>window.location.assign('index.php')</script>";
+  echo "<script>window.location.assign('home')</script>";
 } else {
  ?>
     <div class="container-fluid col-md-8 centraliza mt-4">

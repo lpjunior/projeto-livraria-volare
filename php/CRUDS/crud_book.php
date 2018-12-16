@@ -119,7 +119,7 @@ function excluirLivro($id){
 		}
 	}
 	## Detalhes do livro
-	function detalhesLivro($id, $qtd){
+	function detalhesLivro($id){
 		$conexao = getConnection();
 		$sql = "SELECT
 		prod.titulo,
