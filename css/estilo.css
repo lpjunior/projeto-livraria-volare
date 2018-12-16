@@ -5,7 +5,10 @@
 }
 
 .COLORE1{
-    background-color: rgb(248,251,255);   
+    background-color: rgb(181, 217, 254);   
+}
+.COLORE1:hover{
+    background-color: rgb(131, 186, 243);
 }
 
 .COLORETEXTO{
@@ -36,7 +39,13 @@
 /********** bordas cor fixa*******/
 .bordasb {
     border: 1px solid lightgray;
-    border-radius: 6px;
+    border-radius: 6px !important;
+}
+
+.bordert{
+    border-top: 3px solid rgba(181, 217, 254, 0.6);
+    padding-top: 25px;
+    margin-bottom: 30px;
 }
 
 .opacidade{
@@ -109,6 +118,10 @@ html {
 
 .noradius{
     border-radius: 0px;
+}
+
+.displayblock{
+    display: block;
 }
 
 /********************************************
