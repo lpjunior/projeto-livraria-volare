@@ -25,7 +25,7 @@ function registrarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $gen
 	$sql = "INSERT INTO endereco VALUES (NULL, '$cep', '$end', '$num', '$complemento', '$bairro', '$estado', '$cidade', $id, 1)";
 	$resultado = mysqli_query($conexao, $sql);
 	if (mysqli_affected_rows($conexao) >= 1) {
-		return header('location: ../../login.php');
+		return header('location: ../../entrar');
 	} else {
 		return "Falha ao registrar";
 	}
@@ -37,9 +37,28 @@ function logarUsuario($email, $senha){
 	$senha = mysqli_escape_string($conexao, $senha);
 	$sql = "SELECT nome, email, id FROM usuarios where email = '$email' and senha = md5('$senha')";
 	$resultado = mysqli_query($conexao, $sql);
+	## Caso tenha achado algum resultado, pegue os dados e guarde na sessão
 	if (mysqli_affected_rows($conexao) >= 1) {
 		$_SESSION['user'] = mysqli_fetch_assoc($resultado);
 		$_SESSION['user_id'] = $_SESSION['user']['id'];
+		## Caso tenha algum produto no carrinho quando o usuário logar, jogue para o banco de dados
+		if (isset($_SESSION['produto'])){
+			$carrinho = $_SESSION['produto'];
+			$idUsuario = $_SESSION['user_id'];
+			## Foreach para jogar todos os produtos para o banco de dados
+			foreach ($carrinho as $b => $i) {
+				$qtd = $i['qtd'];
+				$sql = "INSERT INTO itens_reservados VALUES ($idUsuario, $b, $qtd)";
+				$resultado = mysqli_query($conexao, $sql);
+				## Se não conseguir dar insert, o produto já está no banco. Realizar o update na tabela do carrinho
+				if (mysqli_affected_rows($conexao) <= 1){
+					$sql = "UPDATE itens_reservados SET quantidade = quantidade + $qtd where produto_id = $b";
+					$resultado = mysqli_query($conexao, $sql);
+				}
+				$sql = "UPDATE produto set quantidade = quantidade - $qtd where id = $b";
+				$resultado = mysqli_query($conexao, $sql);
+			}
+		}
 		return true;
 	} else {
 		return "Falha ao logar";

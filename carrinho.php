@@ -17,8 +17,16 @@ $app->get('/carrinho', function ($request, $response, $args) {
                         </tr>
                     </thead>
                     <?php
-                    $carrinho = listarCarrinho();
-                    foreach ($carrinho as $i) {
+                    if (isset($_SESSION['user_id'])){
+                    $carrinho = listarCarrinho($_SESSION['user_id']);
+                  } elseif (isset($_SESSION['produto'])) {
+                    $carrinho = $_SESSION['produto'];
+                  }
+                  else {
+                    $carrinho = NULL;
+                  }
+                  if ($carrinho != NULL) {
+                    foreach ($carrinho as $b => $i) {
                     ?>
                     <tbody>
                         <tr>
@@ -26,19 +34,20 @@ $app->get('/carrinho', function ($request, $response, $args) {
                                 <a href="https://placeholder.com"><img src="http://via.placeholder.com/150"></a>
                             </td>
                             <td>
-                              <?=$i['titulo']?>
+
+                              <?=(isset($_SESSION['user_id']) ? $i['titulo'] : $i[0]['titulo'])?>
                             </td>
                             <td>
                                 <button id="btnPlus" class="btn btn-light btn-sm">+</button>
-                                <input type="text" id="qtdProd" style="display:inline" maxlength="2" class="text-center form-control col-3" value="<?=$i['quantidade']?>">
+                                <input type="text" id="qtdProd" style="display:inline" maxlength="2" class="text-center form-control col-2" value="<?=(isset($_SESSION['user_id']) ? $i['quantidade'] : $i['qtd'])?>">
                                 <button id="btnMenus" class="btn btn-light btn-sm">-</button>
                             </td>
-                            <td>R$ <span id="idpreco"><?=$i['preco']?></span></td>
+                            <td>R$ <span id="idpreco"><?=(isset($_SESSION['user_id']) ? $i['preco'] : $i[0]['preco'])?></span></td>
                             <td><!--fazer um js-->R$00,00</td>
                         </tr>
                         <tr>
                     </tbody>
-                  <?php } ?>
+                  <?php } } ?>
                 </table>
             </div>
             <div class="col-4">

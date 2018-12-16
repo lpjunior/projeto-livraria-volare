@@ -9,5 +9,5 @@ require_once 'serviceUsuario.php';
 		}
 	} else {
 		$_SESSION['erroSenha'] = 'Confirmação de senha diferente da senha original';
-		header('location: index.php');
+		header('location: home');
 	}

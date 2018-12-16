@@ -5,7 +5,7 @@ if (isset($_SESSION['user']) || isset($_SESSION['token_face'])) {
 	session_unset();
 	session_destroy();
 	echo "<script>FB.logout();</script>";
-	header('location: ../../index.php');
+	header('location: ../../home');
 } else {
-	header('location: ../../index.php');
+	header('location: ../../home');
 }

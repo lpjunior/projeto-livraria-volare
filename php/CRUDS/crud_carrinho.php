@@ -55,16 +55,31 @@ function updateAlt($qtd, $id, $quant_total){
 		return 'Falha ao alterar o número de itens do carrinho';
 	}
 }
-function listarCarrinho(){
+function listarCarrinho($id){
   $conexao = getConnection();
   $sql = "SELECT usu.nome, prod.titulo, itres.quantidade, prod.preco from usuarios usu
   inner join itens_reservados itres on itres.usuarios_id = usu.id
-  inner join produto prod on prod.id = itres.produto_id;";
+  inner join produto prod on prod.id = itres.produto_id
+	where itres.usuarios_id = $id";
   $resultado = mysqli_query($conexao, $sql);
 	$arr = NULL;
   if (mysqli_affected_rows($conexao) >= 1) {
 		while ($linha = mysqli_fetch_assoc($resultado)){
 			$arr[] = $linha;
+		}
+		return $arr;
+	} else {
+		return "Falha ao listar o carrinho";
+	}
+}
+function listarLivroCarrinho($id){
+	$conexao = getConnection();
+	$sql = "SELECT titulo, preco from produto WHERE id = $id";
+	$resultado = mysqli_query($conexao, $sql);
+	$arr = array();
+	if (mysqli_affected_rows($conexao) >= 1) {
+		while ($linha = mysqli_fetch_assoc($resultado)){
+			array_push($arr, $linha);
 		}
 		return $arr;
 	} else {

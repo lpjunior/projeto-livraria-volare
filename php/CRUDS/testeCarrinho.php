@@ -27,7 +27,7 @@
     				Título: <?=$i['titulo'];?><br>
     				Categoria: <?=$i['categoria'];?><br>
     				Autor: <?=$i['autor']?><br>
-    				<form action="carrinho.php?acao=add&id=<?=$i['id']?>" method="POST">
+    				<form action="carrinhoSystem.php?acao=add&id=<?=$i['id']?>" method="POST">
     				Quantidade: <input class="form-control"type="text" name="quantity">
     				<input class="btn mt-1" type="submit" name="enviar" value="Adicionar ao carrinho">
     				</form>
@@ -38,6 +38,7 @@
     <hr>
     <h1 class="text-center">Carrinho</h1>
     <?php
+    var_dump($_SESSION['produto']);
     		if (isset($_SESSION['carrinho'])) {
     			$cart = $_SESSION['carrinho'];
     			foreach ($livros as $b => $i) {
@@ -45,11 +46,11 @@
             ?>
     				Título: <?= $i['titulo'];?>
     				Quantidade: <?= $_SESSION['carrinho'][$i['id']]?>
-            <form method="POST" action="carrinho.php?acao=atu&id=<?=$i['id']?>">
+            <form method="POST" action="carrinhoSystem.php?acao=atu&id=<?=$i['id']?>">
             <input type="text" name="quantity" required>
             <input class='btn' type="submit" name="enviar" value="Editar quantidade">
             </form>
-    				<a href="carrinho.php?acao=del&id=<?=$i['id']?>">Tirar do carrinho</a><br>
+    				<a href="carrinhoSystem.php?acao=del&id=<?=$i['id']?>">Tirar do carrinho</a><br>
     		<?php } } } ?>
       </div>
     <!-- Optional JavaScript -->

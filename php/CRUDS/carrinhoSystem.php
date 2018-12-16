@@ -1,6 +1,7 @@
 <?php
 require_once 'conexao.php';
 require_once 'serviceCarrinho.php';
+require_once 'serviceBook.php';
 if(!isset($_SESSION)){
     session_start();
 }
@@ -18,6 +19,7 @@ if(isset($_GET['id'])){
     $id = intval($_GET['id']);
   # Array que joga pros itens reservados no banco
   $carrinho_info = array('id' => $id, 'qtd' => $quant);
+  ## Produto que vai para o carrinho
 }
 if(isset($_GET['acao'])) {
     # Adiciona o produto
@@ -28,7 +30,7 @@ if(isset($_GET['acao'])) {
             # Se o usuário estiver logado, mandar pro banco o item reservado.
             if (isset($_SESSION['user_id'])){
             $user_id = $_SESSION['user_id'];
-            serviceInserir($user_id, $id, $quant);
+            serviceInserirCarrinho($user_id, $id, $quant);
             }
         } else {
           # Caso o produto esteja no carrinho, aumente a quantidade dele.
@@ -38,10 +40,10 @@ if(isset($_GET['acao'])) {
               serviceUpdateAdd($quant, $id);
             }
         }
-        if (isset($_POST['URL'])) {
-          $rota = $_POST['URL'];
-        header("Location: ../../$rota");
-      }
+        $quant_total = $_SESSION['carrinho'][$id];
+        $_SESSION['produto'][$id] = serviceDetalhesLivroCarrinho($id);
+        $_SESSION['produto'][$id]['qtd'] = $quant_total;
+        header("Location: ../../carrinho");
         die();
     }
     # Remove o produto
@@ -53,6 +55,7 @@ if(isset($_GET['acao'])) {
           # Retire o item do carrinho
             unset($_SESSION['carrinho'][$id]);
             # Se o usuário estiver logado, retire dos itens reservados, e aumente o estoque.
+            unset($_SESSION['produto'][$id]);
             if (isset($_SESSION['user_id'])){
               # Pegar a quantidade total do carrinho
             serviceDelete($quant_total, $id);
@@ -77,7 +80,10 @@ if(isset($_GET['acao'])) {
                     unset($_SESSION['carrinho'][$id]);
             }
         }
-        header("Location: testeCarrinho.php");
+        $quant_total = $_SESSION['carrinho'][$id];
+        $_SESSION['produto'][$id] = serviceDetalhesLivroCarrinho($id);
+        $_SESSION['produto'][$id]['qtd'] = $quant_total;
+        header("Location: ../../carrinho");
         die();
     }
 }

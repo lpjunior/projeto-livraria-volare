@@ -120,7 +120,7 @@ function excluirLivro($id){
 		}
 	}
 	## Detalhes do livro
-	function detalhesLivro($id){
+	function detalhesLivro($id, $qtd){
 		$conexao = getConnection();
 		$sql = "SELECT
 		prod.titulo,
@@ -148,6 +148,7 @@ function excluirLivro($id){
 			$arr = array();
 			while ($linha = mysqli_fetch_assoc($resultado)){
 				array_push($arr, $linha);
+
 			}
 			return $arr;
 		} else {

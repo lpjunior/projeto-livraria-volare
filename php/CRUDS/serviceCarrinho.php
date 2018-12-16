@@ -1,7 +1,7 @@
 <?php
 require_once 'crud_carrinho.php';
 # Inserir no carrinho
-  function serviceInserir($user_id, $id, $quant){
+  function serviceInserirCarrinho($user_id, $id, $quant){
     if ($carrinho = inserirCarrinho($user_id, $id, $quant)){
       return $carrinho;
     }
@@ -25,7 +25,11 @@ require_once 'crud_carrinho.php';
   }
   function serviceListarCarrinho($id){
     if ($carrinho = listarCarrinho($id)) {
-      $_SESSION['lista_carrinho'] = $carrinho;
-      header('location: testeCarrinho.php');
+      return true;
+    }
+  }
+  function serviceDetalhesLivroCarrinho($id){
+    if ($carrinho = listarLivroCarrinho($id)) {
+      return $carrinho;
     }
   }
