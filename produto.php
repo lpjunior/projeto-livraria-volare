@@ -71,7 +71,7 @@ $app->get('/produto', function ($request, $response, $args) {
 
                             <img class="card-img-top" src="img/placeholder1.jpg" alt="Card image cap">
                             <div class="card-header">
-                                <h4 class="my-0 font-weight-normal fontedezoito"><?=$i['titulo']?></h4>
+                                <a href="produto?id=<?=$i['id']?>"><h4 class="my-0 font-weight-normal fontedezoito"><?=$i['titulo']?></h4></a>
                             </div>
                             <div class="card-body">
                                 <h4 class="fontedezesseis"><?=$i['autor']?></h4>
@@ -91,7 +91,6 @@ $app->get('/produto', function ($request, $response, $args) {
             <section class="container-fluid col-xs-12 col-sm-8 col-md-8 col-lg-8 centraliza mb-5 bordasb paddingtexto">
                 <h4><i class="far fa-comments"></i>&nbsp;Comentários:</h4>
                 <div class="row">
-
                 </div>
             </section> <!-- fim da section comentários -->
                       <?php } ?>
