@@ -10,6 +10,9 @@ function inserirLivro($categoria, $titulo, $autor, $editora, $isbn, $numeroPagin
 	$conexao = getConnection();
 	$sql = "INSERT INTO produto VALUES (NULL, '$categoria', '$titulo', '$autor', '$editora', '$isbn', '$numeroPaginas', '$sinopse', '$peso', '$data', '$fornecedor', '$preco', '$quantidade', '$imagem', $subcategorias, $capa)";
 	$resultado = mysqli_query($conexao, $sql);
+	$id = mysqli_insert_id($conexao);
+	$sql = "INSERT INTO Produto_has_Idioma VALUES ($id, 1)";
+	$resultado = mysqli_query($conexao, $sql);
 	if (mysqli_affected_rows($conexao) >= 1) {
 		return true;
 	} else {

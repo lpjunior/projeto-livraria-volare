@@ -53,8 +53,6 @@ $app->get('/home', function ($request, $response, $args) {?>
                                 <h3 class="fontevinte">R$ <?=$i['preco']?></h3>
                                 <div class="btn-group">
                                   <form action="php/CRUDS/carrinhoSystem.php?acao=add&id=<?=$i['id']?>" method="POST">
-                                    <?php $rota = 'home'; ?>
-                                    <input name="URL" type="hidden" value="<?=$rota?>">
                                     <button type="submit" class="btn btn-sm btn-outline-secondary">   <i class="fa fa-shopping-cart"></i>   </button>
                                   </form>
                                 </div>
