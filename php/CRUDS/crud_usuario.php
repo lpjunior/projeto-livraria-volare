@@ -188,3 +188,15 @@ function registrarAdmin($nome, $sobrenome, $email, $cpf, $datanascimento, $gener
 		return "Falha ao exibir informações";
 	}
 }
+function checarCPF($cpf){
+	$conexao = getConnection();
+	$cpf = mysqli_escape_string($conexao, $cpf);
+	$cpf = htmlspecialchars($cpf);
+	$sql = "SELECT cpf from usuarios where cpf = $cpf";
+	$resultado = mysqli_query($conexao, $sql);
+	if (mysqli_affected_rows($conexao) >= 1) {
+		return 1;
+	} else {
+		return "não_cadastrado";
+	}
+}

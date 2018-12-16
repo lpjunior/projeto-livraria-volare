@@ -40,11 +40,26 @@ if (isset($_SESSION['token_face']) || isset($_SESSION['user'])) {
               <div class="form-group">
                                 <label class="control-label col-sm-2 font-weight-bold" for="iCPF">CPF:</label>
                                 <div class="col-md-10">
-                                    <input type="text" class="form-control" id="iCPF" placeholder="Digite o cpf" name="txtCPF" class="form-control cpf" required>
+                                  <form action="php/CRUDS/checarCPF.php" method="POST">
+                                    <input type="text" class="form-control cpf" id="iCPF" placeholder="Digite o cpf" name="txtCPF" class="form-control cpf" required>
+                                    <?php
+                                    if (isset($_SESSION['cpf'])){
+                                      if (!$_SESSION['cpf'] == "não_cadastrado") {
+                                        echo "<script>alert('Seu CPF já está cadastrado.')</script>";
+                                        unset($_SESSION['cpf']);
+                                      } else {
+                                        echo "<script>alert('Seu CPF não está cadastrado.')</script>";
+                                        echo "<script>window.location.assign('cadastro')</script>";
+                                        unset($_SESSION['cpf']);
+                                      }
+                                    }
+                                    ?>
                                 <br/>
                                 </div>
                                 <div class="col-sm-offset-2 col-md-10">
-                                    <button type="submit" class="btn COLORE " name="" onclick="">Cadastrar</button>
+
+                                    <button type="submit" class="btn COLORE" name="btn_cadastrar_cpf">Cadastrar</button>
+                                  </form>
                                 </div>
                 <h2>Conectar com sua rede social</h2>
                 <div class="form-group">

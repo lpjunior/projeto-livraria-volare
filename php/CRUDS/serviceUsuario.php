@@ -24,3 +24,8 @@ require_once 'crud_usuario.php';
 	function serviceDeslogar(){
 		deslogarUsuario();
 	}
+	function serviceChecarCpf($cpf){
+		if ($user = checarCPF($cpf)){
+			return $user;
+		}
+	}
