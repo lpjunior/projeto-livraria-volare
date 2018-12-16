@@ -22,6 +22,8 @@ require_once 'sobre.php';
 require_once 'carrinho.php';
 ## Página de erro
 require_once 'error.php';
+## CHECKOUT
+require_once 'checkout.php';
 ## FOOTER
 require_once "requires/footer.php";
 $app->run();
