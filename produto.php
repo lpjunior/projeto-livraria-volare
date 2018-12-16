@@ -34,7 +34,7 @@ $app->get('/produto', function ($request, $response, $args) {
                         </div>
                         <!-- /frete -->
                         <!-- BOTÃO -->
-                        <a class="btn COLORE btn-outline-secondary" href="#">Adicione ao carrinho</a>
+                        <a class="btn COLORE btn-outline-secondary" href="php/CRUDS/carrinhoSystem.php?acao=add&id=<?=$i['id']?>">Adicione ao carrinho</a>
                     </div>
                     <div class="col-md-12 mt-4">
                     <hr/>
@@ -56,7 +56,7 @@ $app->get('/produto', function ($request, $response, $args) {
                     < FINAL FORMULARIO BOTAO PAGSEGURO -->
                   </div>
                 </section>
-              <?php } } }  ?>
+              <?php } } ?>
                 <!-- COMEÇO DOS CARDS-->
                 <section class="d-none d-sm-block">
                     <h4 class="fontedezoito text-center mt-4 bg-light opacidade">Clientes que compraram este livro também aprovam:</h4><br/>
@@ -81,18 +81,21 @@ $app->get('/produto', function ($request, $response, $args) {
                                 </div>
                             </div>
                         </div> <!--fim da coluna 1-->
-                      <?php }?>
+                      <?php } ?>
                        </div> <!-- fim dos cards primeira linha-->
                 </section> <!-- fim da section dos cards -->
                 </div><!-- fim da row -->
             </div><!-- fim do container -->
             <!-- COMEÇO DA SECTION DE COMENTÁRIOS -->
+
             <section class="container-fluid col-xs-12 col-sm-8 col-md-8 col-lg-8 centraliza mb-5 bordasb paddingtexto">
                 <h4><i class="far fa-comments"></i>&nbsp;Comentários:</h4>
                 <div class="row">
 
                 </div>
             </section> <!-- fim da section comentários -->
+                      <?php } ?>
+                      <h1 class="text-center">Livro não encontrado</h1>
             <?php
             });
              ?>

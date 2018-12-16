@@ -122,6 +122,7 @@ function excluirLivro($id){
 	function detalhesLivro($id){
 		$conexao = getConnection();
 		$sql = "SELECT
+		prod.id,
 		prod.titulo,
 		prod.autor,
 		prod.editora,

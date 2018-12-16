@@ -45,7 +45,7 @@ if(isset($_GET['acao'])) {
         ## Listar todos os livros que estão no carrinho
         $_SESSION['produto'][$id] = serviceDetalhesLivroCarrinho($id);
         $_SESSION['produto'][$id]['qtd'] = $quant_total;
-        header("Location: ../../home");
+        header("Location: ../../carrinho");
         die();
     }
     # Remove o produto
