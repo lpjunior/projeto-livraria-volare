@@ -14,7 +14,8 @@
       var uid = response.authResponse.userID;
       // Token do usuário
       var token = response.authResponse.accessToken;
-      pegarValor(token, uid);
+      pegarValor(token);
+      window.location.assign('home');
       // Logged into your app and Facebook.
       testAPI();
     }

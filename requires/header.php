@@ -17,9 +17,9 @@ require_once 'php/CRUDS/serviceBook.php';
 </head>
 <body>
   <?php if (!isset($_SESSION['user'])){?>
+    <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/dadosFacebook.js"></script>
     <script src="js/facebook-sdk.js"></script>
-    <script src="js/jquery-3.3.1.min.js"></script>
   <?php }
   if ($_SERVER['REQUEST_URI'] == '/projeto-livraria-volare/produto/') {
     header('location: ../error');
