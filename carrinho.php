@@ -85,7 +85,7 @@ $app->get('/carrinho', function ($request, $response, $args) {
     </div>
 <?php }); ?>
 <script>
-    id(total)
+
     $(function(){
         $("#qtdProd").keyup(function() {
             $txtQtd = $("#qtdProd").val();
