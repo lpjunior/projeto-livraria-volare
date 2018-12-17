@@ -3,7 +3,7 @@ $app->map(['GET', 'POST'], '/busca', function ($request, $response, $args) {?>
   <section>
       <div class="container-fluid col-md-10 centraliza mt-4 margintop">
           <div class="row">
-              <div class="col-sm-4 col-md-2 col-lg-2 bordasc">
+              <div class="d-none d-sm-block col-sm-2 col-md-2 col-lg-2 bordasc">
                   <h1 class="fontedezoito"><i>Categorias</i></h1>
                   <hr/>
                   <a href="#" class="linkstyle fontedezesseis"><!-- chamar todas as chategorias do banco e o link vai pra vitrine exibindo todos os livros da categoria x--></a>
@@ -11,35 +11,35 @@ $app->map(['GET', 'POST'], '/busca', function ($request, $response, $args) {?>
                   <h4 class="fontedezoito"><i>Adicionar filtro</i></h4>
                   <form>
                     <!-- busca anterior + idioma -->
-                      <label for="formControlRange"><h4 class="fontedezesseis"><b>idioma:</b></h4></label>
-                      <div class="custom-control custom-checkbox custom-control-inline">
+                      <label for="formControlRange"><h4 class="displayblock fontedezesseis"><b>idioma:</b></h4></label>
+                      <div class="custom-control custom-checkbox custom-control-inline displayblock">
                         <input type="checkbox" class="custom-control-input" id="">
                         <label class="custom-control-label" for="customCheck1">Português</label>
                       </div>
-                      <div class="custom-control custom-checkbox custom-control-inline">
+                      <div class="custom-control custom-checkbox custom-control-inline displayblock">
                         <input type="checkbox" class="custom-control-input" id="">
                         <label class="custom-control-label" for="customCheck1">Espanhol</label>
                       </div>
-                      <div class="custom-control custom-checkbox custom-control-inline">
+                      <div class="custom-control custom-checkbox custom-control-inline displayblock">
                         <input type="checkbox" class="custom-control-input" id="">
                         <label class="custom-control-label" for="customCheck1">Inglês</label>
                       </div>
                       <hr/>
                       <!-- busca anterior + faixa preço -->
-                      <label for="formControlRange"><h4 class="fontedezesseis"><b>Preço:</b></h4></label>
-                      <div class="custom-control custom-checkbox custom-control-inline">
+                      <label for="formControlRange"><h4 class="fontedezesseis displayblock"><b>Preço:</b></h4></label>
+                      <div class="custom-control custom-checkbox custom-control-inline displayblock">
                         <input type="checkbox" class="custom-control-input" id="">
                         <label class="custom-control-label" for="customCheck1">Até R$ 20</label>
                       </div>
-                      <div class="custom-control custom-checkbox custom-control-inline">
+                      <div class="custom-control custom-checkbox custom-control-inline displayblock">
                         <input type="checkbox" class="custom-control-input" id="">
                         <label class="custom-control-label" for="customCheck1">R$ 20 - 30</label>
                       </div>
-                      <div class="custom-control custom-checkbox custom-control-inline">
+                      <div class="custom-control custom-checkbox custom-control-inline displayblock">
                         <input type="checkbox" class="custom-control-input" id="">
                         <label class="custom-control-label" for="customCheck1">R$ 30 - 40</label>
                       </div>
-                      <div class="custom-control custom-checkbox custom-control-inline">
+                      <div class="custom-control custom-checkbox custom-control-inline displayblock">
                         <input type="checkbox" class="custom-control-input" id="">
                         <label class="custom-control-label" for="customCheck1">Acima de 40</label>
                       </div>
@@ -50,7 +50,7 @@ $app->map(['GET', 'POST'], '/busca', function ($request, $response, $args) {?>
                       </div>
                   </div>
               </div> <!-- FIM DA DIV LATERAL DIREITA-->
-              <div class="col-md-8"> <!-- DIV ONDE VAI ENTRAR O CONTEÚDO DA PAG-->
+              <div class="col-md-10 col-lg-8 col-sm-10"> <!-- DIV ONDE VAI ENTRAR O CONTEÚDO DA PAG-->
                   <!-- começo dos cards PRIMEIRA LINHA-->
                   <?php
                   ## Se tiver algo escrito no input da busca, e tiver uma categoria marcada
@@ -70,7 +70,7 @@ $app->map(['GET', 'POST'], '/busca', function ($request, $response, $args) {?>
                     <div class="card mb-4 shadow-sm">
                      <img class="card-img-top" src="img/placeholder1.jpg" alt="Card image cap">
                      <div class="card-header">
-                         <h4 class="my-0 font-weight-normal fontedezoito"><a href="produto?id=<?=$i['id']?>"><?=$i['titulo']?></a></h4>
+                         <h4 class="my-0 font-weight-normal fontedezoito"><a class="linkstyle" href="produto?id=<?=$i['id']?>"><?=$i['titulo']?></a></h4>
                      </div>
                      <div class="card-body">
                          <h4 class="fontedezesseis"><?=$i['autor']?></h4>
