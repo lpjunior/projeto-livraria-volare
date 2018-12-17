@@ -19,9 +19,9 @@ $app->get('/checkout', function ($request, $response, $args) {
                                     <tbody>
                                       <tr class="fontetabela">
                                           <th scope="row"><i class="COLORETEXTO fas fa-book"></i></th>
-                                        <td class="text-left">O pequeno princípe</td> <!--título-->
-                                        <td class="text-center">2</td>
-                                        <td class="text-center">R$ 30,00</td> <!-- preço itens x quantidade -->
+                                        <td class="text-left"><!--título--></td> 
+                                        <td class="text-center"><!--quantidade selecionada no carrinho--></td>
+                                        <td class="text-center"><!-- preço itens x quantidade --></td>
                                       </tr>
                                       <!--preenchido pra teste-->
                                       <tr class="fontetabela">
@@ -46,13 +46,13 @@ $app->get('/checkout', function ($request, $response, $args) {
                                   <tr>
                                     <th scope="row"><i class="fontedoze COLORETEXTO fas fa-plus"></i></th>
                                     <td class="fontetabeladois">Frete:</td>
-                                    <td colspan="2" class="fontetabeladois text-right">R$ 12, 00</td>
+                                    <td colspan="2" class="fontetabeladois text-right"><!-- valor frete--></td>
 
                                   </tr>
                                   <tr>
                                     <th scope="row"><i class="fontedoze COLORETEXTO fas fa-dollar-sign"></i></th>
                                     <td class="fontetabeladois"><b>Total a pagar:</b></td>
-                                    <td colspan="2" class="fontetabeladois text-right"><b>R$ 112, 00</b></td>
+                                    <td colspan="2" class="fontetabeladois text-right"><b><!--total a pagar--></b></td>
 
                                   </tr>
                                 </tbody>
@@ -61,7 +61,7 @@ $app->get('/checkout', function ($request, $response, $args) {
                         </div>
                         <div class="col-sm-4 col-md-5 col-lg-4">
                             <h1 class="fontevinte">Endereço de entrega</h1>
-                            <p class="fontedoze COLORETEXTO"> Seu pedido será entregue no endereço abaixo:</p><hr/>
+                            <p class="fontedoze COLORETEXTO"> Seu pedido será entregue no endereço abaixo: <!--puxar do endereço de cobrança cadastrado--></p><hr/>
                             <p class="fontedezesseis">Nome do destinatário: nomedousuario</p>
                             <p class="displayblock fontedezesseis">CEP: xxxxx-xxx Estado: xx</p>
                             <p class="displayblock fontedezesseis">Bairro: lorem ipsum dornet</p>
