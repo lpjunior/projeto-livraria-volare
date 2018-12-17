@@ -34,7 +34,7 @@ $app->get('/produto', function ($request, $response, $args) {
                         </div>
                         <!-- /frete -->
                         <!-- BOTÃO -->
-                        <a class="btn COLORE btn-outline-secondary" href="php/CRUDS/carrinhoSystem.php?acao=add&id=<?=$i['id']?>">Adicione ao carrinho</a>
+                        <a class="btn COLORE1 btn-outline-secondary" href="php/CRUDS/carrinhoSystem.php?acao=add&id=<?=$i['id']?>">Adicione ao carrinho</a>
                     </div>
                     <div class="col-md-12 mt-4">
                     <hr/>
@@ -89,8 +89,41 @@ $app->get('/produto', function ($request, $response, $args) {
             <!-- COMEÇO DA SECTION DE COMENTÁRIOS -->
 
             <section class="container-fluid col-xs-12 col-sm-8 col-md-8 col-lg-8 centraliza mb-5 bordasb paddingtexto">
-                <h4><i class="far fa-comments"></i>&nbsp;Comentários:</h4>
+                <h4 class="fontevinteecinco ml-5 mt-2 mb-4"><i class="far fa-comments"></i>&nbsp;Comentários:</h4>
                 <div class="row">
+                    <div class="col-md-7 col-lg-7 col-sm-10 centraliza mt-2 mb-2">
+                         <textarea class="form-control" rows="3" name="message" placeholder="Escreva seu comentário" maxlength="250" required="required"></textarea>
+                    </div>
+                    <div class="col-md-7 col-lg-7 col-sm-10 centraliza mb-4">
+                        <div class="form-group text-right opacidade pr-2">
+                            <div>
+                                <button type="submit" class="btn fontedoze opacidade COLORE1" alt="comentar" name="" onclick="">comentar</button>
+                                <!-- se o usuário não estiver logado deve aparecer a mensagem "Para postar um comentário entre ou faça o seu cadastro"-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-10 col-lg-10 col-xl-10 col-sm-12 centraliza mb-2">
+                      <table class="table table-striped">
+                          <tbody>
+                            <!--vai puxar os 8 últimos comentários inseridos no banco-->
+                              <tr>
+                                <th scope="row" class="COLORETEXTO text-center"><!-- caso logado e usuário = usuário que comentou - ABRIR PROMPT ao clicar no <i> "deseja excluir comentário: sim - não"-->
+                                  <i class="far fa-edit"></i></br><!--nome do usuário--></th>
+                                <td><p><!--comentário--><p></td>
+                              </tr>
+                              <!--preenchidos pra teste-->
+                              <tr>
+                                <th scope="row" class="COLORETEXTO text-center"><!-- --><i class="far fa-edit"></i></br>Manoela</th>
+                                <td><p>We count thirty Rebel ships, Lord Vader. But they're so small they're evading our turbo-lasers! We'll have to destroy them ship to ship. Get the crews to their fighters. Luke, let me know when you're going in. I'm on my way in now... Watch yourself!</p></td>
+                              </tr>
+                              <tr>
+                                <th scope="row" class="COLORETEXTO text-center"><!-- --><i class="far fa-edit"></i></br>Carolina</th>
+                                <td><p>Let him go! Stay on the leader! Hurry up, Luke! Wait! I'm on the leader. Hang on, Artoo! Use the Force, Luke. Let go, Luke. The Force is strong with this one! Luke, trust me. His computer's off.</p></td>
+                              </tr>
+                              <!--fim dos preenchidos pra teste-->
+                          </tbody>
+                        </table>
+                    </div>
                 </div>
             </section> <!-- fim da section comentários -->
                       <?php } ?>
