@@ -39,9 +39,9 @@ $app->get('/carrinho', function ($request, $response, $args) {
                               <?=(isset($_SESSION['user_id']) ? $i['titulo'] : $i[0]['titulo'])?>
                             </td>
                             <td>
-                                <button id="btnMenus" class="btn btn-light btn-sm">-</button>
+                                <button id="btnMenus" class="btn btn-light btn-sm btnMenus">-</button>
                                 <input type="text" id="qtdProd" style="display:inline" maxlength="2" class="text-center form-control col-2" value="<?=(isset($_SESSION['user_id']) ? $i['quantidade'] : $i['qtd'])?>">
-                                <button id="btnPlus>" class="btn btn-light btn-sm">+</button>
+                                <button id="btnPlus" class="btn btn-light btn-sm btnPlus">+</button>
                             </td>
                             <td>R$ <span id="idpreco"><?=(isset($_SESSION['user_id']) ? $i['preco'] : $i[0]['preco'])?></span></td>
                             <td><!--fazer um js-->R$00,00</td>
