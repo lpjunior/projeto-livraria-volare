@@ -299,12 +299,13 @@ $app->get('/user', function ($request, $response, $args) {
                         <div class="card-body">
                         <h5 class="card-title">E-mail</h5>
                         <p class="card-text">Utiize este canal de contato para conseguir detalhar sua dúvida. No atendimento por e-mail não poderão ser tratados problemas realacionados a pagamento e nem efetuar a confirmação de seus dados cadastrais.</p>
+                        <a href="#" class="btn COLORE1">Entrar em contato por e-mail</a>
                         </div>
                     </div>
                     <div class="card">
-                        <img class="card-img-top" src=".../100px200/" alt="Imagem de capa do card">
+                        <img class="card-img-top" style="width: 40px; height: 40px" src="img/telefone.jpg"  alt="Imagem de capa do card">
                         <div class="card-body">
-                        <h5 class="card-title">Telefone</h5>
+                        <h5 class="card-title">Telefones</h5>
                         <p class="card-text">Capitais e Regiões Metropolitanas: 4003-0001</p>
                         <p class="card-text">Outras localidades: 0800-754-4000</p>
                         </div>
