@@ -2,11 +2,11 @@
 $app->get('/carrinho', function ($request, $response, $args) {
   require_once 'php/CRUDS/crud_carrinho.php';
 ?>
-    <div class="container-fluid col-8 mt-4">
+    <div class="container-fluid col-md-10 col-12 mt-4">
         <div class="row">
-            <div class="col-8">
+            <div class="col-12 col-md-8">
                 <h1>Meu carrinho</h1>
-                <table class="table text-center">
+                <table class="table text-center table-responsive">
                     <thead>
                         <tr>
                         <th scope="col">Produto</th>
@@ -31,7 +31,7 @@ $app->get('/carrinho', function ($request, $response, $args) {
                     <tbody>
                         <tr>
                             <td>
-                                <a href="https://placeholder.com"><img src="http://via.placeholder.com/150"></a>
+                                <a href="https://placeholder.com"><img src="http://via.placeholder.com/50"></a>
                             </td>
                             <td>
 
@@ -50,7 +50,7 @@ $app->get('/carrinho', function ($request, $response, $args) {
                   <?php } } ?>
                 </table>
             </div>
-            <div class="col-4">
+            <div class="col-md-4 col-12">
                 <div class="col bordasc">
                     <h4 class="text-center mt-3">Resumo do pedido</h4>
                     <table class="table">
@@ -82,6 +82,11 @@ $app->get('/carrinho', function ($request, $response, $args) {
                 </div>
             </div>
         </div>
+        <div class="row">
+			<div class="col mt-4">
+                <button type="submit" class="btn COLORE1" name="btn-checkout" >Concluir compra</button>
+            </div>
+		</div>
     </div>
 <?php }); ?>
 <script>
