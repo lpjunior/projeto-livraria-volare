@@ -270,7 +270,7 @@ HTML5 é a base de todo site. Foi com ele que desenvolvemos todo o front-end. Co
 </table>
 
 <div align="justify">
-CSS3 é a mais recente evolução da linguagem Cascading Style Sheets (Folhas de Estilo em Cascata) que estende o CSS2.1. Ela traz uma série de novidades bastante esperadas, como cantos arredondados, sombras, gradientes , transições ou animações , bem como novos layouts como multi-colunas , caixas flexíveis ou layouts de grade.
+CSS3 foi usado no estilo das páginas do site. Em conjunto com o HTML, o CSS3 foi o principal responsável pelo design das páginas. Toda a coloração, os formatos, as colocações dos textos, os comprimentos e larguras das divisões da tela foram feitos e desenvvolvidos no CSS3.
 </div>
 <br>
 <table>
