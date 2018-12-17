@@ -7,7 +7,6 @@ require_once 'php/CRUDS/serviceBook.php';
   <title>Volare Livraria</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -34,7 +33,7 @@ require_once 'php/CRUDS/serviceBook.php';
             </div>
         </nav>
         <!-- fim do topo -->
-        <nav class="navbar navbar-expand-md navbar-dark COLORE">
+        <nav class="navbar navbar-expand-md navbar-light COLORE">
             <!-- HAMBURGER -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -46,13 +45,10 @@ require_once 'php/CRUDS/serviceBook.php';
 
             <!-- DROPDOWN CATEGORIAS DA NAVBAR -->
                 <div class="dropdown navbar-form navbar-left">
-                    <button class="btn dropdown-toggle COLORE bordas fontedoze" type="button" id="menu1" data-toggle="dropdown">&nbsp;&nbsp;CATEGORIAS
+                    <button class="btn dropdown-toggle COLORE bordas fontecatorze" type="button" id="menu1" data-toggle="dropdown">&nbsp;&nbsp;categorias
                     <span class="caret"></span></button>
-                    <ul class="dropdown-menu COLORE1" role="menu" aria-labelledby="menu1">
-                        <li role="presentation"><a role="menuitem" class="fontedezesseis" href="#">cat 1</a></li>
-                        <li role="presentation"><a role="menuitem" class="fontedezesseis" href="#">cat 2</a></li>
-                        <li role="presentation"><a role="menuitem" class="fontedezesseis" href="#">cat 3</a></li>
-                        <li role="presentation"><a role="menuitem" class="fontedezesseis" href="#">cat 4</a></li>
+                    <ul class="dropdown-menu COLORE" role="menu" aria-labelledby="menu1">
+                        <li role="presentation"><a role="menuitem" class="fontedezesseis" href="#"><!-- variavel categoria--></a></li>
                     </ul>
                 </div>
             <div class="col-md-8 centraliza">
@@ -82,12 +78,12 @@ require_once 'php/CRUDS/serviceBook.php';
                 <div class="input-group">
                     <span class="input-group-append">
 
-                            <select class="form-control py-2 COLORE1 fonteonze bordas" name="buscaCategoria">
-                            <option value=" " class="COLORE1 bordas fontecatorze d-none">BUSCAR POR</option>
-                            <option value=" " class="COLORE1 bordas fontedezesseis">busca livre</option>
-                            <option value="titulo" class="COLORE1 bordas fontedezesseis">título</option>
-                            <option value="autor" class="COLORE1 bordas fontedezesseis">autor</option>
-                            <option value="ano" class="COLORE1 bordas fontedezesseis">ano</option>
+                            <select class="form-control py-2 COLORE fontecatorze bordas" name="buscaCategoria">
+                            <option value=" " class="bordas fontecatorze d-none">buscar por</option>
+                            <option value=" " class="bordas fontedezesseis">busca livre</option>
+                            <option value="titulo" class="bordas fontedezesseis">título</option>
+                            <option value="autor" class="bordas fontedezesseis">autor</option>
+                            <option value="ano" class="bordas fontedezesseis">ano</option>
                             </select>
 
                     </span>
