@@ -1,0 +1,97 @@
+body{
+    font-family: "trebuchet";
+}
+
+.nopadding{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.paddingtop{
+    padding-top: 10px;
+}
+
+alinhamentotexto {
+  text-align: left;
+}
+
+.heading{
+    font-size: 18px;
+}
+
+.blackcolor{
+    color: black;
+}
+
+.COLORE{
+    background-color: rgb(226,108,255);     
+}
+
+.COLORE1{
+    background-color: rgb(226,108,255); 
+    font-size: 12px;
+}
+
+.COLORETEXTO{
+    color: rgb(203,134,207);
+}
+
+.opacidade{
+    opacity: 0.7;
+}
+
+.bordas {
+    border: 2px solid rgb(226,108,255);
+    border-radius: 0px;
+}
+
+.fontecatorze{
+     font-size: 14px;
+}
+
+.fontequinze{
+     font-size: 12px;
+}
+
+.marginfooter{
+    margin-top: 10px;
+    margin-left: 28px;
+}
+
+.distanciadamargem{
+    padding-right: 30px;
+    padding-left: 30px;
+    
+}
+
+.topoformatacao{
+    background-color: rgb(203,134,207);
+    font-size: 15px;
+    padding-left: 35px;
+    text-align: left;
+    height: auto;
+    color: white;
+}
+
+paddingsearch{
+    padding-bottom: 1px;
+}
+
+.centraliza{
+    margin:auto;
+}
+
+.margintop{
+    margin-top: 29px;
+}
+
+.sectionformatacao{
+    border-top: 1px solid rgb(203,134,207);
+    padding-top: 25px;
+    margin-bottom: 30px;
+
+}
+
+.alturafooter{
+    height: 100px;
+}
