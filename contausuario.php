@@ -1,7 +1,7 @@
 <?php
 $app->get('/user', function ($request, $response, $args) {
 ?>
-    
+
     <div class="container-fluid col-md-10 col centraliza">
     <div class="col-md-12">
         <h3> Olá, [Nome do Usuário]</h3> <br>
@@ -162,7 +162,7 @@ $app->get('/user', function ($request, $response, $args) {
                                 <br/>
                                 <div class="row">
                                 <div class="col">
-                                        <button type="submit" class="btn COLORE" name="btn-enviar" >Salvar Alterações</button><!--value??-->
+                                        <button type="submit" class="btn COLORE1" name="btn-enviar" >Salvar Alterações</button><!--value??-->
                                     </div>
                                 </div>
                             </div>
@@ -196,7 +196,7 @@ $app->get('/user', function ($request, $response, $args) {
                     <p>Ut taysr perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
                     </div>
                         </div>
-                    
+
                 </div>
             </div>
 </div>
