@@ -270,7 +270,7 @@ HTML5 é a base de todo site. Foi com ele que desenvolvemos todo o front-end. Co
 </table>
 
 <div align="justify">
-CSS3 foi usado no estilo das páginas do site. Em conjunto com o HTML, o CSS3 foi o principal responsável pelo design das páginas. Toda a coloração, os formatos, as colocações dos textos, os comprimentos e larguras das divisões da tela foram feitos e desenvvolvidos no CSS3.
+CSS3 foi usado no estilo das páginas do site. Em conjunto com o HTML, o CSS3 foi o principal responsável pelo design das páginas. Toda a coloração, os formatos, as colocações dos textos, os comprimentos e larguras das divisões da tela foram feitos e desenvolvidos com CSS3.
 </div>
 <br>
 <table>
