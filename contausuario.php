@@ -2,7 +2,7 @@
 $app->get('/user', function ($request, $response, $args) {
 ?>
 
-    <div class="container-fluid col-md-10 col centraliza">
+    <div class="container-fluid col-md-11 col centraliza">
     <div class="col-md-12">
         <h3> Olá, [Nome do Usuário]</h3> <br>
         </div>
@@ -34,10 +34,10 @@ $app->get('/user', function ($request, $response, $args) {
                 </ul>
                 </div>
                 <!-- Tab panes -->
-                <div class="tab-content col-md-6">
+                <div class="tab-content col-md-7">
                     <div id="meusdados" class="tab-pane active"><br>
                     <h3>Meus dados</h3>
-                    <fieldset><!-- *************início do formulário ********************** -->
+                    <fieldset><!-- *************início do formulário dados pessoais********************** -->
                         <form action="" method="POST">
                             <div class="form-group"> <h5>Dados Pessoais</h5>
                                 <div class="row">
@@ -168,15 +168,119 @@ $app->get('/user', function ($request, $response, $args) {
                             </div>
 
                         </form>
+                    </fieldset><!--********fim do formulário dados pessoais*************-->
+                    </div>
+                    <div id="meusenderecos" class="tab-pane fade mr-4"><br>
+                    <h3>Meus Endereços</h3>
+                        <div class=" float-right">
+                            <a class="nav-link active font-weight-bold" href="#">Editar</a>
+                        </div>
+                    <fieldset><!-- *************início do formulário Meus Endereços********************** -->
+                        <form action="" method="POST">
+                            <div class="form-group"> <h5>Endereço Principal</h5>
+                            <br/>
+                                <div class="row">
+                                    <div class="col-md-3 col-lg-4"><!--adicionar tipo de coluna, testar layout-->
+                                        <label for="iCEP">CEP:</label>
+                                        <input type="text" id="iCEP" name="txtCEP" class="form-control cep" required>
+                                    </div>
+                                    <div class="col"><!--adicionar tipo de coluna, testar layout-->
+                                        <label for="iEndCobr">Endereço:</label>
+                                        <input type="text" id="iEndCobr" name="txtEndCobr" class="form-control" required maxlength="255">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="iNum">Número:</label>
+                                        <input type="text"  id="iNum" name="txtNum" class="form-control" required maxlength="10">
+                                    </div>
+                                    <div class="col">
+                                        <label for="iComplemento">Complemento:</label>
+                                        <input type="text"  id="iComplemento" name="txtComplemento" class="form-control" required maxlength="15">
+                                        <br/>
+                                    </div>
+                                    <div class="col">
+                                        <label for="iBairro">Bairro:</label>
+                                        <input type="text"  id="iBairro" name="txtBairro" class="form-control" required maxlength="50">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="iCidade">Cidade:</label>
+                                        <input type="text"  id="iCidade" name="txtCidade" class="form-control" required maxlength="50">
+                                    </div>
+                                    <div class="col">
+                                        <label for="sEstado">Estado</label><!-- PESSOAL DO PHP: tem que puxar esse select do banco de dados, só coloquei pra ficar mais fácil de vizualizar-->
+                                        <select id="sEstado" name="txtEstado" class="form-control">
+                                            <option value="AC">Acre</option>
+                                            <option value="AL">Alagoas</option>
+                                            <option value="AP">Amapá</option>
+                                            <option value="AM">Amazonas</option>
+                                            <option value="BA">Bahia</option>
+                                            <option value="CE">Ceará</option>
+                                            <option value="DF">Distrito Federal</option>
+                                            <option value="ES">Espírito Santo</option>
+                                            <option value="GO">Goiás</option>
+                                            <option value="MA">Maranhão</option>
+                                            <option value="MT">Mato Grosso</option>
+                                            <option value="MS">Mato Grosso do Sul</option>
+                                            <option value="MG">Minas Gerais</option>
+                                            <option value="PA">Pará</option>
+                                            <option value="PB">Paraíba</option>
+                                            <option value="PR">Paraná</option>
+                                            <option value="PE">Pernambuco</option>
+                                            <option value="PI">Piauí</option>
+                                            <option value="RJ">Rio de Janeiro</option>
+                                            <option value="RN">Rio Grande do Norte</option>
+                                            <option value="RS">Rio Grande do Sul</option>
+                                            <option value="RO">Rondônia</option>
+                                            <option value="RR">Roraima</option>
+                                            <option value="SC">Santa Catarina</option>
+                                            <option value="SP">São Paulo</option>
+                                            <option value="SE">Sergipe</option>
+                                            <option value="TO">Tocantins</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="row">
+                                <div class="col-md-6">
+                                        <button type="submit" class="btn COLORE1" name="btn-enviar" >Adicionar Endereço</button><!--value??-->
+                                        </div>
+                                </div>
+                            </div>
+
+                        </form>
                     </fieldset><!--********fim do formulário*************-->
                     </div>
-                    <div id="meusenderecos" class="tab-pane fade"><br>
-                    <h3>Meus Endereços</h3>
-                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-                    </div>
                     <div id="listadesejos" class="tab-pane fade"><br>
-                    <h3>Lista de Desejos</h3>
-                    <p>Ut taysr perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                    <h3 class="fontevinte COLORETEXTO col-md-8 centraliza mt-4"><i>Lista de Desejo</i></h1>
+                <section class="bordaspraconteudo col-md-8 centraliza mt-1">
+                    <div class="row text-center"> <!-- DIV QUE JUNTA OS CARDS, todos tem que ficar dentro dela -->
+                      <?php
+                      $livro = serviceListarLivro(8, TRUE);
+                      foreach($livro as $i){
+                      ?>
+                        <div class="col-sm-3">
+                          <div class="card mb-4 shadow-sm">
+                            <img class="card-img-top" src="img/placeholder1.jpg" alt="Card image cap">
+                            <div class="card-header">
+                                <h4 class="my-0 font-weight-normal fontedezoito"><a class="linkstyle" href="produto?id=<?=$i['id']?>"><?=$i['titulo']?></h4></a>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="fontedezesseis"><?=$i['autor']?></h4>
+                                <h3 class="fontevinte">R$ <?=$i['preco']?></h3>
+                                <div class="btn-group">
+                                  <form action="php/CRUDS/carrinhoSystem.php?acao=add&id=<?=$i['id']?>" method="POST">
+                                    <button type="submit" class="btn btn-sm btn-outline-secondary">   <i class="fa fa-shopping-cart"></i>   </button>
+                                  </form>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                      <?php } ?>
+                    </div>  <!-- FIM DA DIV QUE JUNTA OS CARDS -->
+                </section>
                     </div>
                     <div id="meuspedidos" class="tab-pane fade"><br>
                     <h3>Meus Pedidos</h3>
@@ -188,7 +292,23 @@ $app->get('/user', function ($request, $response, $args) {
                     </div>
                     <div id="centralatendimento" class="tab-pane fade"><br>
                     <h3>Central de Atendimento</h3>
-                    <p>Ut taysr perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                    <br>
+                    <div class="card-deck">
+                    <div class="card">
+                        <img class="card-img-top" style="width: 60px; height: 40px" src="img/email.jpg" alt="Imagem de email">
+                        <div class="card-body">
+                        <h5 class="card-title">E-mail</h5>
+                        <p class="card-text">Utiize este canal de contato para conseguir detalhar sua dúvida. No atendimento por e-mail não poderão ser tratados problemas realacionados a pagamento e nem efetuar a confirmação de seus dados cadastrais.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img class="card-img-top" src=".../100px200/" alt="Imagem de capa do card">
+                        <div class="card-body">
+                        <h5 class="card-title">Telefone</h5>
+                        <p class="card-text">Capitais e Regiões Metropolitanas: 4003-0001</p>
+                        <p class="card-text">Outras localidades: 0800-754-4000</p>
+                        </div>
+                    </div>
                     </div>
                     <div id="sair" class="tab-pane fade"><br>
                     <h3>Sair</h3>
