@@ -272,7 +272,7 @@ HTML5 é a base de todo site. Foi com ele que desenvolvemos todo o front-end. Co
 <div align="justify">
 CSS3 é a mais recente evolução da linguagem Cascading Style Sheets (Folhas de Estilo em Cascata) que estende o CSS2.1. Ela traz uma série de novidades bastante esperadas, como cantos arredondados, sombras, gradientes , transições ou animações , bem como novos layouts como multi-colunas , caixas flexíveis ou layouts de grade.
 </div>
-
+<br>
 <table>
     <td>
       <img src="https://github.com/lpjunior/projeto-livraria-volare/blob/master/img/slim_framework.png"/><br />
