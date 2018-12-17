@@ -4,19 +4,51 @@ $app->map(['GET', 'POST'], '/busca', function ($request, $response, $args) {?>
       <div class="container-fluid col-md-10 centraliza mt-4 margintop">
           <div class="row">
               <div class="col-sm-4 col-md-2 col-lg-2 bordasc">
-                  <h1 class="fontevinte">Categorias</h1>
+                  <h1 class="fontedezoito"><i>Categorias</i></h1>
                   <hr/>
-                  <h3 class="fontedezesseis">Categoria 1</h3>
-                  <h3 class="fontedezesseis">Categoria 2</h3>
-                  <h3 class="fontedezesseis">Categoria 3</h3>
-                  <h3 class="fontedezesseis">Categoria 5</h3>
+                  <a href="#" class="linkstyle fontedezesseis"><!-- chamar todas as chategorias do banco e o link vai pra vitrine exibindo todos os livros da categoria x--></a>
                   <hr/>
-                  <h4 class="fontedezesseis">Adicionar filtro</h4>
+                  <h4 class="fontedezoito"><i>Adicionar filtro</i></h4>
                   <form>
-                      <label for="formControlRange"><h4 class="fontedezesseis">Faixa de preço:</h4></label>
-                      <input type="range" class="form-control-range" id="formControlRange">
+                    <!-- busca anterior + idioma -->
+                      <label for="formControlRange"><h4 class="fontedezesseis"><b>idioma:</b></h4></label>
+                      <div class="custom-control custom-checkbox custom-control-inline">
+                        <input type="checkbox" class="custom-control-input" id="">
+                        <label class="custom-control-label" for="customCheck1">Português</label>
+                      </div>
+                      <div class="custom-control custom-checkbox custom-control-inline">
+                        <input type="checkbox" class="custom-control-input" id="">
+                        <label class="custom-control-label" for="customCheck1">Espanhol</label>
+                      </div>
+                      <div class="custom-control custom-checkbox custom-control-inline">
+                        <input type="checkbox" class="custom-control-input" id="">
+                        <label class="custom-control-label" for="customCheck1">Inglês</label>
+                      </div>
+                      <hr/>
+                      <!-- busca anterior + faixa preço -->
+                      <label for="formControlRange"><h4 class="fontedezesseis"><b>Preço:</b></h4></label>
+                      <div class="custom-control custom-checkbox custom-control-inline">
+                        <input type="checkbox" class="custom-control-input" id="">
+                        <label class="custom-control-label" for="customCheck1">Até R$ 20</label>
+                      </div>
+                      <div class="custom-control custom-checkbox custom-control-inline">
+                        <input type="checkbox" class="custom-control-input" id="">
+                        <label class="custom-control-label" for="customCheck1">R$ 20 - 30</label>
+                      </div>
+                      <div class="custom-control custom-checkbox custom-control-inline">
+                        <input type="checkbox" class="custom-control-input" id="">
+                        <label class="custom-control-label" for="customCheck1">R$ 30 - 40</label>
+                      </div>
+                      <div class="custom-control custom-checkbox custom-control-inline">
+                        <input type="checkbox" class="custom-control-input" id="">
+                        <label class="custom-control-label" for="customCheck1">Acima de 40</label>
+                      </div>
                   </form>
-
+                  <div class="form-group text-center opacidade mt-3 mb-3">
+                      <div> <!-- botão pra pesquisar com adição dos filtros selecionados nos checkbox acima -->
+                          <button type="submit" class="btn fontedoze opacidade COLORE1" alt="pesquisar" name="" onclick="">Pesquisar</button>
+                      </div>
+                  </div>
               </div> <!-- FIM DA DIV LATERAL DIREITA-->
               <div class="col-md-8"> <!-- DIV ONDE VAI ENTRAR O CONTEÚDO DA PAG-->
                   <!-- começo dos cards PRIMEIRA LINHA-->
