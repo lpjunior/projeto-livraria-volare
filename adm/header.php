@@ -15,8 +15,8 @@
     <header>
 
 
-    <nav class="navbar navbar-expand-md navbar-dark bg-primary "> 
-	
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary ">
+
     <!-- LOGO -->
         <div>
             <img src="img/logomarca1.png" alt="logomarca volare">

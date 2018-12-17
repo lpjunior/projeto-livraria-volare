@@ -10,7 +10,7 @@ require_once("includes/header.php"); ?>
 <?php
 
  // echo  $_SESSION['logado']."<br>".$_SESSION['nome_adm'];
-if ($_SESSION['logado']!='true' or $_SESSION['nome_adm']!= 'fernando'){
+if (!isset($_SESSION['user'])){
 	header('Location: adm.php');
 
 }
@@ -18,19 +18,19 @@ if ($_SESSION['logado']!='true' or $_SESSION['nome_adm']!= 'fernando'){
 <?php
 if (isset($_SESSION['mensagem'])):?>
 	 <script>
-	
+
 	window.onload = function (){
 		  M.toast({html: '<?php echo $_SESSION['mensagem']; ?>'});
-		  
-	  };		  
-	
+
+	  };
+
 	</script>
-	
+
 <?php endif;
 ?>
 
 <div class="row">
-   <div class="col s12 m6 push-m3>
+   <div class="col s12 m6 push-m3">
      <h2 class="ligth"> Produtos:</h2>
     <table class="striped" >
 	   <thead>

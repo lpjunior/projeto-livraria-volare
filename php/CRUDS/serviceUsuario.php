@@ -29,3 +29,8 @@ require_once 'crud_usuario.php';
 			return $user;
 		}
 	}
+	function serviceLoginAdmin($email, $senha){
+		if ($user = loginUsuarioAdmin($email, $senha)){
+			return $user;
+		}
+	}

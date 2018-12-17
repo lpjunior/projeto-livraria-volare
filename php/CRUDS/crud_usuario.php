@@ -200,3 +200,17 @@ function checarCPF($cpf){
 		return "não_cadastrado";
 	}
 }
+function loginUsuarioAdmin($email, $senha){
+	$conexao = getConnection();
+	$email = mysqli_escape_string($conexao, $email);
+	$senha = mysqli_escape_string($conexao, $senha);
+	$sql = "SELECT nome, email, id FROM usuarios where email = '$email' and senha = md5('$senha')";
+	$resultado = mysqli_query($conexao, $sql);
+	if (mysqli_affected_rows($conexao) >= 1) {
+		$_SESSION['user'] = mysqli_fetch_assoc($resultado);
+		$_SESSION['user_id'] = $_SESSION['user']['id'];
+		return true;
+	} else {
+		return false;
+	}
+}
