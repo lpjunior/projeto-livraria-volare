@@ -1,11 +1,11 @@
 <?php
 $app->get('/cadastro', function ($request, $response, $args) {
 ?>
-            <div class="container-fluid col-md-8 centraliza margintop">
+            <div class="container-fluid col-md-8 centraliza mt-4">
                 <fieldset><!-- *************início do formulário ********************** -->
-                    <legend><h1>Cadastro</h1></legend>
+                    <legend><h1 class="fontevinteecinco">Cadastro</h1></legend>
                     <form action="php/CRUDS/registroUsuario.php" method="POST">
-                        <div class="form-group"> <h4>Dados pessoais</h4>
+                        <div class="form-group"> <h4 class="fontedezoito"><b>Dados pessoais</b></h4>
 							<div class="row">
 								<div class="col">
 									<label for="iNome">Nome:</label>
@@ -61,7 +61,7 @@ $app->get('/cadastro', function ($request, $response, $args) {
 							</div>
                         </div>
                         <br/>
-                        <div class="form-group"><h4>Endereço de cobrança</h4><br/><!-- mudar estilo do texto-->
+                        <div class="form-group"><h4 class="fontedezoito"><b>Endereço de cobrança</b></h4><br/><!-- mudar estilo do texto-->
                             <div class="row">
 								<div class="col-md-2"><!--adicionar tipo de coluna, testar layout-->
 									<label for="iCEP">CEP:</label>
@@ -127,8 +127,8 @@ $app->get('/cadastro', function ($request, $response, $args) {
 							</div>
 							<br/>
 							<div class="row">
-							<div class="col">
-                            		<button type="submit" class="btn COLORE" name="btn-enviar" >Criar sua conta</button><!--value??-->
+							<div class="col mb-4">
+                            		<button type="submit" class="btn COLORE1" name="btn-enviar" >Criar sua conta</button><!--value??-->
                         		</div>
 							</div>
                         </div>
