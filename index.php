@@ -15,7 +15,7 @@ $app->get('/home', function ($request, $response, $args) {?>
                           <img class="d-block w-100" src="img/banner1.jpg" alt="First slide">
                       </div>
                       <div class="carousel-item">
-                        <img class="d-block w-100" src="img/banner1.jpg" alt="Second slide">
+                        <img class="d-block w-100" src="img/banner2.jpg" alt="Second slide">
                       </div>
                       <div class="carousel-item">
                         <img class="d-block w-100" src="img/banner1.jpg" alt="Third slide">
@@ -46,7 +46,7 @@ $app->get('/home', function ($request, $response, $args) {?>
                           <div class="card mb-4 shadow-sm">
                             <img class="card-img-top" src="img/placeholder1.jpg" alt="Card image cap">
                             <div class="card-header">
-                                <h4 class="my-0 font-weight-normal fontedezoito"><a href="produto?id=<?=$i['id']?>"><?=$i['titulo']?></h4></a>
+                                <h4 class="my-0 font-weight-normal fontedezoito"><a class="linkstyle" href="produto?id=<?=$i['id']?>"><?=$i['titulo']?></h4></a>
                             </div>
                             <div class="card-body">
                                 <h4 class="fontedezesseis"><?=$i['autor']?></h4>
