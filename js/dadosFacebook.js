@@ -4,10 +4,9 @@
 //    alert( "Data Loaded: " + data );
 //  });
 //}
-function pegarValor(pToken, pID){
+function pegarValor(pToken){
   // Pega o valor do token do facebook e joga pro php
   token = JSON.stringify(pToken);
-  pID = JSON.stringify(pID);
   xmlhttp = new XMLHttpRequest();
   xmlhttp.open("GET", "php/CRUDS/sessaoFacebook.php?x=" + token, true);
   xmlhttp.send();

@@ -126,8 +126,9 @@ $app->get('/produto', function ($request, $response, $args) {
                     </div>
                 </div>
             </section> <!-- fim da section comentários -->
-                      <?php } ?>
-                      <h1 class="text-center">Livro não encontrado</h1>
+          <?php } else{ ?>
+            <h1 class="text-center">Livro não encontrado</h1>
             <?php
+          }
             });
              ?>

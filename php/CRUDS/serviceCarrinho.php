@@ -23,6 +23,7 @@ require_once 'crud_carrinho.php';
     if ($carrinho = updateAlt($qtd, $id, $quant_total)) {
     }
   }
+  ## ID do usuário.
   function serviceListarCarrinho($id){
     if ($carrinho = listarCarrinho($id)) {
       return true;

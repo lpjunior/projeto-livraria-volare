@@ -1,5 +1,8 @@
 <?php
+require_once 'php/CRUDS/serviceCheckout.php';
 $app->get('/checkout', function ($request, $response, $args) {
+  ## Mudar para o botão de checkout depois ##
+  if (isset($_SESSION['user_id'])){
 ?>
         <section>
             <div class="container-fluid col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 centraliza mt-4">
@@ -17,26 +20,25 @@ $app->get('/checkout', function ($request, $response, $args) {
                                       </tr>
                                     </thead>
                                     <tbody>
+                                      <?php
+                                      $valor_total = 0;
+                                      $frete = '2.90';
+                                      $checkout = serviceListarCheckout($_SESSION['user_id'], NULL);
+                                      foreach ($checkout as $i) {
+                                      ?>
                                       <tr class="fontetabela">
                                           <th scope="row"><i class="COLORETEXTO fas fa-book"></i></th>
-                                        <td class="text-left"><!--título--></td> 
-                                        <td class="text-center"><!--quantidade selecionada no carrinho--></td>
-                                        <td class="text-center"><!-- preço itens x quantidade --></td>
+                                        <td class="text-left"><?=$i['titulo']?></td>
+                                        <td class="text-center"><?=$i['quantidade']?></td>
+                                        <td class="text-center">R$ <?=(floatval($i['preco'])*floatval($i['quantidade']))?></td>
+                                        <?php
+                                        ## Botar o valor dentro do array
+                                        array_push($i,(floatval($i['preco'])*floatval($i['quantidade'])));
+                                        ## Somar todos os valores do array
+                                        $valor_total += $i['0']; ?>
                                       </tr>
                                       <!--preenchido pra teste-->
-                                      <tr class="fontetabela">
-                                          <th scope="row"><i class="COLORETEXTO fas fa-book"></i></th>
-                                        <td class="text-left">Robbit</td>
-                                        <td class="text-center">1</td>
-                                        <td class="text-center">R$ 20,00</td>
-                                      </tr>
-                                      <tr class="fontetabela">
-                                          <th scope="row"><i class="COLORETEXTO fas fa-book"></i></th>
-                                        <td class="text-left">A menina submersa</td>
-                                        <td class="text-center">2</td>
-                                        <td class="text-center">R$ 50, 00</td>
-                                      </tr>
-                                      <!-- fim dos preenchidos pra teste-->
+                                      <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -46,28 +48,31 @@ $app->get('/checkout', function ($request, $response, $args) {
                                   <tr>
                                     <th scope="row"><i class="fontedoze COLORETEXTO fas fa-plus"></i></th>
                                     <td class="fontetabeladois">Frete:</td>
-                                    <td colspan="2" class="fontetabeladois text-right"><!-- valor frete--></td>
+                                    <td colspan="2" class="fontetabeladois text-right"><?=$frete?></td>
 
                                   </tr>
                                   <tr>
                                     <th scope="row"><i class="fontedoze COLORETEXTO fas fa-dollar-sign"></i></th>
                                     <td class="fontetabeladois"><b>Total a pagar:</b></td>
-                                    <td colspan="2" class="fontetabeladois text-right"><b><!--total a pagar--></b></td>
-
+                                    <td colspan="2" class="fontetabeladois text-right"><b>R$ <?=floatval($frete) + $valor_total?></b></td>
                                   </tr>
                                 </tbody>
                               </table>
                             </div>
                         </div>
+                        <?php
+                        $checkout = serviceListarCheckout($_SESSION['user_id'], 1);
+                        foreach ($checkout as $i) {
+                        ?>
                         <div class="col-sm-4 col-md-5 col-lg-4">
                             <h1 class="fontevinte">Endereço de entrega</h1>
                             <p class="fontedoze COLORETEXTO"> Seu pedido será entregue no endereço abaixo: <!--puxar do endereço de cobrança cadastrado--></p><hr/>
-                            <p class="fontedezesseis">Nome do destinatário: nomedousuario</p>
-                            <p class="displayblock fontedezesseis">CEP: xxxxx-xxx Estado: xx</p>
-                            <p class="displayblock fontedezesseis">Bairro: lorem ipsum dornet</p>
-                            <p class="displayblock fontedezesseis">Rua: lorem ipsum </p>
-                            <p class="displayblock fontedezesseis">Número: xxx </p>
-                            <p class="displayblock fontedezesseis">Complemento: lorem ipsum dornet</p>
+                            <p class="fontedezesseis">Nome do destinatário: <?=$i['nome']." ".$i['sobrenome']?></p>
+                            <p class="displayblock fontedezesseis">CEP: <?=$i['cep']?> Estado: <?=$i['estado']?></p>
+                            <p class="displayblock fontedezesseis">Bairro: <?=$i['bairro']?></p>
+                            <p class="displayblock fontedezesseis">Rua: <?=$i['endereco']?> </p>
+                            <p class="displayblock fontedezesseis">Número: <?=$i['numero']?> </p>
+                            <p class="displayblock fontedezesseis">Complemento: <?=$i['complemento']?></p>
                             <div class="form-group">
                                 <div class="col-sm-offset-2">
                                     <button type="submit" class="btn COLORE1 fontedoze" name="btn-enviar" onclick="">Editar</button>
@@ -75,6 +80,7 @@ $app->get('/checkout', function ($request, $response, $args) {
                             </div>
 
                         </div> <!-- FIM DA DIV LATERAL DIREITA-->
+                      <?php } ?>
 
                 </div>
                 <div class="row mt-4 mb-4"><!-- div onde vai entrar o pag seguro -->
@@ -99,5 +105,9 @@ $app->get('/checkout', function ($request, $response, $args) {
             </div>
         </section>
 <?php
+} else {
+ echo "<script>window.location.assign('home')</script>";
+}
 });
+
  ?>
