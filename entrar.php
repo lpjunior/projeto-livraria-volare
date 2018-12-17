@@ -8,10 +8,10 @@ if (isset($_SESSION['token_face']) || isset($_SESSION['user'])) {
         <div class="row">
             <div class="col-md-6 centraliza">
                 <fieldset><!-- *************início do formulário ********************** -->
-                    <legend><h2>Já sou cadastrado</h2></legend>
+                    <legend><h2 class="fontevinteecinco">&nbsp;&nbsp;&nbsp;Já sou cadastrado</h2></legend>
                         <form class="form-horizontal" action="php/CRUDS/loginUsuario.php" method="POST">
                             <div class="form-group">
-                                <label class="control-label col-sm-2 font-weight-bold" for="iEmail">E-mail:</label>
+                                <label class="control-label col-sm-4 font-weight-bold" for="iEmail">E-mail:</label>
                                 <div class="col-md-10">
                                     <input type="email" class="form-control" name="txtEmail" id="iEmail" placeholder="Digite o email" maxlength="100" required>
                                 </div>
@@ -26,49 +26,53 @@ if (isset($_SESSION['token_face']) || isset($_SESSION['user'])) {
                             if (isset($_SESSION['erro'])) { ?>
                               <p class="ml-4 text-danger"><?=$_SESSION['erro']?></p>
                           <?php } ?>
-                            <div class="form-group">
+                            <div class="col-md-10 mt-0">
+                              <a href="#" class="fonteonze text-right mr-3 mt-0 opacidade float-right linkstyle"><b>Esqueci minha senha</b></a><br/>
+                            </div>
+                            <div class="form-group mt-0">
                                 <div class="col-sm-offset-2 col-md-10">
-                                    <button type="submit" class="btn COLORE " name="btn-enviar" onclick="return validarSenha()">Entrar</button>
+                                    <button type="submit" class="btn COLORE1 mb-4" name="btn-enviar" onclick="return validarSenha()">Entrar</button>
                                 </div>
                             </div>
                         </form>
                 </fieldset>
             </div>
             <div class="col-md-6 centraliza">
-                <h2>Cadastre-se no site</h2>
+                <h2 class="fontevinteecinco">Cadastre-se no site</h2>
                 <p class="text-justify">Para comprar em nosso site é preciso realizar um cadastro. Através dele você fará parte do Clube de Vantagens Volare, ficando por dentro das novidades. Além de acesssar descontos e promoções EXCLUSIVAS.</p>
-              <div class="form-group">
-                                <label class="control-label col-sm-2 font-weight-bold" for="iCPF">CPF:</label>
-                                <div class="col-md-10">
-                                  <form action="php/CRUDS/checarCPF.php" method="POST">
-                                    <input type="text" class="form-control cpf" id="iCPF" placeholder="Digite o cpf" name="txtCPF" class="form-control cpf" required>
-                                    <?php
-                                    if (isset($_SESSION['cpf'])){
-                                      if (!$_SESSION['cpf'] == "não_cadastrado") {
-                                        echo "<script>alert('Seu CPF já está cadastrado.')</script>";
-                                        unset($_SESSION['cpf']);
-                                      } else {
-                                        echo "<script>alert('Seu CPF não está cadastrado.')</script>";
-                                        echo "<script>window.location.assign('cadastro')</script>";
-                                        unset($_SESSION['cpf']);
-                                      }
-                                    }
-                                    ?>
-                                <br/>
-                                </div>
-                                <div class="col-sm-offset-2 col-md-10">
-
-                                    <button type="submit" class="btn COLORE" name="btn_cadastrar_cpf">Cadastrar</button>
-                                  </form>
-                                </div>
-                <h2>Conectar com sua rede social</h2>
                 <div class="form-group">
-                                <div class="col-sm-offset-2 col-md-10">
-                                    <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false" onlogin="checkLoginState();"></div>
-                                </div>
+                    <label class="control-label col-sm-2 font-weight-bold" for="iCPF">CPF:</label>
+                    <div class="col-md-10">
+                        <form action="php/CRUDS/checarCPF.php" method="POST">
+                            <input type="text" class="form-control cpf" id="iCPF" placeholder="Digite o cpf" name="txtCPF" class="form-control cpf" required>
+                            <?php
+                            if (isset($_SESSION['cpf'])){
+                              if (!$_SESSION['cpf'] == "não_cadastrado") {
+                                echo "<script>alert('Seu CPF já está cadastrado.')</script>";
+                                unset($_SESSION['cpf']);
+                              } else {
+                                echo "<script>alert('Seu CPF não está cadastrado.')</script>";
+                                echo "<script>window.location.assign('cadastro')</script>";
+                                unset($_SESSION['cpf']);
+                              }
+                            }
+                            ?>
+                        <br/>
+
+                        <div class="col-sm-offset-2 col-md-10 mb-4">
+                            <button type="submit" class="btn COLORE1" name="btn_cadastrar_cpf">Cadastrar</button>
+                        </div>
+                    </div>
+                    </div>
+                    <h2 class="fontevinteecinco">Conectar com sua rede social</h2>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-md-10">
+                            <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false" onlogin="checkLoginState();"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 <?php
 }
 });
