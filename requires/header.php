@@ -39,7 +39,7 @@ require_once 'php/CRUDS/serviceBook.php';
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div>
-                <img src="img/logomarcac.png"  alt="logomarca">
+                <a href="home"><img src="img/logomarcac.png"  alt="logomarca"></a>
             </div>
             <!-- COMEÇO DA DIV COLLAPSE HAMBURGER--> <div class="collapse navbar-collapse " id="navbarCollapse">
 
