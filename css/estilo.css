@@ -1,11 +1,11 @@
 /***** classes referentes a cor *******/
 
 .COLORE{
-    background-color: rgb(248,251,255);    
+    background-color: rgb(248,251,255);
 }
 
 .COLORE1{
-    background-color: rgb(181, 217, 254);   
+    background-color: rgb(181, 217, 254);
 }
 .COLORE1:hover{
     background-color: rgb(131, 186, 243);
@@ -51,8 +51,19 @@
 .opacidade{
     opacity: 0.7;
 }
-/******* importante ********/
 
+a{
+  text-decoration: none;
+}
+.linkstyle{   
+    color: gray;
+}
+.linkstyle:hover{
+  text-decoration: none;
+  color: rgb(181, 217, 254);
+}
+
+/******* importante ********/
 body{
     font-family: "georgia", "trebuchet";
     margin-bottom: 80px;
@@ -68,7 +79,7 @@ html {
       position: relative;
       min-height: 100%;
     }
-    
+
 /******* tamanho de fonte ******/
 
 .fonteonze{
@@ -147,7 +158,7 @@ html {
 .rating > span:hover ~ span:before {
    content: "\2605";
    position: absolute;
-   left: 0; 
+   left: 0;
    color: lightblue;
 }
 
@@ -289,5 +300,3 @@ html {
     opacity: 1;
   }
 }
-
-
