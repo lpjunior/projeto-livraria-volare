@@ -26,6 +26,7 @@ $app->get('/carrinho', function ($request, $response, $args) {
                     $carrinho = NULL;
                   }
                   if ($carrinho != NULL) {
+
                     foreach ($carrinho as $b => $i) {
                     ?>
                     <tbody>
@@ -40,14 +41,17 @@ $app->get('/carrinho', function ($request, $response, $args) {
                             <td>
                                 <button id="btnMenus" class="btn btn-light btn-sm">-</button>
                                 <input type="text" id="qtdProd" style="display:inline" maxlength="2" class="text-center form-control col-2" value="<?=(isset($_SESSION['user_id']) ? $i['quantidade'] : $i['qtd'])?>">
-                                <button id="btnPlus" class="btn btn-light btn-sm">+</button>
+                                <button id="btnPlus>" class="btn btn-light btn-sm">+</button>
                             </td>
                             <td>R$ <span id="idpreco"><?=(isset($_SESSION['user_id']) ? $i['preco'] : $i[0]['preco'])?></span></td>
                             <td><!--fazer um js-->R$00,00</td>
                         </tr>
                         <tr>
                     </tbody>
-                  <?php } } ?>
+
+                  <?php
+
+                 } } ?>
                 </table>
             </div>
             <div class="col-4">
@@ -85,50 +89,50 @@ $app->get('/carrinho', function ($request, $response, $args) {
     </div>
 <?php }); ?>
 <script>
-
+    id(total)
     $(function(){
-        $("#qtdProd").keyup(function() {
-            $txtQtd = $("#qtdProd").val();
+        $(this).keyup(function() {
+            $txtQtd = $(this).val();
             $qtd = parseInt($txtQtd);
             if($txtQtd.length > 2) {
-                $("#qtdProd").val(99);
+                $(this).val(99);
             } else if($qtd >= 99) {
-                $("#qtdProd").val(99);
+                $(this).val(99);
             } else if($qtd <= 0) {
-                $("#qtdProd").val(0);
+                $(this).val(0);
             }
         });
     });
 
     $(function(){
-        $("#qtdProd").keyup(function() {
-            $qtd = parseInt($("#qtdProd").val());
+        $(this).keyup(function() {
+            $qtd = parseInt($(this).val());
             if($qtd == "") {
-                $("#qtdProd").val(0);
+                $(this).val(0);
             } else if(isNaN($qtd)) {
-                $("#qtdProd").val(0);
+                $(this).val(0);
             }
         });
     });
 
     $(function(){
-        $("#btnPlus").click(function() {
-            $qtd = parseInt($("#qtdProd").val());
+        $(".btnPlus").click(function() {
+            $qtd = parseInt($(this).val());
             if($qtd >= 99) {
-                $("#qtdProd").val(99);
+                $(this).val(99);
             } else {
-                $("#qtdProd").val(++$qtd);
+                $(this).val(++$qtd);
             }
         });
     });
 
     $(function(){
-        $("#btnMenus").click(function() {
-            $qtd = parseInt($("#qtdProd").val());
+        $(".btnMenus").click(function() {
+            $qtd = parseInt($(this).val());
             if($qtd <= 0) {
-                $("#qtdProd").val(0);
+                $(this).val(0);
             } else {
-                $("#qtdProd").val(--$qtd);
+                $(this).val(--$qtd);
             }
         });
     });
