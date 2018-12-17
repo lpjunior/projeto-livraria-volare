@@ -12,17 +12,17 @@ $app->get('/faleConosco', function ($request, $response, $args) {
 
                         <form id="contact-form" action="mail.php" method="get">
                               <div class="col-md-6 col-sm-6">
-                                   <input type="text" class="form-control" name="name" placeholder="Name" required="">
-                              </div>
-                              <div class="col-md-6 col-sm-6">
-                                   <input type="email" class="form-control" name="email" placeholder="Email" required="">
+                                   <input type="text" class="form-control" name="name" placeholder="Name" required="required">
                               </div>
                               <div class="col-md-12 col-sm-12">
-                                   <textarea class="form-control" rows="5" name="message" placeholder="Message" required=""></textarea>
+                                   <input type="email" class="form-control" name="email" placeholder="Email" required="required">
+                              </div>
+                              <div class="col-md-12 col-sm-12">
+                                   <textarea class="form-control" rows="5" name="message" placeholder="Message" required="required"></textarea>
                               </div>
                               <div class="form-group">
                                 <div class="col-sm-offset-2 col-md-10">
-                                    <button type="submit" class="btn COLORE " name="btn-enviar" onclick="return validarSenha()">Entrar</button>
+                                    <button type="submit" class="btn COLORE1" name="btn-enviar" onclick="return validarSenha()">Entrar</button>
                                 </div>
                             </div>
                         </form>
@@ -38,7 +38,7 @@ $app->get('/faleConosco', function ($request, $response, $args) {
                          </div>
 
                          <p><i class="fas fa-map-marker-alt"></i> endereço xxxx xxxx</p>
-                         <p><i class="fas fa-envelope-square"></i> <a href="mailto:livrariavolare@mail.com">livrariavolare@mail.com</a></p>
+                         <p><i class="fas fa-envelope-square"></i> <a class="linkstyle" href="mailto:livrariavolare@mail.com">livrariavolare@mail.com</a></p>
                          <p><i class="fas fa-phone-square"></i> (000) 0000-0000</p>
                     </div>
                </div>
