@@ -62,16 +62,16 @@ $app->get('/produto', function ($request, $response, $args) {
                     <h4 class="fontedezoito text-center mt-4 bg-light opacidade">Clientes que compraram este livro também aprovam:</h4><br/>
 
                     <!-- começo dos cards PRIMEIRA LINHA-->
-                        <div class="card-deck mb-4 text-center ">
+                        <div class="card-deck mb-3 text-center ">
                           <?php
                           $livro = serviceListarLivro(4, NULL);
                           foreach ($livro as $i) {
                           ?>
-                        <div class="card mb-4 shadow-sm">
+                        <div class="card mb-3 shadow-sm">
 
                             <img class="card-img-top" src="img/placeholder1.jpg" alt="Card image cap">
                             <div class="card-header">
-                                <a href="produto?id=<?=$i['id']?>"><h4 class="my-0 font-weight-normal fontedezoito"><?=$i['titulo']?></h4></a>
+                                <a class="linkstyle" href="produto?id=<?=$i['id']?>"><h4 class="my-0 font-weight-normal fontedezoito"><?=$i['titulo']?></h4></a>
                             </div>
                             <div class="card-body">
                                 <h4 class="fontedezesseis"><?=$i['autor']?></h4>
@@ -85,25 +85,26 @@ $app->get('/produto', function ($request, $response, $args) {
                        </div> <!-- fim dos cards primeira linha-->
                 </section> <!-- fim da section dos cards -->
                 </div><!-- fim da row -->
-            </div><!-- fim do container -->
+            </div><!-- fim do primeiro container -->
             <!-- COMEÇO DA SECTION DE COMENTÁRIOS -->
 
-            <section class="container-fluid col-xs-12 col-sm-8 col-md-8 col-lg-8 centraliza mb-5 bordasb paddingtexto">
-                <h4 class="fontevinteecinco ml-5 mt-2 mb-4"><i class="far fa-comments"></i>&nbsp;Comentários:</h4>
-                <div class="row">
-                    <div class="col-md-7 col-lg-7 col-sm-10 centraliza mt-2 mb-2">
-                         <textarea class="form-control" rows="3" name="message" placeholder="Escreva seu comentário" maxlength="250" required="required"></textarea>
-                    </div>
-                    <div class="col-md-7 col-lg-7 col-sm-10 centraliza mb-4">
-                        <div class="form-group text-right opacidade pr-2">
-                            <div>
-                                <button type="submit" class="btn fontedoze opacidade COLORE1" alt="comentar" name="" onclick="">comentar</button>
-                                <!-- se o usuário não estiver logado deve aparecer a mensagem "Para postar um comentário entre ou faça o seu cadastro"-->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-10 col-lg-10 col-xl-10 col-sm-12 centraliza mb-2">
-                      <table class="table table-striped">
+            <section class="row">
+                    <div class="container-fluid col-xs-12 col-sm-8 col-md-8 col-lg-8 centraliza bordasb mb-5"><!-- BORDAS COMEÇO-->
+                      <div class="col-md-12 col-lg-12 col-sm-12 ml-5 mt-4 mb-4">
+                          <h4 class="fontevinteecinco"><i class="far fa-comments"></i>&nbsp;Comentários:</h4>
+                      </div>
+                      <div class="col-md-7 col-lg-7 col-sm-10 centraliza mt-2 mb-2">
+                           <textarea class="form-control" rows="3" name="message" placeholder="Escreva seu comentário" maxlength="250" required="required"></textarea>
+                      </div>
+                      <div class="col-md-7 col-lg-7 col-sm-10 centraliza mb-4">
+                          <div class="form-group text-right opacidade pr-2">
+                              <div>
+                                  <button type="submit" class="btn fontedoze opacidade COLORE1" alt="comentar" name="" onclick="">comentar</button>
+                                  <!-- se o usuário não estiver logado deve aparecer a mensagem "Para postar um comentário entre ou faça o seu cadastro"-->
+                              </div>
+                          </div>
+                      </div>
+                      <table class="table table-striped mt-3 mb-3">
                           <tbody>
                             <!--vai puxar os 8 últimos comentários inseridos no banco-->
                               <tr>
@@ -124,7 +125,6 @@ $app->get('/produto', function ($request, $response, $args) {
                           </tbody>
                         </table>
                     </div>
-                </div>
             </section> <!-- fim da section comentários -->
           <?php } else{ ?>
             <h1 class="text-center">Livro não encontrado</h1>
