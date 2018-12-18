@@ -1,30 +1,8 @@
 <?php /*
 // sessão
 session_start();
-
-//conexão
-require_once("db_connect.php");
-//Header
-require_once("includes/header.php"); ?>
-<?php
-
- // echo  $_SESSION['logado']."<br>".$_SESSION['nome_adm'];
-if (!isset($_SESSION['user'])){
-	header('Location: adm.php');
-
-}
+// Só poder entrar quando logado */
 ?>
-<?php
-if (isset($_SESSION['mensagem'])){?>
-	 <script>
-
-	window.onload = function (){
-		  M.toast({html: '<?php echo $_SESSION['mensagem']; ?>'});
-
-	  };
-
-	</script>
-<?php } */ ?>
 <!-- apagar-->
 <?php require_once("header.php");?>
 <!-- / apagar -->

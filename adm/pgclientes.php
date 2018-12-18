@@ -3,9 +3,7 @@
 session_start();
 require_once("header.php"); ?>
 <?php
-  if (!isset($_SESSION['user'])){
-    header('Location: adm.php');
-}
+// Só poder entrar quando logado
 ?>
 <?php
 if (isset($_SESSION['mensagem'])):?>

@@ -1,11 +1,6 @@
-<?php require_once("header.php"); ?>
-<? php
+<?php require_once("header.php");
 session_start();
- // echo  $_SESSION['logado']."<br>".$_SESSION['nome_adm'];
-if (!isset($_SESSION['user'])){
-	header('Location: adm.php');
-
-}
+// Só poder entrar quando logado
 ?>
 
 <section class="row container-fluid">
