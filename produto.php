@@ -93,13 +93,16 @@ $app->get('/produto', function ($request, $response, $args) {
                       <div class="col-md-12 col-lg-12 col-sm-12 ml-5 mt-4 mb-4">
                           <h4 class="fontevinteecinco"><i class="far fa-comments"></i>&nbsp;Comentários:</h4>
                       </div>
+                      <form action="php/CRUDS/inserirComentario.php?id=<?=$_GET['id']?>" method="POST">
                       <div class="col-md-7 col-lg-7 col-sm-10 centraliza mt-2 mb-2">
                            <textarea class="form-control" rows="3" name="message" placeholder="Escreva seu comentário" maxlength="250" required="required"></textarea>
                       </div>
                       <div class="col-md-7 col-lg-7 col-sm-10 centraliza mb-4">
                           <div class="form-group text-right opacidade pr-2">
                               <div>
-                                  <button type="submit" class="btn fontedoze opacidade COLORE1" alt="comentar" name="" onclick="">comentar</button>
+
+                                  <button type="submit" class="btn fontedoze opacidade COLORE1" alt="comentar" name="btn-comentar">comentar</button>
+                                </form>
                                   <!-- se o usuário não estiver logado deve aparecer a mensagem "Para postar um comentário entre ou faça o seu cadastro"-->
                               </div>
                           </div>
@@ -107,26 +110,22 @@ $app->get('/produto', function ($request, $response, $args) {
                       <table class="table table-striped mt-3 mb-3">
                           <tbody>
                             <!--vai puxar os 8 últimos comentários inseridos no banco-->
+                            <?php
+                            $comentarios = serviceListarComentarios(8);
+                            foreach ($comentarios as $i) {
+                            ?>
                               <tr>
-                                <th scope="row" class="COLORETEXTO text-center"><!-- caso logado e usuário = usuário que comentou - ABRIR PROMPT ao clicar no <i> "deseja excluir comentário: sim - não"-->
-                                  <i class="far fa-edit"></i></br><!--nome do usuário--></th>
-                                <td><p><!--comentário--><p></td>
-                              </tr>
-                              <!--preenchidos pra teste-->
-                              <tr>
-                                <th scope="row" class="COLORETEXTO text-center"><!-- --><i class="far fa-edit"></i></br>Manoela</th>
-                                <td><p>We count thirty Rebel ships, Lord Vader. But they're so small they're evading our turbo-lasers! We'll have to destroy them ship to ship. Get the crews to their fighters. Luke, let me know when you're going in. I'm on my way in now... Watch yourself!</p></td>
-                              </tr>
-                              <tr>
-                                <th scope="row" class="COLORETEXTO text-center"><!-- --><i class="far fa-edit"></i></br>Carolina</th>
-                                <td><p>Let him go! Stay on the leader! Hurry up, Luke! Wait! I'm on the leader. Hang on, Artoo! Use the Force, Luke. Let go, Luke. The Force is strong with this one! Luke, trust me. His computer's off.</p></td>
+                                <form action="#" method="POST">
+                                <th scope="row" class="COLORETEXTO text-center"><!-- --><i class="far fa-edit"></i></br><?=$i['nome']?></th>
+                                </form>
+                                <td><p><?=$i['comentario']?></p></td>
                               </tr>
                               <!--fim dos preenchidos pra teste-->
                           </tbody>
                         </table>
                     </div>
             </section> <!-- fim da section comentários -->
-          <?php } else{ ?>
+          <?php } } else{ ?>
             <h1 class="text-center">Livro não encontrado</h1>
             <?php
           }

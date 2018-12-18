@@ -8,9 +8,13 @@
       return false;
     }
 }
-  function listarComentario(){
+  function listarComentario($limit){
     $conexao = getConnection();
-    $sql = "SELECT comentario, data_comentario from comentarios order by data_comentario asc";
+    $sql = "SELECT com.comentario, usu.nome from comentarios com inner join usuarios usu on com.usuarios_id = usu.id";
+    //$sql = "SELECT comentario, data_comentario from comentarios order by data_comentario asc";
+    if ($limit != NULL){
+      $sql .= " LIMIT $limit";
+    }
     $resultado = mysqli_query($conexao, $sql);
     if (mysqli_affected_rows($conexao) >= 1) {
       $comentario = array();
