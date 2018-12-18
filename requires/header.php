@@ -1,4 +1,7 @@
 <?php
+if (!isset($_SESSION)) {
+	session_start();
+}
 require_once 'php/CRUDS/serviceBook.php';
 require_once 'php/CRUDS/serviceUsuario.php';
 require_once 'php/CRUDS/serviceComentarios.php';

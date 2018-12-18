@@ -1,7 +1,10 @@
 <?php
+if (!isset($_SESSION)) {
+	session_start();
+}
 require_once 'conexao.php';
 ## Registrar Cliente
-function registrarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $cep, $end, $num, $complemento, $bairro, $cidade, $estado, $cat, $telefone){
+function registrarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $cep, $end, $num, $complemento, $bairro, $cidade, $estado, $telefone, $interesse){
 	date_default_timezone_set('America/Sao_Paulo');
 	$datanascimento = implode('-',array_reverse(explode('/',$datanascimento)));
 	## FILTROS
@@ -26,10 +29,17 @@ function registrarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $gen
 	$resultado = mysqli_query($conexao, $sql);
 	$sql = "INSERT INTO telefone VALUES (NULL, $telefone, $id, 1)";
 	$resultado = mysqli_query($conexao, $sql);
-	if ($cat != NULL){
-		$sql = "INSERT INTO interesses VALUES ($id, $cat)";
-		$resultado = mysqli_query($conexao, $sql);
+	$sql = "INSERT INTO interesses VALUES";
+	$cont = 1;
+	foreach ($interesse as $i) {
+		if (count($interesse) == $cont){
+		$sql .= " ($id, $i)";
+	} else {
+		$cont++;
+		$sql .= " ($id, $i),";
 	}
+	}
+	$resultado = mysqli_query($conexao, $sql);
 	if (mysqli_affected_rows($conexao) >= 1) {
 		return header('location: ../../entrar');
 	} else {
@@ -52,26 +62,35 @@ function logarUsuario($email, $senha){
 			$carrinho = $_SESSION['produto'];
 			$idUsuario = $_SESSION['user_id'];
 			## Foreach para colocar todos os produtos para o banco de dados
+			$cont = 1;
 			foreach ($carrinho as $b => $i) {
 				$qtd = $i['qtd'];
-				$sql = "INSERT INTO itens_reservados VALUES ($idUsuario, $b, $qtd)";
-				$resultado = mysqli_query($conexao, $sql);
+				$sql = "INSERT INTO itens_reservados VALUES";
+					if (count($carrinho) == $cont){
+					$sql .= " ($idUsuario, $b, $qtd)";
+				} else {
+					$cont++;
+					$sql .= " ($idUsuario, $b, $qtd),";
+				}
+			}
+			$resultado = mysqli_query($conexao, $sql);
 				## Se o insert não for, quer dizer que o item já está no banco, então faça o update.
-				if (mysqli_affected_rows($conexao) <= 1){
+					#################### FAZER NA PROCEDURE #######################
+				/*if (mysqli_affected_rows($conexao) <= 1){
 					$sql = "UPDATE itens_reservados SET quantidade = quantidade + $qtd where produto_id = $b";
 					$resultado = mysqli_query($conexao, $sql);
-				}
+				}*/
 				## Abaixar o número no estoque
+				foreach ($carrinho as $i) {
 				$sql = "UPDATE produto set quantidade = quantidade - $qtd where id = $b";
 				$resultado = mysqli_query($conexao, $sql);
-			}
+				}
+			} // Fim do if caso a pessoa tenha itens no carrinho.
+			return true;
+		} else {
+			return "Falha ao logar";
 		}
-		return true;
-	} else {
-		return "Falha ao logar";
 	}
-
-}
 ## Editar informações do cliente
 function editarInformacoes($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $cep, $end, $num, $complemento, $bairro, $cidade, $estado, $id){
 	$conexao = getConnection();
@@ -92,9 +111,7 @@ function editarInformacoes($nome, $sobrenome, $email, $cpf, $datanascimento, $ge
 	$estado = filtrarString($estado);
 	$sql = "UPDATE usuarios SET nome = '$nome', sobrenome = '$sobrenome', email = '$email', cpf = '$cpf', datanascimento = '$datanascimento', senha = md5('$senha') where id = $id";
 	$resultado = mysqli_query($conexao, $sql);
-	echo $sql;
 	$sql = "UPDATE endereco SET cep = '$cep', endereco = '$end', numero = '$num', complemento = '$complemento', bairro = '$bairro', estado = '$estado', cidade = '$cidade' where usuarios_id = $id";
-	echo $sql;
 	$resultado = mysqli_query($conexao, $sql);
 	if (mysqli_affected_rows($conexao) >= 1) {
 		return true;
@@ -150,7 +167,7 @@ if (mysqli_affected_rows($conexao) >= 1) {
 	$arr[0]['datanascimento'] = $a;
 	return $arr;
 }
-## Filtros para o cadastro
+############################ Filtros para o cadastro ##########################
 }
 function filtrarEmail($var){
 	$conexao = getConnection();
@@ -167,7 +184,7 @@ function filtrarString($var){
 function filtrarInt($var){
 	return filter_var($var, FILTER_SANITIZE_NUMBER_INT);
 }
-## Cadastro de admin
+########################## Cadastro de admin ############################
 
 function registrarAdmin($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $cep, $end, $num, $complemento, $bairro, $cidade, $estado){
 	date_default_timezone_set('America/Sao_Paulo');
@@ -201,7 +218,7 @@ function checarCPF($cpf){
 	$conexao = getConnection();
 	$cpf = mysqli_escape_string($conexao, $cpf);
 	$cpf = htmlspecialchars($cpf);
-	$sql = "SELECT cpf from usuarios where cpf = $cpf";
+	$sql = "SELECT cpf from usuarios where cpf = '$cpf'";
 	$resultado = mysqli_query($conexao, $sql);
 	if (mysqli_affected_rows($conexao) >= 1) {
 		return 1;
@@ -242,6 +259,20 @@ function loginUsuarioAdmin($email, $senha){
 				array_push($item, $linha);
 			}
 			return $item;
+		} else {
+			return false;
+		}
+	}
+	function listarCategoria(){
+		$conexao = getConnection();
+		$sql = "SELECT * FROM categoria";
+		$resultado = mysqli_query($conexao, $sql);
+		if (mysqli_affected_rows($conexao) >= 1){
+			$categoria = array();
+			while ($linha = mysqli_fetch_assoc($resultado)){
+				array_push($categoria, $linha);
+			}
+			return $categoria;
 		} else {
 			return false;
 		}

@@ -6,8 +6,8 @@ require_once 'crud_usuario.php';
 		}
 	}
 
-	function serviceRegistro($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $cep, $end, $num, $complemento, $bairro, $cidade, $estado, $cat, $telefone){
-		if ($user = registrarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $cep, $end, $num, $complemento, $bairro, $cidade, $estado, $cat, $telefone)){
+	function serviceRegistro($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $cep, $end, $num, $complemento, $bairro, $cidade, $estado, $telefone, $interesse){
+		if ($user = registrarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $cep, $end, $num, $complemento, $bairro, $cidade, $estado, $telefone, $interesse)){
 			return $user;
 		}
 	}
@@ -41,6 +41,11 @@ require_once 'crud_usuario.php';
 	}
 	function serviceListarItemDesejado(){
 		if ($user = listarItemDesejado()){
+			return $user;
+		}
+	}
+	function serviceListarCategoria(){
+		if ($user = listarCategoria()){
 			return $user;
 		}
 	}

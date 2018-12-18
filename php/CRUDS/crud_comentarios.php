@@ -1,4 +1,7 @@
 <?php
+if (!isset($_SESSION)) {
+	session_start();
+}
   function inserirComentario($usuarioID, $produtoID, $comentario, $dataComentario){
     $conexao = getConnection();
     $sql = "INSERT INTO comentarios VALUES (NULL, $usuariosID, $produtoID, $comentario, $dataComentario)";

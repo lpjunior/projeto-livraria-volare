@@ -40,7 +40,7 @@ $app->get('/cadastro', function ($request, $response, $args) {
 								</div>
 								<div class="col-md">
 									<label for="iTelefone">Telefone:</label>
-									<input type="text" id="i" name="txt" class="form-control phone" required>
+									<input type="text" id="i" name="iTelefone" class="form-control phone" required>
 									<br/>
 								</div>
 							</div>
@@ -127,10 +127,16 @@ $app->get('/cadastro', function ($request, $response, $args) {
 							</div>
 							<div class="row pt-4 pl-3">
 								<label for="genFav">Interesses</label>
-								<div id="genFav" class="col-md ">
+								<div class="col-md">
 									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="checkbox" name="" id="cb1" value="option1">
-										<label class="form-check-label" for="cb1">Puxar do banco</label>
+                    <?php
+                    $categoria = serviceListarCategoria();
+                    $var = 1;
+                    foreach ($categoria as $i) {
+                    ?>
+										<input class="form-check-input" type="checkbox" name="interesses[]" id="cb<?=$var?>" value="<?=$i['id']?>">
+										<label class="form-check-label" for="cb<?=$var?>"><?=$i['categoria']?></label>
+                  <?php $var++; } ?>
 									</div>
 								</div>
 							</div>

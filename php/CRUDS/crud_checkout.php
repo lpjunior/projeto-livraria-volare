@@ -1,4 +1,7 @@
   <?php
+  if (!isset($_SESSION)) {
+  	session_start();
+  }
   require_once 'conexao.php';
   require_once 'serviceCarrinho.php';
   listarCheckout(4, 1);
