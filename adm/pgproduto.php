@@ -1,5 +1,4 @@
-<?php require_once("header.php"); ?>
-<?php
+<?php 
 // sessão
 session_start();
 
@@ -29,79 +28,72 @@ if (isset($_SESSION['mensagem'])):?>
 <?php endif;
 ?>
 
-<div class="row">
-   <div class="col s12 m6 push-m3">
-     <h2 class="ligth"> Produtos:</h2>
-    <table class="striped" >
-	   <thead>
-	    <tr>
-		    <th> Titulo:</th>
-			 <th> Autor:</th>
-			  <th> Editora:</th>
-			  <th> ISBN:</th>
-				 <th> numeroPaginas:</th>
-				  <th> Sinopse:</th>
-				   <th> Peso:</th>
-				    <th> dataPublicação:</th>
-					 <th> fornecedor:</th>
-					  <th> Preço:</th>
-					   <th> Quantidade:</th>
+
+<section class="row container-fluid">
+  <div class="col-12 col-sm-12 col-md-10 col-lg-10 centraliza mt-3">
+    <h1 class="fontedezoito text-left pb-2 pt-2 opacidade"><i class="fas fa-caret-right"></i>&nbsp;<i>Produtos</i></h1>
+				<div class="form-group text-righ mb-4 pr-2">
+						<div>
+							<button type="submit" class="btn fontequinze opacidade COLORE1" alt="comentar" name="" onclick="adicionaProduto.php">Adicionar</button>
+						</div>
+				</div>
+				<table class="table table-striped text-center table-responsive mb-4">
+          <thead class="centraliza">
+              <tr>
+                <th scope="col">Título</th>
+                <th scope="col">Autor</th>
+                <th scope="col">Editora</th>
+                <th scope="col">ISBN</th>
+                <th scope="col">num_pág</th>
+								<th scope="col">Sinopse</th>
+                <th scope="col">Fornecedor</th>
+								<th scope="col">Preço</th>
+								<th scope="col">Qtd.</th>
+              </tr>
+          </thead>
+          <tbody class="centraliza"><!-- CONTEÚDO DA TABELA -->
+              <tr>
+								<?php
+								$sql="SELECT * FROM produto";
+								$resultado = mysqli_query($connect, $sql);
+								while($dados= mysqli_fetch_array ($resultado)){
+								?>
+
+									<td> <?php echo $dados['titulo'];?></td>
+									<td> <?php echo $dados['autor'];?></td>
+									<td> <?php echo $dados['editora'];?></td>
+									<td> <?php echo $dados['isbn'];?></td>
+									<td> <?php echo $dados['numeroPaginas'];?></td>
+									<td> <?php echo $dados['sinopse'];?></td>
+									<td> <?php echo $dados['peso'];?></td>
+									<td> <?php echo $dados['dataPublicacao'];?></td>
+									<td> <?php echo $dados['fornecedor'];?></td>
+									<td><?php  echo $dados['preco'];?></td>
+									<td> <?php echo $dados['quantidade'];?></td>
 
 
+									<td><a class="linkstyle2" href="editaProduto.php?id=<?php echo $dados['id']; ?>"><i class="fas fa-box-open"></i><a/></td>
+									<td><a class="linkstyle3" href="#modal<?php echo $dados['id'];?>"><i class="fas fa-pen"></i><a/></td>
+									<!-- Modal Structure -->
+												<div id="modal<?php echo $dados['id'];?>" class="modal">
+												<div class="modal-content">
+												<h4>Atenção </h4>
+												<p>Tem certeza que deseja excluir esse produto ?</p>
+											</div>
+												<div class="modal-footer">
+														 <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+												 <form action="php_cruds/deleteProduto.php" method ="POST">
+													 <input type="hidden" name="id" value="<?php echo $dados['id'];?>">
+													 <button type="submit"name="btn-deletar" class="btn red">sim, quero deletar</button>
+												 </form>
+												</div>
+											</div>
 
+								 </tr>
+								<?php } ?>
+          </tbody><!-- fim do conteúdo da tabela-->
+        </table>
 
-		</tr>
-
-	   </thead>
-
-
-	   <tbody>
-	   <?php
-	   $sql="SELECT * FROM produto";
-	   $resultado = mysqli_query($connect, $sql);
-	   while($dados= mysqli_fetch_array ($resultado)){
-	   ?>
-	      <tr>
-		     <td> <?php echo $dados['titulo'];?></td>
-			 <td> <?php echo $dados['autor'];?></td>
-			 <td> <?php echo $dados['editora'];?></td>
-			 <td> <?php echo $dados['isbn'];?></td>
-			 <td> <?php echo $dados['numeroPaginas'];?></td>
-			 <td> <?php echo $dados['sinopse'];?></td>
-			 <td> <?php echo $dados['peso'];?></td>
-			 <td> <?php echo $dados['dataPublicacao'];?></td>
-			 <td> <?php echo $dados['fornecedor'];?></td>
-			 <td><?php  echo $dados['preco'];?></td>
-			 <td> <?php echo $dados['quantidade'];?></td>
-
-
-			 <td><a href="editaProduto.php?id=<?php echo $dados['id']; ?>" class="btn-floating yellow"><i class="material-icons">edit</i><a/></td>
-			 <td><a href="#modal<?php echo $dados['id'];?>" class="btn-floating red modal-trigger"><i class="material-icons">delete</i><a/></td>
-			 <!-- Modal Structure -->
-             <div id="modal<?php echo $dados['id'];?>" class="modal">
-             <div class="modal-content">
-             <h4>Atenção </h4>
-             <p>Tem certeza que deseja excluir esse produto ?</p>
-           </div>
-              <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-				<form action="php_cruds/deleteProduto.php" method ="POST">
-				<input type="hidden" name="id" value="<?php echo $dados['id'];?>">
-				<button type="submit"name="btn-deletar" class="btn red">sim, quero deletar</button>
-
-				</form>
-           </div>
-           </div>
-
-		  </tr>
-	   <?php } ?>
-	   </tbody>
-	</table>
-	<br>
-	<a href="adicionaProduto.php" type="submit" class="btn">Adicionar</a>
-</div>
-
-
-
-  <?php require_once("includes/footer.php"); ?>
+  </div>
+</section>
 <?php require_once("footer.php"); ?>
