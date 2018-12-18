@@ -12,40 +12,41 @@ $app->map(['GET', 'POST'], '/busca', function ($request, $response, $args) {?>
                   <form action="#" method="POST">
                     <!-- busca anterior + idioma -->
                       <label for="formControlRange"><h4 class="displayblock fontedezesseis"><b>idioma:</b></h4></label>
-                      <div class="custom-control custom-checkbox custom-control-inline displayblock">
+                      <div class="custom-control custom-radio displayblock">
                         <input value="PT" name="idiomas" type="radio" class="custom-control-input" id="port">
                         <label class="custom-control-label" for="port">Português</label>
                       </div>
-                      <div class="custom-control custom-checkbox custom-control-inline displayblock">
+                      <div class="custom-control custom-radio displayblock">
                         <input value="SPN" name="idiomas" type="radio" class="custom-control-input" id="esp">
                         <label class="custom-control-label" for="esp">Espanhol</label>
                       </div>
-                      <div class="custom-control custom-checkbox custom-control-inline displayblock">
+                      <div class="custom-control custom-radio displayblock">
                         <input value="ENG" name="idiomas" type="radio" class="custom-control-input" id="ing">
                         <label class="custom-control-label" for="ing">Inglês</label>
                       </div>
+                    </form>
+                    <form action="#" method="POST">
                       <hr/>
                       <!-- busca anterior + faixa preço -->
-                      <label for="formControlRange"><h4 class="fontedezesseis displayblock"><b>Preço:</b></h4></label>
-                      <div class="custom-control custom-checkbox custom-control-inline displayblock">
-                        <input type="checkbox" class="custom-control-input" id="atevinte">
-                        <label class="custom-control-label" for="atevinte">Até R$ 20</label>
+                      <div class="custom-control custom-radio">
+                        <input type="radio" id="avinte" name="customRadio" class="custom-control-input">
+                        <label class="custom-control-label" for="avinte">Até R$ 20</label>
                       </div>
-                      <div class="custom-control custom-checkbox custom-control-inline displayblock">
-                        <input type="checkbox" class="custom-control-input" id="vintetrinta">
-                        <label class="custom-control-label" for="vintetrinta">R$ 20 - 30</label>
+                      <div class="custom-control custom-radio">
+                        <input type="radio" id="vintet" name="customRadio" class="custom-control-input">
+                        <label class="custom-control-label" for="vintet">R$ 20 - 30</label>
                       </div>
-                      <div class="custom-control custom-checkbox custom-control-inline displayblock">
-                        <input type="checkbox" class="custom-control-input" id="trintaquarenta">
-                        <label class="custom-control-label" for="trintaquarenta">R$ 30 - 40</label>
+                      <div class="custom-control custom-radio">
+                        <input type="radio" id="trintaq" name="customRadio" class="custom-control-input">
+                        <label class="custom-control-label" for="trintaq">R$ 30 - 40</label>
                       </div>
-                      <div class="custom-control custom-checkbox custom-control-inline displayblock">
-                        <input type="checkbox" class="custom-control-input" id="acimaquarenta">
-                        <label class="custom-control-label" for="acimaquarenta">Acima de 40</label>
+                      <div class="custom-control custom-radio">
+                        <input type="radio" id="quarentaa" name="customRadio" class="custom-control-input">
+                        <label class="custom-control-label" for="quarentaa">Acima de 40</label>
                       </div>
-                  </form>
+                    </form>
                   <div class="form-group text-center opacidade mt-3 mb-3">
-                      <div> <!-- botão pra pesquisar com adição dos filtros selecionados nos checkbox acima -->
+                      <div> <!-- botão pra pesquisar com adição dos filtros selecionados nos radios acima -->
                           <button type="submit" class="btn fontedoze opacidade COLORE1" alt="pesquisar" name="" onclick="">Pesquisar</button>
                       </div>
                   </div>
