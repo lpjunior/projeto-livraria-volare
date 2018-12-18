@@ -6,18 +6,18 @@ require_once 'crud_usuario.php';
 		}
 	}
 
-	function serviceRegistro($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $cep, $end, $num, $complemento, $bairro, $cidade, $estado){
-		if ($user = registrarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $cep, $end, $num, $complemento, $bairro, $cidade, $estado)){
+	function serviceRegistro($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $cep, $end, $num, $complemento, $bairro, $cidade, $estado, $cat, $telefone){
+		if ($user = registrarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $cep, $end, $num, $complemento, $bairro, $cidade, $estado, $cat, $telefone)){
 			return $user;
 		}
 	}
-	function serviceEditar($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $cep, $end, $num, $complemento, $bairro, $cidade, $estado, $id){
-		if ($user = editarInformacoes($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $cep, $end, $num, $complemento, $bairro, $cidade, $estado, $id)){
+	function serviceEditarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $cep, $end, $num, $complemento, $bairro, $cidade, $estado, $id, $telefone){
+		if ($user = editarInformacoes($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $cep, $end, $num, $complemento, $bairro, $cidade, $estado, $id, $telefone)){
 			return $user;
 		}
 	}
-	function serviceListarUsu($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $cep, $end, $num, $complemento, $bairro, $cidade, $estado, $limit){
-		if ($user = listarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $cep, $end, $num, $complemento, $bairro, $cidade, $estado, $limit)){
+	function serviceListarUsu($limit, $id){
+		if ($user = listarUsuario($limit, $id)){
 			return $user;
 		}
 	}
@@ -31,6 +31,16 @@ require_once 'crud_usuario.php';
 	}
 	function serviceLoginAdmin($email, $senha){
 		if ($user = loginUsuarioAdmin($email, $senha)){
+			return $user;
+		}
+	}
+	function serviceInserirItemDesejado($usuarioID, $produtoID){
+		if ($user = inserirItemDesejado($usuarioID, $produtoID)){
+			return $user;
+		}
+	}
+	function serviceListarItemDesejado(){
+		if ($user = listarItemDesejado()){
 			return $user;
 		}
 	}
