@@ -84,7 +84,9 @@ $app->get('/carrinho', function ($request, $response, $args) {
         </div>
         <div class="row">
 			<div class="col mt-4">
+          <form method="POST" action="checkout">
                 <button type="submit" class="btn COLORE1" name="btn-checkout" >Concluir compra</button>
+              </form>
             </div>
 		</div>
     </div>

@@ -1,8 +1,8 @@
 <?php
 require_once 'php/CRUDS/serviceCheckout.php';
-$app->get('/checkout', function ($request, $response, $args) {
+$app->map(['GET', 'POST'], '/checkout', function ($request, $response, $args) {
   ## Mudar para o botão de checkout depois ##
-  if (isset($_SESSION['user_id'])){
+  if (isset($_SESSION['user_id']) && isset($_POST['btn-checkout'])){
 ?>
         <section>
             <div class="container-fluid col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 centraliza mt-4">
@@ -106,7 +106,7 @@ $app->get('/checkout', function ($request, $response, $args) {
         </section>
 <?php
 } else {
- echo "<script>window.location.assign('home')</script>";
+ echo "<script>window.location.assign('carrinho')</script>";
 }
 });
 
