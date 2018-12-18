@@ -88,25 +88,31 @@ function excluirLivro($id){
 	## BUSCA
 	function pesquisarLivro($n, $value){
 		$conexao = getConnection();
-		$sql = "select id, titulo, autor, editora, sinopse, datapublicacao, preco
-		from produto";
-
+		/*if ($idioma != NULL){
+			$sql = "select prod.id, prod.titulo, prod.autor, prod.editora, prod.sinopse, prod.datapublicacao, prod.preco, idi.idioma
+			from produto prod
+			inner join Produto_has_Idioma ph on ph.Produto_id = prod.id
+			inner join idioma idi on idi.id = ph.Idioma_id";
+		} */
+			$sql = "select prod.id, prod.titulo, prod.autor, prod.editora, prod.sinopse, prod.datapublicacao, prod.preco,
+			from produto prod";
+		// }
 		switch ($value) {
 	    case "titulo":
-				$sql .= " WHERE titulo like '%$n%'";
-				$sql .= " order by titulo asc;";
+				$sql .= " WHERE prod.titulo like '%$n%'";
+				$sql .= " order by prod.titulo asc;";
 	      break;
 	    case "autor":
-				$sql .= " WHERE autor like '%$n%'";
-				$sql .= " order by autor asc;";
+				$sql .= " WHERE prod.autor like '%$n%'";
+				$sql .= " order by prod.autor asc;";
 	      break;
 	    case "ano":
-				$sql .= " WHERE datapublicacao like '%$n'";
-				$sql .= " order by datapublicacao asc;";
+				$sql .= " WHERE prod.datapublicacao like '%$n'";
+				$sql .= " order by prod.datapublicacao asc;";
 	      break;
 			default:
-				$sql .= " WHERE titulo like '%$n%' or autor like '%$n%' or editora like '%$n%'";
-				$sql .= " ORDER BY datapublicacao asc;";
+				$sql .= " WHERE prod.titulo like '%$n%' or prod.autor like '%$n%' or prod.editora like '%$n%'";
+				$sql .= " ORDER BY prod.datapublicacao asc;";
 				$padrao = true;
 				break;
 	}

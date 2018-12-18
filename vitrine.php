@@ -9,19 +9,19 @@ $app->map(['GET', 'POST'], '/busca', function ($request, $response, $args) {?>
                   <a href="#" class="linkstyle fontedezesseis"><!-- chamar todas as chategorias do banco e o link vai pra vitrine exibindo todos os livros da categoria x--></a>
                   <hr/>
                   <h4 class="fontedezoito"><i>Adicionar filtro</i></h4>
-                  <form>
+                  <form action="#" method="POST">
                     <!-- busca anterior + idioma -->
                       <label for="formControlRange"><h4 class="displayblock fontedezesseis"><b>idioma:</b></h4></label>
                       <div class="custom-control custom-checkbox custom-control-inline displayblock">
-                        <input type="checkbox" class="custom-control-input" id="port">
+                        <input value="PT" name="idiomas" type="radio" class="custom-control-input" id="port">
                         <label class="custom-control-label" for="port">Português</label>
                       </div>
                       <div class="custom-control custom-checkbox custom-control-inline displayblock">
-                        <input type="checkbox" class="custom-control-input" id="esp">
+                        <input value="SPN" name="idiomas" type="radio" class="custom-control-input" id="esp">
                         <label class="custom-control-label" for="esp">Espanhol</label>
                       </div>
                       <div class="custom-control custom-checkbox custom-control-inline displayblock">
-                        <input type="checkbox" class="custom-control-input" id="ing">
+                        <input value="ENG" name="idiomas" type="radio" class="custom-control-input" id="ing">
                         <label class="custom-control-label" for="ing">Inglês</label>
                       </div>
                       <hr/>
