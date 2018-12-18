@@ -14,7 +14,8 @@ if (!isset($_SESSION)) {
   function listarComentario($limit){
     $conexao = getConnection();
     $sql = "SELECT com.comentario, usu.nome from comentarios com inner join usuarios usu on com.usuarios_id = usu.id";
-    //$sql = "SELECT comentario, data_comentario from comentarios order by data_comentario asc";
+    //$sql = "SELECT com.comentario, usu.nome from comentarios com inner join usuarios usu on com.usuarios_id = usu.id
+    // order by data_comentario asc";
     if ($limit != NULL){
       $sql .= " LIMIT $limit";
     }

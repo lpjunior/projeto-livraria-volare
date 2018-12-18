@@ -113,6 +113,7 @@ function editarInformacoes($nome, $sobrenome, $email, $cpf, $datanascimento, $ge
 	$resultado = mysqli_query($conexao, $sql);
 	$sql = "UPDATE endereco SET cep = '$cep', endereco = '$end', numero = '$num', complemento = '$complemento', bairro = '$bairro', estado = '$estado', cidade = '$cidade' where usuarios_id = $id";
 	$resultado = mysqli_query($conexao, $sql);
+
 	if (mysqli_affected_rows($conexao) >= 1) {
 		return true;
 	} else {
@@ -140,17 +141,14 @@ ender.cidade,
 ender.estado,
 ender.cep,
 tel.numero as telefone,
-tipoend.tipo as tipo_endereco,
-cat.categoria as interesses
+tipoend.tipo as tipo_endereco
 
 from usuarios usu
 inner join genero ge on ge.id = usu.genero_id
 inner join perfil per on per.id = usu.perfil_id
 inner join telefone tel on usu.id = tel.usuarios_id
 left join endereco ender on ender.usuarios_id = usu.id
-left join tipoendereco tipoend	on tipoend.id = ender.tipoendereco_id
-left join interesses inte on inte.usuarios_id = usu.id
-left join categoria cat on cat.id = inte.categoria_id";
+left join tipoendereco tipoend	on tipoend.id = ender.tipoendereco_id";
 if ($limit != NULL) {
 	$sql .= " LIMIT $limit";
 }

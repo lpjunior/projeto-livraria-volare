@@ -7,13 +7,6 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
         <h3> Olá, <?=$_SESSION['user']['nome']?></h3> <br>
         </div>
         <div class="row">
-          <?php
-          $usuario = serviceListarUsu(NULL, $_SESSION['user_id']);
-          if (isset($_SESSION['editarFalse'])){
-            echo $_SESSION['editarFalse'];
-          }
-          foreach ($usuario as $i) {
-          ?>
             <div class="col-md-5">
             <!-- Nav pills -->
                 <ul class="nav flex-column nav-pills" role="tablist">
@@ -47,7 +40,12 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                     <fieldset><!-- *************início do formulário dados pessoais********************** -->
                         <form action="php/CRUDS/editarUsuario.php" method="POST">
                             <div class="form-group"> <h5>Dados Pessoais</h5>
-
+                                <?php
+                                $usuario = serviceListarUsu(NULL, $_SESSION['user_id']);
+                                if (isset($_SESSION['editarFalse'])){
+                                  echo $_SESSION['editarFalse'];
+                                }
+                                foreach ($usuario as $i) {?>
                                 <div class="row">
                                     <div class="col">
                                         <label for="iNome">Nome:</label>
