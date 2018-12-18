@@ -1,10 +1,5 @@
-<?php
-require_once 'php/CRUDS/serviceCheckout.php';
-$app->map(['GET', 'POST'], '/checkout', function ($request, $response, $args) {
-  ## Mudar para o botão de checkout depois ##
-  if (isset($_SESSION['user_id']) && isset($_POST['btn-checkout'])){
-?>
-        <section>
+<?php require_once("header.php"); ?>
+      <section>
             <div class="container-fluid col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 centraliza mt-4">
                 <div class="row">
                     <div class="col-12 col-sm-8 col-md-7 col-lg-8">
@@ -20,12 +15,7 @@ $app->map(['GET', 'POST'], '/checkout', function ($request, $response, $args) {
                                       </tr>
                                     </thead>
                                     <tbody>
-                                      <?php
-                                      $valor_total = 0;
-                                      $frete = '2.90';
-                                      $checkout = serviceListarCheckout($_SESSION['user_id'], NULL);
-                                      foreach ($checkout as $i) {
-                                      ?>
+
                                       <tr class="fontetabela">
                                           <th scope="row"><i class="COLORETEXTO fas fa-book"></i></th>
                                         <td class="text-left"><?=$i['titulo']?></td>
@@ -37,8 +27,8 @@ $app->map(['GET', 'POST'], '/checkout', function ($request, $response, $args) {
                                         ## Somar todos os valores do array
                                         $valor_total += $i['0']; ?>
                                       </tr>
-                                      <!--preenchido pra teste-->
-                                      <?php } ?>
+
+                                      <?/*php } */?>
                                     </tbody>
                                 </table>
                             </div>
@@ -56,6 +46,11 @@ $app->map(['GET', 'POST'], '/checkout', function ($request, $response, $args) {
                                     <td class="fontetabeladois"><b>Total a pagar:</b></td>
                                     <td colspan="2" class="fontetabeladois text-right"><b>R$ <?=floatval($frete) + $valor_total?></b></td>
                                   </tr>
+                                  <tr>
+                                    <th scope="row"><i class="fontedoze COLORETEXTO fas fa-dollar-sign"></i></th>
+                                    <td class="fontetabeladois"><b>Status da compra:</b></td>
+                                    <td colspan="2" class="fontetabeladois text-right"><b><!--PREENCHER--></b></td>
+                                  </tr>
                                 </tbody>
                               </table>
                             </div>
@@ -66,48 +61,15 @@ $app->map(['GET', 'POST'], '/checkout', function ($request, $response, $args) {
                         ?>
                         <div class="col-sm-4 col-md-5 col-lg-4">
                             <h1 class="fontevinte">Endereço de entrega</h1>
-                            <p class="fontedoze COLORETEXTO"> Seu pedido será entregue no endereço abaixo: <!--puxar do endereço de cobrança cadastrado--></p><hr/>
                             <p class="fontedezesseis">Nome do destinatário: <?=$i['nome']." ".$i['sobrenome']?></p>
                             <p class="displayblock fontedezesseis">CEP: <?=$i['cep']?> Estado: <?=$i['estado']?></p>
                             <p class="displayblock fontedezesseis">Bairro: <?=$i['bairro']?></p>
                             <p class="displayblock fontedezesseis">Rua: <?=$i['endereco']?> </p>
                             <p class="displayblock fontedezesseis">Número: <?=$i['numero']?> </p>
                             <p class="displayblock fontedezesseis">Complemento: <?=$i['complemento']?></p>
-                            <div class="form-group">
-                                <div class="col-sm-offset-2">
-                                    <button type="submit" class="btn COLORE1 fontedoze" name="btn-enviar" onclick="">Editar</button>
-                                </div>
-                            </div>
 
                         </div> <!-- FIM DA DIV LATERAL DIREITA-->
                       <?php } ?>
-
-                </div>
-                <div class="row mt-4 mb-4"><!-- div onde vai entrar o pag seguro -->
-                    <div class="col-md-12 col-lg-12">
-                        <hr/><h1 class="fontevinte">Forma de pagamento</h1>
-                        integração pag seguro
-
-                    <!-- tem que fazer um if pra aparecer a mensagem pedido efetuado com sucesso-->
-                        <div class="form-group float-right mr-0 pr-2">
-                            <div>
-                                <button type="submit" class="btn fontedoze COLORE1" alt="ir para o topo da página" name="" onclick=""><i class="fontequinze text-light fas fa-arrow-alt-circle-up"></i>&nbsp;&nbsp;ir para o topo</button>
-                            </div>
-                        </div>
-                        <div class="form-group float-right mr-0 pr-2">
-                            <div>
-                                <button type="submit" class="btn fontedoze COLORE1" alt="ir para a página anterior" name="" onclick=""><i class="fontequinze text-light fas fa-arrow-alt-circle-left"></i>&nbsp;&nbsp;voltar</button>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>  <!-- fim do pagseguro -->
-            </div>
+           </div>
         </section>
-<?php
-} else {
- echo "<script>window.location.assign('carrinho')</script>";
-}
-});
-
- ?>
+<?php require_once("footer.php"); ?>

@@ -13,35 +13,35 @@ $app->map(['GET', 'POST'], '/busca', function ($request, $response, $args) {?>
                     <!-- busca anterior + idioma -->
                       <label for="formControlRange"><h4 class="displayblock fontedezesseis"><b>idioma:</b></h4></label>
                       <div class="custom-control custom-checkbox custom-control-inline displayblock">
-                        <input type="checkbox" class="custom-control-input" id="">
-                        <label class="custom-control-label" for="customCheck1">Português</label>
+                        <input type="checkbox" class="custom-control-input" id="port">
+                        <label class="custom-control-label" for="port">Português</label>
                       </div>
                       <div class="custom-control custom-checkbox custom-control-inline displayblock">
-                        <input type="checkbox" class="custom-control-input" id="">
-                        <label class="custom-control-label" for="customCheck1">Espanhol</label>
+                        <input type="checkbox" class="custom-control-input" id="esp">
+                        <label class="custom-control-label" for="esp">Espanhol</label>
                       </div>
                       <div class="custom-control custom-checkbox custom-control-inline displayblock">
-                        <input type="checkbox" class="custom-control-input" id="">
-                        <label class="custom-control-label" for="customCheck1">Inglês</label>
+                        <input type="checkbox" class="custom-control-input" id="ing">
+                        <label class="custom-control-label" for="ing">Inglês</label>
                       </div>
                       <hr/>
                       <!-- busca anterior + faixa preço -->
                       <label for="formControlRange"><h4 class="fontedezesseis displayblock"><b>Preço:</b></h4></label>
                       <div class="custom-control custom-checkbox custom-control-inline displayblock">
-                        <input type="checkbox" class="custom-control-input" id="">
-                        <label class="custom-control-label" for="customCheck1">Até R$ 20</label>
+                        <input type="checkbox" class="custom-control-input" id="atevinte">
+                        <label class="custom-control-label" for="atevinte">Até R$ 20</label>
                       </div>
                       <div class="custom-control custom-checkbox custom-control-inline displayblock">
-                        <input type="checkbox" class="custom-control-input" id="">
-                        <label class="custom-control-label" for="customCheck1">R$ 20 - 30</label>
+                        <input type="checkbox" class="custom-control-input" id="vintetrinta">
+                        <label class="custom-control-label" for="vintetrinta">R$ 20 - 30</label>
                       </div>
                       <div class="custom-control custom-checkbox custom-control-inline displayblock">
-                        <input type="checkbox" class="custom-control-input" id="">
-                        <label class="custom-control-label" for="customCheck1">R$ 30 - 40</label>
+                        <input type="checkbox" class="custom-control-input" id="trintaquarenta">
+                        <label class="custom-control-label" for="trintaquarenta">R$ 30 - 40</label>
                       </div>
                       <div class="custom-control custom-checkbox custom-control-inline displayblock">
-                        <input type="checkbox" class="custom-control-input" id="">
-                        <label class="custom-control-label" for="customCheck1">Acima de 40</label>
+                        <input type="checkbox" class="custom-control-input" id="acimaquarenta">
+                        <label class="custom-control-label" for="acimaquarenta">Acima de 40</label>
                       </div>
                   </form>
                   <div class="form-group text-center opacidade mt-3 mb-3">

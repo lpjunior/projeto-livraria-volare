@@ -10,3 +10,8 @@ function serviceListarCheckout($id, $qtd){
       return $checkout;
     }
   }
+  function serviceListarPedido($idUsuario){
+    if ($checkout = listarPedido($idUsuario)){
+      return $checkout;
+    }
+  }

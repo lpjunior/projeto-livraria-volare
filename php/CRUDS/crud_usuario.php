@@ -1,8 +1,7 @@
 <?php
-session_start();
 require_once 'conexao.php';
 ## Registrar Cliente
-function registrarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $cep, $end, $num, $complemento, $bairro, $cidade, $estado){
+function registrarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $cep, $end, $num, $complemento, $bairro, $cidade, $estado, $cat, $telefone){
 	date_default_timezone_set('America/Sao_Paulo');
 	$datanascimento = implode('-',array_reverse(explode('/',$datanascimento)));
 	## FILTROS
@@ -25,6 +24,12 @@ function registrarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $gen
 	$id = mysqli_insert_id($conexao);
 	$sql = "INSERT INTO endereco VALUES (NULL, '$cep', '$end', '$num', '$complemento', '$bairro', '$estado', '$cidade', $id, 1)";
 	$resultado = mysqli_query($conexao, $sql);
+	$sql = "INSERT INTO telefone VALUES (NULL, $telefone, $id, 1)";
+	$resultado = mysqli_query($conexao, $sql);
+	if ($cat != NULL){
+		$sql = "INSERT INTO interesses VALUES ($id, $cat)";
+		$resultado = mysqli_query($conexao, $sql);
+	}
 	if (mysqli_affected_rows($conexao) >= 1) {
 		return header('location: ../../entrar');
 	} else {
@@ -87,7 +92,9 @@ function editarInformacoes($nome, $sobrenome, $email, $cpf, $datanascimento, $ge
 	$estado = filtrarString($estado);
 	$sql = "UPDATE usuarios SET nome = '$nome', sobrenome = '$sobrenome', email = '$email', cpf = '$cpf', datanascimento = '$datanascimento', senha = md5('$senha') where id = $id";
 	$resultado = mysqli_query($conexao, $sql);
+	echo $sql;
 	$sql = "UPDATE endereco SET cep = '$cep', endereco = '$end', numero = '$num', complemento = '$complemento', bairro = '$bairro', estado = '$estado', cidade = '$cidade' where usuarios_id = $id";
+	echo $sql;
 	$resultado = mysqli_query($conexao, $sql);
 	if (mysqli_affected_rows($conexao) >= 1) {
 		return true;
@@ -96,7 +103,7 @@ function editarInformacoes($nome, $sobrenome, $email, $cpf, $datanascimento, $ge
 	}
 }
 ## Perfil do usuário
-function listarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $cep, $end, $num, $complemento, $bairro, $cidade, $estado, $limit){
+function listarUsuario($limit, $id){
 	$conexao = getConnection();
 	# Select do perfil do usuário
 	$sql = "SELECT
@@ -108,9 +115,6 @@ usu.cpf,
 usu.datanascimento,
 per.perfil,
 ge.genero,
-tel.numero as numero,
-tipotel.tipo as tipo_telefone,
-logs.datahora as ultimo_login,
 ender.endereco,
 ender.numero,
 ender.complemento,
@@ -118,27 +122,32 @@ ender.bairro,
 ender.cidade,
 ender.estado,
 ender.cep,
+tel.numero as telefone,
 tipoend.tipo as tipo_endereco,
 cat.categoria as interesses
 
 from usuarios usu
 inner join genero ge on ge.id = usu.genero_id
 inner join perfil per on per.id = usu.perfil_id
-left join telefone tel on tel.usuarios_id = usu.id
-left join tipotelefone tipotel on tipotel.telefone_id = tel.id
-left join login logs  on logs.id = usu.login_id
+inner join telefone tel on usu.id = tel.usuarios_id
 left join endereco ender on ender.usuarios_id = usu.id
 left join tipoendereco tipoend	on tipoend.id = ender.tipoendereco_id
 left join interesses inte on inte.usuarios_id = usu.id
-left join categoria cat on cat.id = inte.categoria_id;";
+left join categoria cat on cat.id = inte.categoria_id";
 if ($limit != NULL) {
 	$sql .= " LIMIT $limit";
+}
+if ($id != NULL){
+	$sql .= " WHERE usu.id = $id";
 }
 $resultado = mysqli_query($conexao, $sql);
 if (mysqli_affected_rows($conexao) >= 1) {
 	while ($linha = mysqli_fetch_assoc($resultado)){
 		$arr[] = $linha;
 	}
+	$a = $arr[0]['datanascimento'];
+	$a = date('d/m/Y', strtotime($a));
+	$arr[0]['datanascimento'] = $a;
 	return $arr;
 }
 ## Filtros para o cadastro
@@ -214,3 +223,26 @@ function loginUsuarioAdmin($email, $senha){
 		return false;
 	}
 }
+	function inserirItemDesejado($usuarioID, $produtoID){
+		$conexao = getConnection();
+		$sql = "INSERT INTO desejados VALUES ($usuarioID, $produtoID)";
+		if (mysqli_query($conexao, $sql)){
+			return true;
+		} else {
+			return false;
+		}
+}
+	function listarItemDesejado(){
+		$conexao = getConnection();
+		$sql = "SELECT prod.titulo, prod.autor, prod.preco from desejados d inner join produto prod on prod.id = d.produto_id;";
+		$resultado = mysqli_query($conexao, $sql);
+		if (mysqli_affected_rows($conexao) >= 1){
+			$item = array();
+			while ($linha = mysqli_fetch_assoc($resultado)){
+				array_push($item, $linha);
+			}
+			return $item;
+		} else {
+			return false;
+		}
+	}

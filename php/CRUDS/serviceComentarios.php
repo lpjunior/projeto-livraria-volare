@@ -1,12 +1,12 @@
 <?php
 require_once 'crud_comentarios.php';
-function serviceInserirComentario(){
-  if ($comentarios = inserirComentario()){
+function serviceInserirComentario($usuarioID, $produtoID, $comentario, $dataComentario){
+  if ($comentarios = inserirComentario($usuarioID, $produtoID, $comentario, $dataComentario)){
     return $comentarios;
   }
 }
-function serviceListarComentarios(){
-  if ($comentarios = inserirComentario()){
+function serviceListarComentarios($limit){
+  if ($comentarios = listarComentario($limit)){
     return $comentarios;
   }
 }
@@ -15,8 +15,8 @@ function serviceExcluirComentario($id){
     return $comentarios;
   }
 }
-function serviceEditarComentario(){
-  if ($comentarios = inserirComentario()){
+function serviceEditarComentario($usuarioID, $produtoID, $comentario, $dataComentario){
+  if ($comentarios = editarComentario($usuarioID, $produtoID, $comentario, $dataComentario)){
     return $comentarios;
   }
 }

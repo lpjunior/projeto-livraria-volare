@@ -67,3 +67,30 @@
       }
     }
   }
+  function listarPedido($idUsuario){
+    $conexao = getConnection();
+    $sql = "select
+
+    usu.nome,
+    usu.cpf,
+    'LV'|| ped.id as numero_pedido,
+    ped.data_pedido,
+    itped.preco
+
+
+    from usuarios usu
+    inner join pedidos ped on ped.usuarios_id = usu.id
+    inner join itens_pedido itped on itped.pedidos_id = ped.id
+    inner join produto prod on prod.id = itped.produto_id
+    WHERE usu.id = $idUsuario;";
+    $resultado = mysqli_query($conexao, $sql);
+    if (mysqli_affected_rows($conexao) >= 1){
+      $pedido = array();
+      while ($linha = mysqli_fetch_assoc($resultado)){
+        array_push($pedido, $linha);
+      }
+      return $pedido;
+    } else {
+      return false;
+    }
+  }

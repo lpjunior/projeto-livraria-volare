@@ -1,12 +1,8 @@
 
 <?php require_once("includes/header.php"); ?>
-<?php 
-session_start(); 
- // echo  $_SESSION['logado']."<br>".$_SESSION['nome_adm'];
-if ($_SESSION['logado']!='true' or $_SESSION['nome_adm']!= 'fernando'){
-	header('Location: adm.php');
-	
-}
+<?php
+session_start();
+// Só poder entrar quando logado
 require_once 'db_connect.php';
 if(isset($_GET['id'])){
 	$id=mysqli_escape_string($connect, $_GET['id']);
@@ -16,7 +12,7 @@ if(isset($_GET['id'])){
 }
 
 if (isset($_SESSION['mensagem'])){
-	
+
 }
 ?>
 
@@ -35,7 +31,7 @@ if (isset($_SESSION['mensagem'])){
 	        <label for="autor">Autor</label>
 	       </div>
 	  </div>
-	  
+
 	  <div class="input-field col s12">
 	      <div class="input-field col s6">
 	      <input type="text" name="editora" id="editora"value="<?php echo $dados['editora'];?>">
@@ -46,7 +42,7 @@ if (isset($_SESSION['mensagem'])){
 			<label for="isbn">ISBN</label>
 	      </div>
 	  </div>
-	  
+
 	  <div class="input-field col s12">
 	        <div class="input-field col s6">
 	         <input type="number" name="numeroPaginas" id="numeroPaginas"value="<?php echo $dados['numeroPaginas'];?>">
@@ -57,7 +53,7 @@ if (isset($_SESSION['mensagem'])){
 			 <label for="numero">Sinopse</label>
 	        </div>
 	  </div>
-	  
+
 	  <div class="input-field col s12">
 	        <div class="input-field col s6">
 	         <input type="number" name="peso" id="peso"value="<?php echo $dados['peso'];?>">
@@ -65,10 +61,10 @@ if (isset($_SESSION['mensagem'])){
 			 </div>
 			 <div class="input-field col s6">
 	         <input type="date" name="dataPublicacao" id="dataPublicacao"value="<?php echo $dados['dataPublicacao'];?>">
-			 <label for="bairro">dataPublicacao</label> 
+			 <label for="bairro">dataPublicacao</label>
 	        </div>
 	  </div>
-	  
+
 	  <div class="input-field col s12">
 	       <div class="input-field col s6">
 	       <input type="text" name="fornecedor" id="fornecedor"value="<?php echo $dados['fornecedor'];?>">
@@ -78,24 +74,24 @@ if (isset($_SESSION['mensagem'])){
 	       <input type="number" name="preco" id="preco"value="<?php echo $dados['preco'];?>">
 		   <label for="preco">Preço</label>
 	       </div>
-		   
+
 	  </div>
-	  
+
 	  <div class="input-field col s12">
 	        <div class="input-field col s6">
 	        <input type="number" name="quantidade" id="quantidade"value="<?php echo $dados['quantidade'];?>">
 			<label for="quantidade">Quantidade</label>
 			</div>
-			
-			
+
+
 	  </div>
-	  
-	  
+
+
 	  <button type="submit" name="btn-editar" class="btn">Atualizar</button>
 	  <a href="pgProduto.php" type="submit" class="btn green">Voltar</a>
-	
+
 </div>
-      
+
 
 
   <?php require_once("includes/footer.php"); ?>

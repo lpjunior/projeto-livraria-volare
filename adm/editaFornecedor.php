@@ -1,12 +1,8 @@
 
 <?php require_once("includes/header.php"); ?>
-<?php 
-session_start(); 
- // echo  $_SESSION['logado']."<br>".$_SESSION['nome_adm'];
-if ($_SESSION['logado']!='true' or $_SESSION['nome_adm']!= 'fernando'){
-	header('Location: adm.php');
-	
-}
+<?php
+session_start();
+// Só poder entrar quando logado
 require_once 'db_connect.php';
 if(isset($_GET['id'])){
 	$id=mysqli_escape_string($connect, $_GET['id']);
@@ -19,14 +15,14 @@ if(isset($_GET['id'])){
 <?php
 if (isset($_SESSION['mensagem'])):?>
 	 <script>
-	
+
 	window.onload = function (){
 		  M.toast({html: '<?php echo $_SESSION['mensagem']; ?>'});
-		  
-	  };		  
-	
+
+	  };
+
 	</script>
-	
+
 <?php endif;
 ?>
 
@@ -45,7 +41,7 @@ if (isset($_SESSION['mensagem'])):?>
 	        <label for="cnpj">CNPJ</label>
 	       </div>
 	  </div>
-	  
+
 	  <div class="input-field col s12">
 	      <div class="input-field col s6">
 	      <input type="text" name="inscEstadual" id="inscEstadual"value="<?php echo $dados['inscEstadual'];?>">
@@ -56,7 +52,7 @@ if (isset($_SESSION['mensagem'])):?>
 			<label for="cep">CEP</label>
 	      </div>
 	  </div>
-	  
+
 	  <div class="input-field col s12">
 	        <div class="input-field col s6">
 	         <input type="text" name="logradouro" id="logradouro"value="<?php echo $dados['logradouro'];?>">
@@ -67,7 +63,7 @@ if (isset($_SESSION['mensagem'])):?>
 			 <label for="numero">NUMERO</label>
 	        </div>
 	  </div>
-	  
+
 	  <div class="input-field col s12">
 	        <div class="input-field col s6">
 	         <input type="text" name="complemento" id="complemento"value="<?php echo $dados['complemento'];?>">
@@ -75,10 +71,10 @@ if (isset($_SESSION['mensagem'])):?>
 			 </div>
 			 <div class="input-field col s6">
 	         <input type="text" name="bairro" id="bairro"value="<?php echo $dados['bairro'];?>">
-			 <label for="bairro">Bairro</label> 
+			 <label for="bairro">Bairro</label>
 	        </div>
 	  </div>
-	  
+
 	  <div class="input-field col s12">
 	       <div class="input-field col s6">
 	       <input type="text" name="cidade" id="cidade"value="<?php echo $dados['cidade'];?>">
@@ -88,9 +84,9 @@ if (isset($_SESSION['mensagem'])):?>
 	       <input type="text" name="estado" id="estado"value="<?php echo $dados['estado'];?>">
 		   <label for="estado">Estado</label>
 	       </div>
-		   
+
 	  </div>
-	  
+
 	  <div class="input-field col s12">
 	        <div class="input-field col s6">
 	        <input type="text" name="telefone" id="telefone"value="<?php echo $dados['telefone'];?>">
@@ -100,15 +96,15 @@ if (isset($_SESSION['mensagem'])):?>
 	        <input type="email" name="email" id="email"value="<?php echo $dados['email'];?>">
 			<label for="email">Email</label>
 	        </div>
-			
+
 	  </div>
-	  
-	  
+
+
 	  <button type="submit" name="btn-editar" class="btn">Atualizar</button>
 	  <a href="pgfornecedor.php" type="submit" class="btn green">Voltar</a>
-	
+
 </div>
-      
+
 
 
   <?php require_once("includes/footer.php"); ?>
