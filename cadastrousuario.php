@@ -51,23 +51,23 @@ $app->get('/cadastro', function ($request, $response, $args) {
 									<br/>
 								</div>
 								<div class="col-md">
-									<label for="isenha">Senha:</label><!--orientações para senha? número e tipo de caracter-->
+									<label for="isenha">Senha:</label>
 									<input type="password" class="form-control" id="isenha" name="isenha" required>
 								</div>
 								<div class="col-md">
-									<label for="isenha2">Confirmação de Senha:</label><!--script para confirmação de senha-->
+									<label for="isenha2">Confirmação de Senha:</label>
 									<input type="password" class="form-control" id="isenha2" name="isenha2"  required>
 								</div>
 							</div>
                         </div>
                         <br/>
-                        <div class="form-group"><h4 class="fontedezoito"><b>Endereço de cobrança</b></h4><br/><!-- mudar estilo do texto-->
+                        <div class="form-group"><h4 class="fontedezoito"><b>Endereço de cobrança</b></h4><br/>
                             <div class="row">
 								<div class="col-md-4">
 									<label for="iCEP">CEP:</label>
 									<input type="text" id="iCEP" name="txtCEP" class="form-control cep" required>
 								</div>
-								<div class="col-md"><!--adicionar tipo de coluna, testar layout-->
+								<div class="col-md">
 									<label for="iEndCobr">Endereço:</label>
 									<input type="text" id="iEndCobr" name="txtEndCobr" class="form-control" required maxlength="255">
 								</div>
