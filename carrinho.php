@@ -6,6 +6,33 @@ $app->get('/carrinho', function ($request, $response, $args) {
         <div class="row">
             <div class="col-12 col-md-8">
                 <h1>Meu carrinho</h1>
+                    <!--<div class="float-left">
+                        <ul>
+                            <li class="card">
+                                <div class="row no-gutters">
+                                    <div class="col-auto">
+                                        <img src="//placehold.it/80" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="col">
+                                        <div class="card-block px-2">
+                                            <h4 class="card-title">Título do livro</h4>
+                                            <p class="card-text d-none d-md-block">Descrição??</p>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="col">
+                                        <div class="card-block px-2 float-right">
+                                            <div class="col-md mt-2">
+                                                <select id="QtdProd" name="QtdProd" class="form-control">
+                                                </select>
+                                            </div>
+                                            <a class="nav-link text-dark opacidade float-right" href="#"><i class="fas fa-trash"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>-->
                 <table class="table text-center table-responsive">
                     <thead>
                         <tr>
@@ -43,7 +70,7 @@ $app->get('/carrinho', function ($request, $response, $args) {
                                 <button id="btnPlus" class="btn btn-light btn-sm">+</button>
                             </td>
                             <td>R$ <span id="idpreco"><?=(isset($_SESSION['user_id']) ? $i['preco'] : $i[0]['preco'])?></span></td>
-                            <td><!--fazer um js-->R$00,00</td>
+                            <td>R$00,00</td>
                         </tr>
                         <tr>
                     </tbody>
@@ -75,7 +102,7 @@ $app->get('/carrinho', function ($request, $response, $args) {
                          <div class="input-group mb-4 input-sm col-xs-4 mt-4">
                             <input type="text" class="text-center form-control col cep " placeholder="Digite o CEP" aria-label="Digite o cep" aria-describedby="button-addon2">
                             <div class="input-group-append">
-                              <button class="btn btn-outline-secondary" type="button" id="button-addon2">calcule</button>
+                              <button class="btn btn-outline-secondary COLORE1" type="button" id="button-addon2">calcule</button>
                             </div>
                         </div>
                         <!-- /frete -->
