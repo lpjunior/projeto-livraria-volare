@@ -5,6 +5,11 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
     <div class="container-fluid col-md-11 col centraliza">
     <div class="col-md-12">
         <h3> Olá, <?=$_SESSION['user']['nome']?></h3> <br>
+        <?php
+        if (!isset($_SESSION['user_id'])){
+          echo "<script>window.location.assign('home')</script>";
+        }
+        ?>
         </div>
         <div class="row">
             <div class="col-md-5">
