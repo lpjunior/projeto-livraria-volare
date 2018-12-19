@@ -52,11 +52,11 @@ $app->get('/cadastro', function ($request, $response, $args) {
 								</div>
 								<div class="col-md">
 									<label for="isenha">Senha:</label>
-									<input type="password" class="form-control" id="isenha" name="isenha" required>
+									<input type="password" class="form-control" id="isenha" name="isenha" required pattern="[a-zA-Z0-9]{12}">
 								</div>
 								<div class="col-md">
 									<label for="isenha2">Confirmação de Senha:</label>
-									<input type="password" class="form-control" id="isenha2" name="isenha2"  required>
+									<input type="password" class="form-control" id="isenha2" name="isenha2"  required pattern="[a-zA-Z0-9]{12}">
 								</div>
 							</div>
                         </div>

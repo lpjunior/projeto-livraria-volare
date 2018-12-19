@@ -69,8 +69,21 @@ require_once 'php/CRUDS/serviceCarrinho.php';
                   <a class="nav-link text-dark opacidade" href="entrar"><i class="fas fa-user-circle"></i>&nbsp;Entre ou cadastre-se</a>
                 </div>
               <?php } else { ?>
-                <div class="nav-item">
-                  <a class="nav-link text-dark opacidade" href="php/CRUDS/deslogarUsuario.php"><i class="fas fa-user-circle"></i>&nbsp;Logout</a>
+                <div class="dropdown float-left">
+								<a href="user" class="dropdown-toggle nav-link text-dark fontedezesseis opacidade" data-toggle="dropdown" role="button"> <i class="fas fa-user-circle"></i>&nbsp;Olá, <!--puxar do banco--></a>
+									<ul class="dropdown-menu COLORE" role="menu">
+                                        <li>
+											<div class="fontedoze pr-2 pl-1 mb-0">
+													<a href="user" class="text-dark" >Minha Conta</a>
+											</div>
+										</li>
+										<div class="dropdown-divider"></div>
+                                        <li>
+											<div class="fontedoze pr-2 pl-1 mb-0">
+													<a href="php/CRUDS/deslogarUsuario.php" class="text-dark">Sair</a>
+											</div>
+										</li>
+                                    </ul><!-- fecha aqui -->
                 </div>
               <?php }?>
 
@@ -117,7 +130,7 @@ require_once 'php/CRUDS/serviceCarrinho.php';
 												</div>
 											</form>
 										</div>
-                </ul><!-- fecha aqui -->
+                                </ul><!-- fecha aqui -->
 							<?php } ?>
 						  </div>
             </div>
