@@ -14,7 +14,7 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
         <div class="row">
             <div class="col-md-5">
             <!-- Nav pills -->
-                <ul class="nav flex-column" role="tablist">
+                <ul class="nav flex-column nav-pills" role="tablist">
                     <li class="nav-item">
                             <a class="nav-link active" data-toggle="pill" href="#meusdados">Meus Dados</a>
                     </li>
@@ -102,12 +102,7 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                                     </div>
                                 </div>
                             </div>
-                                <div class="row">
-                                <div class="col">
-                                        <button type="submit" class="btn COLORE1" name="btn-enviar" >Salvar Alterações</button><!--value??-->
-                                    </div>
-                                </div>
-                            </div>
+                            <br/>
                         </form>
                       <?php } ?>
                     </fieldset><!--********fim do formulário dados pessoais*************-->
@@ -220,7 +215,7 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                                 <h3 class="fontevinte">R$ <?=$i['preco']?></h3>
                                 <div class="btn-group">
                                   <form action="php/CRUDS/carrinhoSystem.php?acao=add&id=<?=$i['id']?>" method="POST">
-                                    <button type="submit" class="btn btn-sm btn-outline-secondary">   <i class="fa fa-shopping-cart"></i>   </button>
+                                    <button type="submit" class="btn btn-sm btn-outline-secondary">   <i class="fa fa-shopping-cart"></i>   </button>
                                   </form>
                                 </div>
                             </div>
@@ -261,10 +256,10 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                     <div class="row">
                         <div class="col">
                             <button type="submit" class="btn COLORE1" name="btn-enviar" >Sim</button>
-                        </div> 
+                        </div>
                         <div class="col">
                             <button type="submit" class="btn COLORE1" name="btn-enviar" >Não</button>
-                        </div>    
+                        </div>
                     </div>
                 </div>
             </div>
