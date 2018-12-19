@@ -28,9 +28,6 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                         <a class="nav-link" data-toggle="pill" href="#meuspedidos">Meus Pedidos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="pill" href="#trocadevolucao">Solicite Troca ou Devolução</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" data-toggle="pill" href="#centralatendimento">Central de Atendimento</a>
                     </li>
                     <li class="nav-item">
@@ -302,10 +299,6 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                     </div>
                     <div id="meuspedidos" class="tab-pane fade"><br>
                     <h3>Meus Pedidos</h3>
-                    <p>Ut taysr perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-                    </div>
-                    <div id="trocadevolucao" class="tab-pane fade"><br>
-                    <h3>Solicite Troca ou Devolução</h3>
                     <p>Ut taysr perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
                     </div>
                     <div id="centralatendimento" class="tab-pane fade"><br>
