@@ -67,45 +67,45 @@ if (!isset($_SESSION['user_id'])){
                           </div>
                           <div class="form-group">
                             <label for="idioma">idioma:</label> <!-- >>>>>>>>>>> SELECT AQUI <<<<<<<< -->
-                            <input type="text" class="form-control col-2" id="idioma" maxlength="9" required="required">
+                            <input type="text" class="form-control col-2" name="idiomas" id="idioma" maxlength="9" required="required">
                           </div>
                           <div class="form-group">
                             <label for="isbn">ISBN:</label>
-                            <input type="text" class="form-control col-4" id="isbn" maxlength="13" required="required">
+                            <input type="text" class="form-control col-4" name="ISBN" id="isbn" maxlength="13" required="required">
                           </div>
                           <div class="form-group">
                             <label for="datapub">Ano de publicação:</label>
-                            <input type="date" class="form-control col-4" id="datapub" maxlength="4" required="required">
+                            <input type="date" class="form-control col-4" name="data_publicacao" id="datapub" maxlength="4" required="required">
                           </div>
                           <div class="form-group">
                             <label for="numpag">Número de páginas:</label>
-                            <input type="num" class="form-control col-2" id="numpag" maxlength="4" required="required">
+                            <input type="num" class="form-control col-2" name="numeropaginas" id="numpag" maxlength="4" required="required">
                           </div>
                           <div class="form-group">
                             <label for="text">Peso:</label>
-                            <input type="text" class="form-control col-2" id="peso" maxlength="5" required="required">
+                            <input type="text" class="form-control col-2" name="peso" id="peso" maxlength="5" required="required">
                           </div>
                           <div class="form-group">
                             <label for="preco">Preço:</label>
-                            <input type="number" class="form-control col-2" id="preco" maxlength="3" required="required">
+                            <input type="number" class="form-control col-2" name="preco" id="preco" maxlength="3" required="required">
                           </div>
                           <!--quantidade -->
                           <div class="form-group">
                             <label for="qtdProd">Quantidade:</label><br/>
-                              <input type="number" id="qtdProd" style="display:inline" maxlength="4" class="text-center form-control col-2" value="">
+                              <input type="number" name="quantidade" id="qtdProd" style="display:inline" maxlength="4" class="text-center form-control col-2" value="">
                           </div>
                           <!-- /quantidade -->
                           <div class="form-group">
                             <label for="dimension">dimensões:</label>
-                            <input type="text" class="form-control col-2" id="dimension" maxlength="10" required="required">
+                            <input type="text" class="form-control col-2" name="dimensoes" id="dimension" maxlength="10" required="required">
                           </div>
                           <div class="form-group">
                             <label for="idfornecedor">Fornecedor:</label>
-                            <input type="number" class="form-control col-2" id="idfornecedor" maxlength="9" required="required">
+                            <input type="number" class="form-control col-2" name="fornecedor" id="idfornecedor" maxlength="9" required="required">
                           </div>
                           <div class="form-group">
                             <label for="exampleFormControlTextarea1">Sinopse</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" maxlength="400"></textarea>
+                            <textarea class="form-control" name="sinopse" id="exampleFormControlTextarea1" rows="3" maxlength="400"></textarea>
                           </div>
                       </form>
                       <a class="btn COLORE1 btn-outline-secondary" href="">Adicionar</a>

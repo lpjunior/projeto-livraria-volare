@@ -52,11 +52,26 @@ $app->get('/cadastro', function ($request, $response, $args) {
 								</div>
 								<div class="col-md">
 									<label for="isenha">Senha:</label>
-									<input type="password" class="form-control" id="isenha" name="isenha" required pattern="[a-zA-Z0-9]{12}">
+									<input type="password" class="form-control" id="isenha" name="isenha" required pattern="[a-zA-Z0-9]{12}" title="Letras e números com até 12 caracteres">
 								</div>
 								<div class="col-md">
 									<label for="isenha2">Confirmação de Senha:</label>
 									<input type="password" class="form-control" id="isenha2" name="isenha2"  required pattern="[a-zA-Z0-9]{12}">
+								</div>
+							</div>
+							<div class="row pt-4 pl-3">
+								<label for="genFav">Interesses</label>
+								<div class="col-md">
+									<div class="form-check form-check-inline">
+                    <?php
+                    $categoria = serviceListarCategoria();
+                    $var = 1;
+                    foreach ($categoria as $i) {
+                    ?>
+										<input class="form-check-input" type="checkbox" name="interesses[]" id="cb<?=$var?>" value="<?=$i['id']?>">
+										<label class="form-check-label" for="cb<?=$var?>"><?=$i['categoria']?></label>
+                  <?php $var++; } ?>
+									</div>
 								</div>
 							</div>
                         </div>
@@ -123,21 +138,6 @@ $app->get('/cadastro', function ($request, $response, $args) {
 										<option value="SE">Sergipe</option>
 										<option value="TO">Tocantins</option>
 									</select>
-								</div>
-							</div>
-							<div class="row pt-4 pl-3">
-								<label for="genFav">Interesses</label>
-								<div class="col-md">
-									<div class="form-check form-check-inline">
-                    <?php
-                    $categoria = serviceListarCategoria();
-                    $var = 1;
-                    foreach ($categoria as $i) {
-                    ?>
-										<input class="form-check-input" type="checkbox" name="interesses[]" id="cb<?=$var?>" value="<?=$i['id']?>">
-										<label class="form-check-label" for="cb<?=$var?>"><?=$i['categoria']?></label>
-                  <?php $var++; } ?>
-									</div>
 								</div>
 							</div>
 							<div class="row">
