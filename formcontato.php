@@ -46,11 +46,11 @@ $app->map(['GET', 'POST'], '/contato', function ($request, $response, $args) {
                                     <div class="col">
                                         <label for="ipedido">Número do Pedido:</label>
                                         <input type="text" class="form-control" id="ipedido" name="ipedido" required>
+                                        <br/>
                                     </div>
                                 </div>
-                            <br/>
-                            <div class="row">
-                                <div class="col">
+                                <div class="row">
+                                    <div class="col">
                                         <label for="icontato">Selecione o motivo do contato:</label> <!-- PESSOAL DO PHP: tem que puxar esse select do banco de dados, só coloquei pra ficar mais fácil de vizualizar-->
                                         <select id="sMotivo" name="txtMotivo" class="form-control">
                                             <option selected>Selecione uma opção</option>
