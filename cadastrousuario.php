@@ -52,7 +52,7 @@ $app->get('/cadastro', function ($request, $response, $args) {
 								</div>
 								<div class="col-md">
 									<label for="isenha">Senha:</label>
-									<input type="password" class="form-control" id="isenha" name="isenha" required pattern="[a-zA-Z0-9]{12}">
+									<input type="password" class="form-control" id="isenha" name="isenha" required pattern="[a-zA-Z0-9]{12}" placeholder="Digite sua senha com letras e números e máximo de 12 caracteres">
 								</div>
 								<div class="col-md">
 									<label for="isenha2">Confirmação de Senha:</label>
