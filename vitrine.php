@@ -13,7 +13,7 @@ $app->map(['GET', 'POST'], '/busca', function ($request, $response, $args) {?>
                     <!-- busca anterior + idioma -->
                       <label for="formControlRange"><h4 class="displayblock fontedezesseis"><b>idioma:</b></h4></label>
                       <div class="custom-control custom-radio displayblock">
-                        <input value="PT" name="idiomas" type="radio" class="custom-control-input" id="port">
+                        <input value="POR" name="idiomas" type="radio" class="custom-control-input" id="port">
                         <label class="custom-control-label" for="port">Português</label>
                       </div>
                       <div class="custom-control custom-radio displayblock">
@@ -24,46 +24,59 @@ $app->map(['GET', 'POST'], '/busca', function ($request, $response, $args) {?>
                         <input value="ENG" name="idiomas" type="radio" class="custom-control-input" id="ing">
                         <label class="custom-control-label" for="ing">Inglês</label>
                       </div>
-                    </form>
-                    <form action="#" method="POST">
                       <hr/>
                       <!-- busca anterior + faixa preço -->
                       <div class="custom-control custom-radio">
-                        <input type="radio" id="avinte" name="customRadio" class="custom-control-input">
+                        <input value="20-" type="radio" id="avinte" name="preco" class="custom-control-input">
                         <label class="custom-control-label" for="avinte">Até R$ 20</label>
                       </div>
                       <div class="custom-control custom-radio">
-                        <input type="radio" id="vintet" name="customRadio" class="custom-control-input">
+                        <input value="20+30-" type="radio" id="vintet" name="preco" class="custom-control-input">
                         <label class="custom-control-label" for="vintet">R$ 20 - 30</label>
                       </div>
                       <div class="custom-control custom-radio">
-                        <input type="radio" id="trintaq" name="customRadio" class="custom-control-input">
+                        <input value="30+40-" type="radio" id="trintaq" name="preco" class="custom-control-input">
                         <label class="custom-control-label" for="trintaq">R$ 30 - 40</label>
                       </div>
                       <div class="custom-control custom-radio">
-                        <input type="radio" id="quarentaa" name="customRadio" class="custom-control-input">
+                        <input value="40+" type="radio" id="quarentaa" name="preco" class="custom-control-input">
                         <label class="custom-control-label" for="quarentaa">Acima de 40</label>
                       </div>
-                    </form>
                   <div class="form-group text-center opacidade mt-3 mb-3">
                       <div> <!-- botão pra pesquisar com adição dos filtros selecionados nos radios acima -->
-                          <button type="submit" class="btn fontedoze opacidade COLORE1" alt="pesquisar" name="" onclick="">Pesquisar</button>
+                          <button type="submit" class="btn fontedoze opacidade COLORE1" alt="pesquisar" name="btn-filtrar" onclick="">Pesquisar</button>
                       </div>
                   </div>
+                  </form>
               </div> <!-- FIM DA DIV LATERAL DIREITA-->
               <div class="col-md-10 col-lg-8 col-sm-10"> <!-- DIV ONDE VAI ENTRAR O CONTEÚDO DA PAG-->
                   <!-- começo dos cards PRIMEIRA LINHA-->
                   <?php
-                  ## Se tiver algo escrito no input da busca, e tiver uma categoria marcada
-                  if (isset($_POST['txtBusca']) && $_POST['txtBusca'] != '' && isset($_POST['buscaCategoria'])) {
-                    $livro = serviceBuscarLivro($_POST['txtBusca'], $_POST['buscaCategoria']);
-                  ## Se não tiver nada escrito no input, e tiver uma categoria
-                  } elseif (isset($_POST['buscaCategoria']) && $_POST['buscaCategoria'] =! ' ') {
-                    $livro = serviceBuscarLivro($_POST['txtBusca'], $_POST['buscaCategoria']);
-                    ## Se não tiver nem no input, nem na categoria, liste 8 livros
-                  }  else {
-                   $livro = serviceListarLivro(8, NULL);
-                 }
+                  ## Se tiver algo escrito no input da busca, e tiver uma categoria marcada, se tiver idiomas e preço
+                  if (isset($_POST['txtBusca']) && isset($_POST['buscaCategoria'])) {
+                    ## Guardar na sessão a última coisa que o usuário pesquisou e a categoria
+                    ## Caso o usuário não tenha digitado nada, guarde um espaço
+                    $_SESSION['buscaNomeAnterior'] = $_POST['txtBusca'];
+                    $_SESSION['buscaCatAnterior'] = $_POST['buscaCategoria'];
+                    $livro = serviceBuscarLivro($_POST['txtBusca'], $_POST['buscaCategoria'], NULL, NULL);
+                } else {
+                  if (isset($_POST['btn-filtrar'])){
+                    ## Se os dois filtros estiverem ativos, busque os livros com idioma e preço filtrados.
+                    if (isset($_POST['idiomas']) && $_POST['idiomas'] != NULL && isset($_POST['preco']) && $_POST['preco'] != NULL){
+                      $livro = serviceBuscarLivro($_SESSION['buscaNomeAnterior'], $_SESSION['buscaCatAnterior'], $_POST['idiomas'], $_POST['preco']);
+                      ## Se o idioma estiver marcado, busque os livros com o idioma.
+                    } elseif (isset($_POST['idiomas']) && $_POST['idiomas'] != NULL){
+                      $livro = serviceBuscarLivro($_SESSION['buscaNomeAnterior'], $_SESSION['buscaCatAnterior'], $_POST['idiomas'], NULL);
+                      ## Se o preço estiver marcado, busque os livros com o preço.
+                    } else {
+                      $livro = serviceBuscarLivro($_SESSION['buscaNomeAnterior'], $_SESSION['buscaCatAnterior'], NULL, $_POST['preco']);
+                    }
+                  } else {
+                    $livro = serviceListarLivro(1, NULL);
+                  }
+                }
+                ## Se a pessoa clicar nos filtros de idioma e preço
+
                  if (is_array($livro)) {?>
                    <div class="row text-center">
                   <?php foreach ($livro as $i) {?>
@@ -85,7 +98,7 @@ $app->map(['GET', 'POST'], '/busca', function ($request, $response, $args) {?>
                    </div>
                     </div> <!--fim da coluna 1-->
                  <?php } } else {
-                   echo $livro;
+                   echo "<h1 class='text-center'>A busca não foi encontrada</h1>";
                  } ?> <!-- Fim do foreach -->
 
                </div>  <!-- fim dos cards -->

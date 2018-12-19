@@ -20,8 +20,8 @@
 			return $livro;
 		}
 	}
-	function serviceBuscarLivro($n, $value){
-		if ($livro = pesquisarLivro($n, $value)) {
+	function serviceBuscarLivro($n, $value, $idioma, $preco){
+		if ($livro = pesquisarLivro($n, $value, $idioma, $preco)) {
 			return $livro;
 		}
 	}

@@ -86,39 +86,59 @@ function excluirLivro($id){
 		}
 	}
 	## BUSCA
-	function pesquisarLivro($n, $value){
+	function pesquisarLivro($n, $value, $idioma, $preco){
 		$conexao = getConnection();
-		/*if ($idioma != NULL){
-			$sql = "select prod.id, prod.titulo, prod.autor, prod.editora, prod.sinopse, prod.datapublicacao, prod.preco, idi.idioma
-			from produto prod
-			inner join Produto_has_Idioma ph on ph.Produto_id = prod.id
+		$sql = "select prod.id, prod.titulo, prod.autor, prod.editora, prod.sinopse, prod.datapublicacao, prod.preco
+		from produto prod";
+		## Se tiver filtro por idioma, fazer o select com o idioma.
+		if (isset($idioma) && $idioma != NULL){
+			$sql .= " inner join Produto_has_Idioma ph on ph.Produto_id = prod.id
 			inner join idioma idi on idi.id = ph.Idioma_id";
-		} */
-			$sql = "select prod.id, prod.titulo, prod.autor, prod.editora, prod.sinopse, prod.datapublicacao, prod.preco,
-			from produto prod";
-		// }
+		}
 		switch ($value) {
+			 ### FILTRO DE TITULO ###
 	    case "titulo":
 				$sql .= " WHERE prod.titulo like '%$n%'";
-				$sql .= " order by prod.titulo asc;";
 	      break;
+
+				### FILTRO DE AUTOR ###
 	    case "autor":
 				$sql .= " WHERE prod.autor like '%$n%'";
-				$sql .= " order by prod.autor asc;";
 	      break;
+
+				 ### FILTRO POR ANO DA PUBLICAÇÃO ###
 	    case "ano":
 				$sql .= " WHERE prod.datapublicacao like '%$n'";
-				$sql .= " order by prod.datapublicacao asc;";
 	      break;
+
+				### CASO A BUSCA SEJA LIVRE ###
 			default:
-				$sql .= " WHERE prod.titulo like '%$n%' or prod.autor like '%$n%' or prod.editora like '%$n%'";
-				$sql .= " ORDER BY prod.datapublicacao asc;";
-				$padrao = true;
+				$sql .= " WHERE (prod.titulo like '%$n%' or prod.autor like '%$n%' or prod.editora like '%$n%')";
 				break;
 	}
+	## Caso o filtro preço seja ativado, filtrar pelo preço.
+	if (isset($preco) && $preco != NULL){
+		if ($preco == "20-"){
+			$sql .= " and prod.preco < 20";
+		} elseif ($preco == "20+30-"){
+			$sql .= " and prod.preco > 20 and prod.preco < 30";
+		} elseif ($preco == "30+40-"){
+			$sql .= " and prod.preco > 30 and prod.preco < 40";
+		} else {
+			$sql .= " and prod.preco > 40";
+		}
+	}
+
+	## Caso algum idioma seja escolhido como filtro, filtre por idioma.
+	if (isset($idioma) && $idioma != NULL){
+		$sql .= " and idioma = '$idioma'";
+	}
+	$sql .= " ORDER BY prod.datapublicacao asc;";
+		## enviar o resultado pro banco
 		$resultado = mysqli_query($conexao, $sql);
 		if (mysqli_affected_rows($conexao) >= 1) {
 			$arr = array();
+			## Botar o resultado dentro de um array e retornar
 			while ($linha = mysqli_fetch_assoc($resultado)){
 				array_push($arr, $linha);
 			}
