@@ -1,6 +1,5 @@
 <?php
 $app->get('/carrinho', function ($request, $response, $args) {
-  require_once 'php/CRUDS/crud_carrinho.php';
 ?>
     <div class="container-fluid col-md-10 col-12 mt-4">
         <div class="row">
@@ -19,7 +18,7 @@ $app->get('/carrinho', function ($request, $response, $args) {
                                             <p class="card-text d-none d-md-block">Descrição??</p>
                                         </div>
                                     </div>
-                                
+
                                     <div class="col">
                                         <div class="card-block px-2 float-right">
                                             <div class="col-md mt-2">
@@ -45,7 +44,7 @@ $app->get('/carrinho', function ($request, $response, $args) {
                     </thead>
                     <?php
                     if (isset($_SESSION['user_id'])){
-                    $carrinho = listarCarrinho($_SESSION['user_id']);
+                    $carrinho = serviceListarCarrinho($_SESSION['user_id']);
                   } elseif (isset($_SESSION['produto'])) {
                     $carrinho = $_SESSION['produto'];
                   }

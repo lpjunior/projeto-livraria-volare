@@ -26,7 +26,7 @@ require_once 'crud_carrinho.php';
   ## ID do usuário.
   function serviceListarCarrinho($id){
     if ($carrinho = listarCarrinho($id)) {
-      return true;
+      return $carrinho;
     }
   }
   function serviceDetalhesLivroCarrinho($id){

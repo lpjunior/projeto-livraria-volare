@@ -58,6 +58,10 @@ if(isset($_GET['acao'])) {
             unset($_SESSION['carrinho'][$id]);
             # Se o usuário estiver logado, retire dos itens reservados, e aumente o estoque.
             unset($_SESSION['produto'][$id]);
+            ## Se o array do carrinho não tiver nenhum item, exclua a sessão.
+            if (count($_SESSION['produto']) == 0){
+              unset($_SESSION['produto']);
+            }
             if (isset($_SESSION['user_id'])){
               # Pegar a quantidade total do carrinho
             serviceDelete($quant_total, $id);

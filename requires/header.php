@@ -5,6 +5,7 @@ if (!isset($_SESSION)) {
 require_once 'php/CRUDS/serviceBook.php';
 require_once 'php/CRUDS/serviceUsuario.php';
 require_once 'php/CRUDS/serviceComentarios.php';
+require_once 'php/CRUDS/serviceCarrinho.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -71,69 +72,53 @@ require_once 'php/CRUDS/serviceComentarios.php';
                 <div class="nav-item">
                   <a class="nav-link text-dark opacidade" href="php/CRUDS/deslogarUsuario.php"><i class="fas fa-user-circle"></i>&nbsp;Logout</a>
                 </div>
-              <?php } ?>
+              <?php }?>
 
 						<!-- CARRINHO DROPDOWN -->
 							<div class="dropdown float-left">
 								<a href="carrinho" class="dropdown-toggle nav-link text-dark fontedezesseis opacidade" data-toggle="dropdown" role="button"> <i class="fas fa-shopping-cart"></i>&nbsp;Carrinho de compras</a>
 								<ul class="dropdown-menu dropdown-cart COLORE opacidadecart" role="menu"><!-- abre aqui -->
+									<?php
+									if (isset($_SESSION['user_id'])){
+									$carrinho = serviceListarCarrinho($_SESSION['user_id']);
+								} elseif (isset($_SESSION['produto'])) {
+									$carrinho = $_SESSION['produto'];
+								} else {
+									echo "<p class='text-center'>Sem produtos no carrinho</p>";
+								}
+								if (isset($_SESSION['user_id']) || isset($_SESSION['produto'])){
+								foreach ($carrinho as $b => $i) {
+									?>
 										<li class="row"><!--primeiro item carrinho -->
 											<div class="fontedoze pr-2 pl-1 mb-0">
 													<div class="col-3 float-left">
 															<img src="http://lorempixel.com/40/40/" alt="capa do livro"/>
 													</div>
 													<div class="col-5 float-left">
-																	<p class="mb-0 displayblock text-center">título</p>
-																	<p class="mb-0 displayblock text-center"><i class="fas fa-dollar-sign"></i> 20,00</p>
+																	<p class="mb-0 displayblock text-center"><?=(isset($_SESSION['user_id']) ? $i['titulo'] : $i[0]['titulo'])?></p>
+																	<p class="mb-0 displayblock text-center"><i class="fas fa-dollar-sign"><?=(isset($_SESSION['user_id']) ? $i['preco'] : $i[0]['preco'])?></i></p>
 													</div>
 													<div class="col-3 float-left">
-															<button class="btn COLOREICON"><i class="fonteonze COLOREICON fas fa-trash"></i></button>
+															<a href="php/CRUDS/carrinhoSystem.php?acao=del&id=<?=$b?>" class="btn COLOREICON"><i class="fonteonze COLOREICON fas fa-trash"></i></a>
 													</div>
 											</div>
 										</li>
 										<div class="dropdown-divider"></div><!--/ primeiro item carrinho -->
-
-										<li class="row"><!--preenchido pra teste -->
-											<div class="fontedoze pr-2 pl-1">
-													<div class="col-3 float-left">
-															<img src="http://lorempixel.com/40/40/" alt="capa do livro"/>
-													</div>
-													<div class="col-5 float-left">
-																	<p class="mb-0 displayblock text-center">título</p>
-																	<p class="mb-0 displayblock text-center"><i class="fas fa-dollar-sign"></i> 20,00</p>
-													</div>
-													<div class="col-3 float-left">
-															<button class="btn COLOREICON"><i class="fonteonze COLOREICON fas fa-trash"></i></button>
-													</div>
-											</div>
-										</li>
-										<div class="dropdown-divider"></div>
-										<li class="row">
-											<div class="fontedoze pr-2 pl-1 mb-0 mt-0">
-													<div class="col-3 float-left">
-															<img src="http://lorempixel.com/40/40/" alt="capa do livro"/>
-													</div>
-													<div class="col-5 float-left">
-																	<p class="mb-0 displayblock text-center">título</p>
-																	<p class="mb-0 displayblock text-center"><i class="fas fa-dollar-sign"></i> 20,00</p>
-													</div>
-													<div class="col-3 float-left">
-															<button class="btn COLOREICON"><i class="fonteonze COLOREICON fas fa-trash"></i></button>
-													</div>
-											</div>
-										</li>
-										<div class="dropdown-divider"></div>
+									<?php } ?>
 										<!--/ preenchidos pra teste -->
 
 										<div class="form-group">
 												<div class="col-6 pl-1 float-left">
+													<form action="carrinho" method="GET">
 														<button type="submit" class="btn fontedoze mr-1 pr-2 COLORE1" alt="ir para o carrinho de compras" name="" onclick="carrinho">ver carrinho</button>
 												</div>
 												<div class="col-3 mr-1 float-left">
 														<button type="submit" class="btn fontedoze mr-2 pl-2 pr-1 COLORE1" alt="ir para o carrinho de compras" name="" onclick="carrinho">comprar&nbsp;</button>
 												</div>
+											</form>
 										</div>
                 </ul><!-- fecha aqui -->
+							<?php } ?>
 						  </div>
             </div>
             </div> <!-- FIM DA DIV COLLAPSE HAMBURGER -->
