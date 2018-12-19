@@ -170,6 +170,20 @@ html {
     border-top: 1px solid #dee2e !important;
 }
 
+/*********** css cart dropdown*****************/
+.COLOREICON{
+    color: red;
+    background-color: rgb(248,251,255);
+}
+
+.opacidadecart{
+    opacity: 0.9;
+}
+
+.dropdown:hover>.dropdown-menu {
+  display: block;
+}
+
 /********** comportamento media *************/
 @media only screen and (max-width: 575px) {
   body {
