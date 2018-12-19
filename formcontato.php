@@ -17,7 +17,7 @@ $app->map(['GET', 'POST'], '/contato', function ($request, $response, $args) {
                                   echo $_SESSION['editarFalse'];
                                 }
                                 foreach ($usuario as $i) {?>
-                                
+                                <br/>
                                 <div class="row">
                                     <div class="col">
                                         <label for="iNome">Nome:</label>
@@ -52,17 +52,17 @@ $app->map(['GET', 'POST'], '/contato', function ($request, $response, $args) {
                             <br/>
                             <div class="row">
                                 <div class="col">
-                                        <label for="icontato">Selecione o motivo do contato:</label>
+                                        <label for="icontato">Selecione o motivo do contato:</label> <!-- PESSOAL DO PHP: tem que puxar esse select do banco de dados, só coloquei pra ficar mais fácil de vizualizar-->
                                         <select id="sMotivo" name="txtMotivo" class="form-control">
                                             <option selected>Selecione uma opção</option>
                                             <option>Informações sobre meu pedido</option>
                                             <option>Infomações sobre um produto</option>
                                             <option>Efetuar uma troca - produto com defeito/danificado</option>
-                                            <option value="">Efetuar uma troca - produto veio errado</option>
-                                            <option value="">Efetuar uma troca - outros motivos</option>
-                                            <option value="">Cancelar o pedido</option>
-                                            <option value="">Sugestões, dúvidas e elogios</option>
-                                            <option value="">Fazer uma reclamação</option>
+                                            <option>Efetuar uma troca - produto veio errado</option>
+                                            <option>Efetuar uma troca - outros motivos</option>
+                                            <option>Cancelar o pedido</option>
+                                            <option>Sugestões, dúvidas e elogios</option>
+                                            <option>Fazer uma reclamação</option>
                                         </select>
                                     </div>
                                 </div>
