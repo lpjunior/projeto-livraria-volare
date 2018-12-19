@@ -1,5 +1,10 @@
 /***** classes referentes a cor *******/
-
+.planodefundo{
+      background-image:url(../img/fundopag.png);
+      background-position: center;
+      background-attachment: fixed;
+      background-size: 100%;
+}
 .COLORE{
     background-color: rgb(248,251,255);
 }
@@ -157,39 +162,12 @@ html {
     display: block;
 }
 
-/********************************************
-	Ratings Stars
-	https://css-tricks.com/star-ratings/
-*/
-
-.rating {
-  unicode-bidi: bidi-override;
-  direction: rtl;
-  text-align: center;
-}
-.rating > span {
-  display: inline-block;
-  position: relative;
-  width: 1.1em;
-}
-.rating > span:hover,
-.rating > span:hover ~ span {
-  color: transparent;
-}
-.rating > span:hover:before,
-.rating > span:hover ~ span:before {
-   content: "\2605";
-   position: absolute;
-   left: 0;
-   color: lightblue;
-}
-
 .table td, .table th {
     border: none;
 }
 
 .total {
-    border-top: 1px solid #dee2e6 !important;
+    border-top: 1px solid #dee2e !important;
 }
 
 /********** comportamento media *************/

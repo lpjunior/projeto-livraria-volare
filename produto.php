@@ -11,10 +11,10 @@ $app->get('/produto', function ($request, $response, $args) {
                     if (is_array($livro)) {
                     foreach ($livro as $i) { ?>
                     <img class="d-block w-100" src="img/placeholder2.jpg" alt="capa do livro">
-                    <h4 class="text-center fontedezesseis paddingtexto"> Avalie este livro:</h4>
-                    <!-- RATING STARS -->
-                    <div class="rating fontevinteecinco">
-                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+
+                    <!-- FAVORITAR-->
+                    <div class="rating fontequinze">
+                         <h4>Adicionar aos favoritos</h4>
                     </div>
                     <br/>
                     <h4 class="fontedezesseis"><i class="far fa-bookmark"></i>&nbsp;Sinopse:</h4> <p class="fontedezesseis"><?=$i['sinopse']?></p>

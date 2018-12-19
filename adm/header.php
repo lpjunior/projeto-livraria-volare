@@ -15,7 +15,7 @@ require_once '../php/CRUDS/serviceBook.php';
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="../css/estilo.css">
 </head>
-<body>
+<body class="planodefundo">
   <?php if (!isset($_SESSION['user'])){?>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/dadosFacebook.js"></script>
