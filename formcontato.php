@@ -9,14 +9,14 @@ $app->map(['GET', 'POST'], '/contato', function ($request, $response, $args) {
         </div>
 <fieldset><!-- *************início do formulário central de atendimento********************** -->
                         <form action="php/CRUDS/editarUsuario.php" method="POST">
-                            <div class="form-group"> <h5>Contato por E-mail</h5>
+                            <div class="form-group"> <h5>Contato por E-mail</h5><img class="card-img-top" style="width: 60px; height: 40px" src="img/email.jpg" alt="Imagem de email">
                                 <?php
                                 $usuario = serviceListarUsu(NULL, $_SESSION['user_id']);
                                 if (isset($_SESSION['editarFalse'])){
                                   echo $_SESSION['editarFalse'];
                                 }
                                 foreach ($usuario as $i) {?>
-                                <img class="card-img-top" style="width: 60px; height: 40px" src="img/email.jpg" alt="Imagem de email">
+                                
                                 <div class="row">
                                     <div class="col">
                                         <label for="iNome">Nome:</label>
