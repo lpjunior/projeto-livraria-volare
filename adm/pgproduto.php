@@ -34,44 +34,20 @@ if (isset($_SESSION['mensagem'])){?>
           </thead>
           <tbody class="centraliza"><!-- CONTEÚDO DA TABELA -->
               <tr>
-								<?php
-								$sql="SELECT * FROM produto";
-								$resultado = mysqli_query($connect, $sql);
-								while($dados= mysqli_fetch_array ($resultado)){
-								?>
-
-									<td> <?php echo $dados['titulo'];?></td>
-									<td> <?php echo $dados['autor'];?></td>
-									<td> <?php echo $dados['editora'];?></td>
-									<td> <?php echo $dados['isbn'];?></td>
-									<td> <?php echo $dados['numeroPaginas'];?></td>
-									<td> <?php echo $dados['sinopse'];?></td>
-									<td> <?php echo $dados['peso'];?></td>
-									<td> <?php echo $dados['dataPublicacao'];?></td>
-									<td> <?php echo $dados['fornecedor'];?></td>
-									<td><?php  echo $dados['preco'];?></td>
-									<td> <?php echo $dados['quantidade'];?></td>
 
 
-									<td><a class="linkstyle2" href="editaProduto.php?id=<?php echo $dados['id']; ?>"><i class="fas fa-box-open"></i><a/></td>
-									<td><a class="linkstyle3" href="#modal<?php echo $dados['id'];?>"><i class="fas fa-pen"></i><a/></td>
-									<!-- Modal Structure -->
-												<div id="modal<?php echo $dados['id'];?>" class="modal">
-												<div class="modal-content">
-												<h4>Atenção </h4>
-												<p>Tem certeza que deseja excluir esse produto ?</p>
-											</div>
-												<div class="modal-footer">
-														 <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-												 <form action="php_cruds/deleteProduto.php" method ="POST">
-													 <input type="hidden" name="id" value="<?php echo $dados['id'];?>">
-													 <button type="submit"name="btn-deletar" class="btn red">sim, quero deletar</button>
-												 </form>
-												</div>
-											</div>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
 
 								 </tr>
-								<?php } ?>
           </tbody><!-- fim do conteúdo da tabela-->
         </table>
 

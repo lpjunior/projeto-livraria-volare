@@ -39,7 +39,7 @@ if (!isset($_SESSION['user_id'])){
                         <!-- uploadImg($_POST) -->
                           <!-- INPUT IMAGEM-->
                             <label for="capa">Imagem capa:</label>
-                            <input type="file" class="form-control-file" id="capa" name="foto" required="required" >
+                            <input type="file" class="form-control-file" id="capa" name="foto" required="required">
                           <!-- / input imagem --><br/>
                           <div class="form-group">
                             <label for="titulo">Título:</label>
@@ -54,19 +54,19 @@ if (!isset($_SESSION['user_id'])){
                             <input type="text" class="form-control col-8" name="editora" id="editora" maxlength="45" required="required">
                           </div>
                           <div class="form-group">
-                            <label for="categ">Categoria:</label>
+                            <label for="categ">Categoria:</label> <!-- >>>>>>>>>>> SELECT AQUI <<<<<<<< -->
                             <input type="text" class="form-control col-8" name="categoria" id="categ" maxlength="30" required="required">
                           </div>
                           <div class="form-group">
-                            <label for="tipocapa">Tipo de capa:</label>
+                            <label for="tipocapa">Tipo de capa:</label> <!-- >>>>>>>>>>> SELECT AQUI <<<<<<<< -->
                             <input type="text" class="form-control col-8" name="capa" id="tipocapa" maxlength="30" required="required">
                           </div>
                           <div class="form-group">
-                            <label for="subcategoria">Assunto:</label>
+                            <label for="subcategoria">Assunto:</label> <!-- >>>>>>>>>>> SELECT AQUI <<<<<<<< -->
                             <input type="text" class="form-control col-2" name="subcategorias" id="subcategoria" maxlength="45">
                           </div>
                           <div class="form-group">
-                            <label for="idioma">idioma:</label>
+                            <label for="idioma">idioma:</label> <!-- >>>>>>>>>>> SELECT AQUI <<<<<<<< -->
                             <input type="text" class="form-control col-2" id="idioma" maxlength="9" required="required">
                           </div>
                           <div class="form-group">
@@ -74,8 +74,8 @@ if (!isset($_SESSION['user_id'])){
                             <input type="text" class="form-control col-4" id="isbn" maxlength="13" required="required">
                           </div>
                           <div class="form-group">
-                            <label for="datapub">Data de publicação:</label>
-                            <input type="date" class="form-control col-4" id="datapub" maxlength="30" required="required">
+                            <label for="datapub">Ano de publicação:</label>
+                            <input type="date" class="form-control col-4" id="datapub" maxlength="4" required="required">
                           </div>
                           <div class="form-group">
                             <label for="numpag">Número de páginas:</label>
@@ -92,9 +92,7 @@ if (!isset($_SESSION['user_id'])){
                           <!--quantidade -->
                           <div class="form-group">
                             <label for="qtdProd">Quantidade:</label><br/>
-                              <button id="btnMenus" class="btn btn-light btn-sm">-</button>
                               <input type="number" id="qtdProd" style="display:inline" maxlength="4" class="text-center form-control col-2" value="">
-                              <button id="btnPlus" class="btn btn-light btn-sm">+</button>
                           </div>
                           <!-- /quantidade -->
                           <div class="form-group">
