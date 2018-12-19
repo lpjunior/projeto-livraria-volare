@@ -5,12 +5,25 @@ if (!isset($_SESSION)) {
 require_once 'conexao.php';
 
 ## INSERIR LIVROS
-function inserirLivro($categoria, $titulo, $autor, $editora, $isbn, $numeroPaginas, $sinopse, $peso, $data, $fornecedor, $preco, $subcategorias, $capa, $quantidade, $imagem){
+function inserirLivro($categoria, $titulo, $autor, $editora, $isbn, $numeroPaginas, $sinopse, $peso, $data, $fornecedor, $preco, $subcategorias, $capa, $quantidade, $imagem, $idioma){
 	$data = date('Y-m-d', strtotime($data));
 	$conexao = getConnection();
-	$sql = "INSERT INTO produto VALUES (NULL, '$categoria', '$titulo', '$autor', '$editora', '$isbn', '$numeroPaginas', '$sinopse', '$peso', '$data', '$fornecedor', '$preco', '$quantidade', '$imagem', $subcategorias, $capa)";
+	$sql = "INSERT INTO produto VALUES (NULL, '$categoria', '$titulo', '$autor', '$editora', '$isbn', '$numeroPaginas', '$sinopse', '$peso', '$data', '$preco', '$quantidade', $subcategorias, $capa, $fornecedor)";
 	$resultado = mysqli_query($conexao, $sql);
 	$id = mysqli_insert_id($conexao);
+	$sql = "INSERT INTO imagens VALUES";
+	$cont = 1;
+	foreach ($imagem as $i) {
+		$nome = $i['nome'];
+		if (count($imagem) == $cont){
+		$sql .= " (null, $nome, $id)";
+	} else {
+		$cont++;
+		$nome = $i['nome'];
+		$sql .= " (null, $nome, $id),";
+	}
+}
+	$resultado = mysqli_query($conexao, $sql);
 	$sql = "INSERT INTO Produto_has_Idioma VALUES ($id, 1)";
 	$resultado = mysqli_query($conexao, $sql);
 	if (mysqli_affected_rows($conexao) >= 1) {

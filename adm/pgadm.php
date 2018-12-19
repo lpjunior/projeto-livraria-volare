@@ -35,34 +35,35 @@ if (!isset($_SESSION['user_id'])){
 								<div class="tab-content col-md-9">
                   <!-- CADASTRO PRODUTO -->
                     <div id="cadastrarpro" class="tab-pane COLORE bordasb mx-auto pr-3 pl-3 pt-4 pb-3">
-                      <form>
+                      <form action="#" method="post" enctype="multipart/form-data">
+                        <!-- uploadImg($_POST) -->
                           <!-- INPUT IMAGEM-->
                             <label for="capa">Imagem capa:</label>
-                            <input type="file" class="form-control-file" id="capa" required="required" >
+                            <input type="file" class="form-control-file" id="capa" name="foto" required="required" >
                           <!-- / input imagem --><br/>
                           <div class="form-group">
                             <label for="titulo">Título:</label>
-                            <input type="text" class="form-control col-8" id="titulo" maxlength="45" required="required">
+                            <input type="text" class="form-control col-8" name="titulo" id="titulo" maxlength="45" required="required">
                           </div>
                           <div class="form-group">
                             <label for="autor">Autor:</label>
-                            <input type="text" class="form-control col-8" id="autor" maxlength="80" required="required">
+                            <input type="text" class="form-control col-8" name="autor" id="autor" maxlength="80" required="required">
                           </div>
                           <div class="form-group">
                             <label for="editora">Editora:</label>
-                            <input type="text" class="form-control col-8" id="editora" maxlength="45" required="required">
+                            <input type="text" class="form-control col-8" name="editora" id="editora" maxlength="45" required="required">
                           </div>
                           <div class="form-group">
                             <label for="categ">Categoria:</label>
-                            <input type="text" class="form-control col-8"  id="categ" maxlength="30" required="required">
+                            <input type="text" class="form-control col-8" name="categoria" id="categ" maxlength="30" required="required">
                           </div>
                           <div class="form-group">
                             <label for="tipocapa">Tipo de capa:</label>
-                            <input type="text" class="form-control col-8"  id="tipocapa" maxlength="30" required="required">
+                            <input type="text" class="form-control col-8" name="capa" id="tipocapa" maxlength="30" required="required">
                           </div>
                           <div class="form-group">
                             <label for="subcategoria">Assunto:</label>
-                            <input type="text" class="form-control col-2" id="subcategoria" maxlength="45">
+                            <input type="text" class="form-control col-2" name="subcategorias" id="subcategoria" maxlength="45">
                           </div>
                           <div class="form-group">
                             <label for="idioma">idioma:</label>

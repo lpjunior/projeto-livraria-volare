@@ -38,7 +38,7 @@ function registrarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $gen
 		$cont++;
 		$sql .= " ($id, $i),";
 	}
-	}
+}
 	$resultado = mysqli_query($conexao, $sql);
 	if (mysqli_affected_rows($conexao) >= 1) {
 		return header('location: ../../entrar');

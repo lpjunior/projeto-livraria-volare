@@ -10,7 +10,7 @@
         <div>
             <?php
                 if (isset($_POST['enviar'])){
-                uploadImg($_FILES['foto']);
+                  uploadImg($_FILES['foto']);
                 }
             ?>
             <form action="#" method="post" enctype="multipart/form-data">
