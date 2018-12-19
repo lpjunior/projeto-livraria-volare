@@ -16,22 +16,22 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
             <!-- Nav pills -->
                 <ul class="nav flex-column nav-pills" role="tablist">
                     <li class="nav-item">
-                            <a class="nav-link active" data-toggle="pill" href="#meusdados">Meus Dados</a>
+                            <a class="nav-link active font-weight-bold" data-toggle="pill" href="#meusdados">Meus Dados</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="pill" href="#meusenderecos">Meus Endereços</a>
+                        <a class="nav-link font-weight-bold" data-toggle="pill" href="#meusenderecos">Meus Endereços</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="pill" href="#listadesejos">Lista de Desejos</a>
+                        <a class="nav-link font-weight-bold" data-toggle="pill" href="#listadesejos">Lista de Desejos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="pill" href="#meuspedidos">Meus Pedidos</a>
+                        <a class="nav-link font-weight-bold" data-toggle="pill" href="#meuspedidos">Meus Pedidos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="pill" href="#centralatendimento">Central de Atendimento</a>
+                        <a class="nav-link font-weight-bold" data-toggle="pill" href="#centralatendimento">Central de Atendimento</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="pill" href="#sair">Sair</a>
+                        <a class="nav-link font-weight-bold" data-toggle="pill" href="#sair">Sair</a>
                     </li>
                 </ul>
                 </div>
@@ -100,17 +100,22 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                                         <label for="isenha2">Confirmação de Senha:</label><!--script para confirmação de senha-->
                                         <input type="password" class="form-control" id="isenha2" name="isenha2"  required>
                                     </div>
-                                </div>
+                                    <div class="row">
+							    </div>
                             </div>
                             <br/>
                         </form>
+                        <div class="col mb-4">
+                            		<button type="submit" class="btn COLORE1" name="btn-enviar" >Salvar Alterações</button><!--value??-->
+                        		</div>
+							</div>
                       <?php } ?>
                     </fieldset><!--********fim do formulário dados pessoais*************-->
                     </div>
                     <div id="meusenderecos" class="tab-pane fade mr-4"><br>
                     <h3>Meus Endereços</h3>
                         <div class=" float-right">
-                            <button id="btn-editar" class="btn btn-default font-weight-bold">Editar</button>
+                            <button id="btn-editar" class="btn btn COLORE1">Editar</button>
                         </div>
                     <fieldset><!-- *************início do formulário Meus Endereços********************** -->
                       <?php
@@ -119,6 +124,13 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                         <form action="" method="POST">
                             <div class="form-group"> <h5>Endereço Principal</h5>
                             <br/>
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="idestinatario">Destinatário:</label>
+                                        <input type="text" class="form-control" id="idestinatario" name="idestinatario" required>
+                                    </div>
+                                </div>
+                                <br/>
                                 <div class="row">
                                     <div class="col-md-3 col-lg-4"><!--adicionar tipo de coluna, testar layout-->
                                         <label for="iCEP">CEP:</label>
@@ -185,8 +197,11 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                               <?php } ?>
                                 <br/>
                                 <div class="row">
-                                <div class="col-md-6">
-                                        <button type="submit" class="btn COLORE1" name="btn-enviar" >Adicionar Endereço</button><!--value??-->
+                                <div class="col-md-10 mb-4">
+                                        <button type="submit" class="btn COLORE1" name="btn-enviar" >Adicionar Endereço</button>
+                                        </div>
+                                <div class="float-right mb-4">
+                                        <button type="submit" class="btn COLORE1" name="btn-enviar" >Salvar Alterações</button>
                                         </div>
                                 </div>
                             </div>
@@ -233,31 +248,25 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                     <div class="card-deck">
                     <div class="card">
                         <img class="card-img-top" style="width: 60px; height: 40px" src="img/email.jpg" alt="Imagem de email">
-                        <div class="card-body">
-                        <h5 class="card-title">E-mail</h5>
-                        <p class="card-text">Utiize este canal de contato para tirar dúvidas, cancelar pedidos, solicitar trocas, fazer reclamação, entre outros.</p>
-                        <a href="contato" class="btn COLORE1">Entrar em contato por e-mail</a>
-                        </div>
+                            <div class="card-body">
+                                <h5 class="card-title">E-mail</h5>
+                                <p class="card-text">Utiize este canal de contato para tirar dúvidas, cancelar pedidos, solicitar trocas, fazer reclamação, entre outros.</p>
+                                <a href="contato" class="btn COLORE1">Entrar em contato por e-mail</a>
+                            </div>
                     </div>
                     <div class="card">
                         <img class="card-img-top" style="width: 40px; height: 40px" src="img/telefone.jpg"  alt="Imagem de capa do card">
-                        <div class="card-body">
-                        <h5 class="card-title">Telefones</h5>
-                        <p class="card-text">Capitais e Regiões Metropolitanas: 4003-0001</p>
-                        <p class="card-text">Outras localidades: 0800-754-4000</p>
+                            <div class="card-body">
+                                <h5 class="card-title">Telefones</h5>
+                                <p class="card-text">Capitais e Regiões Metropolitanas: 4003-0001</p>
+                                <p class="card-text">Outras localidades: 0800-754-4000</p>
+                            </div>
+                            </div>
                         </div>
-                    </div>
                     </div>
                     <div id="sair" class="tab-pane fade"><br>
-                    <h3>Sair</h3>
-                    <p>Deseja realmente sair?</p>
-                    <div class="row">
-                        <div class="col">
-                            <button type="submit" class="btn COLORE1" name="btn-enviar" >Sim</button>
-                        </div>
-                        <div class="col">
-                            <button type="submit" class="btn COLORE1" name="btn-enviar" >Não</button>
-                        </div>
+                        <h3>Sair</h3>
+                            <p>Ut taysr perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
                     </div>
                 </div>
             </div>
@@ -268,6 +277,7 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
 <script>
     $(function(){
         $("#btn-editar").click(function(){
+            $("#iDestinatario").removeAttr('disabled');
             $("#iCEP").removeAttr('disabled');
             $("#iEndCobr").removeAttr('disabled');
             $("#iNum").removeAttr('disabled');
@@ -276,6 +286,7 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
             $("#iCidade").removeAttr('disabled');
             $("#sEstado").removeAttr('disabled');
             
+            $("#iDestinatario").attr('required');
             $("#iCEP").attr('required');
             $("#iEndCobr").attr('required');
             $("#iNum").attr('required');
