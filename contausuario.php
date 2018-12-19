@@ -174,7 +174,6 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                                     </div>
                                 </div>
                             </div>
-
                         </form>
                       <?php } ?>
                     </fieldset><!--********fim do formulário dados pessoais*************-->
@@ -324,10 +323,16 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                     </div>
                     <div id="sair" class="tab-pane fade"><br>
                     <h3>Sair</h3>
-                    <p>Ut taysr perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                    <p>Deseja realmente sair?</p>
+                    <div class="row">
+                        <div class="col">
+                            <button type="submit" class="btn COLORE1" name="btn-enviar" >Sim</button>
+                        </div> 
+                        <div class="col">
+                            <button type="submit" class="btn COLORE1" name="btn-enviar" >Não</button>
+                        </div>    
                     </div>
-                        </div>
                 </div>
             </div>
-</div>
+        </div>
 <?php }); ?>
