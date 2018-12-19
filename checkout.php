@@ -67,15 +67,15 @@ $app->map(['GET', 'POST'], '/checkout', function ($request, $response, $args) {
                         <div class="col-sm-4 col-md-5 col-lg-4">
                             <h1 class="fontevinte">Endereço de entrega</h1>
                             <p class="fontedoze COLORETEXTO"> Seu pedido será entregue no endereço abaixo: <!--puxar do endereço de cobrança cadastrado--></p><hr/>
-                            <p class="fontedezesseis">Nome do destinatário: <?=$i['nome']." ".$i['sobrenome']?></p>
-                            <p class="displayblock fontedezesseis">CEP: <?=$i['cep']?> Estado: <?=$i['estado']?></p>
-                            <p class="displayblock fontedezesseis">Bairro: <?=$i['bairro']?></p>
-                            <p class="displayblock fontedezesseis">Rua: <?=$i['endereco']?> </p>
-                            <p class="displayblock fontedezesseis">Número: <?=$i['numero']?> </p>
-                            <p class="displayblock fontedezesseis">Complemento: <?=$i['complemento']?></p>
+                            <p class="fontedezesseis" id="pDestinatario">Nome do destinatário: <?=$i['nome']." ".$i['sobrenome']?></p>
+                            <p class="displayblock fontedezesseis" id="pCep">CEP: <?=$i['cep']?> Estado: <?=$i['estado']?></p>
+                            <p class="displayblock fontedezesseis"id="pBairro">Bairro: <?=$i['bairro']?></p>
+                            <p class="displayblock fontedezesseis" id="pRua">Rua: <?=$i['endereco']?> </p>
+                            <p class="displayblock fontedezesseis" id="pNum">Número: <?=$i['numero']?> </p>
+                            <p class="displayblock fontedezesseis" id="pComp">Complemento: <?=$i['complemento']?></p>
                             <div class="form-group">
                                 <div class="col-sm-offset-2">
-                                    <button type="submit" class="btn COLORE1 fontedoze" name="btn-enviar" onclick="">Editar</button>
+                                    <button type="submit" class="btn COLORE1 fontedoze" name="btn-enviar" data-toggle="modal" data-target="#exampleModal">Editar</button>
                                 </div>
                             </div>
 
@@ -104,6 +104,89 @@ $app->map(['GET', 'POST'], '/checkout', function ($request, $response, $args) {
                 </div>  <!-- fim do pagseguro -->
             </div>
         </section>
+        <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Novo Endereço de Entrega</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="iCEP">CEP:</label>
+                                        <input type="text" id="iCEP" name="txtCEP" class="form-control cep" required>
+                                    </div>
+                                    <div class="col-md">
+                                        <label for="iEndCobr">Endereço:</label>
+                                        <input type="text" id="iEndCobr" name="txtEndCobr" class="form-control" required maxlength="255">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md">
+                                        <label for="iNum">Número:</label>
+                                        <input type="text"  id="iNum" name="txtNum" class="form-control" required maxlength="10">
+                                    </div>
+                                    <div class="col-md">
+                                        <label for="iComplemento">Complemento:</label>
+                                        <input type="text"  id="iComplemento" name="txtComplemento" class="form-control" required maxlength="15">
+                                        <br/>
+                                    </div>
+                                    <div class="col-md">
+                                        <label for="iBairro">Bairro:</label>
+                                        <input type="text"  id="iBairro" name="txtBairro" class="form-control" required maxlength="50">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md">
+                                        <label for="iCidade">Cidade:</label>
+                                        <input type="text"  id="iCidade" name="txtCidade" class="form-control" required maxlength="50">
+                                    </div>
+                                    <div class="col-md">
+                                        <label for="sEstado">Estado</label><!-- PESSOAL DO PHP: tem que puxar esse select do banco de dados, só coloquei pra ficar mais fácil de vizualizar-->
+                                        <select id="sEstado" name="txtEstado" class="form-control">
+                                            <option value="AC">Acre</option>
+                                            <option value="AL">Alagoas</option>
+                                            <option value="AP">Amapá</option>
+                                            <option value="AM">Amazonas</option>
+                                            <option value="BA">Bahia</option>
+                                            <option value="CE">Ceará</option>
+                                            <option value="DF">Distrito Federal</option>
+                                            <option value="ES">Espírito Santo</option>
+                                            <option value="GO">Goiás</option>
+                                            <option value="MA">Maranhão</option>
+                                            <option value="MT">Mato Grosso</option>
+                                            <option value="MS">Mato Grosso do Sul</option>
+                                            <option value="MG">Minas Gerais</option>
+                                            <option value="PA">Pará</option>
+                                            <option value="PB">Paraíba</option>
+                                            <option value="PR">Paraná</option>
+                                            <option value="PE">Pernambuco</option>
+                                            <option value="PI">Piauí</option>
+                                            <option value="RJ">Rio de Janeiro</option>
+                                            <option value="RN">Rio Grande do Norte</option>
+                                            <option value="RS">Rio Grande do Sul</option>
+                                            <option value="RO">Rondônia</option>
+                                            <option value="RR">Roraima</option>
+                                            <option value="SC">Santa Catarina</option>
+                                            <option value="SP">São Paulo</option>
+                                            <option value="SE">Sergipe</option>
+                                            <option value="TO">Tocantins</option>
+                                        </select>
+                                    </div>
+                                </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn COLORE2" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn COLORE1">Salvar</button>
+                </div>
+                </div>
+            </div>
+            </div>
 <?php
 } else {
  echo "<script>window.location.assign('carrinho')</script>";
