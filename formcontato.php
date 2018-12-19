@@ -48,7 +48,6 @@ $app->map(['GET', 'POST'], '/contato', function ($request, $response, $args) {
                                         <input type="text" class="form-control" id="ipedido" name="ipedido" required>
                                     </div>
                                 </div>
-                            </div>
                             <br/>
                             <div class="row">
                                 <div class="col">
