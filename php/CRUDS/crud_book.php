@@ -3,12 +3,11 @@ if (!isset($_SESSION)) {
 	session_start();
 }
 require_once 'conexao.php';
-
 ## INSERIR LIVROS
-function inserirLivro($categoria, $titulo, $autor, $editora, $isbn, $numeroPaginas, $sinopse, $peso, $data, $fornecedor, $preco, $subcategorias, $capa, $quantidade, $imagem, $idioma){
+function inserirLivro($categoria, $titulo, $autor, $editora, $isbn, $numeroPaginas, $sinopse, $peso, $data, $fornecedor, $preco, $subcategorias, $capa, $dimensoes, $quantidade, $idioma){
 	$data = date('Y-m-d', strtotime($data));
 	$conexao = getConnection();
-	$sql = "INSERT INTO produto VALUES (NULL, '$categoria', '$titulo', '$autor', '$editora', '$isbn', '$numeroPaginas', '$sinopse', '$peso', '$data', '$preco', '$quantidade', $subcategorias, $capa, $fornecedor)";
+	$sql = "INSERT INTO produto VALUES (NULL, '$categoria', '$titulo', '$autor', '$editora', '$isbn', '$numeroPaginas', '$sinopse', '$peso', '$data', '$preco', '$quantidade', '$dimensoes', $subcategorias, $capa, $fornecedor)";
 	$resultado = mysqli_query($conexao, $sql);
 	$id = mysqli_insert_id($conexao);
 	$sql = "INSERT INTO imagens VALUES";
@@ -148,6 +147,7 @@ function excluirLivro($id){
 	}
 	$sql .= " ORDER BY prod.datapublicacao asc;";
 		## enviar o resultado pro banco
+		echo $sql;
 		$resultado = mysqli_query($conexao, $sql);
 		if (mysqli_affected_rows($conexao) >= 1) {
 			$arr = array();

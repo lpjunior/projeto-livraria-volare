@@ -30,15 +30,12 @@ function registrarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $gen
 	$sql = "INSERT INTO telefone VALUES (NULL, $telefone, $id, 1)";
 	$resultado = mysqli_query($conexao, $sql);
 	$sql = "INSERT INTO interesses VALUES";
-	$cont = 1;
-	foreach ($interesse as $i) {
-		if (count($interesse) == $cont){
-		$sql .= " ($id, $i)";
-	} else {
-		$cont++;
-		$sql .= " ($id, $i),";
+	$sql .= " ($id, $i)";
+	if(sizeof($interesse) > 1) {
+		foreach ($interesse as $i) {
+			$sql .= ", ($id, $i)";
+		}
 	}
-}
 	$resultado = mysqli_query($conexao, $sql);
 	if (mysqli_affected_rows($conexao) >= 1) {
 		return header('location: ../../entrar');

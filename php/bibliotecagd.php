@@ -14,6 +14,7 @@
     $file = $filename;
     // imagecreatefromjpeg - fn php que cria um temporario para o GD
     $src_img = imagecreatefromjpeg($file);
+    $_SESSION['nome_thumbnail'] = $dirThumbnails . DIRECTORY_SEPARATOR . $nomedacaceta;
     // getimagesize - fn php para retornar um array com as dimensões da imagem
     //var_dump(getimagesize($newFilename));
     #var_dump($file);
@@ -29,7 +30,7 @@
     // gerar nome do thumbnail
     $nomeThumbnail = $filename;
     // gera o thumbnail
-    imagecopyresampled($thumbnail, $src_img, 0, 0, 0, 0, $thumbnail_width, $thumbnail_height, $src_img_size_width, $src_img_size_height);
+    imagecopyresampled($thumbnail, $src_img, 0, 0, 0, 0, $thumbnail_width+, $thumbnail_height, $src_img_size_width, $src_img_size_height);
     imagejpeg($thumbnail, $dirThumbnails . DIRECTORY_SEPARATOR . $nomedacaceta);
     // apaga as img do cache
     imagedestroy($thumbnail);

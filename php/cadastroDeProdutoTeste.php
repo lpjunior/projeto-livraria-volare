@@ -10,7 +10,7 @@
         <div>
             <?php
                 if (isset($_POST['enviar'])){
-                  uploadImg($_FILES['foto']);
+                  var_dump($_FILES['foto']);
                 }
             ?>
             <form action="#" method="post" enctype="multipart/form-data">
@@ -18,7 +18,6 @@
                     <input type="file" name="foto"><BR>
                     <input type="submit" value="Enviar Foto!" name='enviar'>
                 </form>
-
 
         </div>
     </body>
