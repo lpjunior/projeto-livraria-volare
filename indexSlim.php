@@ -25,7 +25,7 @@ require_once 'error.php';
 ## CHECKOUT
 require_once 'checkout.php';
 ## FOOTER
-
+require_once 'formcontato.php';
 ## Páginas de Admin ##
 ## editar produto
 require_once "requires/footer.php";
