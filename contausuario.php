@@ -309,7 +309,8 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                         <img class="card-img-top" style="width: 60px; height: 40px" src="img/email.jpg" alt="Imagem de email">
                         <div class="card-body">
                         <h5 class="card-title">E-mail</h5>
-                        <p class="card-text">Utiize este canal de contato para conseguir detalhar sua dúvida,cancelar pedidos e solicitar trocas de produtos. No atendimento por e-mail não poderão ser tratados problemas realacionados a pagamento e nem efetuar a confirmação de seus dados cadastrais.</p>
+                        <p class="card-text">Utiize este canal de contato para tirar dúvidas, cancelar pedidos, solicitar trocas, fazer uma reclamação, entre outros.</p>
+                        <p class="card-text">No atendimento por e-mail não poderão ser tratados problemas realacionados a pagamento e nem efetuar a confirmação de seus dados cadastrais.</p>
                         <a href="contato" class="btn COLORE1">Entrar em contato por e-mail</a>
                         </div>
                     </div>
