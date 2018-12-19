@@ -110,9 +110,7 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                     <div id="meusenderecos" class="tab-pane fade mr-4"><br>
                     <h3>Meus Endereços</h3>
                         <div class=" float-right">
-                          <form action="#" method="POST">
-                            <button name="btn-editar" class="nav-link active font-weight-bold btn" href="#">Editar</button>
-                          </form>
+                            <button id="btn-editar" class="btn btn-default font-weight-bold">Editar</button>
                         </div>
                     <fieldset><!-- *************início do formulário Meus Endereços********************** -->
                       <?php
@@ -124,36 +122,36 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                                 <div class="row">
                                     <div class="col-md-3 col-lg-4"><!--adicionar tipo de coluna, testar layout-->
                                         <label for="iCEP">CEP:</label>
-                                        <input type="text" value="<?=$i['cep']?>" id="iCEP" name="txtCEP" class="form-control cep" <?=(isset($_POST['btn-editar']) ? 'required' : 'disabled')?>>
+                                        <input type="text" value="<?=$i['cep']?>" id="iCEP" name="txtCEP" class="form-control cep" disabled>
                                     </div>
                                     <div class="col"><!--adicionar tipo de coluna, testar layout-->
                                         <label for="iEndCobr">Endereço:</label>
-                                        <input type="text" value="<?=$i['endereco']?>" id="iEndCobr" name="txtEndCobr" class="form-control" <?=(isset($_POST['btn-editar']) ? 'required' : 'disabled')?> maxlength="255">
+                                        <input type="text" value="<?=$i['endereco']?>" id="iEndCobr" name="txtEndCobr" class="form-control" maxlength="255" disabled>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
                                         <label for="iNum">Número:</label>
-                                        <input type="text" value="<?=$i['numero']?>" id="iNum" name="txtNum" class="form-control" <?=(isset($_POST['btn-editar']) ? 'required' : 'disabled')?> maxlength="10">
+                                        <input type="text" value="<?=$i['numero']?>" id="iNum" name="txtNum" class="form-control" maxlength="10" disabled>
                                     </div>
                                     <div class="col">
                                         <label for="iComplemento">Complemento:</label>
-                                        <input type="text" value="<?=$i['complemento']?>" id="iComplemento" name="txtComplemento" class="form-control" <?=(isset($_POST['btn-editar']) ? 'required' : 'disabled')?> maxlength="15">
+                                        <input type="text" value="<?=$i['complemento']?>" id="iComplemento" name="txtComplemento" class="form-control" maxlength="15" disabled>
                                         <br/>
                                     </div>
                                     <div class="col">
                                         <label for="iBairro">Bairro:</label>
-                                        <input type="text" value="<?=$i['bairro']?>" id="iBairro" name="txtBairro" class="form-control" <?=(isset($_POST['btn-editar']) ? 'required' : 'disabled')?> maxlength="50">
+                                        <input type="text" value="<?=$i['bairro']?>" id="iBairro" name="txtBairro" class="form-control" maxlength="50"disabled>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
                                         <label for="iCidade">Cidade:</label>
-                                        <input type="text" value="<?=$i['cidade']?>" id="iCidade" name="txtCidade" class="form-control" <?=(isset($_POST['btn-editar']) ? 'required' : 'disabled')?> maxlength="50">
+                                        <input type="text" value="<?=$i['cidade']?>" id="iCidade" name="txtCidade" class="form-control" maxlength="50" disabled>
                                     </div>
                                     <div class="col">
                                         <label for="sEstado">Estado</label><!-- PESSOAL DO PHP: tem que puxar esse select do banco de dados, só coloquei pra ficar mais fácil de vizualizar-->
-                                        <select id="sEstado" name="txtEstado" class="form-control" <?=(isset($_POST['btn-editar']) ? 'required' : 'disabled')?>>
+                                        <select id="sEstado" name="txtEstado" class="form-control" disabled>
                                             <option value="AC">Acre</option>
                                             <option value="AL">Alagoas</option>
                                             <option value="AP">Amapá</option>
@@ -265,3 +263,26 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
             </div>
         </div>
 <?php }); ?>
+
+
+<script>
+    $(function(){
+        $("#btn-editar").click(function(){
+            $("#iCEP").removeAttr('disabled');
+            $("#iEndCobr").removeAttr('disabled');
+            $("#iNum").removeAttr('disabled');
+            $("#iComplemento").removeAttr('disabled');
+            $("#iBairro").removeAttr('disabled');
+            $("#iCidade").removeAttr('disabled');
+            $("#sEstado").removeAttr('disabled');
+            
+            $("#iCEP").attr('required');
+            $("#iEndCobr").attr('required');
+            $("#iNum").attr('required');
+            $("#iComplemento").attr('required');
+            $("#iBairro").attr('required');
+            $("#iCidade").attr('required');
+            $("#sEstado").attr('required');
+        });
+    });
+</script>
