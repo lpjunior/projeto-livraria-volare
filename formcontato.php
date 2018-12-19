@@ -9,7 +9,8 @@ $app->map(['GET', 'POST'], '/contato', function ($request, $response, $args) {
         </div>
 <fieldset><!-- *************início do formulário central de atendimento********************** -->
                         <form action="php/CRUDS/editarUsuario.php" method="POST">
-                            <div class="form-group"> <h5>Contato por e-mail<img class="card-img-top" style="width: 60px; height: 40px" src="img/email.jpg" alt="Imagem de email"></h5>
+                            <div class="form-group"><h5>
+                            <img class="card-img-top" style="width: 60px; height: 40px" src="img/email.jpg" alt="Imagem de email">Contato por e-mail</h5>
                                 <?php
                                 $usuario = serviceListarUsu(NULL, $_SESSION['user_id']);
                                 if (isset($_SESSION['editarFalse'])){
@@ -49,25 +50,33 @@ $app->map(['GET', 'POST'], '/contato', function ($request, $response, $args) {
                                 </div>
                             </div>
                             <br/>
-                                <div class="row">
-                                <div class="col">
-                                        <button type="submit" class="btn COLORE1" name="btn-enviar" >Salvar Alterações</button><!--value??-->
-                                    </div>
-                                </div>
-                            <br/>
-                                <div class="row">
+                            <div class="row">
                                 <div class="col">
                                         <label for="icontato">Selecione o motivo do contato:</label>
                                         <select id="sMotivo" name="txtMotivo" class="form-control">
-                                            <option value="">Informações sobre meu pedido</option>
-                                            <option value="">Infomações sobre um produto</option>
-                                            <option value="">Efetuar uma troca - produto com defeito/danificado</option>
+                                            <option selected>Selecione uma opção</option>
+                                            <option>Informações sobre meu pedido</option>
+                                            <option>Infomações sobre um produto</option>
+                                            <option>Efetuar uma troca - produto com defeito/danificado</option>
                                             <option value="">Efetuar uma troca - produto veio errado</option>
                                             <option value="">Efetuar uma troca - outros motivos</option>
                                             <option value="">Cancelar o pedido</option>
                                             <option value="">Sugestões, dúvidas e elogios</option>
                                             <option value="">Fazer uma reclamação</option>
                                         </select>
+                                    </div>
+                                </div>
+                                <br/>
+                            <div class="row">
+                                <div class="col">
+                                <label for="imensagem">Mensagem</label>
+                                <textarea class="form-control" id="imensagem" rows="5"></textarea>
+                                    </div>
+                                </div>
+                                <br/>
+                            <div class="row">
+                                <div class="col">
+                                        <button type="submit" class="btn COLORE1" name="btn-enviar" >Salvar Alterações</button><!--value??-->
                                     </div>
                                 </div>
                             </div>
