@@ -324,11 +324,9 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                     </div>
                     <div id="sair" class="tab-pane fade"><br>
                     <h3>Sair</h3>
-                        <div class="container-fluid col-md-8 centraliza margintop">
                     <p>Ut taysr perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
                     </div>
                         </div>
-
                 </div>
             </div>
 </div>
