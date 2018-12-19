@@ -310,7 +310,7 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                         <div class="card-body">
                         <h5 class="card-title">E-mail</h5>
                         <p class="card-text">Utiize este canal de contato para conseguir detalhar sua dúvida. No atendimento por e-mail não poderão ser tratados problemas realacionados a pagamento e nem efetuar a confirmação de seus dados cadastrais.</p>
-                        <a href="formcontato.php" class="btn COLORE1">Entrar em contato por e-mail</a>
+                        <a href="formcontato" class="btn COLORE1">Entrar em contato por e-mail</a>
                         </div>
                     </div>
                     <div class="card">
