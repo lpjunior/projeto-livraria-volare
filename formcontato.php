@@ -75,7 +75,7 @@ $app->map(['GET', 'POST'], '/contato', function ($request, $response, $args) {
                                 <br/>
                             <div class="row">
                                 <div class="col">
-                                        <button type="submit" class="btn COLORE1" name="btn-enviar" >Salvar Alterações</button><!--value??-->
+                                        <button type="submit" class="btn COLORE1" name="btn-enviar" >Enviar</button><!--value??-->
                                     </div>
                                 </div>
                             </div>
