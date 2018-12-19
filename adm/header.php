@@ -49,6 +49,9 @@ require_once '../php/CRUDS/serviceBook.php';
               <li class="nav-item pr-3">
                   <a class="nav-link text-dark opacidade" href="pgproduto.php"><i class="fas fa-paste"></i>&nbsp;Produtos</a>
               </li>
+              <li class="nav-item pr-3">
+                  <a class="nav-link text-dark opacidade" href="consultavendas.php"><i class="fas fa-chart-area"></i>&nbsp;Vendas</a>
+              </li>
 			        <li class="nav-item pr-3">
                   <a class="nav-link text-dark opacidade" href="logout.php"><i class="fas fa-reply"></i>&nbsp;Sair</a>
               </li>
