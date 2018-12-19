@@ -147,7 +147,6 @@ function excluirLivro($id){
 	}
 	$sql .= " ORDER BY prod.datapublicacao asc;";
 		## enviar o resultado pro banco
-		echo $sql;
 		$resultado = mysqli_query($conexao, $sql);
 		if (mysqli_affected_rows($conexao) >= 1) {
 			$arr = array();
