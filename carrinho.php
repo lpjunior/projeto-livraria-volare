@@ -1,5 +1,5 @@
 <?php
-$app->get('/carrinho', function ($request, $response, $args) {
+$app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
 ?>
     <div class="container-fluid col-md-10 col-12 mt-4">
         <div class="row">
@@ -48,10 +48,7 @@ $app->get('/carrinho', function ($request, $response, $args) {
                   } elseif (isset($_SESSION['produto'])) {
                     $carrinho = $_SESSION['produto'];
                   }
-                  else {
-                    $carrinho = NULL;
-                  }
-                  if ($carrinho != NULL) {
+                  if (is_array($carrinho)) {
                     foreach ($carrinho as $b => $i) {
                     ?>
                     <tbody>
@@ -126,7 +123,7 @@ $app->get('/carrinho', function ($request, $response, $args) {
       subtotal = idpreco * quantidade;
       console.log(subtotal);
       //console.log(document.getElementById('idpreco').value);
-      
+
     });
   });
 
