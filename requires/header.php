@@ -54,7 +54,11 @@ require_once 'php/CRUDS/serviceCarrinho.php';
                     <button class="btn dropdown-toggle COLORE bordas fontecatorze" type="button" id="menu1" data-toggle="dropdown">&nbsp;&nbsp;categorias
                     <span class="caret"></span></button>
                     <ul class="dropdown-menu COLORE" role="menu" aria-labelledby="menu1">
-                        <li role="presentation"><a role="menuitem" class="fontedezesseis" href="#"><!-- variavel categoria--></a></li>
+											<?php
+											$categoria = listarCategoria();
+											foreach ($categoria as $i) { ?>
+                        <li role="presentation"><a role="menuitem" class="fontedezesseis" href="busca?cat=<?=$i['id']?>"><?=$i['categoria']?></a></li>
+											<?php  } ?>
                     </ul>
                 </div>
             <div class="col-md-8 centraliza navbar-nav mr-auto fontedezesseis">
@@ -96,11 +100,10 @@ require_once 'php/CRUDS/serviceCarrinho.php';
 									$carrinho = serviceListarCarrinho($_SESSION['user_id']);
 								} elseif (isset($_SESSION['produto'])) {
 									$carrinho = $_SESSION['produto'];
-								} else {
-									echo "<p class='text-center'>Sem produtos no carrinho</p>";
 								}
-								if (isset($_SESSION['user_id']) || isset($_SESSION['produto'])){
+								if (is_array($carrinho)){
 								foreach ($carrinho as $b => $i) {
+									$b = $i['id'];
 									?>
 										<li class="row"><!--primeiro item carrinho -->
 											<div class="fontedoze pr-2 pl-1 mb-0">
@@ -117,30 +120,34 @@ require_once 'php/CRUDS/serviceCarrinho.php';
 											</div>
 										</li>
 										<div class="dropdown-divider"></div><!--/ primeiro item carrinho -->
-									<?php } ?>
+									<?php } } else {
+										echo "Não existem produtos no carrinho";
+									} ?>
 										<!--/ preenchidos pra teste -->
-
+										<?php if (is_array($carrinho)) { ?>
 										<div class="form-group">
 												<div class="col-6 pl-1 float-left">
-													<form action="<?=(isset($_SESSION['user']) ? 'checkout' : 'entrar');?>" method="POST">
-														<button type="submit" class="btn fontedoze mr-1 pr-2 COLORE1" alt="ir para o carrinho de compras" name="btn-checkout" value="checkout" onclick="carrinho">ver carrinho</button>
+													<form action="carrinho" method="POST">
+														<button type="submit" class="btn fontedoze mr-1 pr-2 COLORE1" alt="ir para o carrinho de compras" name="" value="checkout" onclick="carrinho">ver carrinho</button>
 													</form>
 												</div>
 												<div class="col-3 mr-1 float-left">
-														<button type="submit" class="btn fontedoze mr-2 pl-2 pr-1 COLORE1" alt="ir para o carrinho de compras" name="" onclick="carrinho">comprar&nbsp;</button>
+													<form action="<?=(isset($_SESSION['user']) ? 'checkout' : 'entrar');?>" method="POST">
+														<button type="submit" class="btn fontedoze mr-2 pl-2 pr-1 COLORE1" alt="ir para o carrinho de compras" name="btn-checkout" onclick="carrinho">comprar&nbsp;</button>
+														</form>
 												</div>
 										</div>
+									<?php } ?>
                                 </ul><!-- fecha aqui -->
-							<?php } ?>
 						  </div>
             </div>
             </div> <!-- FIM DA DIV COLLAPSE HAMBURGER -->
         <!-- CAMPO DE BUSCA -->
-            <form class="form-inline mt-2 mt-md-0 col-md-4 col-lg-4 centraliza" action="busca" method="POST">
+            <form class="form-inline mt-2 mt-md-0 col-md-4 col-lg-4 centraliza" action="busca" method="GET">
                 <div class="input-group">
                     <span class="input-group-append">
 
-                            <select class="form-control py-2 COLORE fontecatorze bordas" name="buscaCategoria">
+                            <select class="form-control py-2 COLORE fontecatorze bordas" name="modo">
                             <option value=" " class="bordas fontecatorze d-none">buscar por</option>
                             <option value=" " class="bordas fontedezesseis">busca livre</option>
                             <option value="titulo" class="bordas fontedezesseis">título</option>
@@ -149,7 +156,7 @@ require_once 'php/CRUDS/serviceCarrinho.php';
                             </select>
 
                     </span>
-                    <input class="form-control py-2 border-right-0 border noradius" href="#" type="search" value="" id="" name="txtBusca">
+                    <input class="form-control py-2 border-right-0 border noradius" href="#" type="search" value="" id="" name="busca">
                     <span class="input-group-append">
                         <button type="submit" class="fa fa-search input-group-text bg-white noradius"></button>
                     </span>

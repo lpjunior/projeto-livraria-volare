@@ -17,14 +17,25 @@ $app->get('/produto', function ($request, $response, $args) {
                     if (isset($_GET['id'])) {
                     $livro = serviceDetalhesLivro($_GET['id']);
                     if (is_array($livro)) {
-                    foreach ($livro as $i) { ?>
-                    <img class="d-block w-100" src="img/placeholder2.jpg" alt="capa do livro">
+                    foreach ($livro as $i) {
+                      if ($i['idioma'] == 'POR'){
+                        $i['idioma'] = "Português";
+                      } elseif ($i['idioma'] == ENG){
+                        $i['idioma'] = "Inglês";
+                      } else {
+                        $i['idioma'] = "Espanhol";
+                      }
+                      ?>
+                    <img class="d-block w-100" src="php/CRUDS/upload/<?=$i['imagemcapa']?>" alt="capa do livro">
 
                     <!-- FAVORITAR-->
                     <div class="rating fontequinze">
                          <a href="php/CRUDS/itemDesejado.php?idProd=<?=$i['id']?>"><h4 class="mt-2">Adicionar aos favoritos</h4></a>
                     </div>
                     <br/>
+                    <?php
+                    $i['sinopse'] = resume($i['sinopse'], 300);
+                     ?>
                     <h4 class="fontedezesseis"><i class="far fa-bookmark"></i>&nbsp;Sinopse:</h4> <p class="fontedezesseis"><?=$i['sinopse']?></p>
                 </section>
                 <!-- div para informações -->
@@ -49,10 +60,10 @@ $app->get('/produto', function ($request, $response, $args) {
                     <h4 class="fontedezoito">Detalhes do produto:</h4><br/>
                     <h4 class="fontedezesseis">ISBN: <?=$i['isbn']?></h4>
                     <h4 class="fontedezesseis">Editora: <?=$i['editora']?></h4>
-                    <h4 class="fontedezesseis">Idioma: <?='não tem ainda'?></h4>
-                    <h4 class="fontedezesseis">Dimensões: <?='tb não tem'?></h4>
+                    <h4 class="fontedezesseis">Idioma: <?=$i['idioma']?></h4>
+                    <h4 class="fontedezesseis">Dimensões: <?=$i['dimensoes']?></h4>
                     <h4 class="fontedezesseis">Tipo de capa: <?=$i['tipo_capa']?></h4>
-                    <h4 class="fontedezesseis">Ano de publicação: <?='n tem'?></h4>
+                    <h4 class="fontedezesseis">Ano de publicação: <?=$i['data_publicacao']?></h4>
                     <h4 class="fontedezesseis">Número de Páginas: <?=$i['numero_paginas']?></h4>
                     <!-- INICIO FORMULARIO BOTAO PAGSEGURO
                     <form action="https://pagseguro.uol.com.br/checkout/v2/payment.html" method="post">
@@ -66,7 +77,7 @@ $app->get('/produto', function ($request, $response, $args) {
                 </section>
               <?php }  } else {?>
                   <h1 class="text-center">Livro não encontrado</h1>
-                  <?php die(); } ?>?>
+                  <?php die(); } ?>
                 <!-- COMEÇO DOS CARDS-->
                 <section class="d-none d-sm-block">
                     <h4 class="fontedezoito text-center mt-4 bg-light opacidade">Clientes que compraram este livro também aprovam:</h4><br/>
@@ -79,7 +90,7 @@ $app->get('/produto', function ($request, $response, $args) {
                           ?>
                         <div class="card mb-3 shadow-sm">
 
-                            <img class="card-img-top" src="img/placeholder1.jpg" alt="Card image cap">
+                            <img class="card-img-top" src="php/CRUDS/upload/miniaturas/<?=$i['imagemthumb']?>" alt="Card image cap">
                             <div class="card-header">
                                 <a class="linkstyle" href="produto?id=<?=$i['id']?>"><h4 class="my-0 font-weight-normal fontedezoito"><?=$i['titulo']?></h4></a>
                             </div>
@@ -121,7 +132,9 @@ $app->get('/produto', function ($request, $response, $args) {
 
                             <!--vai puxar os 8 últimos comentários inseridos no banco-->
                             <?php
-                            $comentarios = serviceListarComentarios(8);
+                            $comentarios = serviceListarComentarios(8, $_GET['id']);
+                            if (!is_array($comentarios)){
+                              $comentarios = array('0' => array('id' => 'a', 'comentario' => '<h1>Não existem comentários nesse livro, seja o primeiro!</h1>'));
                             foreach ($comentarios as $i) {
                             ?>
                             <tbody>
@@ -129,11 +142,11 @@ $app->get('/produto', function ($request, $response, $args) {
                                 <form method="POST" action="php/CRUDS/excluirComentario.php">
                                   <input name="produtoID" type="hidden" value="<?=$_GET['id']?>">
                                 <th scope="row" class="COLORETEXTO text-center">
-                                  <?php if ($_SESSION['user_id'] == $i['usuarios_id']){ ?>
+                                  <?php if (isset($_SESSION['user_id']) && isset($i['usuarios_id']) && $_SESSION['user_id'] == $i['usuarios_id']){ ?>
                                   <button value="<?=$i['id']?>" name='btn-excluir' class="far fa-edit input-group-text"></button>
                                 <?php }?>
                                 </br>
-                                <?=$i['nome']?></th>
+                                <?=(isset($i['nome']) ? $i['nome'] : '')?></th>
                               </form>
                                 <td><p><?=$i['comentario']?></p></td>
                               </tr>
@@ -142,7 +155,7 @@ $app->get('/produto', function ($request, $response, $args) {
                     </div>
             </section> <!-- fim da section comentários -->
 
-          <?php } } else{ ?>
+          <?php } } } else{ ?>
             </table>
             <h1 class="text-center">Livro não encontrado</h1>
             <?php
