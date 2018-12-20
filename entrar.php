@@ -1,15 +1,18 @@
 <?php
-  $app->get('/entrar', function ($request, $response, $args) {
+$app->map(['GET', 'POST'], '/entrar', function ($request, $response, $args) {
 if (isset($_SESSION['token_face']) || isset($_SESSION['user'])) {
   echo "<script>window.location.assign('home')</script>";
 } else {
+  if (isset($_POST['btn-checkout'])){
+    echo "<script>alert('Logue para comprar')</script>";
+  }
  ?>
     <div class="container-fluid col-md-8 centraliza mt-4">
         <div class="row">
             <div class="col-md-6 centraliza">
                 <fieldset><!-- *************início do formulário ********************** -->
                     <legend><h2 class="fontevinteecinco">&nbsp;&nbsp;&nbsp;Já sou cadastrado</h2></legend>
-                        <form class="form-horizontal" action="php/CRUDS/loginUsuario.php" method="POST">
+                        <form class="form-horizontal" action="php/CRUDS/loginUsuario.php<?=(isset($_POST['btn-checkout']) ? "?red=".$_POST['btn-checkout'] : '')?>" method="POST">
                             <div class="form-group">
                                 <label class="control-label col-sm-4 font-weight-bold" for="iEmail">E-mail:</label>
                                 <div class="col-md-10">

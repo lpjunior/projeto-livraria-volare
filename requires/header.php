@@ -70,7 +70,7 @@ require_once 'php/CRUDS/serviceCarrinho.php';
                 </div>
               <?php } else { ?>
                 <div class="dropdown float-left">
-								<a href="user" class="dropdown-toggle nav-link text-dark fontedezesseis opacidade" data-toggle="dropdown" role="button"> <i class="fas fa-user-circle"></i>&nbsp;Olá, <!--puxar do banco--></a>
+								<a href="user" class="dropdown-toggle nav-link text-dark fontedezesseis opacidade" data-toggle="dropdown" role="button"> <i class="fas fa-user-circle"></i>&nbsp;Olá, <?=$_SESSION['user']['nome']?></a>
 									<ul class="dropdown-menu COLORE" role="menu">
                                         <li>
 											<div class="fontedoze pr-2 pl-1 mb-0">
@@ -122,13 +122,13 @@ require_once 'php/CRUDS/serviceCarrinho.php';
 
 										<div class="form-group">
 												<div class="col-6 pl-1 float-left">
-													<form action="carrinho" method="GET">
-														<button type="submit" class="btn fontedoze mr-1 pr-2 COLORE1" alt="ir para o carrinho de compras" name="" onclick="carrinho">ver carrinho</button>
+													<form action="<?=(isset($_SESSION['user']) ? 'checkout' : 'entrar');?>" method="POST">
+														<button type="submit" class="btn fontedoze mr-1 pr-2 COLORE1" alt="ir para o carrinho de compras" name="btn-checkout" value="checkout" onclick="carrinho">ver carrinho</button>
+													</form>
 												</div>
 												<div class="col-3 mr-1 float-left">
 														<button type="submit" class="btn fontedoze mr-2 pl-2 pr-1 COLORE1" alt="ir para o carrinho de compras" name="" onclick="carrinho">comprar&nbsp;</button>
 												</div>
-											</form>
 										</div>
                                 </ul><!-- fecha aqui -->
 							<?php } ?>
