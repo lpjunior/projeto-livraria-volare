@@ -36,7 +36,7 @@ if (!isset($_SESSION['user_id'])){
 
                   <!-- CADASTRO PRODUTO -->
                     <div class="COLORE bordasb mx-auto pr-3 pl-3 pt-4 pb-3">
-                      <form action="#" method="post" enctype="multipart/form-data">
+                      <form action="../php/CRUDS/inserirLivro.php" method="post" enctype="multipart/form-data">
                         <!-- uploadImg($_POST) -->
                           <!-- INPUT IMAGEM-->
                             <label for="capa">Imagem capa:</label>
@@ -56,80 +56,101 @@ if (!isset($_SESSION['user_id'])){
                           </div>
                           <div class="form-group">
                             <label for="categoria">Categoria:</label>
-                            <select class="custom-select col-4" id="categoria">
-                                <option selected>Selecione a categoria</option>
-                                <option value="1">x</option>
-                                <option value="2">y</option>
-                                <option value="3">z</option>
+
+                            <select class="custom-select col-4" id="categoria" name="categoria">
+                              <option selected>Selecione a categoria</option>
+                              <?php
+                              $categoria = serviceListarCategoria();
+                              foreach ($categoria as $i) {
+                              ?>
+                                <option value="<?=$i['id']?>"><?=$i['categoria']?></option>
+                              <?php } ?>
                             </select>
                           </div>
                           <div class="form-group">
                             <label for="subcat">Subcategoria:</label>
-                            <select class="custom-select col-4" id="subcat">
+                            <select class="custom-select col-4" id="subcat" name="subcategorias">
                                 <option selected>Selecione um assunto</option>
-                                <option value="1">x</option>
-                                <option value="2">y</option>
-                                <option value="3">z</option>
+                                <?php
+                                $subcategoria = serviceListarSubcategoria();
+                                foreach ($subcategoria as $i) {
+                                ?>
+                                <option value="<?=$i['id']?>"><?=$i['assunto']?></option>
+                                <?php } ?>
                             </select>
                           </div>
                           <div class="form-group">
                             <label for="tipocapa">Tipo de capa:</label>
-                            <select class="custom-select col-4" id="tipocapa">
+                            <select class="custom-select col-4" id="tipocapa" name="capa">
                                 <option selected>Selecione o tipo de capa</option>
-                                <option value="1">dura</option>
-                                <option value="2">brochura</option>
-                                <option value="3">grampo</option>
+                                <?php
+                                $capa = serviceListarCapa();
+                                foreach ($capa as $i) {
+                                ?>
+                                <option value="<?=$i['id']?>"><?=$i['tipodecapa']?></option>
+                              <?php } ?>
                             </select>
                           </div>
                           <div class="form-group">
                             <label for="idioma">Idioma:</label>
-                            <select class="custom-select col-4" id="idioma">
+                            <select class="custom-select col-4" id="idioma" name="idioma">
                                 <option selected>Selecione o idioma</option>
-                                <option value="1">Português</option>
-                                <option value="2">Espanhol</option>
-                                <option value="3">Inglês</option>
+                                <?php
+                                $idioma = serviceListarIdioma();
+                                foreach ($idioma as $i) {
+                                ?>
+                                <option value="<?=$i['id']?>"><?=$i['idioma']?></option>
+                              <?php } ?>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="fornecedor">Fornecedor:</label>
+                            <select class="custom-select col-4" id="fornecedor" name="fornecedor">
+                                <option selected>Selecione o fornecedor</option>
+                                <?php
+                                $capa = serviceListarFornecedor();
+                                foreach ($capa as $i) {
+                                ?>
+                                <option value="<?=$i['id']?>"><?=$i['nome']?></option>
+                              <?php } ?>
                             </select>
                           </div>
                           <div class="form-group">
                             <label for="isbn">ISBN:</label>
-                            <input type="text" class="form-control col-4" id="isbn" maxlength="13" required="required">
+                            <input type="text" class="form-control col-4" name="ISBN" id="isbn" maxlength="13" required="required">
                           </div>
                           <div class="form-group">
                             <label for="datapub">Ano de publicação:</label>
-                            <input type="date" class="form-control col-4" id="datapub" maxlength="4" required="required">
+                            <input type="date" class="form-control col-4" name="data_publicacao" id="datapub" maxlength="4" required="required">
                           </div>
                           <div class="form-group">
                             <label for="numpag">Número de páginas:</label>
-                            <input type="num" class="form-control col-2" id="numpag" maxlength="4" required="required">
+                            <input type="num" class="form-control col-2" name="numeropaginas" id="numpag" maxlength="4" required="required">
                           </div>
                           <div class="form-group">
                             <label for="text">Peso:</label>
-                            <input type="text" class="form-control col-2" id="peso" maxlength="5" required="required">
+                            <input type="text" class="form-control col-2" name="peso" id="peso" maxlength="5" required="required">
                           </div>
                           <div class="form-group">
                             <label for="preco">Preço:</label>
-                            <input type="number" class="form-control col-2" id="preco" maxlength="3" required="required">
+                            <input type="number" class="form-control col-2" name="preco" id="preco" maxlength="3" required="required">
                           </div>
                           <!--quantidade -->
                           <div class="form-group">
                             <label for="qtdProd">Quantidade:</label><br/>
-                              <input type="number" id="qtdProd" style="display:inline" maxlength="4" class="text-center form-control col-2" value="">
+                              <input type="text" name="quantidade" id="qtdProd" style="display:inline" maxlength="4" class="text-center form-control col-2" value="">
                           </div>
                           <!-- /quantidade -->
                           <div class="form-group">
                             <label for="dimension">dimensões:</label>
-                            <input type="text" class="form-control col-2" id="dimension" maxlength="10" required="required">
-                          </div>
-                          <div class="form-group">
-                            <label for="idfornecedor">Fornecedor:</label>
-                            <input type="number" class="form-control col-2" id="idfornecedor" maxlength="9" required="required">
+                            <input type="text" class="form-control col-2" name="dimensoes" id="dimension" maxlength="10" required="required">
                           </div>
                           <div class="form-group">
                             <label for="exampleFormControlTextarea1">Sinopse</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" maxlength="400"></textarea>
+                            <textarea class="form-control" name="sinopse" id="exampleFormControlTextarea1" rows="3"></textarea>
                           </div>
+                      <button name="btn-livro-enviar" type="submit" class="btn COLORE1 btn-outline-secondary">Adicionar</button>
                       </form>
-                      <a class="btn COLORE1 btn-outline-secondary" href="">Adicionar</a>
                     </div>
 
                 </div>

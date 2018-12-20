@@ -3,7 +3,7 @@
 session_start();
 // Só poder entrar quando logado
 //Header
-require_once("includes/header.php"); ?>
+require_once("header.php"); ?>
 <?php
 if (isset($_SESSION['mensagem'])){?>
 <?php }
@@ -15,12 +15,13 @@ if (isset($_SESSION['mensagem'])){?>
     <h1 class="fontedezoito text-left pb-2 pt-2 opacidade"><i class="fas fa-caret-right"></i>&nbsp;<i>Produtos</i></h1>
 				<div class="form-group text-righ mb-4 pr-2">
 						<div>
-							<button type="submit" class="btn fontequinze opacidade COLORE1" alt="comentar" name="" onclick="adicionaProduto.php">Adicionar</button>
+							<a href="cadastrarpro.php" class="btn fontequinze opacidade COLORE1" alt="comentar">Adicionar</a>
 						</div>
 				</div>
 				<table class="table table-striped text-center table-responsive mb-4">
           <thead class="centraliza">
               <tr>
+                <th scope="col">id</th>
                 <th scope="col">Título</th>
                 <th scope="col">Autor</th>
                 <th scope="col">Editora</th>
@@ -33,21 +34,25 @@ if (isset($_SESSION['mensagem'])){?>
               </tr>
           </thead>
           <tbody class="centraliza"><!-- CONTEÚDO DA TABELA -->
+            <?php
+            $produto = listarLivro(NULL, NULL);
+            foreach ($produto as $i) {
+              $i['sinopse'] = resume($i['sinopse'], 250);
+            ?>
               <tr>
-
-
-                  <td></td>
-                  <td></td>
-                  <td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
+                  <td><?=$i['id']?></td>
+                  <td><?=$i['titulo']?></td>
+                  <td><?=$i['autor']?></td>
+                  <td><?=$i['editora']?></td>
+                  <td><?=$i['isbn']?></td>
+									<td><?=$i['numero_paginas']?></td>
+                  <td><?=$i['sinopse']?></td>
+                  <td><?=$i['fornecedor']?></td>
+                  <td><?=$i['preco']?></td>
+                  <td><?=$i['quantidade']?></td>
 
 								 </tr>
+               <?php } ?>
           </tbody><!-- fim do conteúdo da tabela-->
         </table>
 
