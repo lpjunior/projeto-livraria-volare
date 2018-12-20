@@ -119,15 +119,16 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                         </div>
                     <fieldset><!-- *************início do formulário Meus Endereços********************** -->
                       <?php
-                      foreach ($usuario as $i) {
+                      $endereco = serviceListarEndereco($_SESSION['user_id']);
+                      foreach ($endereco as $i) {
                       ?>
-                        <form action="" method="POST">
-                            <div class="form-group"> <h5>Endereço Principal</h5>
+                        <form action="php/CRUDS/editarEndereco.php?end=<?=$i['endId']?>" method="POST">
+                            <div class="form-group"> <h5 class="mt-2">Endereço <?=($i['tipo'] == 'Comercial' ? ' Comercial' : 'de '.$i['tipo'])?></h5>
                             <br/>
                                 <div class="row">
                                     <div class="col">
                                         <label for="idestinatario">Destinatário:</label>
-                                        <input type="text" class="form-control" id="idestinatario" name="idestinatario" required>
+                                        <input type="text" class="form-control" id="idestinatario" name="idestinatario" value="<?=(isset($i['destinatario']) ? $i['destinatario'] : '')?>" required>
                                     </div>
                                 </div>
                                 <br/>
@@ -285,7 +286,7 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
             $("#iBairro").removeAttr('disabled');
             $("#iCidade").removeAttr('disabled');
             $("#sEstado").removeAttr('disabled');
-            
+
             $("#iDestinatario").attr('required');
             $("#iCEP").attr('required');
             $("#iEndCobr").attr('required');
