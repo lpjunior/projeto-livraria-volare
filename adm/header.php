@@ -1,5 +1,6 @@
 <?php
 require_once '../php/CRUDS/serviceBook.php';
+require_once '../php/CRUDS/serviceUsuario.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
