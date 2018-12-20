@@ -25,7 +25,7 @@ function registrarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $gen
 	$sql = "INSERT INTO usuarios VALUES (NULL, '$nome', '$sobrenome', '$email', '$cpf', '$datanascimento', 1, md5('$senha'), 1 , $genero)";
 	$resultado = mysqli_query($conexao, $sql);
 	$id = mysqli_insert_id($conexao);
-	$sql = "INSERT INTO endereco VALUES (NULL, '$cep', '$end', '$num', '$complemento', '$bairro', '$estado', '$cidade', $id, 1)";
+	$sql = "INSERT INTO endereco VALUES (NULL, '$cep', '$end', '$num', '$complemento', '$bairro', '$estado', '$cidade', $id, 4)";
 	$resultado = mysqli_query($conexao, $sql);
 	$sql = "INSERT INTO telefone VALUES (NULL, $telefone, $id, 1)";
 	$resultado = mysqli_query($conexao, $sql);
@@ -89,7 +89,7 @@ function logarUsuario($email, $senha){
 		}
 	}
 ## Editar informações do cliente
-function editarInformacoes($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $cep, $end, $num, $complemento, $bairro, $cidade, $estado, $id){
+function editarInformacoes($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $id, $telefone){
 	$conexao = getConnection();
 	date_default_timezone_set('America/Sao_Paulo');
 	$datanascimento = implode('-',array_reverse(explode('/',$datanascimento)));
@@ -99,17 +99,9 @@ function editarInformacoes($nome, $sobrenome, $email, $cpf, $datanascimento, $ge
 	$cpf = mysqli_escape_string($conexao, $cpf);
 	$cpf = htmlspecialchars($cpf);
 	$genero = filtrarInt($genero);
-	$cep = filtrarInt($cep);
-	$end = filtrarString($end);
-	$num = filtrarInt($num);
-	$complemento = filtrarString($complemento);
-	$bairro = filtrarString($bairro);
-	$cidade = filtrarString($cidade);
-	$estado = filtrarString($estado);
 	$sql = "UPDATE usuarios SET nome = '$nome', sobrenome = '$sobrenome', email = '$email', cpf = '$cpf', datanascimento = '$datanascimento', senha = md5('$senha') where id = $id";
 	$resultado = mysqli_query($conexao, $sql);
-	$sql = "UPDATE endereco SET cep = '$cep', endereco = '$end', numero = '$num', complemento = '$complemento', bairro = '$bairro', estado = '$estado', cidade = '$cidade' where usuarios_id = $id";
-	$resultado = mysqli_query($conexao, $sql);
+	echo $sql;
 
 	if (mysqli_affected_rows($conexao) >= 1) {
 		return true;
@@ -268,6 +260,38 @@ function loginUsuarioAdmin($email, $senha){
 				array_push($categoria, $linha);
 			}
 			return $categoria;
+		} else {
+			return false;
+		}
+	}
+	function listarEndereco($idUsuario){
+		$conexao = getConnection();
+		$sql = "SELECT end.*, tp.tipo, tp.id as endId from endereco end inner join tipoendereco tp on tp.id = end.TipoEndereco_id where end.usuarios_id = $idUsuario";
+		$resultado = mysqli_query($conexao, $sql);
+		if (mysqli_affected_rows($conexao) >= 1){
+			$endereco = array();
+			while ($linha = mysqli_fetch_assoc($resultado)){
+				array_push($endereco, $linha);
+			}
+			return $endereco;
+		} else {
+			return false;
+		}
+	}
+	function editarEndereco($cep, $end, $num, $complemento, $bairro, $cidade, $estado, $id, $destinatario, $tipoend){
+		$conexao = getConnection();
+		$cep = filtrarInt($cep);
+		$end = filtrarString($end);
+		$num = filtrarInt($num);
+		$complemento = filtrarString($complemento);
+		$bairro = filtrarString($bairro);
+		$cidade = filtrarString($cidade);
+		$estado = filtrarString($estado);
+		$sql = "UPDATE endereco SET cep = '$cep', endereco = '$end', numero = '$num', complemento = '$complemento',
+		bairro = '$bairro', cidade = '$cidade', estado = '$estado', destinatario = '$destinatario', TipoEndereco_id = '$tipoend' where usuarios_id = $id";
+		echo $sql;
+		if (mysqli_query($conexao, $sql)){
+			return true;
 		} else {
 			return false;
 		}
