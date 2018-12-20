@@ -1,21 +1,24 @@
 <?php
+require_once 'conexao.php';
 if (!isset($_SESSION)) {
 	session_start();
 }
   function inserirComentario($usuarioID, $produtoID, $comentario, $dataComentario){
     $conexao = getConnection();
-    $sql = "INSERT INTO comentarios VALUES (NULL, $usuariosID, $produtoID, $comentario, $dataComentario)";
+		date_default_timezone_set('America/Sao_Paulo');
+    $dataComentario = date('Y-m-d H:i', time());
+    $sql = "INSERT INTO comentarios VALUES (NULL, $usuarioID, $produtoID, '$comentario', '$dataComentario')";
     if (mysqli_query($conexao, $sql)){
-      return true;
+      return header('location: ../../produto?id='.$produtoID);
     } else {
+			$_SESSION['ComentarioErro'] = "<script>alert('Falha ao comentar')</script>";
       return false;
     }
 }
   function listarComentario($limit){
     $conexao = getConnection();
-    $sql = "SELECT com.comentario, usu.nome from comentarios com inner join usuarios usu on com.usuarios_id = usu.id";
-    //$sql = "SELECT com.comentario, usu.nome from comentarios com inner join usuarios usu on com.usuarios_id = usu.id
-    // order by data_comentario asc";
+    $sql = "SELECT com.*, usu.nome from comentarios com inner join usuarios usu on com.usuarios_id = usu.id
+		order by datacomentario asc";
     if ($limit != NULL){
       $sql .= " LIMIT $limit";
     }
@@ -30,11 +33,11 @@ if (!isset($_SESSION)) {
       return false;
     }
 }
-  function excluirComentario($id){
+  function excluirComentario($idComentario){
     $conexao = getConnection();
-    $sql = "DELETE FROM comentario WHERE id = $id";
+    $sql = "DELETE FROM comentarios WHERE id = $idComentario";
     if (mysqli_query($conexao, $sql)){
-      return true;
+			return true;
     } else {
       return false;
     }

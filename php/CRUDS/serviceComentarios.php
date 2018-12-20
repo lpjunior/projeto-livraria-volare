@@ -10,8 +10,8 @@ function serviceListarComentarios($limit){
     return $comentarios;
   }
 }
-function serviceExcluirComentario($id){
-  if ($comentarios = excluirComentario($id)){
+function serviceExcluirComentario($idComentario){
+  if ($comentarios = excluirComentario($idComentario)){
     return $comentarios;
   }
 }

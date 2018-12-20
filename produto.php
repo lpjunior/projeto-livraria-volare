@@ -1,5 +1,13 @@
 <?php
 $app->get('/produto', function ($request, $response, $args) {
+  if (isset($_SESSION['mensagem'])){
+    echo $_SESSION['mensagem'];
+    unset($_SESSION['mensagem']);
+  }
+  if (isset($_SESSION['ComentarioErro'])) {
+    echo $_SESSION['ComentarioErro'];
+    unset($_SESSION['ComentarioErro']);
+  }
 ?>
         <div class="container-fluid col-md-8 col-xs-12 centraliza">
             <div class="row">
@@ -14,7 +22,7 @@ $app->get('/produto', function ($request, $response, $args) {
 
                     <!-- FAVORITAR-->
                     <div class="rating fontequinze">
-                         <h4>Adicionar aos favoritos</h4>
+                         <a href="php/CRUDS/itemDesejado.php?idProd=<?=$i['id']?>"><h4 class="mt-2">Adicionar aos favoritos</h4></a>
                     </div>
                     <br/>
                     <h4 class="fontedezesseis"><i class="far fa-bookmark"></i>&nbsp;Sinopse:</h4> <p class="fontedezesseis"><?=$i['sinopse']?></p>
@@ -56,7 +64,9 @@ $app->get('/produto', function ($request, $response, $args) {
                     < FINAL FORMULARIO BOTAO PAGSEGURO -->
                   </div>
                 </section>
-              <?php } } ?>
+              <?php }  } else {?>
+                  <h1 class="text-center">Livro não encontrado</h1>
+                  <?php die(); } ?>?>
                 <!-- COMEÇO DOS CARDS-->
                 <section class="d-none d-sm-block">
                     <h4 class="fontedezoito text-center mt-4 bg-light opacidade">Clientes que compraram este livro também aprovam:</h4><br/>
@@ -87,7 +97,6 @@ $app->get('/produto', function ($request, $response, $args) {
                 </div><!-- fim da row -->
             </div><!-- fim do primeiro container -->
             <!-- COMEÇO DA SECTION DE COMENTÁRIOS -->
-
             <section class="row">
                     <div class="container-fluid col-xs-12 col-sm-8 col-md-8 col-lg-8 centraliza bordasb mb-5"><!-- BORDAS COMEÇO-->
                       <div class="col-md-12 col-lg-12 col-sm-12 ml-5 mt-4 mb-4">
@@ -108,26 +117,36 @@ $app->get('/produto', function ($request, $response, $args) {
                           </div>
                       </div>
                       <table class="table table-striped mt-3 mb-3">
-                          <tbody>
+
+
                             <!--vai puxar os 8 últimos comentários inseridos no banco-->
                             <?php
                             $comentarios = serviceListarComentarios(8);
                             foreach ($comentarios as $i) {
                             ?>
+                            <tbody>
                               <tr>
-                                <form action="#" method="POST">
-                                <th scope="row" class="COLORETEXTO text-center"><!-- --><i class="far fa-edit"></i></br><?=$i['nome']?></th>
-                                </form>
+                                <form method="POST" action="php/CRUDS/excluirComentario.php">
+                                  <input name="produtoID" type="hidden" value="<?=$_GET['id']?>">
+                                <th scope="row" class="COLORETEXTO text-center">
+                                  <?php if ($_SESSION['user_id'] == $i['usuarios_id']){ ?>
+                                  <button value="<?=$i['id']?>" name='btn-excluir' class="far fa-edit input-group-text"></button>
+                                <?php }?>
+                                </br>
+                                <?=$i['nome']?></th>
+                              </form>
                                 <td><p><?=$i['comentario']?></p></td>
                               </tr>
                               <!--fim dos preenchidos pra teste-->
                           </tbody>
-                        </table>
                     </div>
             </section> <!-- fim da section comentários -->
+
           <?php } } else{ ?>
+            </table>
             <h1 class="text-center">Livro não encontrado</h1>
             <?php
           }
+
             });
              ?>
