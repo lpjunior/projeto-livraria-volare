@@ -296,3 +296,59 @@ function loginUsuarioAdmin($email, $senha){
 			return false;
 		}
 	}
+	function listarSubcategoria(){
+		$conexao = getConnection();
+		$sql = "SELECT * FROM subcategorias";
+		$resultado = mysqli_query($conexao, $sql);
+		if (mysqli_affected_rows($conexao) >= 1){
+			$subcategorias = array();
+			while ($linha = mysqli_fetch_assoc($resultado)){
+				array_push($subcategorias, $linha);
+			}
+			return $subcategorias;
+		} else {
+			return false;
+		}
+	}
+	function listarCapa(){
+		$conexao = getConnection();
+		$sql = "SELECT * FROM tipodecapa";
+		$resultado = mysqli_query($conexao, $sql);
+		if (mysqli_affected_rows($conexao) >= 1){
+			$capa = array();
+			while ($linha = mysqli_fetch_assoc($resultado)){
+				array_push($capa, $linha);
+			}
+			return $capa;
+		} else {
+			return false;
+		}
+	}
+	function listarIdioma(){
+		$conexao = getConnection();
+		$sql = "SELECT * FROM idioma";
+		$resultado = mysqli_query($conexao, $sql);
+		if (mysqli_affected_rows($conexao) >= 1){
+			$idioma = array();
+			while ($linha = mysqli_fetch_assoc($resultado)){
+				array_push($idioma, $linha);
+			}
+			return $idioma;
+		} else {
+			return false;
+		}
+	}
+	function listarFornecedor(){
+		$conexao = getConnection();
+		$sql = "SELECT * FROM fornecedores";
+		$resultado = mysqli_query($conexao, $sql);
+		if (mysqli_affected_rows($conexao) >= 1){
+			$fornecedores = array();
+			while ($linha = mysqli_fetch_assoc($resultado)){
+				array_push($fornecedores, $linha);
+			}
+			return $fornecedores;
+		} else {
+			return false;
+		}
+	}
