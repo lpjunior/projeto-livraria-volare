@@ -21,9 +21,6 @@ require_once 'crud_usuario.php';
 			return $user;
 		}
 	}
-	function serviceDeslogar(){
-		deslogarUsuario();
-	}
 	function serviceChecarCpf($cpf){
 		if ($user = checarCPF($cpf)){
 			return $user;
@@ -46,6 +43,26 @@ require_once 'crud_usuario.php';
 	}
 	function serviceListarCategoria(){
 		if ($user = listarCategoria()){
+			return $user;
+		}
+	}
+	function serviceListarCapa(){
+		if ($user = listarCapa()){
+			return $user;
+		}
+	}
+	function serviceListarSubcategoria(){
+		if ($user = listarSubcategoria()){
+			return $user;
+		}
+	}
+	function serviceListarIdioma(){
+		if ($user = listarIdioma()){
+			return $user;
+		}
+	}
+	function serviceListarFornecedor(){
+		if ($user = listarFornecedor()){
 			return $user;
 		}
 	}
