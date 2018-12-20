@@ -11,8 +11,8 @@ require_once 'crud_usuario.php';
 			return $user;
 		}
 	}
-	function serviceEditarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $cep, $end, $num, $complemento, $bairro, $cidade, $estado, $id, $telefone){
-		if ($user = editarInformacoes($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $cep, $end, $num, $complemento, $bairro, $cidade, $estado, $id, $telefone)){
+	function serviceEditarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $id, $telefone){
+		if ($user = editarInformacoes($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $id, $telefone)){
 			return $user;
 		}
 	}
@@ -46,6 +46,16 @@ require_once 'crud_usuario.php';
 	}
 	function serviceListarCategoria(){
 		if ($user = listarCategoria()){
+			return $user;
+		}
+	}
+	function serviceListarEndereco($idUsuario){
+		if ($user = listarEndereco($idUsuario)){
+			return $user;
+		}
+	}
+	function serviceEditarEndereco($cep, $end, $num, $complemento, $bairro, $cidade, $estado, $id, $destinatario, $tipoend){
+		if ($user = editarEndereco($cep, $end, $num, $complemento, $bairro, $cidade, $estado, $id, $destinatario, $tipoend)){
 			return $user;
 		}
 	}
