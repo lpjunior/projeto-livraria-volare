@@ -5,8 +5,8 @@ function serviceInserirComentario($usuarioID, $produtoID, $comentario, $dataCome
     return $comentarios;
   }
 }
-function serviceListarComentarios($limit){
-  if ($comentarios = listarComentario($limit)){
+function serviceListarComentarios($limit, $id){
+  if ($comentarios = listarComentario($limit, $id)){
     return $comentarios;
   }
 }

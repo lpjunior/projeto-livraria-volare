@@ -1,7 +1,7 @@
 	<?php
 	require_once 'crud_book.php';
-	function serviceInserir($categoria, $titulo, $autor, $editora, $isbn, $numeroPaginas, $sinopse, $peso, $data, $fornecedor, $preco, $subcategorias, $capa, $dimensoes, $quantidade, $idioma){
-		if ($livro = inserirLivro($categoria, $titulo, $autor, $editora, $isbn, $numeroPaginas, $sinopse, $peso, $data, $fornecedor, $preco, $subcategorias, $capa, $dimensoes, $quantidade, $idioma)){
+	function serviceInserir($categoria, $titulo, $autor, $editora, $isbn, $numeroPaginas, $sinopse, $peso, $data, $fornecedor, $preco, $subcategorias, $capa, $dimensoes, $quantidade, $idioma, $imagem){
+		if ($livro = inserirLivro($categoria, $titulo, $autor, $editora, $isbn, $numeroPaginas, $sinopse, $peso, $data, $fornecedor, $preco, $subcategorias, $capa, $dimensoes, $quantidade, $idioma, $imagem)){
 			return $livro;
 		}
 	}
@@ -20,8 +20,8 @@
 			return $livro;
 		}
 	}
-	function serviceBuscarLivro($n, $value, $idioma, $preco){
-		if ($livro = pesquisarLivro($n, $value, $idioma, $preco)) {
+	function serviceBuscarLivro($n, $value, $idioma, $preco, $categoria){
+		if ($livro = pesquisarLivro($n, $value, $idioma, $preco, $categoria)) {
 			return $livro;
 		}
 	}
@@ -29,4 +29,10 @@
 		if ($livro = detalhesLivro($id)) {
 			return $livro;
 		}
+	}
+	function resume($var, $limite){	// Se o texto for maior que o limite, ele corta o texto e adiciona 3 pontinhos.
+		if (strlen($var) > $limite)	{
+			$var = substr($var, 0, $limite);		$var = trim($var) . "...";
+		}
+		return $var;
 	}
