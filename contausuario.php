@@ -199,7 +199,10 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                               <?php } ?>
                                 <br/>
                             <!-- início do formulário Endereço de Cobrança -->    
-                            <div class="form-group"> <h5 class="mt-2">Endereço de Cobrança</h5>
+                        <div class="form-group"> <h5 class="mt-2">Endereço de Cobrança</h5>
+                            <div class=" float-right">
+                            <button id="btn-editar" class="btn btn COLORE1">Editar</button>
+                            </div>
                             <br/>
                             <div class="row">
                                     <div class="col">
@@ -288,11 +291,75 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    ...
+                                    <div class="form-group">
+                                        <div class="row">
+                                             <div class="col-md-4">
+                                        <label for="iCEP">CEP:</label>
+                                        <input type="text" id="iCEP" name="txtCEP" class="form-control cep" required>
+                                         </div>
+                                             <div class="col-md">
+                                        <label for="iEndCobr">Endereço:</label>
+                                        <input type="text" id="iEndCobr" name="txtEndCobr" class="form-control" required maxlength="255">
+                                             </div>
+                                </div>
+                                        <div class="row">
+                                          <div class="col-md">
+                                        <label for="iNum">Número:</label>
+                                        <input type="text"  id="iNum" name="txtNum" class="form-control" required maxlength="10">
+                                           </div>
+                                          <div class="col-md">
+                                        <label for="iComplemento">Complemento:</label>
+                                        <input type="text"  id="iComplemento" name="txtComplemento" class="form-control" required maxlength="15">
+                                        <br/>
+                                    </div>
+                                    <div class="col-md">
+                                        <label for="iBairro">Bairro:</label>
+                                        <input type="text"  id="iBairro" name="txtBairro" class="form-control" required maxlength="50">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md">
+                                        <label for="iCidade">Cidade:</label>
+                                        <input type="text"  id="iCidade" name="txtCidade" class="form-control" required maxlength="50">
+                                    </div>
+                                    <div class="col-md">
+                                        <label for="sEstado">Estado</label><!-- PESSOAL DO PHP: tem que puxar esse select do banco de dados, só coloquei pra ficar mais fácil de vizualizar-->
+                                        <select id="sEstado" name="txtEstado" class="form-control">
+                                            <option value="AC">Acre</option>
+                                            <option value="AL">Alagoas</option>
+                                            <option value="AP">Amapá</option>
+                                            <option value="AM">Amazonas</option>
+                                            <option value="BA">Bahia</option>
+                                            <option value="CE">Ceará</option>
+                                            <option value="DF">Distrito Federal</option>
+                                            <option value="ES">Espírito Santo</option>
+                                            <option value="GO">Goiás</option>
+                                            <option value="MA">Maranhão</option>
+                                            <option value="MT">Mato Grosso</option>
+                                            <option value="MS">Mato Grosso do Sul</option>
+                                            <option value="MG">Minas Gerais</option>
+                                            <option value="PA">Pará</option>
+                                            <option value="PB">Paraíba</option>
+                                            <option value="PR">Paraná</option>
+                                            <option value="PE">Pernambuco</option>
+                                            <option value="PI">Piauí</option>
+                                            <option value="RJ">Rio de Janeiro</option>
+                                            <option value="RN">Rio Grande do Norte</option>
+                                            <option value="RS">Rio Grande do Sul</option>
+                                            <option value="RO">Rondônia</option>
+                                            <option value="RR">Roraima</option>
+                                            <option value="SC">Santa Catarina</option>
+                                            <option value="SP">São Paulo</option>
+                                            <option value="SE">Sergipe</option>
+                                            <option value="TO">Tocantins</option>
+                                        </select>
+                                    </div>
+                                </div>
+                </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                    <button type="button" class="btn btn-primary">Salvar mudanças</button>
+                                    <button type="button" class="btn btn-primary">Salvar alterações</button>
                                 </div>
                                 </div>
                             </div>
