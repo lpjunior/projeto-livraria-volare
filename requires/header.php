@@ -101,9 +101,11 @@ require_once 'php/CRUDS/serviceCarrinho.php';
 								} elseif (isset($_SESSION['produto'])) {
 									$carrinho = $_SESSION['produto'];
 								}
-								if (is_array($carrinho)){
+								if (isset($carrinho) && is_array($carrinho)){
 								foreach ($carrinho as $b => $i) {
-									$b = $i['id'];
+									if (isset($_SESSION['user'])){
+										$b = $i['id'];
+										}
 									?>
 										<li class="row"><!--primeiro item carrinho -->
 											<div class="fontedoze pr-2 pl-1 mb-0">
@@ -124,7 +126,7 @@ require_once 'php/CRUDS/serviceCarrinho.php';
 										echo "Não existem produtos no carrinho";
 									} ?>
 										<!--/ preenchidos pra teste -->
-										<?php if (is_array($carrinho)) { ?>
+										<?php if (isset($carrinho) && is_array($carrinho)) { ?>
 										<div class="form-group">
 												<div class="col-6 pl-1 float-left">
 													<form action="carrinho" method="POST">

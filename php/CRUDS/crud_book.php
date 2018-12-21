@@ -16,13 +16,10 @@ function inserirLivro($categoria, $titulo, $autor, $editora, $isbn, $numeroPagin
 	$imgCapa = $imagem['capa'];
 	$imgThumb = $imagem['0'];
 	$sql = "INSERT INTO imagemcapa VALUES (NULL, '$imgCapa', $id)";
-	echo $sql."<br>";
 	$resultado = mysqli_query($conexao, $sql);
 	$sql = "INSERT INTO imagemthumb VALUES (NULL, '$imgCapa', $id)";
-	echo $sql."<br>";
 	$resultado = mysqli_query($conexao, $sql);
 	$sql = "INSERT INTO Produto_has_Idioma VALUES ($id, 1)";
-	echo $sql."<br>";
 	$resultado = mysqli_query($conexao, $sql);
 	if (mysqli_affected_rows($conexao) >= 1) {
 		return true;

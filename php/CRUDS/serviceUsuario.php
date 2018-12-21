@@ -66,8 +66,13 @@ require_once 'crud_usuario.php';
 			return $user;
 		}
 	}
-	function serviceListarEndereco($idUsuario){
-		if ($user = listarEndereco($idUsuario)){
+	function serviceListarEndereco($idUsuario, $tipoend){
+		if ($user = listarEndereco($idUsuario, $tipoend)){
+			return $user;
+		}
+	}
+	function serviceInserirEndereço($cep, $end, $num, $complemento, $bairro, $cidade, $estado, $destinatario, $tipoend){
+		if ($user = inserirEndereço($cep, $end, $num, $complemento, $bairro, $cidade, $estado, $destinatario, $tipoend)){
 			return $user;
 		}
 	}

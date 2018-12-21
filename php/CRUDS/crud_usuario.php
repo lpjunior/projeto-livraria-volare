@@ -43,7 +43,7 @@ function registrarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $gen
 		return "Falha ao registrar";
 	}
 }
-## Logar Usuário
+############### Logar Usuário ################
 function logarUsuario($email, $senha){
 	$conexao = getConnection();
 	$email = mysqli_escape_string($conexao, $email);
@@ -58,7 +58,23 @@ function logarUsuario($email, $senha){
 		if (isset($_SESSION['produto'])){
 			$carrinho = $_SESSION['produto'];
 			$idUsuario = $_SESSION['user_id'];
-			## Foreach para colocar todos os produtos para o banco de dados
+			$sql = "SELECT * from itens_reservados where usuarios_id = $idUsuario";
+			$resultado = mysqli_query($conexao, $sql);
+			$itensreservados = array();
+			while ($linha = mysqli_fetch_assoc($resultado)){
+				array_push($itensreservados, $linha);
+			}
+			foreach ($itensreservados as $i) {
+				## Apagar os itens que estão no carrinho e aumentar o estoque ##
+				## Aumentar o estoque
+				$qtd = $i['quantidade'];
+				$prodId = $i['produto_id'];
+			$sql = "UPDATE produto set quantidade = quantidade + $qtd where id = $prodId";
+			$resultado = mysqli_query($conexao, $sql);
+			}
+			## Apagar o carrinho
+			$sql = "DELETE FROM itens_reservados where usuarios_id = $idUsuario";
+			$resultado = mysqli_query($conexao, $sql);
 			$cont = 1;
 			foreach ($carrinho as $b => $i) {
 				$qtd = $i['qtd'];
@@ -71,13 +87,6 @@ function logarUsuario($email, $senha){
 				}
 			}
 			$resultado = mysqli_query($conexao, $sql);
-				## Se o insert não for, quer dizer que o item já está no banco, então faça o update.
-					#################### FAZER NA PROCEDURE #######################
-				/*if (mysqli_affected_rows($conexao) <= 1){
-					$sql = "UPDATE itens_reservados SET quantidade = quantidade + $qtd where produto_id = $b";
-					$resultado = mysqli_query($conexao, $sql);
-				}*/
-				## Abaixar o número no estoque
 				foreach ($carrinho as $i) {
 				$sql = "UPDATE produto set quantidade = quantidade - $qtd where id = $b";
 				$resultado = mysqli_query($conexao, $sql);
@@ -264,9 +273,9 @@ function loginUsuarioAdmin($email, $senha){
 			return false;
 		}
 	}
-	function listarEndereco($idUsuario){
+	function listarEndereco($idUsuario, $tipoend){
 		$conexao = getConnection();
-		$sql = "SELECT end.*, tp.tipo, tp.id as endId from endereco end inner join tipoendereco tp on tp.id = end.TipoEndereco_id where end.usuarios_id = $idUsuario";
+		$sql = "SELECT end.*, tp.tipo, tp.id as endId from endereco end inner join tipoendereco tp on tp.id = end.TipoEndereco_id where end.usuarios_id = $idUsuario and tp.id = $tipoend";
 		$resultado = mysqli_query($conexao, $sql);
 		if (mysqli_affected_rows($conexao) >= 1){
 			$endereco = array();
@@ -350,5 +359,23 @@ function loginUsuarioAdmin($email, $senha){
 			return $fornecedores;
 		} else {
 			return false;
+		}
+	}
+	function inserirEndereço($cep, $end, $num, $complemento, $bairro, $cidade, $estado, $destinatario, $tipoend){
+		$destinatario = filtrarString($destinatario);
+		$cep = filtrarInt($cep);
+		$end = filtrarString($end);
+		$num = filtrarInt($num);
+		$complemento = filtrarString($complemento);
+		$bairro = filtrarString($bairro);
+		$cidade = filtrarString($cidade);
+		$estado = filtrarString($estado);
+		$id = mysqli_insert_id($conexao);
+		$sql = "INSERT INTO endereco VALUES (NULL, '$cep', '$end', '$num', '$complemento', '$bairro', '$estado', '$cidade', $id, $tipoend)";
+		$resultado = mysqli_query($conexao, $sql);
+		if (mysqli_affected_rows($conexao) >= 1) {
+			return true;
+		} else {
+			return "Falha ao exibir informações";
 		}
 	}
