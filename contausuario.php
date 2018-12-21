@@ -125,6 +125,7 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                         <form action="php/CRUDS/editarEndereco.php?end=<?=$i['endId']?>" method="POST">
                             <div class="form-group"> <h5 class="mt-2">Endereço <?=($i['tipo'] == 'Comercial' ? ' Comercial' : 'de '.$i['tipo'])?></h5>
                             <br/>
+                            <!-- início do formulário Endereço de Entrega -->
                                 <div class="row">
                                     <div class="col">
                                         <label for="idestinatario">Destinatário:</label>
@@ -197,10 +198,106 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                                 </div>
                               <?php } ?>
                                 <br/>
+                            <!-- início do formulário Endereço de Cobrança -->    
+                            <div class="form-group"> <h5 class="mt-2">Endereço de Cobrança</h5>
+                            <br/>
+                            <div class="row">
+                                    <div class="col">
+                                        <label for="idestinatario">Destinatário:</label>
+                                        <input type="text" class="form-control" id="idestinatario" name="idestinatario" value="<?=(isset($i['destinatario']) ? $i['destinatario'] : '')?>" required>
+                                    </div>
+                                </div>
+                                <br/>
                                 <div class="row">
-                                <div class="col-md-10 mb-4">
-                                        <button type="submit" class="btn COLORE1" name="btn-enviar" >Adicionar Endereço</button>
-                                        </div>
+                                    <div class="col-md-3 col-lg-4"><!--adicionar tipo de coluna, testar layout-->
+                                        <label for="iCEP">CEP:</label>
+                                        <input type="text" value="<?=$i['cep']?>" id="iCEP" name="txtCEP" class="form-control cep" disabled>
+                                    </div>
+                                    <div class="col"><!--adicionar tipo de coluna, testar layout-->
+                                        <label for="iEndCobr">Endereço:</label>
+                                        <input type="text" value="<?=$i['endereco']?>" id="iEndCobr" name="txtEndCobr" class="form-control" maxlength="255" disabled>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="iNum">Número:</label>
+                                        <input type="text" value="<?=$i['numero']?>" id="iNum" name="txtNum" class="form-control" maxlength="10" disabled>
+                                    </div>
+                                    <div class="col">
+                                        <label for="iComplemento">Complemento:</label>
+                                        <input type="text" value="<?=$i['complemento']?>" id="iComplemento" name="txtComplemento" class="form-control" maxlength="15" disabled>
+                                        <br/>
+                                    </div>
+                                    <div class="col">
+                                        <label for="iBairro">Bairro:</label>
+                                        <input type="text" value="<?=$i['bairro']?>" id="iBairro" name="txtBairro" class="form-control" maxlength="50"disabled>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="iCidade">Cidade:</label>
+                                        <input type="text" value="<?=$i['cidade']?>" id="iCidade" name="txtCidade" class="form-control" maxlength="50" disabled>
+                                    </div>
+                                    <div class="col">
+                                        <label for="sEstado">Estado</label><!-- PESSOAL DO PHP: tem que puxar esse select do banco de dados, só coloquei pra ficar mais fácil de vizualizar-->
+                                        <select id="sEstado" name="txtEstado" class="form-control" disabled>
+                                            <option value="AC">Acre</option>
+                                            <option value="AL">Alagoas</option>
+                                            <option value="AP">Amapá</option>
+                                            <option value="AM">Amazonas</option>
+                                            <option value="BA">Bahia</option>
+                                            <option value="CE">Ceará</option>
+                                            <option value="DF">Distrito Federal</option>
+                                            <option value="ES">Espírito Santo</option>
+                                            <option value="GO">Goiás</option>
+                                            <option value="MA">Maranhão</option>
+                                            <option value="MT">Mato Grosso</option>
+                                            <option value="MS">Mato Grosso do Sul</option>
+                                            <option value="MG">Minas Gerais</option>
+                                            <option value="PA">Pará</option>
+                                            <option value="PB">Paraíba</option>
+                                            <option value="PR">Paraná</option>
+                                            <option value="PE">Pernambuco</option>
+                                            <option value="PI">Piauí</option>
+                                            <option value="RJ">Rio de Janeiro</option>
+                                            <option value="RN">Rio Grande do Norte</option>
+                                            <option value="RS">Rio Grande do Sul</option>
+                                            <option value="RO">Rondônia</option>
+                                            <option value="RR">Roraima</option>
+                                            <option value="SC">Santa Catarina</option>
+                                            <option value="SP">São Paulo</option>
+                                            <option value="SE">Sergipe</option>
+                                            <option value="TO">Tocantins</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <br/>            
+                            <!-- Início do Modal Novo Endereço-->
+                                <!-- Botão para acionar modal -->
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalExemplo">
+                            Abrir modal de demonstração
+                            </button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Título do modal</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    ...
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                    <button type="button" class="btn btn-primary">Salvar mudanças</button>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+            <!-- Fim do Modal Novo Endereço -->
                                 <div class="float-right mb-4">
                                         <button type="submit" class="btn COLORE1" name="btn-enviar" >Salvar Alterações</button>
                                         </div>
