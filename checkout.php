@@ -61,13 +61,16 @@ $app->map(['GET', 'POST'], '/checkout', function ($request, $response, $args) {
                             </div>
                         </div>
                         <?php
-                        $checkout = serviceListarCheckout($_SESSION['user_id'], 1);
+                        $checkout = serviceListarEndereco($_SESSION['user_id'], 1);
+                        if (!is_array($checkout)){
+                        $checkout = serviceListarEndereco($_SESSION['user_id'], 4);
+                        }
                         foreach ($checkout as $i) {
                         ?>
                         <div class="col-sm-4 col-md-5 col-lg-4">
                             <h1 class="fontevinte">Endereço de entrega</h1>
                             <p class="fontedoze COLORETEXTO"> Seu pedido será entregue no endereço abaixo: <!--puxar do endereço de cobrança cadastrado--></p><hr/>
-                            <p class="fontedezesseis" id="pDestinatario">Nome do destinatário: <?=$i['nome']." ".$i['sobrenome']?></p>
+                            <p class="fontedezesseis" id="pDestinatario">Nome do destinatário: <?=(isset($i['destinatario']) ? $i['destinatario'] : $i['nome']." ".$i['sobrenome'])?></p>
                             <p class="displayblock fontedezesseis" id="pCep">CEP: <?=$i['cep']?> Estado: <?=$i['estado']?></p>
                             <p class="displayblock fontedezesseis"id="pBairro">Bairro: <?=$i['bairro']?></p>
                             <p class="displayblock fontedezesseis" id="pRua">Rua: <?=$i['endereco']?> </p>
