@@ -116,100 +116,19 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                         <h3>Meus Endereços</h3>
                     <fieldset><!-- *************início do formulário Meus Endereços********************** -->
                       <?php
-                      $endereco = serviceListarEndereco($_SESSION['user_id']);
+                      $endereco = serviceListarEndereco($_SESSION['user_id'], 1);
+                      if (is_array($endereco)){ ?>
+                      <form action="php/CRUDS/editarEndereco.php?end=1" method="POST">
+                      <?php } else {
+                        $endereco = array('a' => array('enderecotrue' => 'NULL'));?>
+                        <form action="php/CRUDS/inserirEndereco.php?end=1" method="POST">
+                      <?php }
                       foreach ($endereco as $i) {
                       ?>
-                        <form action="php/CRUDS/editarEndereco.php?end=<?=$i['endId']?>" method="POST">
-                            <div class="form-group"> 
-                                <div class=" float-right">
-                            <!-- Botão para acionar modal -->
-                            <button type="button" class="btn COLORE1 mr-1" data-toggle="modal" data-target="#modalExemplo">
-                            Novo Endereço
-                            </button>    
-                            <!-- Botão para edição de endereço-->
-                            <button id="btn-editar" class="btn btn COLORE1">Editar</button>
-                                </div>
-                             <h5 class="mt-2">Endereço <?=($i['tipo'] == 'Comercial' ? ' Comercial' : 'de '.$i['tipo'])?></h5>
+                            <div class="form-group">
+                             <h5 class="mt-2">Endereço de Entrega</h5>
                             <br/>
                             <!-- início do formulário Endereço de Entrega -->
-                                <div class="row">
-                                    <div class="col">
-                                        <label for="idestinatario">Destinatário:</label>
-                                        <input type="text" class="form-control" id="idestinatario" name="idestinatario" value="<?=(isset($i['destinatario']) ? $i['destinatario'] : '')?>" required>
-                                    </div>
-                                </div>
-                                <br/>
-                                <div class="row">
-                                    <div class="col-md-3 col-lg-4"><!--adicionar tipo de coluna, testar layout-->
-                                        <label for="iCEP">CEP:</label>
-                                        <input type="text" value="<?=$i['cep']?>" id="iCEP" name="txtCEP" class="form-control cep" disabled>
-                                    </div>
-                                    <div class="col"><!--adicionar tipo de coluna, testar layout-->
-                                        <label for="iEndCobr">Endereço:</label>
-                                        <input type="text" value="<?=$i['endereco']?>" id="iEndCobr" name="txtEndCobr" class="form-control" maxlength="255" disabled>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <label for="iNum">Número:</label>
-                                        <input type="text" value="<?=$i['numero']?>" id="iNum" name="txtNum" class="form-control" maxlength="10" disabled>
-                                    </div>
-                                    <div class="col">
-                                        <label for="iComplemento">Complemento:</label>
-                                        <input type="text" value="<?=$i['complemento']?>" id="iComplemento" name="txtComplemento" class="form-control" maxlength="15" disabled>
-                                        <br/>
-                                    </div>
-                                    <div class="col">
-                                        <label for="iBairro">Bairro:</label>
-                                        <input type="text" value="<?=$i['bairro']?>" id="iBairro" name="txtBairro" class="form-control" maxlength="50"disabled>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <label for="iCidade">Cidade:</label>
-                                        <input type="text" value="<?=$i['cidade']?>" id="iCidade" name="txtCidade" class="form-control" maxlength="50" disabled>
-                                    </div>
-                                    <div class="col">
-                                        <label for="sEstado">Estado</label><!-- PESSOAL DO PHP: tem que puxar esse select do banco de dados, só coloquei pra ficar mais fácil de vizualizar-->
-                                        <select id="sEstado" name="txtEstado" class="form-control" disabled>
-                                            <option value="AC">Acre</option>
-                                            <option value="AL">Alagoas</option>
-                                            <option value="AP">Amapá</option>
-                                            <option value="AM">Amazonas</option>
-                                            <option value="BA">Bahia</option>
-                                            <option value="CE">Ceará</option>
-                                            <option value="DF">Distrito Federal</option>
-                                            <option value="ES">Espírito Santo</option>
-                                            <option value="GO">Goiás</option>
-                                            <option value="MA">Maranhão</option>
-                                            <option value="MT">Mato Grosso</option>
-                                            <option value="MS">Mato Grosso do Sul</option>
-                                            <option value="MG">Minas Gerais</option>
-                                            <option value="PA">Pará</option>
-                                            <option value="PB">Paraíba</option>
-                                            <option value="PR">Paraná</option>
-                                            <option value="PE">Pernambuco</option>
-                                            <option value="PI">Piauí</option>
-                                            <option value="RJ">Rio de Janeiro</option>
-                                            <option value="RN">Rio Grande do Norte</option>
-                                            <option value="RS">Rio Grande do Sul</option>
-                                            <option value="RO">Rondônia</option>
-                                            <option value="RR">Roraima</option>
-                                            <option value="SC">Santa Catarina</option>
-                                            <option value="SP">São Paulo</option>
-                                            <option value="SE">Sergipe</option>
-                                            <option value="TO">Tocantins</option>
-                                        </select>
-                                    </div>
-                                </div>
-                              <?php } ?>
-                                <br/>
-                            <!-- início do formulário Endereço de Cobrança -->    
-                        <div class="form-group"> <h5 class="mt-2">Endereço de Cobrança</h5>
-                            <div class=" float-right">
-                            <button id="btn-editar" class="btn btn COLORE1">Editar</button>
-                            </div>
-                            <br/>
                             <div class="row">
                                     <div class="col">
                                         <label for="idestinatario">Destinatário:</label>
@@ -220,118 +139,34 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                                 <div class="row">
                                     <div class="col-md-3 col-lg-4"><!--adicionar tipo de coluna, testar layout-->
                                         <label for="iCEP">CEP:</label>
-                                        <input type="text" value="<?=$i['cep']?>" id="iCEP" name="txtCEP" class="form-control cep" disabled>
+                                        <input type="text" value="<?=(!isset($i['enderecotrue']) ? $i['cep'] : '')?>" id="iCEP" name="txtCEP" class="form-control cep" >
                                     </div>
                                     <div class="col"><!--adicionar tipo de coluna, testar layout-->
                                         <label for="iEndCobr">Endereço:</label>
-                                        <input type="text" value="<?=$i['endereco']?>" id="iEndCobr" name="txtEndCobr" class="form-control" maxlength="255" disabled>
+                                        <input type="text" value="<?=(!isset($i['enderecotrue']) ? $i['endereco'] : '')?>" id="iEndCobr" name="txtEndCobr" class="form-control" maxlength="255" >
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
                                         <label for="iNum">Número:</label>
-                                        <input type="text" value="<?=$i['numero']?>" id="iNum" name="txtNum" class="form-control" maxlength="10" disabled>
+                                        <input type="text" value="<?=(!isset($i['enderecotrue']) ? $i['numero'] : '')?>" id="iNum" name="txtNum" class="form-control" maxlength="10" >
                                     </div>
                                     <div class="col">
                                         <label for="iComplemento">Complemento:</label>
-                                        <input type="text" value="<?=$i['complemento']?>" id="iComplemento" name="txtComplemento" class="form-control" maxlength="15" disabled>
+                                        <input type="text" value="<?=(!isset($i['enderecotrue']) ? $i['complemento'] : '')?>" id="iComplemento" name="txtComplemento" class="form-control" maxlength="15" >
                                         <br/>
                                     </div>
                                     <div class="col">
                                         <label for="iBairro">Bairro:</label>
-                                        <input type="text" value="<?=$i['bairro']?>" id="iBairro" name="txtBairro" class="form-control" maxlength="50"disabled>
+                                        <input type="text" value="<?=(!isset($i['enderecotrue']) ? $i['bairro'] : '')?>" id="iBairro" name="txtBairro" class="form-control" maxlength="50">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
                                         <label for="iCidade">Cidade:</label>
-                                        <input type="text" value="<?=$i['cidade']?>" id="iCidade" name="txtCidade" class="form-control" maxlength="50" disabled>
+                                        <input type="text" value="<?=(!isset($i['enderecotrue']) ? $i['cidade'] : '')?>" id="iCidade" name="txtCidade" class="form-control" maxlength="50" >
                                     </div>
                                     <div class="col">
-                                        <label for="sEstado">Estado</label><!-- PESSOAL DO PHP: tem que puxar esse select do banco de dados, só coloquei pra ficar mais fácil de vizualizar-->
-                                        <select id="sEstado" name="txtEstado" class="form-control" disabled>
-                                            <option value="AC">Acre</option>
-                                            <option value="AL">Alagoas</option>
-                                            <option value="AP">Amapá</option>
-                                            <option value="AM">Amazonas</option>
-                                            <option value="BA">Bahia</option>
-                                            <option value="CE">Ceará</option>
-                                            <option value="DF">Distrito Federal</option>
-                                            <option value="ES">Espírito Santo</option>
-                                            <option value="GO">Goiás</option>
-                                            <option value="MA">Maranhão</option>
-                                            <option value="MT">Mato Grosso</option>
-                                            <option value="MS">Mato Grosso do Sul</option>
-                                            <option value="MG">Minas Gerais</option>
-                                            <option value="PA">Pará</option>
-                                            <option value="PB">Paraíba</option>
-                                            <option value="PR">Paraná</option>
-                                            <option value="PE">Pernambuco</option>
-                                            <option value="PI">Piauí</option>
-                                            <option value="RJ">Rio de Janeiro</option>
-                                            <option value="RN">Rio Grande do Norte</option>
-                                            <option value="RS">Rio Grande do Sul</option>
-                                            <option value="RO">Rondônia</option>
-                                            <option value="RR">Roraima</option>
-                                            <option value="SC">Santa Catarina</option>
-                                            <option value="SP">São Paulo</option>
-                                            <option value="SE">Sergipe</option>
-                                            <option value="TO">Tocantins</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <br/>            
-                            <!-- Início do Modal Novo Endereço-->
-                            <div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Cadastrar Novo Endereço</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                                    <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md">
-                                        <label for="idestinatario">Destinatário:</label>
-                                        <input type="text" class="form-control" id="idestinatario" name="idestinatario" value="<?=(isset($i['destinatario']) ? $i['destinatario'] : '')?>" required>
-                                        <br/>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                        <label for="iCEP">CEP:</label>
-                                        <input type="text" id="iCEP" name="txtCEP" class="form-control cep" required>
-                                         </div>
-                                             <div class="col-md">
-                                        <label for="iEndCobr">Endereço:</label>
-                                        <input type="text" id="iEndCobr" name="txtEndCobr" class="form-control" required maxlength="255">
-                                        <br/>    
-                                            </div>
-                                </div>
-                                        <div class="row">
-                                          <div class="col-md">
-                                        <label for="iNum">Número:</label>
-                                        <input type="text"  id="iNum" name="txtNum" class="form-control" required maxlength="10">
-                                           </div>
-                                          <div class="col-md">
-                                        <label for="iComplemento">Complemento:</label>
-                                        <input type="text"  id="iComplemento" name="txtComplemento" class="form-control" required maxlength="15">
-                                    </div>
-                                    <div class="col-md">
-                                        <label for="iBairro">Bairro:</label>
-                                        <input type="text"  id="iBairro" name="txtBairro" class="form-control" required maxlength="50">
-                                        <br/>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md">
-                                        <label for="iCidade">Cidade:</label>
-                                        <input type="text"  id="iCidade" name="txtCidade" class="form-control" required maxlength="50">
-                                    </div>
-                                    <div class="col-md">
                                         <label for="sEstado">Estado</label><!-- PESSOAL DO PHP: tem que puxar esse select do banco de dados, só coloquei pra ficar mais fácil de vizualizar-->
                                         <select id="sEstado" name="txtEstado" class="form-control">
                                             <option value="AC">Acre</option>
@@ -364,21 +199,102 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                                         </select>
                                     </div>
                                 </div>
-                </div>
+                              <?php } ?>
+                              <div class="float-right mb-4 mt-3">
+                                      <button type="submit" class="btn COLORE1" name="btn-enviar" >Salvar Alterações</button>
+                                      </div>
+                                <br/>
+                              </form>
+                            <!-- início do formulário Endereço de Cobrança -->
+                            <?php
+                            $endereco = serviceListarEndereco($_SESSION['user_id'], 4);
+                            if (is_array($endereco)){ ?>
+                            <form action="php/CRUDS/editarEndereco.php?end=4" method="POST">
+                            <?php } else {
+                              $endereco = array('a' => array('endereco' => 'NULL'));?>
+                              <form action="php/CRUDS/inserirEndereco.php?end=4" method="POST">
+                            <?php }
+                            foreach ($endereco as $i) {
+                            ?>
+                        <div class="form-group"> <h5 class="mt-2">Endereço de Cobrança</h5>
+                            <br/>
+                            <div class="row">
+                                    <div class="col">
+                                        <label for="idestinatario">Destinatário:</label>
+                                        <input type="text" class="form-control" id="idestinatario" name="idestinatario" value="<?=(isset($i['destinatario']) ? $i['destinatario'] : '')?>" required>
+                                    </div>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                    <button type="button" class="btn COLORE1">Salvar alterações</button>
+                                <br/>
+                                <div class="row">
+                                    <div class="col-md-3 col-lg-4"><!--adicionar tipo de coluna, testar layout-->
+                                        <label for="iCEP">CEP:</label>
+                                        <input type="text" value="<?=(!isset($i['enderecotrue']) ? $i['cep'] : '')?>" id="iCEP" name="txtCEP" class="form-control cep" >
+                                    </div>
+                                    <div class="col"><!--adicionar tipo de coluna, testar layout-->
+                                        <label for="iEndCobr">Endereço:</label>
+                                        <input type="text" value="<?=(!isset($i['enderecotrue']) ? $i['endereco'] : '')?>" id="iEndCobr" name="txtEndCobr" class="form-control" maxlength="255" >
+                                    </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="iNum">Número:</label>
+                                        <input type="text" value="<?=(!isset($i['enderecotrue']) ? $i['numero'] : '')?>" id="iNum" name="txtNum" class="form-control" maxlength="10" >
+                                    </div>
+                                    <div class="col">
+                                        <label for="iComplemento">Complemento:</label>
+                                        <input type="text" value="<?=(!isset($i['enderecotrue']) ? $i['complemento'] : '')?>" id="iComplemento" name="txtComplemento" class="form-control" maxlength="15" >
+                                        <br/>
+                                    </div>
+                                    <div class="col">
+                                        <label for="iBairro">Bairro:</label>
+                                        <input type="text" value="<?=(!isset($i['enderecotrue']) ? $i['bairro'] : '')?>" id="iBairro" name="txtBairro" class="form-control" maxlength="50">
+                                    </div>
                                 </div>
-                            </div>
-                            </div>
-            <!-- Fim do Modal Novo Endereço -->
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="iCidade">Cidade:</label>
+                                        <input type="text" value="<?=(!isset($i['enderecotrue']) ? $i['cidade'] : '')?>" id="iCidade" name="txtCidade" class="form-control" maxlength="50" >
+                                    </div>
+                                    <div class="col">
+                                        <label for="sEstado">Estado</label><!-- PESSOAL DO PHP: tem que puxar esse select do banco de dados, só coloquei pra ficar mais fácil de vizualizar-->
+                                        <select id="sEstado" name="txtEstado" class="form-control">
+                                            <option value="AC">Acre</option>
+                                            <option value="AL">Alagoas</option>
+                                            <option value="AP">Amapá</option>
+                                            <option value="AM">Amazonas</option>
+                                            <option value="BA">Bahia</option>
+                                            <option value="CE">Ceará</option>
+                                            <option value="DF">Distrito Federal</option>
+                                            <option value="ES">Espírito Santo</option>
+                                            <option value="GO">Goiás</option>
+                                            <option value="MA">Maranhão</option>
+                                            <option value="MT">Mato Grosso</option>
+                                            <option value="MS">Mato Grosso do Sul</option>
+                                            <option value="MG">Minas Gerais</option>
+                                            <option value="PA">Pará</option>
+                                            <option value="PB">Paraíba</option>
+                                            <option value="PR">Paraná</option>
+                                            <option value="PE">Pernambuco</option>
+                                            <option value="PI">Piauí</option>
+                                            <option value="RJ">Rio de Janeiro</option>
+                                            <option value="RN">Rio Grande do Norte</option>
+                                            <option value="RS">Rio Grande do Sul</option>
+                                            <option value="RO">Rondônia</option>
+                                            <option value="RR">Roraima</option>
+                                            <option value="SC">Santa Catarina</option>
+                                            <option value="SP">São Paulo</option>
+                                            <option value="SE">Sergipe</option>
+                                            <option value="TO">Tocantins</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <br/>
                                 <div class="float-right mb-4">
                                         <button type="submit" class="btn COLORE1" name="btn-enviar" >Salvar Alterações</button>
                                         </div>
                                 </div>
                             </div>
+                          <?php } ?>
                         </form>
 
                     </fieldset><!--********fim do formulário*************-->
@@ -446,28 +362,3 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
             </div>
         </div>
 <?php }); ?>
-
-
-<script>
-    $(function(){
-        $("#btn-editar").click(function(){
-            $("#iDestinatario").removeAttr('disabled');
-            $("#iCEP").removeAttr('disabled');
-            $("#iEndCobr").removeAttr('disabled');
-            $("#iNum").removeAttr('disabled');
-            $("#iComplemento").removeAttr('disabled');
-            $("#iBairro").removeAttr('disabled');
-            $("#iCidade").removeAttr('disabled');
-            $("#sEstado").removeAttr('disabled');
-
-            $("#iDestinatario").attr('required');
-            $("#iCEP").attr('required');
-            $("#iEndCobr").attr('required');
-            $("#iNum").attr('required');
-            $("#iComplemento").attr('required');
-            $("#iBairro").attr('required');
-            $("#iCidade").attr('required');
-            $("#sEstado").attr('required');
-        });
-    });
-</script>

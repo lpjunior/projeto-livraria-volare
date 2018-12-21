@@ -129,24 +129,13 @@ usu.sobrenome,
 usu.email,
 usu.cpf,
 usu.datanascimento,
-per.perfil,
 ge.genero,
-ender.endereco,
-ender.numero,
-ender.complemento,
-ender.bairro,
-ender.cidade,
-ender.estado,
-ender.cep,
-tel.numero as telefone,
-tipoend.tipo as tipo_endereco
+tel.numero as telefone
 
 from usuarios usu
 inner join genero ge on ge.id = usu.genero_id
 inner join perfil per on per.id = usu.perfil_id
-inner join telefone tel on usu.id = tel.usuarios_id
-left join endereco ender on ender.usuarios_id = usu.id
-left join tipoendereco tipoend	on tipoend.id = ender.tipoendereco_id";
+inner join telefone tel on usu.id = tel.usuarios_id";
 if ($limit != NULL) {
 	$sql .= " LIMIT $limit";
 }
@@ -297,7 +286,7 @@ function loginUsuarioAdmin($email, $senha){
 		$cidade = filtrarString($cidade);
 		$estado = filtrarString($estado);
 		$sql = "UPDATE endereco SET cep = '$cep', endereco = '$end', numero = '$num', complemento = '$complemento',
-		bairro = '$bairro', cidade = '$cidade', estado = '$estado', destinatario = '$destinatario', TipoEndereco_id = '$tipoend' where usuarios_id = $id";
+		bairro = '$bairro', cidade = '$cidade', estado = '$estado', destinatario = '$destinatario' where TipoEndereco_id = $tipoend";
 		echo $sql;
 		if (mysqli_query($conexao, $sql)){
 			return true;
@@ -362,6 +351,7 @@ function loginUsuarioAdmin($email, $senha){
 		}
 	}
 	function inserirEndereço($cep, $end, $num, $complemento, $bairro, $cidade, $estado, $destinatario, $tipoend){
+		$conexao = getConnection();
 		$destinatario = filtrarString($destinatario);
 		$cep = filtrarInt($cep);
 		$end = filtrarString($end);
@@ -370,8 +360,9 @@ function loginUsuarioAdmin($email, $senha){
 		$bairro = filtrarString($bairro);
 		$cidade = filtrarString($cidade);
 		$estado = filtrarString($estado);
-		$id = mysqli_insert_id($conexao);
-		$sql = "INSERT INTO endereco VALUES (NULL, '$cep', '$end', '$num', '$complemento', '$bairro', '$estado', '$cidade', $id, $tipoend)";
+		$id = $_SESSION['user_id'];
+		$sql = "INSERT INTO endereco VALUES (NULL, '$cep', '$end', '$num', '$complemento', '$bairro', '$estado', '$cidade', $id, $tipoend, '$destinatario')";
+		echo $sql;
 		$resultado = mysqli_query($conexao, $sql);
 		if (mysqli_affected_rows($conexao) >= 1) {
 			return true;
