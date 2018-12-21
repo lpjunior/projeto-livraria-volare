@@ -48,7 +48,7 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
                   } elseif (isset($_SESSION['produto'])) {
                     $carrinho = $_SESSION['produto'];
                   }
-                  if (is_array($carrinho)) {
+                  if (isset($carrinho) && is_array($carrinho)) {
                     foreach ($carrinho as $b => $i) {
                     ?>
                     <tbody>
