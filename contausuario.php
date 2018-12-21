@@ -113,17 +113,23 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                     </fieldset><!--********fim do formulário dados pessoais*************-->
                     </div>
                     <div id="meusenderecos" class="tab-pane fade mr-4"><br>
-                    <h3>Meus Endereços</h3>
-                        <div class=" float-right">
-                            <button id="btn-editar" class="btn btn COLORE1">Editar</button>
-                        </div>
+                        <h3>Meus Endereços</h3>
                     <fieldset><!-- *************início do formulário Meus Endereços********************** -->
                       <?php
                       $endereco = serviceListarEndereco($_SESSION['user_id']);
                       foreach ($endereco as $i) {
                       ?>
                         <form action="php/CRUDS/editarEndereco.php?end=<?=$i['endId']?>" method="POST">
-                            <div class="form-group"> <h5 class="mt-2">Endereço <?=($i['tipo'] == 'Comercial' ? ' Comercial' : 'de '.$i['tipo'])?></h5>
+                            <div class="form-group"> 
+                                <div class=" float-right">
+                            <!-- Botão para acionar modal -->
+                            <button type="button" class="btn COLORE1" data-toggle="modal" data-target="#modalExemplo">
+                            Novo Endereço
+                            </button>    
+                            <!-- Botão para edição de endereço-->
+                            <button id="btn-editar" class="btn btn COLORE1">Editar</button>
+                                </div>
+                             <h5 class="mt-2">Endereço <?=($i['tipo'] == 'Comercial' ? ' Comercial' : 'de '.$i['tipo'])?></h5>
                             <br/>
                             <!-- início do formulário Endereço de Entrega -->
                                 <div class="row">
@@ -276,31 +282,34 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                                 </div>
                                 <br/>            
                             <!-- Início do Modal Novo Endereço-->
-                                <!-- Botão para acionar modal -->
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalExemplo">
-                            Abrir modal de demonstração
-                            </button>
-                            <!-- Modal -->
                             <div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Título do modal</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Cadastrar Novo Endereço</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group">
-                                        <div class="row">
-                                             <div class="col-md-4">
+                                    <div class="row">
+                                        <div class="col-md">
+                                        <label for="idestinatario">Destinatário:</label>
+                                        <input type="text" class="form-control" id="idestinatario" name="idestinatario" value="<?=(isset($i['destinatario']) ? $i['destinatario'] : '')?>" required>
+                                        <br/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
                                         <label for="iCEP">CEP:</label>
                                         <input type="text" id="iCEP" name="txtCEP" class="form-control cep" required>
                                          </div>
                                              <div class="col-md">
                                         <label for="iEndCobr">Endereço:</label>
                                         <input type="text" id="iEndCobr" name="txtEndCobr" class="form-control" required maxlength="255">
-                                             </div>
+                                        <br/>    
+                                            </div>
                                 </div>
                                         <div class="row">
                                           <div class="col-md">
@@ -310,11 +319,11 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                                           <div class="col-md">
                                         <label for="iComplemento">Complemento:</label>
                                         <input type="text"  id="iComplemento" name="txtComplemento" class="form-control" required maxlength="15">
-                                        <br/>
                                     </div>
                                     <div class="col-md">
                                         <label for="iBairro">Bairro:</label>
                                         <input type="text"  id="iBairro" name="txtBairro" class="form-control" required maxlength="50">
+                                        <br/>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -359,7 +368,7 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                    <button type="button" class="btn btn-primary">Salvar alterações</button>
+                                    <button type="button" class="btn COLORE1">Salvar alterações</button>
                                 </div>
                                 </div>
                             </div>
