@@ -123,7 +123,7 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                             <div class="form-group"> 
                                 <div class=" float-right">
                             <!-- Botão para acionar modal -->
-                            <button type="button" class="btn COLORE1" data-toggle="modal" data-target="#modalExemplo">
+                            <button type="button" class="btn COLORE1 mr-1" data-toggle="modal" data-target="#modalExemplo">
                             Novo Endereço
                             </button>    
                             <!-- Botão para edição de endereço-->
