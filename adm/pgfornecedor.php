@@ -1,21 +1,30 @@
-<?php /*
-// sessão
-session_start();
-// Só poder entrar quando logado */
-?>
-<!-- apagar-->
-<?php require_once("header.php");?>
-<!-- / apagar -->
+<!--
+- Linkar editaFornecedor, editaProduto e editaPedido no botão editar e função apagar no botão apagar /ctrl + f: botões/
+nas páginas: pgfornecedor, pgpedido, pgproduto (e verificar nessas páginas a parte Modal Structure /só dar ctrl + F e
+digitar modal/ que o Fernando fez);
+Ainda nessas três páginas implementar o php na busca;
+- Linkar meu perfil na página header;
+- Ver se a página vendas faz sentido, se não, excluir a pag e o link do header
+- em pgpedido colocar link pro visualizarpedido.php
+- pgfornecedor tá dando variável indefinida
+- Verificar o session_start, aparece a mensagem "A session had already been started - ignoring in ..."
+-->
 
+<?php require_once("header.php");?>
 <section class="row container-fluid">
     <div class="col-12 col-sm-12 col-md-10 col-lg-10 centraliza mt-3">
 	     <h1 class="fontedezoito text-left pb-2 pt-2 opacidade"><i class="fas fa-caret-right"></i>&nbsp;<i>Fornecedores</i></h1>
-       <div class="form-group text-righ mb-4 pr-2">
-           <div>
-             <button type="submit" class="btn fontequinze opacidade COLORE1" alt="comentar" name="" onclick="adicionaFornecedor.php">Adicionar</button>
-           </div>
-       </div>
-       <table class="table table-striped text-center table-responsive mb-4">
+        <div>
+          <!-- BUSCA -->
+          <div class="input-group mb-4 ml-2 mr-2 pr-2">
+          <input type="text" class="form-control col-md-3" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+              <button class="btn btn-info opacidade" type="button">Pesquisar</button>
+            </div>
+          </div>
+          <!-- fim da busca -->
+        </div>
+       <table class="table table-hover text-center table-responsive mb-4">
 				 <thead class="centraliza">
 						 <tr>
 							 <th scope="col">Razão Social</th>
@@ -32,7 +41,7 @@ session_start();
 							 <th scope="col">E-mail</th>
 						 </tr>
 				 </thead>
-				 <tbody class="centraliza"><!-- CONTEÚDO DA TABELA -->
+				 <tbody class="centraliza bg-white"><!-- CONTEÚDO DA TABELA -->
 						<tr><!--linha1-->
 							 <td> <?php echo $dados['razaoSocial'];?></td>
 							 <td> <?php echo $dados['cnpj'];?></td>
@@ -46,9 +55,9 @@ session_start();
 							 <td><?php echo $dados['estado'];?></td>
 							 <td> <?php echo $dados['telefone'];?></td>
 							 <td> <?php echo $dados['email'];?></td>
-
-							 <td><a class="linkstyle2" href="editaFornecedor.php?id=<?php echo $dados['id']; ?>" class="btn-floating yellow"><i class="fas fa-pen"></i><a/></td>
-							 <td><a class="linkstyle3" href="#modal<?php echo $dados['id'];?>" class="btn-floating red modal-trigger"><i class="fas fa-trash"></i><a/></td>
+               <!-- botões editar e excluir -->
+							 <td><a class="linkstyle2" href="editaFornecedor.php?id=<?php echo $dados['id']; ?>"><i class="fas fa-pen"></i><a/></td>
+							 <td><a class="linkstyle3" href="#modal<?php echo $dados['id'];?>"><i class="fas fa-trash"></i><a/></td>
 							 <!-- Modal Structure -->
 				            <div id="modal<?php echo $dados['id'];?>" class="modal">
 				              <div class="modal-content">
@@ -63,6 +72,7 @@ session_start();
 													</form>
 				           		</div>
 				           </div>
+                <!-- fim do modal estructure -->
 						</tr><!--fim da linha-->
 		      </tbody>
 		    </table>

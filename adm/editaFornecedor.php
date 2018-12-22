@@ -1,110 +1,47 @@
-
-<?php require_once("includes/header.php"); ?>
+<?php require_once("header.php"); ?>
 <?php
 session_start();
-// Só poder entrar quando logado
-require_once 'db_connect.php';
-if(isset($_GET['id'])){
-	$id=mysqli_escape_string($connect, $_GET['id']);
-	$sql = "SELECT * FROM fornecedor WHERE id= '$id'";
-	$resultado = mysqli_query($connect,$sql);
-	$dados = mysqli_fetch_array($resultado);
+// echo  $_SESSION['logado']."<br>".$_SESSION['nome_adm'];
+if (!isset($_SESSION['user_id'])){
+	header('Location: adm.php');
 }
 ?>
+<section class="container-fluid entraliza mt-4 mb-4">
+        <div class="row">
+                <div class="col-md-5 centraliza COLORE bordasb mx-auto pr-3 pl-3 pt-4 pb-3">
+                      <form>
+                          <div class="form-group">
+                            <label for="nome">Nome:</label>
+                            <input type="text" class="form-control col-8" id="nome" maxlength="100" required="required">
+                          </div>
+                          <div class="form-group">
+                            <label for="rsocial">Razão Social:</label>
+                            <input type="text" class="form-control col-8" id="rsocial" maxlength="50" required="required">
+                          </div>
+                          <div class="form-group">
+                            <label for="cnpj">CNPJ:</label>
+                            <input type="text" class="form-control col-8" id="cnpj" maxlength="45" required="required">
+                          </div>
+                          <div class="form-group">
+                            <label for="end">Endereço:</label>
+                            <input type="text" class="form-control col-8"  id="end" maxlength="45" required="required">
+                          </div>
+                          <div class="form-group">
+                            <label for="tel">Telefone:</label>
+                            <input type="text" class="form-control col-8"  id="tel" maxlength="45" required="required">
+                          </div>
+                          <div class="form-group">
+                            <label for="mail">E-mail:</label>
+                            <input type="mail" class="form-control col-8" id="mail" maxlength="45">
+                          </div>
+                          <div class="form-group">
+                            <label for="formap">Forma de pagamento:</label>
+                            <input type="text" class="form-control col-4" id="formap" maxlength="45" required="required">
+                          </div>
+                          <button name="" type="submit" class="btn COLORE1 float-right btn-outline-secondary">Submeter Edição</button>
+                    </form>
+								</div>
 
-<?php
-if (isset($_SESSION['mensagem'])):?>
-	 <script>
-
-	window.onload = function (){
-		  M.toast({html: '<?php echo $_SESSION['mensagem']; ?>'});
-
-	  };
-
-	</script>
-
-<?php endif;
-?>
-
-<div class="row">
-   <div class="col s12 m6 push-m3">
-     <h3 class="ligth"> Editar Fornecedor</h3>
-	 <form action="php_cruds/update.php" method="POST">
-	  <input type="hidden" name="id" value="<?php echo $dados['id'];?>">
-	  <div class="input-field col s12">
-	      <div class="input-field col s6">
-	        <input type="text" name="razaoSocial" id="razaoSocial"value="<?php echo $dados['razaoSocial'];?>">
-	        <label for="razaoSocial">razãoSocial</label>
-		  </div>
-		   <div class="input-field col s6">
-	        <input type="text" name="cnpj" id="cnpj"value="<?php echo $dados['cnpj'];?>">
-	        <label for="cnpj">CNPJ</label>
-	       </div>
-	  </div>
-
-	  <div class="input-field col s12">
-	      <div class="input-field col s6">
-	      <input type="text" name="inscEstadual" id="inscEstadual"value="<?php echo $dados['inscEstadual'];?>">
-		  <label for="inscEstadual">inscEstadual</label>
-		  </div>
-		  <div class="input-field col s6">
-	        <input type="text" name="cep" id="cep"value="<?php echo $dados['cep'];?>">
-			<label for="cep">CEP</label>
-	      </div>
-	  </div>
-
-	  <div class="input-field col s12">
-	        <div class="input-field col s6">
-	         <input type="text" name="logradouro" id="logradouro"value="<?php echo $dados['logradouro'];?>">
-	         <label for="logradouro">Logradouro</label>
-			 </div>
-	        <div class="input-field col s6">
-	         <input type="number" name="numero" id="numero"value="<?php echo $dados['numero'];?>">
-			 <label for="numero">NUMERO</label>
-	        </div>
-	  </div>
-
-	  <div class="input-field col s12">
-	        <div class="input-field col s6">
-	         <input type="text" name="complemento" id="complemento"value="<?php echo $dados['complemento'];?>">
-			 <label for="complemento">Complemento</label>
-			 </div>
-			 <div class="input-field col s6">
-	         <input type="text" name="bairro" id="bairro"value="<?php echo $dados['bairro'];?>">
-			 <label for="bairro">Bairro</label>
-	        </div>
-	  </div>
-
-	  <div class="input-field col s12">
-	       <div class="input-field col s6">
-	       <input type="text" name="cidade" id="cidade"value="<?php echo $dados['cidade'];?>">
-		   <label for="cidade">Cidade</label>
-		   </div>
-		   <div class="input-field col s6">
-	       <input type="text" name="estado" id="estado"value="<?php echo $dados['estado'];?>">
-		   <label for="estado">Estado</label>
-	       </div>
-
-	  </div>
-
-	  <div class="input-field col s12">
-	        <div class="input-field col s6">
-	        <input type="text" name="telefone" id="telefone"value="<?php echo $dados['telefone'];?>">
-			<label for="telefone">Telefone</label>
-			</div>
-			<div class="input-field col s6">
-	        <input type="email" name="email" id="email"value="<?php echo $dados['email'];?>">
-			<label for="email">Email</label>
-	        </div>
-
-	  </div>
-
-
-	  <button type="submit" name="btn-editar" class="btn">Atualizar</button>
-	  <a href="pgfornecedor.php" type="submit" class="btn green">Voltar</a>
-
-</div>
-
-
-
-  <?php require_once("includes/footer.php"); ?>
+            </div>
+</section>
+<?php require_once("footer.php"); ?>

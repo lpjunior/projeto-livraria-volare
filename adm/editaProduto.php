@@ -1,97 +1,133 @@
-
-<?php require_once("includes/header.php"); ?>
+<?php require_once("header.php"); ?>
 <?php
 session_start();
-// Só poder entrar quando logado
-require_once 'db_connect.php';
-if(isset($_GET['id'])){
-	$id=mysqli_escape_string($connect, $_GET['id']);
-	$sql = "SELECT * FROM produto WHERE id= '$id'";
-	$resultado = mysqli_query($connect,$sql);
-	$dados = mysqli_fetch_array($resultado);
-}
-
-if (isset($_SESSION['mensagem'])){
-
+// echo  $_SESSION['logado']."<br>".$_SESSION['nome_adm'];
+if (!isset($_SESSION['user_id'])){
+	header('Location: adm.php');
 }
 ?>
+<section class="container-fluid  centraliza pr-4 mt-4 mb-4">
+  <div class=" row COLORE bordasb col-md-10 mb-4 centraliza">
+                  <div class="col-md-6 float-left mt-4">
+                      <form action="../php/CRUDS/inserirLivro.php" method="post" enctype="multipart/form-data">
+                        <!-- uploadImg($_POST) -->
+                          <!-- INPUT IMAGEM-->
+                            <label for="capa">Imagem capa:</label>
+                            <input type="file" class="form-control-file" id="capa" name="foto" required="required">
+                          <!-- / input imagem --><br/>
+                          <div class="form-group">
+                            <label for="titulo">Título:</label>
+                            <input type="text" class="form-control col-8" name="titulo" id="titulo" maxlength="45" required="required">
+                          </div>
+                          <div class="form-group">
+                            <label for="autor">Autor:</label>
+                            <input type="text" class="form-control col-8" name="autor" id="autor" maxlength="80" required="required">
+                          </div>
+                          <div class="form-group">
+                            <label for="editora">Editora:</label>
+                            <input type="text" class="form-control col-8" name="editora" id="editora" maxlength="45" required="required">
+                          </div>
+                          <div class="form-group">
+                            <label for="categoria">Categoria:</label>
 
-<div class="row">
-   <div class="col s12 m6 push-m3">
-     <h3 class="ligth"> Editar Produto</h3>
-	 <form action="php_cruds/updateProduto.php" method="POST">
-	  <input type="hidden" name="id" value="<?php echo $dados['id'];?>">
-	  <div class="input-field col s12">
-	      <div class="input-field col s6">
-	        <input type="text" name="titulo" id="titulo"value="<?php echo $dados['titulo'];?>">
-	        <label for="titulo">Titulo</label>
-		  </div>
-		   <div class="input-field col s6">
-	        <input type="text" name="autor" id="cnpj"value="<?php echo $dados['autor'];?>">
-	        <label for="autor">Autor</label>
-	       </div>
-	  </div>
+                            <select class="custom-select col-5" id="categoria" name="categoria">
+                              <option selected>Selecione a categoria</option>
+                              <?php
+                              $categoria = serviceListarCategoria();
+                              foreach ($categoria as $i) {
+                              ?>
+                                <option value="<?=$i['id']?>"><?=$i['categoria']?></option>
+                              <?php } ?>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="subcat">Subcategoria:</label>
+                            <select class="custom-select col-5" id="subcat" name="subcategorias">
+                                <option selected>Selecione um assunto</option>
+                                <?php
+                                $subcategoria = serviceListarSubcategoria();
+                                foreach ($subcategoria as $i) {
+                                ?>
+                                <option value="<?=$i['id']?>"><?=$i['assunto']?></option>
+                                <?php } ?>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="tipocapa">Tipo de capa:</label>
+                            <select class="custom-select col-6" id="tipocapa" name="capa">
+                                <option selected>Selecione o tipo de capa</option>
+                                <?php
+                                $capa = serviceListarCapa();
+                                foreach ($capa as $i) {
+                                ?>
+                                <option value="<?=$i['id']?>"><?=$i['tipodecapa']?></option>
+                              <?php } ?>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="idioma">Idioma:</label>
+                            <select class="custom-select col-5" id="idioma" name="idioma">
+                                <option selected>Selecione o idioma</option>
+                                <?php
+                                $idioma = serviceListarIdioma();
+                                foreach ($idioma as $i) {
+                                ?>
+                                <option value="<?=$i['id']?>"><?=$i['idioma']?></option>
+                              <?php } ?>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="fornecedor">Fornecedor:</label>
+                            <select class="custom-select col-5" id="fornecedor" name="fornecedor">
+                                <option selected>Selecione o fornecedor</option>
+                                <?php
+                                $capa = serviceListarFornecedor();
+                                foreach ($capa as $i) {
+                                ?>
+                                <option value="<?=$i['id']?>"><?=$i['nome']?></option>
+                              <?php } ?>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="isbn">ISBN:</label>
+                            <input type="text" class="form-control col-4" name="ISBN" id="isbn" maxlength="13" required="required">
+                          </div>
+                    </div>
+                    <div class="col-md-6 float-left mt-4">
 
-	  <div class="input-field col s12">
-	      <div class="input-field col s6">
-	      <input type="text" name="editora" id="editora"value="<?php echo $dados['editora'];?>">
-		  <label for="editora">Editora</label>
-		  </div>
-		  <div class="input-field col s6">
-	        <input type="text" name="isbn" id="isbn"value="<?php echo $dados['isbn'];?>">
-			<label for="isbn">ISBN</label>
-	      </div>
-	  </div>
-
-	  <div class="input-field col s12">
-	        <div class="input-field col s6">
-	         <input type="number" name="numeroPaginas" id="numeroPaginas"value="<?php echo $dados['numeroPaginas'];?>">
-	         <label for="logradouro">numeroPaginas</label>
-			 </div>
-	        <div class="input-field col s6">
-	         <input type="text" name="sinopse" id="sinopse"value="<?php echo $dados['sinopse'];?>">
-			 <label for="numero">Sinopse</label>
-	        </div>
-	  </div>
-
-	  <div class="input-field col s12">
-	        <div class="input-field col s6">
-	         <input type="number" name="peso" id="peso"value="<?php echo $dados['peso'];?>">
-			 <label for="peso">Peso</label>
-			 </div>
-			 <div class="input-field col s6">
-	         <input type="date" name="dataPublicacao" id="dataPublicacao"value="<?php echo $dados['dataPublicacao'];?>">
-			 <label for="bairro">dataPublicacao</label>
-	        </div>
-	  </div>
-
-	  <div class="input-field col s12">
-	       <div class="input-field col s6">
-	       <input type="text" name="fornecedor" id="fornecedor"value="<?php echo $dados['fornecedor'];?>">
-		   <label for="fornecedor">Fornecedor</label>
-		   </div>
-		   <div class="input-field col s6">
-	       <input type="number" name="preco" id="preco"value="<?php echo $dados['preco'];?>">
-		   <label for="preco">Preço</label>
-	       </div>
-
-	  </div>
-
-	  <div class="input-field col s12">
-	        <div class="input-field col s6">
-	        <input type="number" name="quantidade" id="quantidade"value="<?php echo $dados['quantidade'];?>">
-			<label for="quantidade">Quantidade</label>
-			</div>
-
-
-	  </div>
-
-
-	  <button type="submit" name="btn-editar" class="btn">Atualizar</button>
-	  <a href="pgProduto.php" type="submit" class="btn green">Voltar</a>
-
-</div>
-
-
-
-  <?php require_once("includes/footer.php"); ?>
+                          <div class="form-group">
+                            <label for="datapub">Ano de publicação da edição:</label>
+                            <input type="number" class="form-control col-2" name="data_publicacao" id="datapub" maxlength="4" required="required">
+                          </div>
+                          <div class="form-group">
+                            <label for="numpag">Número de páginas:</label>
+                            <input type="num" class="form-control col-2" name="numeropaginas" id="numpag" maxlength="4" required="required">
+                          </div>
+                          <div class="form-group">
+                            <label for="text">Peso:</label>
+                            <input type="text" class="form-control col-2" name="peso" id="peso" maxlength="5" required="required">
+                          </div>
+                          <div class="form-group">
+                            <label for="preco">Preço:</label>
+                            <input type="number" class="form-control col-2" name="preco" id="preco" maxlength="3" required="required">
+                          </div>
+                          <!--quantidade -->
+                          <div class="form-group">
+                            <label for="qtdProd">Quantidade:</label><br/>
+                              <input type="text" name="quantidade" id="qtdProd" style="display:inline" maxlength="4" class="text-center form-control col-2" value="">
+                          </div>
+                          <!-- /quantidade -->
+                          <div class="form-group">
+                            <label for="dimension">dimensões:</label>
+                            <input type="text" class="form-control col-2" name="dimensoes" id="dimension" maxlength="10" required="required">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Sinopse</label>
+                            <textarea class="form-control" name="sinopse" id="exampleFormControlTextarea1" rows="3"></textarea>
+                          </div>
+                      <button name="" type="submit" class="btn COLORE1 float-right btn-outline-secondary">Submeter edição</button>
+                      </form>
+                  </div>
+  </div>
+</section>
+<?php require_once("footer.php"); ?>

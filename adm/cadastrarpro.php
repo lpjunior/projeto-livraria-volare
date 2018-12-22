@@ -1,41 +1,14 @@
 <?php require_once("header.php"); ?>
-
-<?php /*
+<?php
 session_start();
 // echo  $_SESSION['logado']."<br>".$_SESSION['nome_adm'];
 if (!isset($_SESSION['user_id'])){
 	header('Location: adm.php');
-
-} */
+}
 ?>
-<section class="container-fluid col-md-8 centraliza mt-4 mb-4">
-        <div class="row">
-                <div class="col-md-3">
-                  <!-- nav links -->
-                      <ul class="nav flex-column COLORE bordasb">
-
-                          <li class="nav-item">
-                              <a class="nav-link linkstyle" ><i class="opacidade fas fa-caret-right"></i>&nbsp;&nbsp;cadastrar produto</a>
-                          </li>
-                          <li class="nav-item">
-                              <a class="nav-link linkstyle" ><i class="opacidade fas fa-caret-right"></i>&nbsp;&nbsp;cadastrar fornecedor</a>
-                          </li>
-                          <li class="nav-item">
-                              <a class="nav-link linkstyle" ><i class="opacidade fas fa-caret-right"></i>&nbsp;&nbsp;configurar banner</a>
-                          </li>
-                          <li class="nav-item">
-                              <a class="nav-link linkstyle"><i class="opacidade fas fa-caret-right"></i>&nbsp;&nbsp;Total estoque</a>
-                          </li>
-                          <li class="nav-item">
-                              <a class="nav-link linkstyle"><i class="opacidade fas fa-caret-right"></i>&nbsp;&nbsp;Vendas</a>
-                          </li>
-                      </ul>
-                </div>
-                <!-- conteúdo -->
-								<div class="col-md-9">
-
-                  <!-- CADASTRO PRODUTO -->
-                    <div class="COLORE bordasb mx-auto pr-3 pl-3 pt-4 pb-3">
+<section class="container-fluid  centraliza pr-4 mt-4 mb-4">
+  <div class=" row COLORE bordasb col-md-10 mb-4 centraliza">
+                  <div class="col-md-6 float-left mt-4">
                       <form action="../php/CRUDS/inserirLivro.php" method="post" enctype="multipart/form-data">
                         <!-- uploadImg($_POST) -->
                           <!-- INPUT IMAGEM-->
@@ -57,7 +30,7 @@ if (!isset($_SESSION['user_id'])){
                           <div class="form-group">
                             <label for="categoria">Categoria:</label>
 
-                            <select class="custom-select col-4" id="categoria" name="categoria">
+                            <select class="custom-select col-5" id="categoria" name="categoria">
                               <option selected>Selecione a categoria</option>
                               <?php
                               $categoria = serviceListarCategoria();
@@ -69,7 +42,7 @@ if (!isset($_SESSION['user_id'])){
                           </div>
                           <div class="form-group">
                             <label for="subcat">Subcategoria:</label>
-                            <select class="custom-select col-4" id="subcat" name="subcategorias">
+                            <select class="custom-select col-5" id="subcat" name="subcategorias">
                                 <option selected>Selecione um assunto</option>
                                 <?php
                                 $subcategoria = serviceListarSubcategoria();
@@ -81,7 +54,7 @@ if (!isset($_SESSION['user_id'])){
                           </div>
                           <div class="form-group">
                             <label for="tipocapa">Tipo de capa:</label>
-                            <select class="custom-select col-4" id="tipocapa" name="capa">
+                            <select class="custom-select col-6" id="tipocapa" name="capa">
                                 <option selected>Selecione o tipo de capa</option>
                                 <?php
                                 $capa = serviceListarCapa();
@@ -93,7 +66,7 @@ if (!isset($_SESSION['user_id'])){
                           </div>
                           <div class="form-group">
                             <label for="idioma">Idioma:</label>
-                            <select class="custom-select col-4" id="idioma" name="idioma">
+                            <select class="custom-select col-5" id="idioma" name="idioma">
                                 <option selected>Selecione o idioma</option>
                                 <?php
                                 $idioma = serviceListarIdioma();
@@ -105,7 +78,7 @@ if (!isset($_SESSION['user_id'])){
                           </div>
                           <div class="form-group">
                             <label for="fornecedor">Fornecedor:</label>
-                            <select class="custom-select col-4" id="fornecedor" name="fornecedor">
+                            <select class="custom-select col-5" id="fornecedor" name="fornecedor">
                                 <option selected>Selecione o fornecedor</option>
                                 <?php
                                 $capa = serviceListarFornecedor();
@@ -119,9 +92,12 @@ if (!isset($_SESSION['user_id'])){
                             <label for="isbn">ISBN:</label>
                             <input type="text" class="form-control col-4" name="ISBN" id="isbn" maxlength="13" required="required">
                           </div>
+                    </div>
+                    <div class="col-md-6 float-left mt-4">
+
                           <div class="form-group">
-                            <label for="datapub">Ano de publicação:</label>
-                            <input type="date" class="form-control col-4" name="data_publicacao" id="datapub" maxlength="4" required="required">
+                            <label for="datapub">Ano de publicação da edição:</label>
+                            <input type="number" class="form-control col-2" name="data_publicacao" id="datapub" maxlength="4" required="required">
                           </div>
                           <div class="form-group">
                             <label for="numpag">Número de páginas:</label>
@@ -149,11 +125,9 @@ if (!isset($_SESSION['user_id'])){
                             <label for="exampleFormControlTextarea1">Sinopse</label>
                             <textarea class="form-control" name="sinopse" id="exampleFormControlTextarea1" rows="3"></textarea>
                           </div>
-                      <button name="btn-livro-enviar" type="submit" class="btn COLORE1 btn-outline-secondary">Adicionar</button>
+                      <button name="btn-livro-enviar" type="submit" class="btn COLORE1 float-right btn-outline-secondary">Cadastrar</button>
                       </form>
-                    </div>
-
-                </div>
-        </div>
+                  </div>
+  </div>
 </section>
-<!-- NÃO CHAME O FOOTER -->
+<?php require_once("footer.php"); ?>
