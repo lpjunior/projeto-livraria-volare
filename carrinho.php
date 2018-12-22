@@ -1,24 +1,23 @@
 <?php
-$app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
+$app->get('/carrinho', function ($request, $response, $args) {
 ?>
-    <div class="container-fluid col-md-10 col-12 mt-4">
-        <div class="row">
+    <div class="container-fluid col-md-10 col-12 ">
+        <div class="row mt-4">
             <div class="col-12 col-md-8">
-                <h1>Meu carrinho</h1>
-                    <!--<div class="float-left">
+                <h1 class="pl-5 fontevinteecinco pt-3">Meu carrinho</h1>
+                    <div class="mx-auto d-block d-md-none pr-4 pl-0">
                         <ul>
                             <li class="card">
                                 <div class="row no-gutters">
                                     <div class="col-auto">
-                                        <img src="//placehold.it/80" class="img-fluid" alt="">
+                                        <img src="http://lorempixel.com/85/85/" class="img-fluid" alt="">
                                     </div>
-                                    <div class="col">
-                                        <div class="card-block px-2">
-                                            <h4 class="card-title">Título do livro</h4>
-                                            <p class="card-text d-none d-md-block">Descrição??</p>
-                                        </div>
+                                    <div class="col d-flex align-items-start">
+                                        <div class="float-left pl-3 pt-2">
+												<p class="mb-0 displayblock text-center">titulo</p><!--JS PARA COLOCAR RETICÊNCIAS NOS TÍTULOS GRANDES-->
+												<p class="mb-0 displayblock text-center"><i class="fas fa-dollar-sign">00,00</i></p>		
+									    </div>
                                     </div>
-
                                     <div class="col">
                                         <div class="card-block px-2 float-right">
                                             <div class="col-md mt-2">
@@ -31,8 +30,8 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
                                 </div>
                             </li>
                         </ul>
-                    </div>-->
-                <table class="table text-center table-responsive">
+                    </div>
+                <table class="table text-center table-responsive d-none d-md-block ">
                     <thead>
                         <tr>
                         <th scope="col">Produto</th>
@@ -48,7 +47,10 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
                   } elseif (isset($_SESSION['produto'])) {
                     $carrinho = $_SESSION['produto'];
                   }
-                  if (isset($carrinho) && is_array($carrinho)) {
+                  else {
+                    $carrinho = NULL;
+                  }
+                  if ($carrinho != NULL) {
                     foreach ($carrinho as $b => $i) {
                     ?>
                     <tbody>
@@ -66,7 +68,7 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
                                 <button id="btnPlus" class="btn btn-light btn-sm">+</button>
                             </td>
                             <td>R$ <span id="idpreco"><?=(isset($_SESSION['user_id']) ? $i['preco'] : $i[0]['preco'])?></span></td>
-                            <td id="subItem">R$ </td>
+                            <td>R$00,00</td>
                         </tr>
                         <tr>
                     </tbody>
@@ -80,7 +82,7 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
                         <tbody>
                             <tr>
                             <th scope="row">Subtotal</th>
-                            <td>R$ <span id="idSubtotal"></span></td>
+                            <td>R$<span id="idSubtotal">00,00</span></td>
                             </tr>
                             <tr>
                             <th scope="row">Frete</th>
@@ -106,7 +108,7 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
             </div>
         </div>
         <div class="row">
-			<div class="col mt-4">
+			<div class="col">
           <form method="POST" action="checkout">
                 <button type="submit" class="btn COLORE1" name="btn-checkout" >Concluir compra</button>
               </form>
@@ -114,25 +116,6 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
 		</div>
     </div>
 <?php }); ?>
-<script>
-  $(function(){
-    $("#qtdProd").keyup(function(){
-      quant = document.getElementById('qtdProd');
-      idpreco = parseFloat($("preco").html());
-      quantidade = parseInt(quant);
-      subtotal = idpreco * quantidade;
-      console.log(subtotal);
-      //console.log(document.getElementById('idpreco').value);
-
-    });
-  });
-
-
-
-  $(function(){
-    $("#idSubtotal").html(valorSubtotal);
-  });
-</script>
 <script>
 
     $(function(){
@@ -201,13 +184,4 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
             });
         });
     }
-
-
-
-      /*subtotalQtd = document.getElementById("qtdProd").addEventListener("keyup", function(){
-        document.getElementById("")
-      });*/
-
-
-
 </script>
