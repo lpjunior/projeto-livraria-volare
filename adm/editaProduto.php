@@ -12,19 +12,19 @@ if (!isset($_SESSION['user_id'])){
                       <form action="../php/CRUDS/inserirLivro.php" method="post" enctype="multipart/form-data">
                           <!-- INPUT IMAGEM-->
                             <label for="capa">Imagem capa:</label>
-                            <input type="file" class="form-control-file" id="capa" name="foto" required="required">
+                            <input type="file" class="form-control-file" id="capa" name="foto">
                           <!-- / input imagem --><br/>
                           <div class="form-group">
                             <label for="titulo">Título:</label>
-                            <input type="text" class="form-control col-8" name="titulo" id="titulo" maxlength="45" required="required">
+                            <input type="text" class="form-control col-8" name="titulo" id="titulo" maxlength="45">
                           </div>
                           <div class="form-group">
                             <label for="autor">Autor:</label>
-                            <input type="text" class="form-control col-8" name="autor" id="autor" maxlength="80" required="required">
+                            <input type="text" class="form-control col-8" name="autor" id="autor" maxlength="80">
                           </div>
                           <div class="form-group">
                             <label for="editora">Editora:</label>
-                            <input type="text" class="form-control col-8" name="editora" id="editora" maxlength="45" required="required">
+                            <input type="text" class="form-control col-8" name="editora" id="editora" maxlength="45">
                           </div>
                           <div class="form-group">
                             <label for="categoria">Categoria:</label>
@@ -89,26 +89,26 @@ if (!isset($_SESSION['user_id'])){
                           </div>
                           <div class="form-group">
                             <label for="isbn">ISBN:</label>
-                            <input type="text" class="form-control col-4" name="ISBN" id="isbn" maxlength="13" required="required">
+                            <input type="text" class="form-control col-4" name="ISBN" id="isbn" maxlength="13">
                           </div>
                     </div>
                     <div class="col-md-6 float-left mt-4">
 
                           <div class="form-group">
                             <label for="datapub">Ano de publicação da edição:</label>
-                            <input type="number" class="form-control col-2" name="data_publicacao" id="datapub" maxlength="4" required="required">
+                            <input type="number" class="form-control col-2" name="data_publicacao" id="datapub" maxlength="4">
                           </div>
                           <div class="form-group">
                             <label for="numpag">Número de páginas:</label>
-                            <input type="num" class="form-control col-2" name="numeropaginas" id="numpag" maxlength="4" required="required">
+                            <input type="num" class="form-control col-2" name="numeropaginas" id="numpag" maxlength="4">
                           </div>
                           <div class="form-group">
                             <label for="text">Peso:</label>
-                            <input type="text" class="form-control col-2" name="peso" id="peso" maxlength="5" required="required">
+                            <input type="text" class="form-control col-2" name="peso" id="peso" maxlength="5">
                           </div>
                           <div class="form-group">
                             <label for="preco">Preço:</label>
-                            <input type="number" class="form-control col-2" name="preco" id="preco" maxlength="3" required="required">
+                            <input type="number" class="form-control col-2" name="preco" id="preco" maxlength="3">
                           </div>
                           <!--quantidade -->
                           <div class="form-group">
@@ -118,7 +118,7 @@ if (!isset($_SESSION['user_id'])){
                           <!-- /quantidade -->
                           <div class="form-group">
                             <label for="dimension">dimensões:</label>
-                            <input type="text" class="form-control col-2" name="dimensoes" id="dimension" maxlength="10" required="required">
+                            <input type="text" class="form-control col-2" name="dimensoes" id="dimension" maxlength="10">
                           </div>
                           <div class="form-group">
                             <label for="exampleFormControlTextarea1">Sinopse</label>

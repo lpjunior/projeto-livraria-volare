@@ -31,7 +31,7 @@ if (!isset($_SESSION['user_id'])){
 
                         <div class="form-group">
                           <label for="dataent">Previsão de entrega:</label>
-                          <input type="date" class="form-control col-3" name="" id="dataent" maxlength="4" required="required">
+                          <input type="date" class="form-control col-3" name="" id="dataent" maxlength="4"">
                         </div>
 
                           <button name="" type="submit" class="btn COLORE1 float-right btn-outline-secondary">Submeter edição</button>

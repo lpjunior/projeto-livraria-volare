@@ -12,23 +12,23 @@ if (!isset($_SESSION['user_id'])){
                       <form>
                           <div class="form-group">
                             <label for="nome">Nome:</label>
-                            <input type="text" class="form-control col-8" id="nome" maxlength="100" required="required">
+                            <input type="text" class="form-control col-8" id="nome" maxlength="100"">
                           </div>
                           <div class="form-group">
                             <label for="rsocial">Razão Social:</label>
-                            <input type="text" class="form-control col-8" id="rsocial" maxlength="50" required="required">
+                            <input type="text" class="form-control col-8" id="rsocial" maxlength="50"">
                           </div>
                           <div class="form-group">
                             <label for="cnpj">CNPJ:</label>
-                            <input type="text" class="form-control col-8" id="cnpj" maxlength="45" required="required">
+                            <input type="text" class="form-control col-8" id="cnpj" maxlength="45"">
                           </div>
                           <div class="form-group">
                             <label for="end">Endereço:</label>
-                            <input type="text" class="form-control col-8"  id="end" maxlength="45" required="required">
+                            <input type="text" class="form-control col-8"  id="end" maxlength="45">
                           </div>
                           <div class="form-group">
                             <label for="tel">Telefone:</label>
-                            <input type="text" class="form-control col-8"  id="tel" maxlength="45" required="required">
+                            <input type="text" class="form-control col-8"  id="tel" maxlength="45">
                           </div>
                           <div class="form-group">
                             <label for="mail">E-mail:</label>
@@ -36,7 +36,7 @@ if (!isset($_SESSION['user_id'])){
                           </div>
                           <div class="form-group">
                             <label for="formap">Forma de pagamento:</label>
-                            <input type="text" class="form-control col-4" id="formap" maxlength="45" required="required">
+                            <input type="text" class="form-control col-4" id="formap" maxlength="45">
                           </div>
                           <button name="" type="submit" class="btn COLORE1 float-right btn-outline-secondary">Submeter Edição</button>
                     </form>
