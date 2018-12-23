@@ -10,7 +10,6 @@ if (!isset($_SESSION['user_id'])){
   <div class=" row COLORE bordasb col-md-10 mb-4 centraliza">
                   <div class="col-md-6 float-left mt-4">
                       <form action="../php/CRUDS/inserirLivro.php" method="post" enctype="multipart/form-data">
-                        <!-- uploadImg($_POST) -->
                           <!-- INPUT IMAGEM-->
                             <label for="capa">Imagem capa:</label>
                             <input type="file" class="form-control-file" id="capa" name="foto" required="required">

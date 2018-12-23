@@ -45,10 +45,10 @@
                   <td><?=$i['preco']?></td>
                   <td><?=$i['quantidade']?></td>
                   <!-- botões editar e excluir -->
-                  <td><a class="linkstyle2" href="editaProduto.php?id=<?php echo $dados['id']; ?>"><i class="fas fa-pen"></i><a/></td>
-                  <td><a class="linkstyle3" href="#modal<?php echo $dados['id'];?>"><i class="fas fa-trash"></i><a/></td>
+                  <td><a class="linkstyle2" href="editaProduto.php?id=<?=$i['id'];?>"><i class="fas fa-pen"></i><a/></td>
+                  <td><a class="linkstyle3" href="#modal<?=$i['id'];?>"><i class="fas fa-trash"></i><a/></td>
                     <!-- Modal Structure -->
-     				            <div id="modal<?php echo $dados['id'];?>" class="modal">
+     				            <div id="modal<?=$i['id'];?>" class="modal">
      				              <div class="modal-content">
      						             <h4>Atenção </h4>
      						             <p>Tem certeza que deseja excluir esse fornecedor ?</p>
@@ -56,7 +56,7 @@
      				              <div class="modal-footer">
      					                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
      													<form action="php_cruds/delete.php" method ="POST">
-     													<input type="hidden" name="id" value="<?php echo $dados['id'];?>">
+     													<input type="hidden" name="id" value="<?=$i['id'];?>">
      													<button type="submit"name="btn-deletar" class="btn red">sim, quero deletar</button>
      													</form>
      				           		</div>

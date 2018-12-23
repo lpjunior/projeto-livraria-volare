@@ -11,7 +11,6 @@ function inserirLivro($categoria, $titulo, $autor, $editora, $isbn, $numeroPagin
 	$sinopse = str_replace('\'', '',$sinopse);
 	$sql = "INSERT INTO produto VALUES (NULL, '$categoria', '$titulo', '$autor', '$editora', '$isbn', '$numeroPaginas', '$sinopse', '$peso', '$data', '$preco', '$quantidade', '$dimensoes', $subcategorias, $capa, $fornecedor)";
 	$resultado = mysqli_query($conexao, $sql);
-	echo $sql."<br>";
 	$id = mysqli_insert_id($conexao);
 	$imgCapa = $imagem['capa'];
 	$imgThumb = $imagem['0'];
@@ -21,6 +20,7 @@ function inserirLivro($categoria, $titulo, $autor, $editora, $isbn, $numeroPagin
 	$resultado = mysqli_query($conexao, $sql);
 	$sql = "INSERT INTO Produto_has_Idioma VALUES ($id, 1)";
 	$resultado = mysqli_query($conexao, $sql);
+	// Botar o $idioma no insert
 	if (mysqli_affected_rows($conexao) >= 1) {
 		return true;
 	} else {
@@ -28,9 +28,17 @@ function inserirLivro($categoria, $titulo, $autor, $editora, $isbn, $numeroPagin
 	}
 }
 ## EDITAR LIVROS
-function editarLivro($categoria, $titulo, $autor, $editora, $isbn, $numeroPaginas, $sinopse, $peso, $fornecedor, $preco, $subcategorias, $capa, $id, $quantidade, $imagem){
+function editarLivro($categoria, $titulo, $autor, $editora, $isbn, $numeroPaginas, $sinopse, $peso, $data, $fornecedor, $preco, $subcategorias, $capa, $dimensoes, $quantidade, $idioma, $fotos, $id){
 	$conexao = getConnection();
-	$sql = "UPDATE produto SET Categoria_id = $categoria, titulo = '$titulo', autor = '$autor', editora = '$editora', isbn = '$isbn', numeroPaginas = '$numeroPaginas', sinopse = '$sinopse', peso = '$peso', fornecedor = '$fornecedor', preco = '$preco', SubCategorias_id = $subcategorias, TipoDeCapa_id = $capa, quantidade = $quantidade, imagem = $imagem WHERE id = $id";
+	$sql = "UPDATE produto SET Categoria_id = $categoria, titulo = '$titulo', autor = '$autor', editora = '$editora', isbn = '$isbn',
+	numeroPaginas = '$numeroPaginas', sinopse = '$sinopse', peso = '$peso', datapublicacao = $data, fornecedores_id = '$fornecedor',
+	preco = '$preco', SubCategorias_id = $subcategorias,
+	TipoDeCapa_id = $capa, quantidade = $quantidade WHERE id = $id";
+	$resultado = mysqli_query($conexao, $sql);
+	$sql = "SELECT * from idiomas where idioma = $idioma";
+	$resultado = mysqli_query($conexao, $sql);
+	$idIdiomas = mysqli_insert_id($conexao);
+	$sql = "UPDATE Produto_has_Idioma set ($id, $idIdiomas)";
 	$resultado = mysqli_query($conexao, $sql);
 	if (mysqli_affected_rows($conexao) >= 1) {
 		return true;
