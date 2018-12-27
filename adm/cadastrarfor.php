@@ -8,9 +8,9 @@ if (!isset($_SESSION['user_id'])){
 	header('Location: adm.php');
 }
 ?>
-<section class="container-fluid entraliza mt-4 mb-4">
+<section class="container-fluid centraliza mt-4 mb-4">
         <div class="row">
-                <div class="col-md-5 centraliza COLORE bordasb mx-auto pr-3 pl-3 pt-4 pb-3">
+                <div class="col-md-5 centraliza COLORE bordasb mx-auto pl-5 pt-4 pb-3">
                       <form action="../php/CRUDS/inserirFornecedor.php" method="POST">
                           <div class="form-group">
                             <label for="nome">Nome:</label>

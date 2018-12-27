@@ -1,18 +1,28 @@
 <?php require_once("header.php"); ?>
+<?php
+if (!isset($_SESSION)){
+	session_start();
+}
+// echo  $_SESSION['logado']."<br>".$_SESSION['nome_adm'];
+if (!isset($_SESSION['user_id'])){
+	header('Location: adm.php');
+}
+?>
 <section class="row container-fluid">
-  <div class="col-12 col-sm-12 col-md-10 col-lg-10 centraliza mt-3">
+  <div class="col-12 col-sm-12 col-md-10 col-lg-9 centraliza mt-3">
     <h1 class="fontedezoito text-left pb-2 pt-2 opacidade"><i class="fas fa-caret-right"></i>&nbsp;<i>Usuários cadastrados</i></h1>
-      <div>
-        <!-- BUSCA -->
-        <div class="input-group mb-4 ml-2 mr-2 pr-2">
-        <input type="text" class="form-control col-md-3" aria-label="campo de busca">
-          <div class="input-group-append">
-            <button class="btn btn-info opacidade" aria-labelledby="pesquisar" type="button">Pesquisar</button>
-          </div>
+      <!-- BUSCA -->
+      <div class="input-group mb-4 ml-2 mr-2 pr-2">
+      <input type="text" class="form-control col-md-3" aria-label="campo de busca">
+        <div class="input-group-append">
+          <button class="btn btn-info opacidade" aria-labelledby="pesquisar" type="button">Pesquisar</button>
         </div>
-        <!-- fim da busca -->
       </div>
-        <table class="table table-hover col-12 text-center table-responsive mb-4">
+      <!-- fim da busca -->
+        <table class="table table-hover text-center table-responsive mb-4">
+          <thead class="centraliza">
+
+        <table class="table table-hover col text-center table-responsive mb-4">
           <thead class="centraliza">
               <tr>
                 <th scope="col">id</th>

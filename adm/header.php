@@ -27,80 +27,73 @@ require_once '../php/CRUDS/serviceCheckout.php';
     header('location: ../error');
   }
   ?>
-  <header>
-    <nav class="navbar navbar-expand-md navbar-light COLORE">
-    <!-- LOGO -->
-      <div class="col-md-3">
-          <img src="../img/logomarcac.png" alt="logomarca volare">
-      </div>
-      <div class="col-md-9 centraliza">
-        <div class="row">
-          <div class="nav-item">
+  <div>
+    <nav class="navbar navbar-expand-md navbar-light COLORE centraliza">
+        <div class="row mx-auto">
+          <div class="nav-item pr-2 pl-2 mb-0">
             <a class="nav-link text-dark opacidade" href="pgadm.php"><i class="fas fa-home"></i>&nbsp;Home</a>
           </div>
-          <div class="nav-item">
+          <div class="nav-item pr-2 pl-2 mb-0">
             <!-- *****LINKAR PÁGINA ******--><a class="nav-link text-dark opacidade" href="  "><i class="fas fa-user"></i>&nbsp;Meu perfil</a>
           </div>
-          <div class="dropdown float-left"><!-- começo dropdown -->
+          <div class="dropdown pr-2 pl-2 mb-0 float-left"><!-- começo dropdown -->
           <a href="#" class="dropdown-toggle nav-link text-dark opacidade" data-toggle="dropdown" role="button"><i class="fas fa-paste"></i>&nbsp;Cadastrar</a>
             <ul class="dropdown-menu COLORE" role="menu">
               <li>
-                <div class="pr-2 pl-1 mb-0">
+                <div class="pr-2 pl-2 mb-0">
                     <a href="cadastrarpro.php" class="text-dark" >produto</a>
                 </div>
               </li>
               <div class="dropdown-divider"></div>
               <li>
-                <div class="pr-2 pl-1 mb-0">
+                <div class="pr-2 pl-2 mb-0">
                     <a href="cadastrarfor.php" class="text-dark">fornecedor</a>
                 </div>
               </li>
             </ul>
           </div> <!-- fim da div dropdown -->
-          <div class="dropdown float-left"><!-- começo dropdown -->
+          <div class="dropdown pr-2 pl-2 mb-0 float-left"><!-- começo dropdown -->
           <a href="#" class="dropdown-toggle nav-link text-dark opacidade" data-toggle="dropdown" role="button"><i class="fas fa-chart-area"></i>&nbsp;Consultar/editar</a>
             <ul class="dropdown-menu COLORE" role="menu">
               <li>
-                <div class="pr-2 pl-1 mb-0">
+                <div class="pr-2 pl-2 mb-0">
                     <a href="pgproduto.php" class="text-dark">produto</a>
                 </div>
               </li>
               <div class="dropdown-divider"></div>
               <li>
-                <div class="pr-2 pl-1 mb-0">
+                <div class="pr-2 pl-2 mb-0">
                     <a href="pgfornecedor.php" class="text-dark">fornecedor</a>
                 </div>
               </li>
               <div class="dropdown-divider"></div>
               <li>
-                <div class="pr-2 pl-1 mb-0">
+                <div class="pr-2 pl-2 mb-0">
                     <a href="pgpedido.php" class="text-dark">histórico de pedidos</a>
                 </div>
               </li>
                 <div class="dropdown-divider"></div>
               <li>
-                <div class="pr-2 pl-1 mb-0">
+                <div class="pr-2 pl-2 mb-0">
                     <a href="consultavendas.php" class="text-dark">vendas</a>
                 </div>
               </li>
               <div class="dropdown-divider"></div>
               <li>
-                <div class="pr-2 pl-1 mb-0">
+                <div class="pr-2 pl-2 mb-0">
                     <a href="pgusuarios.php" class="text-dark">usuários</a>
                 </div>
               </li>
             </ul>
           </div> <!-- fim da div dropdown -->
-          <div class="nav-item">
+          <div class="nav-item pr-2 pl-2 mb-0">
             <a class="nav-link text-dark opacidade" href="upbanner.php"><i class="fas fa-images"></i>&nbsp;banner</a>
           </div>
-          <div class="nav-item">
+          <div class="nav-item pr-2 pl-2 mb-0">
             <a class="nav-link text-dark opacidade" href="logout.php"><i class="fas fa-reply"></i>&nbsp;Sair</a>
           </div>
 
-
         </div>
-      </div>
     </nav>
-  </header>
-<main>
+  </div>
+<main class="container-fluid">
