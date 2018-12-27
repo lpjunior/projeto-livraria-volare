@@ -86,21 +86,6 @@ require_once 'crud_usuario.php';
 			return $user;
 		}
 	}
-	function serviceExcluirPedido($id){
-		if ($pedido = excluirPedido($id)){
-			return $pedido;
-		}
-	}
-	function serviceListarPedido($id){
-		if ($pedido = listarPedido($id)){
-			return $pedido;
-		}
-	}
-	function serviceEditarPedido($statusCompra, $statusEntrega, $id){
-		if ($pedido = editarPedido($statusCompra, $statusEntrega, $id)) {
-			return $pedido;
-		}
-	}
 	function serviceListarStatusCompra(){
 		if ($pedido = listarStatusCompra()){
 			return $pedido;

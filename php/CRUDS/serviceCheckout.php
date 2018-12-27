@@ -15,3 +15,13 @@ function serviceListarCheckout($id, $qtd){
       return $checkout;
     }
   }
+  function serviceEditarPedido($statusCompra, $statusEntrega, $id){
+    if ($pedido = editarPedido($statusCompra, $statusEntrega, $id)) {
+      return $pedido;
+    }
+  }
+  function serviceExcluirPedido($id){
+    if ($pedido = excluirPedido($id)){
+      return $pedido;
+    }
+  }

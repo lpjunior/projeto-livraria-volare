@@ -380,43 +380,6 @@
 			return "Falha ao excluir o fornecedor";
 		}
 	}
-	function excluirPedido($id){
-		$conexao = getConnection();
-		$sql = "DELETE FROM pedidos where id = $id";
-		$resultado = mysqli_query($conexao, $sql);
-		if (mysqli_affected_rows($conexao) >= 1) {
-			return true;
-		} else {
-			return "Falha ao excluir o pedido";
-		}
-	}
-	function listarPedido($id){
-		$conexao = getConnection();
-		$sql = "SELECT * FROM pedidos";
-		if ($id != NULL){
-			$sql .= " WHERE id = $id";
-		}
-		$resultado = mysqli_query($conexao, $sql);
-		if (mysqli_affected_rows($conexao) >= 1){
-			$pedidos = array();
-			while ($linha = mysqli_fetch_assoc($resultado)){
-				array_push($pedidos, $linha);
-			}
-			return $pedidos;
-		} else {
-			return false;
-		}
-	}
-	function editarPedido($statusCompra, $statusEntrega, $id){
-		$conexao = getConnection();
-		$sql = "UPDATE pedidos SET id_status_compra = $statusCompra, id_status_entrega = $statusEntrega where id = $id";
-		$resultado = mysqli_query($conexao, $sql);
-		if (mysqli_affected_rows($conexao) >= 1) {
-			return true;
-		} else {
-			return "Falha ao editar o pedido";
-		}
-	}
 	function listarStatusCompra(){
 		$conexao = getConnection();
 		$sql = "SELECT * FROM status_compra";
