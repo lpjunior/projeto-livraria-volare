@@ -111,3 +111,8 @@ require_once 'crud_usuario.php';
 			return $fornecedor;
 		}
 	}
+	function servicePesquisarFornecedor($n){
+		if ($fornecedor = pesquisarFornecedor($n)) {
+			return $fornecedor;
+		}
+	}

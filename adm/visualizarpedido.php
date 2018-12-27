@@ -1,9 +1,12 @@
 <?php require_once("header.php"); ?>
 <div class="container-fluid col-md-8 col-xs-12 centraliza">
-  <h1 class="fontedezoito mt-3">Pedido_id: <b> 00</b></h1>
+  <h1 class="fontedezoito mt-3">Pedido_id: <b> <?=$_GET['id'];?></b></h1>
     <div class="row bg-white">
         <section class="col-xs-12 col-sm-4 col-md-4 col-lg-4 mt-4">
-
+          <?php
+          /* $pedido = serviceListarPedido($_GET['id']);
+          foreach ($pedido as $i) { */
+          ?>
                 <h1 class="fontevinte">Endereço de entrega</h1>
                 <p class="fontedezesseis">Nome do destinatário: nomedousuario</p>
                 <p class="displayblock fontedezesseis">CEP: xxxxx-xxx Estado: xx</p>

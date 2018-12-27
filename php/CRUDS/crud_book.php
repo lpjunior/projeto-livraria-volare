@@ -130,7 +130,7 @@ function excluirLivro($id){
 	function pesquisarLivro($n, $value, $idioma, $preco, $categoria){
 		$conexao = getConnection();
 		$sql = "SELECT
-		prod.id,
+		prod.id as id,
 		prod.titulo,
 		prod.autor,
 		prod.editora,
@@ -144,7 +144,7 @@ function excluirLivro($id){
 		prod.dimensoes,
 		prod.quantidade,
 		cat.categoria,
-		cat.id,
+		cat.id as catId,
 		subc.assunto,
 		forn.nome as fornecedor,
 		imgcapa.nome as imagemcapa,

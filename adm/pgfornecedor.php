@@ -16,13 +16,14 @@ Ainda nessas três páginas implementar o php na busca;
 	     <h1 class="fontedezoito text-left pb-2 pt-2 opacidade"><i class="fas fa-caret-right"></i>&nbsp;<i>Fornecedores</i></h1>
         <div>
           <!-- BUSCA -->
+          <form action="#" method="POST">
           <div class="input-group mb-4 ml-2 mr-2 pr-2">
-          <input type="text" class="form-control col-md-3" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
+          <input name="fornecedor" type="text" class="form-control col-md-3" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
             <div class="input-group-append">
-              <button class="btn btn-info opacidade" type="button">Pesquisar</button>
-            </div>
+              <input type="submit" name="pesquisa" class="btn btn-info opacidade" value="Pesquisar">
           </div>
           <!-- fim da busca -->
+        </form>
         </div>
 
        <table class="table table-hover text-center table-responsive mb-4">
@@ -38,10 +39,14 @@ Ainda nessas três páginas implementar o php na busca;
 						 </tr>
 				 </thead>
 				 <tbody class="centraliza bg-white"><!-- CONTEÚDO DA TABELA -->
-           <?php
-           $fornecedor = serviceListarFornecedor();
-           foreach ($fornecedor as $i) {
-           ?>
+             <?php
+               if (isset($_POST['pesquisa']) && $_POST['pesquisa']) {
+               $fornecedor = servicePesquisarFornecedor($_POST['fornecedor']);
+             } else {
+               $fornecedor = listarFornecedor();
+             }
+             foreach ($fornecedor as $i) {
+             ?>
 						<tr><!--linha1-->
 							 <td> <?=$i['nome']?></td>
 							 <td> <?=$i['razao_social']?></td>

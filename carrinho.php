@@ -1,6 +1,5 @@
 <?php
-$app->get('/carrinho', function ($request, $response, $args) {
-?>
+$app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {?>
     <div class="container-fluid col-md-10 col-12 ">
         <div class="row mt-4">
             <div class="col-12 col-md-8">
@@ -15,7 +14,7 @@ $app->get('/carrinho', function ($request, $response, $args) {
                                     <div class="col d-flex align-items-start">
                                         <div class="float-left pl-3 pt-2">
 												<p class="mb-0 displayblock text-center">titulo</p><!--JS PARA COLOCAR RETICÊNCIAS NOS TÍTULOS GRANDES-->
-												<p class="mb-0 displayblock text-center"><i class="fas fa-dollar-sign">00,00</i></p>		
+												<p class="mb-0 displayblock text-center"><i class="fas fa-dollar-sign">00,00</i></p>
 									    </div>
                                     </div>
                                     <div class="col">

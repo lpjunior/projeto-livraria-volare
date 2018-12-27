@@ -4,13 +4,16 @@
     <h1 class="fontedezoito text-left pb-2 pt-2 opacidade"><i class="fas fa-caret-right"></i>&nbsp;<i>Produtos</i></h1>
       <div>
         <!-- BUSCA -->
+          <form action="#" method="POST">
         <div class="input-group mb-4 ml-2 mr-2 pr-2">
-        <input type="text" class="form-control col-md-3" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <input name="buscar-livro-adm" type="text" class="form-control col-md-3" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
           <div class="input-group-append">
-            <button class="btn btn-info opacidade" type="button">Pesquisar</button>
+            <input name="pesquisa" type="submit" class="btn btn-info opacidade" type="button" value="Pesquisar">
+          </form>
           </div>
         </div>
         <!-- fim da busca -->
+
       </div>
 				<table class="table table-hover text-center table-responsive mb-4">
           <thead class="centraliza">
@@ -29,7 +32,11 @@
           </thead>
           <tbody class="centraliza bg-white"><!-- CONTEÚDO DA TABELA -->
             <?php
+            if (isset($_POST['pesquisa']) && $_POST['pesquisa']) {
+            $produto = serviceBuscarLivro($_POST['buscar-livro-adm'], ' ', NULL, NULL, NULL);
+          } else {
             $produto = listarLivro(NULL, NULL);
+          }
             foreach ($produto as $i) {
               $i['sinopse'] = resume($i['sinopse'], 250);
             ?>
