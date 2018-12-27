@@ -12,7 +12,7 @@ $app->get('/sobre', function ($request, $response, $args) {
     </div>
 
     <div class="has-animation animation-rtl" data-delay="2000">
-      <img src="https://placeimg.com/640/480/nature" width="600" />
+      <img src="https://placeimg.com/640/480/nature" alt="" width="600" />
     </div>
 </section>
 <?php }); ?>

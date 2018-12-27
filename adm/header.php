@@ -82,6 +82,12 @@ require_once '../php/CRUDS/serviceUsuario.php';
                     <a href="consultavendas.php" class="text-dark">vendas</a>
                 </div>
               </li>
+              <div class="dropdown-divider"></div>
+              <li>
+                <div class="pr-2 pl-1 mb-0">
+                    <a href="pgusuarios.php" class="text-dark">usuários</a>
+                </div>
+              </li>
             </ul>
           </div> <!-- fim da div dropdown -->
           <div class="nav-item">
