@@ -1,8 +1,7 @@
 <?php
 require_once '../php/CRUDS/serviceBook.php';
 require_once '../php/CRUDS/serviceUsuario.php';
-require_once '../php/CRUDS/serviceCheckout.php';
-?>
+require_once '../php/CRUDS/serviceCheckout.php';?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -18,15 +17,6 @@ require_once '../php/CRUDS/serviceCheckout.php';
   <link rel="stylesheet" type="text/css" href="../css/estilo.css">
 </head>
 <body class="planodefundo">
-  <?php if (!isset($_SESSION['user'])){?>
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/dadosFacebook.js"></script>
-    <script src="js/facebook-sdk.js"></script>
-  <?php }
-  if ($_SERVER['REQUEST_URI'] == '/projeto-livraria-volare/produto/') {
-    header('location: ../error');
-  }
-  ?>
   <div>
     <nav class="navbar navbar-expand-md navbar-light COLORE centraliza">
         <div class="row mx-auto">

@@ -16,10 +16,8 @@ require_once 'serviceUsuario.php';
 		} elseif (isset($_POST['btn-entrar'])){
 			if ($user = serviceLoginAdmin($_POST['txtEmail'], $_POST['isenha'])){
 				if ($user === true){
-					echo "a";
 					header('location: ../../adm/adm.php');
 				} else {
-					echo "b";
 					$_SESSION['erro'] = $user;
 					header('location: ../../adm/adm.php');
 				}

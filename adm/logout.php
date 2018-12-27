@@ -1,4 +1,3 @@
-
 <?php
 // Só poder entrar quando logado
 session_start();

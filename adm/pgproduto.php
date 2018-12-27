@@ -1,4 +1,13 @@
-<?php require_once("header.php"); ?>
+<?php
+if (!isset($_SESSION)){
+	session_start();
+}
+if (!isset($_SESSION['user_id'])){
+	header('Location: adm.php');
+}
+require_once("header.php");
+// echo  $_SESSION['logado']."<br>".$_SESSION['nome_adm'];
+?>
 <section class="row container-fluid">
   <div class="col-12 col-sm-12 col-md-10 col-lg-10 centraliza mt-3">
     <h1 class="fontedezoito text-left pb-2 pt-2 opacidade"><i class="fas fa-caret-right"></i>&nbsp;<i>Produtos</i></h1>
