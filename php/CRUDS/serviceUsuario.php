@@ -81,3 +81,48 @@ require_once 'crud_usuario.php';
 			return $user;
 		}
 	}
+	function serviceExcluirFornecedor($id){
+		if ($user = excluirFornecedor($id)){
+			return $user;
+		}
+	}
+	function serviceExcluirPedido($id){
+		if ($pedido = excluirPedido($id)){
+			return $pedido;
+		}
+	}
+	function serviceListarPedido($id){
+		if ($pedido = listarPedido($id)){
+			return $pedido;
+		}
+	}
+	function serviceEditarPedido($statusCompra, $statusEntrega, $id){
+		if ($pedido = editarPedido($statusCompra, $statusEntrega, $id)) {
+			return $pedido;
+		}
+	}
+	function serviceListarStatusCompra(){
+		if ($pedido = listarStatusCompra()){
+			return $pedido;
+		}
+	}
+	function serviceListarStatusEntrega(){
+		if ($pedido = listarStatusEntrega()){
+			return $pedido;
+		}
+	}
+	function serviceEditarFornecedor($nome, $razao_social, $cnpj, $endereco, $telefone, $email, $formap, $id){
+		if ($fornecedor = editarFornecedor($nome, $razao_social, $cnpj, $endereco, $telefone, $email, $formap, $id)){
+			return $fornecedor;
+		}
+	}
+	function serviceListarComprasRealizadas(){
+		if ($compra = listarComprasRealizadas()){
+			return $compra;
+		}
+	}
+	function serviceInserirFornecedor($nome, $razao_social, $cnpj, $endereco, $telefone, $email, $formap){
+		if ($fornecedor = inserirFornecedor($nome, $razao_social, $cnpj, $endereco, $telefone, $email, $formap)){
+			return $fornecedor;
+		}
+	}

@@ -18,7 +18,7 @@ function inserirLivro($categoria, $titulo, $autor, $editora, $isbn, $numeroPagin
 	$resultado = mysqli_query($conexao, $sql);
 	$sql = "INSERT INTO imagemthumb VALUES (NULL, '$imgCapa', $id)";
 	$resultado = mysqli_query($conexao, $sql);
-	$sql = "INSERT INTO Produto_has_Idioma VALUES ($id, 1)";
+	$sql = "INSERT INTO Produto_has_Idioma VALUES ($id, $idioma)";
 	$resultado = mysqli_query($conexao, $sql);
 	// Botar o $idioma no insert
 	if (mysqli_affected_rows($conexao) >= 1) {
@@ -28,18 +28,33 @@ function inserirLivro($categoria, $titulo, $autor, $editora, $isbn, $numeroPagin
 	}
 }
 ## EDITAR LIVROS
-function editarLivro($categoria, $titulo, $autor, $editora, $isbn, $numeroPaginas, $sinopse, $peso, $data, $fornecedor, $preco, $subcategorias, $capa, $dimensoes, $quantidade, $idioma, $fotos, $id){
+function editarLivro($categoria, $titulo, $autor, $editora, $isbn, $numeroPaginas, $sinopse, $peso, $data, $fornecedor, $preco, $subcategorias, $capa, $dimensoes, $quantidade, $idioma, $imagem, $id){
 	$conexao = getConnection();
+	// Editando o produto
 	$sql = "UPDATE produto SET Categoria_id = $categoria, titulo = '$titulo', autor = '$autor', editora = '$editora', isbn = '$isbn',
-	numeroPaginas = '$numeroPaginas', sinopse = '$sinopse', peso = '$peso', datapublicacao = $data, fornecedores_id = '$fornecedor',
-	preco = '$preco', SubCategorias_id = $subcategorias,
-	TipoDeCapa_id = $capa, quantidade = $quantidade WHERE id = $id";
+	numeroPaginas = '$numeroPaginas', sinopse = '$sinopse', peso = '$peso', datapublicacao = '$data', fornecedores_id = '$fornecedor',
+	preco = '$preco', SubCategorias_id = '$subcategorias',
+	TipoDeCapa_id = '$capa', quantidade = '$quantidade', dimensoes = '$dimensoes' WHERE id = $id";
 	$resultado = mysqli_query($conexao, $sql);
+	echo $sql."<br>";
+	if ($imagem != NULL){
+	// Editando as imagens
+	$imgCapa = $imagem['capa'];
+	$imgThumb = $imagem['0'];
+	$sql = "UPDATE imagemcapa SET nome = '$imgCapa' where produto_id = $id";
+	$resultado = mysqli_query($conexao, $sql);
+	$sql = "UPDATE imagemthumb SET nome = '$imgThumb' where produto_id = $id";
+	$resultado = mysqli_query($conexao, $sql);
+}
+	// Pegando o id do idioma
 	$sql = "SELECT * from idiomas where idioma = $idioma";
 	$resultado = mysqli_query($conexao, $sql);
 	$idIdiomas = mysqli_insert_id($conexao);
-	$sql = "UPDATE Produto_has_Idioma set ($id, $idIdiomas)";
+	echo $sql."<br>";
+	// Editando o idioma com o id
+	$sql = "UPDATE Produto_has_Idioma set Idioma_id = $idioma where Idioma_id = $idIdiomas";
 	$resultado = mysqli_query($conexao, $sql);
+	echo $sql."<br>";
 	if (mysqli_affected_rows($conexao) >= 1) {
 		return true;
 	} else {
