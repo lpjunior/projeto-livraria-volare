@@ -24,17 +24,22 @@ if (!isset($_SESSION['user_id'])){
               </tr>
           </thead>
           <tbody class="centraliza bg-white"><!-- CONTEÚDO DA TABELA -->
+						<?php
+						$compra = serviceListarComprasRealizadas();
+						foreach ($compra as $i) {
+						?>
               <tr>
-                <td>nome</td>
-                <td>cpf</td>
-                <td>título</td>
-                <td>autor</td>
-                <td>editora</td>
-                <td>numero_pedido</td>
-                <td>data_pedido</td>
-                <td>qtd</td>
-                <td>preço</td>
+                <td><?=$i['nome']?></td>
+                <td><?=$i['cpf']?></td>
+                <td><?=$i['titulo']?></td>
+                <td><?=$i['autor']?></td>
+                <td><?=$i['editora']?></td>
+                <td><?=$i['numero_pedido']?></td>
+                <td><?=$i['data_pedido']?></td>
+                <td><?=$i['quantidade']?></td>
+                <td><?=$i['preco']?></td>
               </tr>
+						<?php } ?>
           </tbody><!-- fim do conteúdo da tabela-->
         </table>
 

@@ -18,41 +18,41 @@
                 <th scope="col">Data</th>
                 <th scope="col">Pedido_id</th>
 								<th scope="col">status compra</th>
-                <th scope="col">Previsão de entrega</th>
 								<th scope="col">status entrega</th>
 								<th scope="col">Visualizar pedido</th>
               </tr>
           </thead>
           <tbody class="centraliza bg-white"><!-- CONTEÚDO DA TABELA
           **********ordenar pela data do pedido-->
+          <?php
+          $pedido = serviceListarPedido(NULL);
+          foreach ($pedido as $i) {
+          ?>
               <tr>
-									<td>datapedido</td>
-									<td>id</td>
-									<td>status da compra</td>
-                  <td>data de previsão de entrega</td>
-									<td>status da entrega</td>
+									<td><?=$i['data_pedido']?></td>
+									<td><?=$i['id']?></td>
+									<td><?php if ($i['id_status_compra'] == 1){
+                    echo "Em análise";
+                  } elseif ($i['id_status_compra'] == 2){
+                    echo "Pagamento Efetuado";
+                  } else {
+                    echo "Cancelado";
+                  } ?></td>
+                  <td><?php if ($i['id_status_entrega'] == 1){
+                    echo "Postado";
+                  } elseif ($i['id_status_entrega'] == 2){
+                    echo "A caminho do endereço de entrega";
+                  } else {
+                    echo "Entregue";
+                  }?></td>
                   <!-- LINKAR PELO ID DO PEDIDO O A ABAIXO -->
-									<td><a class="linkstyle1" href="#"><i class="fas fa-sign-in-alt"></i><a/></td>
+									<td><a class="linkstyle1" href="visualizarpedido.php?id=<?=$i['id']?>"><i class="fas fa-sign-in-alt"></i><a/></td>
 
                     <!-- botões editar e excluir -->
-     							 <td><a class="linkstyle2" href="editaPedido.php?id=<?php echo $dados['id']; ?>"><i class="fas fa-pen"></i><a/></td>
-     							 <td><a class="linkstyle3" href="#modal<?php echo $dados['id'];?>"><i class="fas fa-trash"></i><a/></td>
-                     <!-- Modal Structure -->
-      				            <div id="modal<?php echo $dados['id'];?>" class="modal">
-      				              <div class="modal-content">
-      						             <h4>Atenção </h4>
-      						             <p>Tem certeza que deseja excluir esse fornecedor ?</p>
-      				           		</div>
-      				              <div class="modal-footer">
-      					                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-      													<form action="php_cruds/delete.php" method ="POST">
-      													<input type="hidden" name="id" value="<?php echo $dados['id'];?>">
-      													<button type="submit"name="btn-deletar" class="btn red">sim, quero deletar</button>
-      													</form>
-      				           		</div>
-      				           </div>
-                      <!-- fim do modal estructure -->
+     							 <td><a class="linkstyle2" href="editaPedido.php?id=<?=$i['id']?>"><i class="fas fa-pen"></i><a/></td>
+     							 <td><a class="linkstyle3" href="../php/CRUDS/excluiPedido.php?id=<?=$i['id']?>"><i class="fas fa-trash"></i><a/></td>
 							</tr>
+            <?php } ?>
 					</tbody>
 				</table>
 	</div>

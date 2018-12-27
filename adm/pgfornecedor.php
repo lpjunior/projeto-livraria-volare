@@ -24,54 +24,37 @@ Ainda nessas três páginas implementar o php na busca;
           </div>
           <!-- fim da busca -->
         </div>
+
        <table class="table table-hover text-center table-responsive mb-4">
 				 <thead class="centraliza">
 						 <tr>
+							 <th scope="col">Nome</th>
 							 <th scope="col">Razão Social</th>
 							 <th scope="col">CNPJ</th>
-							 <th scope="col">inscEstadual</th>
-							 <th scope="col">CEP</th>
-							 <th scope="col">Logradouro</th>
-							 <th scope="col">Número</th>
-							 <th scope="col">complemento</th>
-							 <th scope="col">bairro</th>
-							 <th scope="col">cidade</th>
-							 <th scope="col">Estado</th>
+							 <th scope="col">Endereço</th>
 							 <th scope="col">Telefone</th>
-							 <th scope="col">E-mail</th>
+							 <th scope="col">Email</th>
+							 <th scope="col">Forma de Pagamento</th>
 						 </tr>
 				 </thead>
 				 <tbody class="centraliza bg-white"><!-- CONTEÚDO DA TABELA -->
+           <?php
+           $fornecedor = serviceListarFornecedor();
+           foreach ($fornecedor as $i) {
+           ?>
 						<tr><!--linha1-->
-							 <td> <?php echo $dados['razaoSocial'];?></td>
-							 <td> <?php echo $dados['cnpj'];?></td>
-							 <td> <?php echo $dados['inscEstadual'];?></td>
-							 <td> <?php echo $dados['cep'];?></td>
-							 <td> <?php echo $dados['logradouro'];?></td>
-							 <td> <?php echo $dados['numero'];?></td>
-							 <td> <?php echo $dados['complemento'];?></td>
-							 <td> <?php echo $dados['bairro'];?></td>
-							 <td> <?php echo $dados['cidade'];?></td>
-							 <td><?php echo $dados['estado'];?></td>
-							 <td> <?php echo $dados['telefone'];?></td>
-							 <td> <?php echo $dados['email'];?></td>
+							 <td> <?=$i['nome']?></td>
+							 <td> <?=$i['razao_social']?></td>
+							 <td> <?=$i['cnpj']?></td>
+							 <td> <?=$i['endereco']?></td>
+							 <td> <?=$i['telefone']?></td>
+							 <td> <?=$i['email']?></td>
+							 <td> <?=$i['forma_pagamento']?></td>
+
                <!-- botões editar e excluir -->
-							 <td><a class="linkstyle2" href="editaFornecedor.php?id=<?php echo $dados['id']; ?>"><i class="fas fa-pen"></i><a/></td>
-							 <td><a class="linkstyle3" href="#modal<?php echo $dados['id'];?>"><i class="fas fa-trash"></i><a/></td>
-							 <!-- Modal Structure -->
-				            <div id="modal<?php echo $dados['id'];?>" class="modal">
-				              <div class="modal-content">
-						             <h4>Atenção </h4>
-						             <p>Tem certeza que deseja excluir esse fornecedor ?</p>
-				           		</div>
-				              <div class="modal-footer">
-					                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-													<form action="php_cruds/delete.php" method ="POST">
-													<input type="hidden" name="id" value="<?php echo $dados['id'];?>">
-													<button type="submit"name="btn-deletar" class="btn red">sim, quero deletar</button>
-													</form>
-				           		</div>
-				           </div>
+							 <td><a class="linkstyle2" href="editaFornecedor.php?id=<?=$i['id']?>"><i class="fas fa-pen"></i><a/></td>
+							 <td><a class="linkstyle3" href="../php/CRUDS/excluiFornecedor.php?id=<?=$i['id']?>"><i class="fas fa-trash"></i><a/></td>
+               <?php } ?>
                 <!-- fim do modal estructure -->
 						</tr><!--fim da linha-->
 		      </tbody>
