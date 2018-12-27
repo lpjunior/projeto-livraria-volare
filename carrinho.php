@@ -8,13 +8,25 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {?
                         <ul>
                             <li class="card">
                                 <div class="row no-gutters">
+                                  <?php
+                                  if (isset($_SESSION['user_id'])){
+                                  $carrinho = serviceListarCarrinho($_SESSION['user_id']);
+                                } elseif (isset($_SESSION['produto'])) {
+                                  $carrinho = $_SESSION['produto'];
+                                }
+                                else {
+                                  $carrinho = NULL;
+                                }
+                                if ($carrinho != NULL) {
+                                  foreach ($carrinho as $b => $i) {
+                                  ?>
                                     <div class="col-auto">
                                         <img src="http://lorempixel.com/85/85/" class="img-fluid" alt="">
                                     </div>
                                     <div class="col d-flex align-items-start">
                                         <div class="float-left pl-3 pt-2">
-												<p class="mb-0 displayblock text-center">titulo</p><!--JS PARA COLOCAR RETICÊNCIAS NOS TÍTULOS GRANDES-->
-												<p class="mb-0 displayblock text-center"><i class="fas fa-dollar-sign">00,00</i></p>
+												<p class="mb-0 displayblock text-center"><?= $i['titulo'] = resume($i['titulo'], 6)?></p><!--JS PARA COLOCAR RETICÊNCIAS NOS TÍTULOS GRANDES-->
+												<p class="mb-0 displayblock text-center"><i class="fas fa-dollar-sign"><?=number_format($i['preco'], 2, ',', '.'); // retorna R$100.000,50?></i></p>
 									    </div>
                                     </div>
                                     <div class="col">
@@ -26,6 +38,7 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {?
                                             <a class="nav-link text-dark opacidade float-right" href="#"><i class="fas fa-trash"></i></a>
                                         </div>
                                     </div>
+                                  <?php } } ?>
                                 </div>
                             </li>
                         </ul>
@@ -66,8 +79,8 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {?
                                 <input type="text" id="qtdProd" style="display:inline" maxlength="2" class="text-center form-control col-2" value="<?=(isset($_SESSION['user_id']) ? $i['quantidade'] : $i['qtd'])?>">
                                 <button id="btnPlus" class="btn btn-light btn-sm">+</button>
                             </td>
-                            <td>R$ <span id="idpreco"><?=(isset($_SESSION['user_id']) ? $i['preco'] : $i[0]['preco'])?></span></td>
-                            <td>R$00,00</td>
+                            <td>R$ <span id="idpreco"><?=(isset($_SESSION['user_id']) ? number_format($i['preco'], 2, ',', '.') : number_format($i[0]['preco'], 2, ',', '.'))?></span></td>
+                            <td>R$<?=number_format($i['preco'], 2, ',', '.')?></td>
                         </tr>
                         <tr>
                     </tbody>

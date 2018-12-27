@@ -50,7 +50,7 @@ $app->get('/home', function ($request, $response, $args) {?>
                             </div>
                             <div class="card-body">
                                 <h4 class="fontedezesseis"><?=$i['autor']?></h4>
-                                <h3 class="fontevinte">R$ <?=$i['preco']?></h3>
+                                <h3 class="fontevinte">R$ <?=number_format($i['preco'], 2, ',', '.');?></h3>
                                 <div class="btn-group">
                                   <form action="php/CRUDS/carrinhoSystem.php?acao=add&id=<?=$i['id']?>" method="POST">
                                     <button type="submit" class="btn btn-sm btn-outline-secondary">   <i class="fa fa-shopping-cart"></i>   </button>

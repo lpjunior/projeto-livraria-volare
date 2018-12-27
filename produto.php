@@ -43,7 +43,7 @@ $app->get('/produto', function ($request, $response, $args) {
                     <div class="col-md-12 paddingtexto">
                         <h1 class="paddingtexto fontevinteecinco"><?=$i['titulo']?></h1>
                         <h2 class="fontevinte">Autor: <?=$i['autor']?> </h2>
-                        <h2><span style="font-size: 20px;"><i class="fas fa-dollar-sign"></i></span>&nbsp;<span style="font-size: 24px;"><?=$i['preco']?></span></h2>
+                        <h2><span style="font-size: 20px;"><i class="fas fa-dollar-sign"></i></span>&nbsp;<span style="font-size: 24px;"><?=number_format($i['preco'], 2, ',', '.')?></span></h2>
                         <!--frete--><h4 class="paddingtexto fontedezesseis"><i class="fas fa-dollar-sign"></i></span>&nbsp;Frete:</h4>
                         <div class="input-group mb-4 input-sm col-xs-4 largurainput">
                             <input type="text" class="form-control cep" placeholder="Digite o CEP" aria-label="Digite o cep" aria-describedby="button-addon2">
@@ -63,7 +63,7 @@ $app->get('/produto', function ($request, $response, $args) {
                     <h4 class="fontedezesseis">Idioma: <?=$i['idioma']?></h4>
                     <h4 class="fontedezesseis">Dimensões: <?=$i['dimensoes']?></h4>
                     <h4 class="fontedezesseis">Tipo de capa: <?=$i['tipo_capa']?></h4>
-                    <h4 class="fontedezesseis">Ano de publicação: <?=$i['data_publicacao']?></h4>
+                    <h4 class="fontedezesseis">Ano de publicação: <?=$data = date("Y", strtotime($i['data_publicacao']))?></h4>
                     <h4 class="fontedezesseis">Número de Páginas: <?=$i['numero_paginas']?></h4>
                     <!-- INICIO FORMULARIO BOTAO PAGSEGURO
                     <form action="https://pagseguro.uol.com.br/checkout/v2/payment.html" method="post">
@@ -96,7 +96,7 @@ $app->get('/produto', function ($request, $response, $args) {
                             </div>
                             <div class="card-body">
                                 <h4 class="fontedezesseis"><?=$i['autor']?></h4>
-                                <h3 class="fontevinte">R$ <?=$i['preco']?></h3>
+                                <h3 class="fontevinte">R$ <?=number_format($i['preco'], 2, ',', '.')?></h3>
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-sm btn-outline-secondary">&nbsp;&nbsp;&nbsp;<i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;&nbsp;</button>
                                 </div>
@@ -135,6 +135,7 @@ $app->get('/produto', function ($request, $response, $args) {
                             $comentarios = serviceListarComentarios(8, $_GET['id']);
                             if (!is_array($comentarios)){
                               $comentarios = array('0' => array('id' => 'a', 'comentario' => '<h1>Não existem comentários nesse livro, seja o primeiro!</h1>'));
+                            }
                             foreach ($comentarios as $i) {
                             ?>
                             <tbody>
@@ -155,7 +156,7 @@ $app->get('/produto', function ($request, $response, $args) {
                     </div>
             </section> <!-- fim da section comentários -->
 
-          <?php } } } else{ ?>
+          <?php } } else{ ?>
             </table>
             <h1 class="text-center">Livro não encontrado</h1>
             <?php
