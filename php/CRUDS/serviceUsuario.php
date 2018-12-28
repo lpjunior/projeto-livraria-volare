@@ -16,8 +16,8 @@ require_once 'crud_usuario.php';
 			return $user;
 		}
 	}
-	function serviceListarUsu($limit, $id){
-		if ($user = listarUsuario($limit, $id)){
+	function serviceListarUsu($limit, $id, $admin){
+		if ($user = listarUsuario($limit, $id, $admin)){
 			return $user;
 		}
 	}
@@ -114,5 +114,15 @@ require_once 'crud_usuario.php';
 	function servicePesquisarFornecedor($n){
 		if ($fornecedor = pesquisarFornecedor($n)) {
 			return $fornecedor;
+		}
+	}
+	function serviceListarClienteId(){
+		if ($cliente = listarClienteId()) {
+			return $cliente;
+		}
+	}
+	function servicePesquisarCliente($n){
+		if ($cliente = pesquisarCliente($n)) {
+			return $cliente;
 		}
 	}

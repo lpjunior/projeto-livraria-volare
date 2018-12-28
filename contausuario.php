@@ -30,9 +30,6 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                     <li class="nav-item">
                         <a class="nav-link font-weight-bold" data-toggle="pill" href="#centralatendimento">Central de Atendimento</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link font-weight-bold" data-toggle="pill" href="#sair">Sair</a>
-                    </li>
                 </ul>
                 </div>
                 <!-- Tab panes -->
@@ -43,7 +40,7 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                         <form action="php/CRUDS/editarUsuario.php" method="POST">
                             <div class="form-group"> <h5>Dados Pessoais</h5>
                                 <?php
-                                $usuario = serviceListarUsu(NULL, $_SESSION['user_id']);
+                                $usuario = serviceListarUsu(NULL, $_SESSION['user_id'], NULL);
                                 if (isset($_SESSION['editarFalse'])){
                                   echo $_SESSION['editarFalse'];
                                 }
@@ -305,9 +302,10 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                     <div class="row text-center"> <!-- DIV QUE JUNTA OS CARDS, todos tem que ficar dentro dela -->
                       <?php
                       $livro = serviceListarItemDesejado();
+                      if (is_array($livro)){
                       foreach($livro as $i){
                       ?>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                           <div class="card mb-4 shadow-sm">
                             <img class="card-img-top" src="img/placeholder1.jpg" alt="Card image cap">
                             <div class="card-header">
@@ -324,7 +322,9 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                             </div>
                         </div>
                         </div>
-                      <?php } ?>
+                      <?php } } else {
+                        echo "<h1>Não existe nenhum item na sua lista de desejos</h1>";
+                      } ?>
                     </div>  <!-- FIM DA DIV QUE JUNTA OS CARDS -->
                 </section>
                     </div>
@@ -353,10 +353,6 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                             </div>
                             </div>
                         </div>
-                    </div>
-                    <div id="sair" class="tab-pane fade"><br>
-                        <h3>Sair</h3>
-                            <p>Ut taysr perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
                     </div>
                 </div>
             </div>

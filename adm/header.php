@@ -21,7 +21,7 @@ require_once '../php/CRUDS/serviceCheckout.php';?>
     <nav class="navbar navbar-expand-md navbar-light COLORE centraliza">
         <div class="row mx-auto">
           <div class="nav-item pr-2 pl-2 mb-0">
-            <a class="nav-link text-dark opacidade" href="pgadm.php"><i class="fas fa-home"></i>&nbsp;Home</a>
+            <a class="nav-link text-dark opacidade" href="adm.php"><i class="fas fa-home"></i>&nbsp;Home</a>
           </div>
           <div class="nav-item pr-2 pl-2 mb-0">
             <!-- *****LINKAR PÁGINA ******--><a class="nav-link text-dark opacidade" href="  "><i class="fas fa-user"></i>&nbsp;Meu perfil</a>

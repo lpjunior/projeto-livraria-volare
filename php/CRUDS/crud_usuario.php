@@ -119,17 +119,19 @@ function editarInformacoes($nome, $sobrenome, $email, $cpf, $datanascimento, $ge
 	}
 }
 ## Perfil do usuário
-function listarUsuario($limit, $id){
+function listarUsuario($limit, $id, $admin){
 	$conexao = getConnection();
 	# Select do perfil do usuário
 	$sql = "SELECT
-
+	usu.id,
 	usu.nome,
 	usu.sobrenome,
 	usu.email,
 	usu.cpf,
+	usu.ativo,
 	usu.datanascimento,
 	ge.genero,
+	usu.perfil_id,
 	tel.numero as telefone
 
 	from usuarios usu
@@ -141,6 +143,10 @@ function listarUsuario($limit, $id){
 	}
 	if ($id != NULL){
 		$sql .= " WHERE usu.id = $id";
+	}
+	if ($admin != NULL){
+		$idUsuario = $_SESSION['user_id'];
+		$sql .= " WHERE usu.id != $idUsuario";
 	}
 	$resultado = mysqli_query($conexao, $sql);
 	if (mysqli_affected_rows($conexao) >= 1) {
@@ -215,7 +221,7 @@ function loginUsuarioAdmin($email, $senha){
 	$conexao = getConnection();
 	$email = mysqli_escape_string($conexao, $email);
 	$senha = mysqli_escape_string($conexao, $senha);
-	$sql = "SELECT nome, email, id FROM usuarios where email = '$email' and senha = md5('$senha')";
+	$sql = "SELECT nome, email, id FROM usuarios where email = '$email' and senha = md5('$senha') and perfil_id = 2";
 	$resultado = mysqli_query($conexao, $sql);
 	if (mysqli_affected_rows($conexao) >= 1) {
 		$_SESSION['user'] = mysqli_fetch_assoc($resultado);
@@ -477,3 +483,32 @@ function pesquisarFornecedor($n){
 		return "<h1 class='text-center'>A busca não teve resultados.</h1>";
 	}
 }
+function listarClienteId(){
+	$conexao = getConnection();
+	$sql = "SELECT * from perfil";
+	$resultado = mysqli_query($conexao, $sql);
+	if (mysqli_affected_rows($conexao) >= 1) {
+		$arr = array();
+		## Botar o resultado dentro de um array e retornar
+		while ($linha = mysqli_fetch_assoc($resultado)){
+			array_push($arr, $linha);
+		}
+		return $arr;
+	}
+}
+function pesquisarCliente($n){
+	$conexao = getConnection();
+	$sql = "SELECT * FROM usuarios";
+	$sql .= " WHERE (nome like '%$n%' or email like '%$n%' or cpf like '%$n%')";
+	$resultado = mysqli_query($conexao, $sql);
+	if (mysqli_affected_rows($conexao) >= 1) {
+		$arr = array();
+		## Botar o resultado dentro de um array e retornar
+		while ($linha = mysqli_fetch_assoc($resultado)){
+			array_push($arr, $linha);
+		}
+		return $arr;
+	} else {
+		return "<h1 class='text-center'>A busca não teve resultados.</h1>";
+	}
+	}
