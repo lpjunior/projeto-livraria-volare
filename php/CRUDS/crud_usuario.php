@@ -48,7 +48,7 @@ function logarUsuario($email, $senha){
 	$conexao = getConnection();
 	$email = mysqli_escape_string($conexao, $email);
 	$senha = mysqli_escape_string($conexao, $senha);
-	$sql = "SELECT nome, email, id FROM usuarios where email = '$email' and senha = md5('$senha')";
+	$sql = "SELECT nome, email, id FROM usuarios where email = '$email' and senha = md5('$senha') and ativo = 1";
 	$resultado = mysqli_query($conexao, $sql);
 	## Caso tenha achado algum usuário com esse email e senha, pegue os dados e guarde na sessão
 	if (mysqli_affected_rows($conexao) >= 1) {
@@ -221,14 +221,14 @@ function loginUsuarioAdmin($email, $senha){
 	$conexao = getConnection();
 	$email = mysqli_escape_string($conexao, $email);
 	$senha = mysqli_escape_string($conexao, $senha);
-	$sql = "SELECT nome, email, id FROM usuarios where email = '$email' and senha = md5('$senha') and perfil_id = 2";
+	$sql = "SELECT nome, email, id FROM usuarios where email = '$email' and senha = md5('$senha') and perfil_id = 2 and ativo = 1";
 	$resultado = mysqli_query($conexao, $sql);
 	if (mysqli_affected_rows($conexao) >= 1) {
 		$_SESSION['user'] = mysqli_fetch_assoc($resultado);
 		$_SESSION['user_id'] = $_SESSION['user']['id'];
 		return true;
 	} else {
-		return false;
+		return header('location: ../../adm/adm.php');
 	}
 }
 function inserirItemDesejado($usuarioID, $produtoID){
@@ -512,3 +512,23 @@ function pesquisarCliente($n){
 		return "<h1 class='text-center'>A busca não teve resultados.</h1>";
 	}
 	}
+	function editaStatusPerfil($perfil, $id){
+		$conexao = getConnection();
+		$sql = "UPDATE usuarios SET perfil_id = $perfil where id = $id";
+		$resultado = mysqli_query($conexao, $sql);
+		if (mysqli_affected_rows($conexao) >= 1) {
+			return true;
+		} else {
+			return "Falha ao editar o fornecedor";
+		}
+	}
+	function editaStatusAtivo($ativo, $id){
+			$conexao = getConnection();
+			$sql = "UPDATE usuarios SET ativo = $ativo where id = $id";
+			$resultado = mysqli_query($conexao, $sql);
+			if (mysqli_affected_rows($conexao) >= 1) {
+				return true;
+			} else {
+				return "Falha ao editar o fornecedor";
+			}
+		}

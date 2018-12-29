@@ -53,31 +53,27 @@ require_once("header.php");
                 <!--buttons-->
                 <td><a class="linkstyle1" href="#"><i class="fas fa-box-open"></i><a/></td>
                 <!-- selects -->
+								<form action="../php/CRUDS/editaStatusCliente.php?id=<?=$i['id']?>" method="POST">
                 <td><!-- começo select 1-->
                   <div class="input-group input-group-sm mr-2">
-                    <select class="custom-select form-control" id="inputGroupSelect02">
+                    <select class="custom-select form-control" id="inputGroupSelect02" name="status-ativo">
 											<?php
-											$cliente2 = serviceListarUsu(NULL, $i['id'], 1);
-											foreach ($cliente2 as $b) {
-											?>
-											<!-- Value da opção é o valor do ativo, caso o valoro do ativo seja igual ao do usuário, selecione. Se o ativo for 1, mostre ativo, se for 0, mostre desativado -->
-											<option value="<?=$b['ativo']?>" <?=($b['ativo'] == $i['ativo'] ? "selected" : '')?>><?=($b['ativo'] == 1 ? 'Ativo' : 'Desativado')?></option>
-											<?php } ?> -->
-											<?php
-											if ($b['ativo'] == 1){ ?>
-												<option value="0">Desativado</option>
+											if ($i['ativo'] == 1){ ?>
+												<option value="1" selected>Ativo</option>
+												<option value="0">Desativo</option>
 											<?php } else { ?>
+												<option value="0" selected>Desativo</option>
 												<option value="1">Ativo</option>
 											<?php } ?>
                     </select>
                     <div class="input-group-append input-group-sm">
-                        <button class="input-group-text" aria-label="confirmar alteração"><i class="linkstyle2 fas fa-check-square"></i></button>
+                        <button type="submit" name="ativo" class="input-group-text" aria-label="confirmar alteração"><i class="linkstyle2 fas fa-check-square"></i></button>
                     </div>
                   </div>
                 </td><!--fim do select 1-->
 								<td><!-- começo select 1-->
                   <div class="input-group input-group-sm mr-3">
-                    <select class="custom-select form-control" id="inputGroupSelect02">
+                    <select class="custom-select form-control" id="inputGroupSelect02" name="status-perfil">
 											<?php
 											$cliente3 = serviceListarClienteId();
 											foreach ($cliente3 as $b) {
@@ -86,11 +82,12 @@ require_once("header.php");
 										<?php } ?>
                     </select>
                     <div class="input-group-append input-group-sm">
-                        <button class="input-group-text" aria-label="confirmar alteração"><i class="linkstyle2 fas fa-check-square"></i></button>
+                        <button type="submit" name="perfil" class="input-group-text" aria-label="confirmar alteração"><i class="linkstyle2 fas fa-check-square"></i></button>
                     </div>
                   </div>
                 </td><!--fim do select 1-->
               </tr>
+						</form>
 						<?php } ?>
           </tbody><!-- fim do conteúdo da tabela-->
         </table>

@@ -22,4 +22,4 @@ require_once 'serviceUsuario.php';
 					header('location: ../../adm/adm.php');
 				}
 			}
-}
+		}

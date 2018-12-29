@@ -126,3 +126,13 @@ require_once 'crud_usuario.php';
 			return $cliente;
 		}
 	}
+	function serviceEditaStatusPerfil($perfil, $id){
+		if ($cliente = editaStatusPerfil($perfil, $id)) {
+			return $cliente;
+		}
+	}
+	function serviceEditaStatusAtivo($ativo, $id){
+		if ($cliente = editaStatusAtivo($ativo, $id)) {
+			return $cliente;
+		}
+	}
