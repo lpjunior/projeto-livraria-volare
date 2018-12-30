@@ -21,7 +21,7 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {?
                                   foreach ($carrinho as $b => $i) {
                                   ?>
                                     <div class="col-auto">
-                                        <img src="http://lorempixel.com/85/85/" class="img-fluid" alt="">
+                                        <img src="http://lorempixel.com/85/85/" height="85" width="85" class="img-fluid" alt="capa do livro">
                                     </div>
                                     <div class="col d-flex align-items-start">
                                         <div class="float-left pl-3 pt-2">
@@ -68,7 +68,7 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {?
                     <tbody>
                         <tr>
                             <td>
-                                <a href="https://placeholder.com"><img src="http://via.placeholder.com/50"></a>
+                                <a href="https://placeholder.com"><img src="http://via.placeholder.com/50" height="50" width="50" alt="capa do livro"></a>
                             </td>
                             <td>
 

@@ -90,7 +90,7 @@ $app->get('/produto', function ($request, $response, $args) {
                           ?>
                         <div class="card mb-3 shadow-sm">
 
-                            <img class="card-img-top" src="php/CRUDS/upload/miniaturas/<?=$i['imagemthumb']?>" alt="Card image cap">
+                            <img class="card-img-top" src="php/CRUDS/upload/miniaturas/<?=$i['imagemthumb']?>" alt="capa do livro">
                             <div class="card-header">
                                 <a class="linkstyle" href="produto?id=<?=$i['id']?>"><h4 class="my-0 font-weight-normal fontedezoito"><?=$i['titulo']?></h4></a>
                             </div>

@@ -86,7 +86,7 @@ $app->map(['GET', 'POST'], '/busca', function ($request, $response, $args) {?>
               <?php foreach ($livro as $i) {?>
                 <div class="col-sm-3">
                   <div class="card mb-4 shadow-sm">
-                    <img class="card-img-top" src="php/CRUDS/upload/miniaturas/<?=$i['imagemthumb']?>" alt="Card image cap">
+                    <img class="card-img-top" src="php/CRUDS/upload/miniaturas/<?=$i['imagemthumb']?>" alt="Capa do livro">
                     <div class="card-header">
                       <h4 class="my-0 font-weight-normal fontedezoito"><a class="linkstyle" href="produto?id=<?=$i['id']?>"><?=$i['titulo']?></a></h4>
                     </div>

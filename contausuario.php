@@ -307,7 +307,7 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                       ?>
                         <div class="col-sm-4">
                           <div class="card mb-4 shadow-sm">
-                            <img class="card-img-top" src="img/placeholder1.jpg" alt="Card image cap">
+                            <img class="card-img-top" src="img/placeholder1.jpg" alt="capa do livro">
                             <div class="card-header">
                                 <h4 class="my-0 font-weight-normal fontedezoito"><a class="linkstyle" href="produto?id=<?=$i['id']?>"><?=$i['titulo']?></h4></a>
                             </div>
@@ -337,7 +337,7 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                     <br>
                     <div class="card-deck">
                     <div class="card">
-                        <img class="card-img-top" style="width: 60px; height: 40px" src="img/email.jpg" alt="Imagem de email">
+                        <img class="card-img-top" style="width: 60px; height: 40px" src="img/email.jpg" alt="Imagem email">
                             <div class="card-body">
                                 <h5 class="card-title">E-mail</h5>
                                 <p class="card-text">Utiize este canal de contato para tirar dúvidas, cancelar pedidos, solicitar trocas, fazer reclamação, entre outros.</p>
@@ -345,7 +345,7 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                             </div>
                     </div>
                     <div class="card">
-                        <img class="card-img-top" style="width: 40px; height: 40px" src="img/telefone.jpg"  alt="Imagem de capa do card">
+                        <img class="card-img-top" style="width: 40px; height: 40px" src="img/telefone.jpg"  alt="Imagem telefone">
                             <div class="card-body">
                                 <h5 class="card-title">Telefones</h5>
                                 <p class="card-text">Capitais e Regiões Metropolitanas: 4003-0001</p>

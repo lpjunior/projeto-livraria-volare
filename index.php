@@ -12,13 +12,13 @@ $app->get('/home', function ($request, $response, $args) {?>
                     </ol>
                     <div class="carousel-inner">
                       <div class="carousel-item active">
-                          <img class="d-block w-100" src="img/banner1.jpg" alt="First slide">
+                          <img class="d-block w-100" src="img/banner1.jpg" alt="imagem promocional">
                       </div>
                       <div class="carousel-item">
-                        <img class="d-block w-100" src="img/banner2.jpg" alt="Second slide">
+                        <img class="d-block w-100" src="img/banner2.jpg" alt="imagem promocional">
                       </div>
                       <div class="carousel-item">
-                        <img class="d-block w-100" src="img/banner3.jpg" alt="Third slide">
+                        <img class="d-block w-100" src="img/banner3.jpg" alt="imagem promocional">
                       </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -44,7 +44,7 @@ $app->get('/home', function ($request, $response, $args) {?>
                       ?>
                         <div class="col-sm-3">
                           <div class="card mb-4 shadow-sm">
-                            <img class="card-img-top" src="php/CRUDS/upload/miniaturas/<?=$i['imagemthumb']?>" alt="Card image cap">
+                            <img class="card-img-top" src="php/CRUDS/upload/miniaturas/<?=$i['imagemthumb']?>" alt="capa do livro">
                             <div class="card-header">
                                 <h4 class="my-0 font-weight-normal fontedezoito"><a class="linkstyle" href="produto?id=<?=$i['id']?>"><?=$i['titulo']?></h4></a>
                             </div>

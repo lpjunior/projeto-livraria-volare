@@ -110,7 +110,7 @@ require_once 'php/CRUDS/serviceCarrinho.php';
 										<li class="row"><!--primeiro item carrinho -->
 											<div class="fontedoze pr-2 pl-1 mb-0">
 													<div class="col-3 float-left">
-															<img src="http://lorempixel.com/40/40/" alt="capa do livro"/>
+															<img src="http://lorempixel.com/40/40/" height="40" width="40" alt="capa do livro"/>
 													</div>
 													<div class="col-5 float-left">
 																	<p class="mb-0 displayblock text-center"><?=(isset($_SESSION['user_id']) ? $i['titulo'] : $i[0]['titulo'])?></p>
