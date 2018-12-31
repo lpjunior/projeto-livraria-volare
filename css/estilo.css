@@ -93,6 +93,15 @@ a{
   font-size: 18px;
 }
 
+.afav{
+  color: rgb(4, 202, 190);
+}
+.afav:hover{
+  text-decoration: none;
+  font-weight: bold;
+  color: rgb(2, 170, 200);
+}
+
 /******* importante ********/
 body{
     font-family: "georgia", "trebuchet";
@@ -125,7 +134,7 @@ html {
 }
 
 .fontedezesseis{
-    font-size: 90%;
+    font-size: 16px;
 }
 
 .fontedezoito{

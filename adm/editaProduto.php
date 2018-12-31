@@ -117,7 +117,7 @@ require_once("header.php");
                           </div>
                           <div class="form-group">
                             <label for="preco">Preço:</label>
-                            <input type="number" class="form-control col-2" name="preco" id="preco" maxlength="3" value="<?=$i['preco']?>">
+                            <input type="string" class="form-control col-2" name="preco" id="preco" maxlength="5" value="<?=$i['preco']?>">
                           </div>
                           <!--quantidade -->
                           <div class="form-group">

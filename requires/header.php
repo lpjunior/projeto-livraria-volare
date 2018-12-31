@@ -30,40 +30,41 @@ require_once 'php/CRUDS/serviceCarrinho.php';
     header('location: ../error');
   }
   ?>
-    <header>
+    <header class="navbar-expand-lg navbar-expand-md">
         <!-- TOPO DO SITE -->
-        <nav class="navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid topoformatacao">
-            <a class="text-dark opacidade" href="sobre"><i class="fas fa-users"></i> Sobre a Volare</a>&nbsp;&nbsp;
-            <a class="text-dark opacidade" href="faleConosco"> <i class="fas fa-phone-volume"></i> Fale Conosco</a>
+        <nav class=" navbar-dark bg-dark">
+            <div class="container-fluid topoformatacao pt-1 pl-1">
+            <a class="linkstyle pr-1" href="sobre">&nbsp;&nbsp;<i class="fas fa-users"></i> Sobre a Volare</a>
+            <a class="linkstyle" href="faleConosco"> <i class="fas fa-phone-volume"></i> Fale Conosco</a>
             </div>
         </nav>
         <!-- fim do topo -->
-        <nav class="navbar navbar-expand-md navbar-light COLORE">
+        <nav class="navbar navbar-light COLORE">
             <!-- HAMBURGER -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div>
-                <a href="home"><img src="img/logomarcac.png"  alt="logomarca"></a>
+						<!-- LOGO -->
+            <div class="navbar-left">
+                <a href="home"><img class="mt-0 mb-0 pt-0 pb-0" src="img/logomarcab.png"  alt="logomarca volare livraria"></a>
             </div>
             <!-- COMEÇO DA DIV COLLAPSE HAMBURGER--> <div class="collapse navbar-collapse " id="navbarCollapse">
 
-            <!-- DROPDOWN CATEGORIAS DA NAVBAR -->
-                <div class="dropdown navbar-form navbar-left">
-                    <button class="btn dropdown-toggle COLORE bordas fontecatorze" type="button" id="menu1" data-toggle="dropdown">&nbsp;&nbsp;categorias
-                    <span class="caret"></span></button>
-                    <ul class="dropdown-menu COLORE" role="menu" aria-labelledby="menu1">
-											<?php
-											$categoria = listarCategoria();
-											foreach ($categoria as $i) { ?>
-                        <li role="presentation"><a role="menuitem" class="fontedezesseis" href="busca?cat=<?=$i['id']?>"><?=$i['categoria']?></a></li>
-											<?php  } ?>
-                    </ul>
-                </div>
-            <div class="col-md-8 centraliza navbar-nav mr-auto fontedezesseis">
-            <!-- LINKS NAVBAR -->
 
+            <div class="col-md-12 col-lg-12 col-xl-12 navbar-nav fontedezesseis"><!-- div que agrupa os links -->
+							<!-- DROPDOWN CATEGORIAS DA NAVBAR -->
+	                <div class="ml-4 dropdown navbar-form">
+	                    <button class="btn opacidade COLORE dropdown-toggle mr-3" type="button" id="menu1" data-toggle="dropdown">Categorias
+	                    <span class="caret"></span></button>
+	                    <ul class="dropdown-menu COLORE mb-0" role="menu" aria-labelledby="menu1">
+												<?php
+												$categoria = listarCategoria();
+												foreach ($categoria as $i) { ?>
+	                        <li class="pr-2 pl-1 pb-1" role="presentation"><a role="menuitem" class="linkstyle fontedezesseis" href="busca?cat=<?=$i['id']?>"><?=$i['categoria']?></a></li>
+												<?php  } ?>
+	                    </ul>
+	                </div>
+               <!-- LINKS NAVBAR -->
                 <div class="nav-item">
                   <a class="nav-link text-dark opacidade" href="home"><i class="fas fa-home"></i>&nbsp;Início</a>
                 </div>
@@ -87,11 +88,11 @@ require_once 'php/CRUDS/serviceCarrinho.php';
 													<a href="php/CRUDS/deslogarUsuario.php" class="text-dark">Sair</a>
 											</div>
 										</li>
-                                    </ul><!-- fecha aqui -->
+                  </ul><!-- fecha aqui -->
                 </div>
               <?php }?>
 
-						<!-- CARRINHO DROPDOWN -->
+							<!-- CARRINHO DROPDOWN -->
 							<div class="dropdown float-left">
 								<a href="carrinho" class="dropdown-toggle nav-link text-dark fontedezesseis opacidade" data-toggle="dropdown" role="button"> <i class="fas fa-shopping-cart"></i>&nbsp;Carrinho de compras</a>
 								<ul class="dropdown-menu dropdown-cart COLORE opacidadecart" role="menu"><!-- abre aqui -->
@@ -108,27 +109,30 @@ require_once 'php/CRUDS/serviceCarrinho.php';
 										}
 									?>
 										<li class="row"><!--primeiro item carrinho -->
-											<div class="fontedoze pr-2 pl-1 mb-0">
-													<div class="col-3 float-left">
+											<div class="pr-1 pl-1 mb-0">
+													<div class="col-2 float-left pr-1">
 															<img src="http://lorempixel.com/40/40/" height="40" width="40" alt="capa do livro"/>
 													</div>
-													<div class="col-5 float-left">
-																	<p class="mb-0 displayblock text-center"><?=(isset($_SESSION['user_id']) ? $i['titulo'] : $i[0]['titulo'])?></p>
-																	<p class="mb-0 displayblock text-center"><i class="fas fa-dollar-sign"><?=(isset($_SESSION['user_id']) ? $i['preco'] : $i[0]['preco'])?></i></p>
+													<div class="col-9 float-left">
+																	<p class="mb-0 displayblock text-center fontedoze">&nbsp;&nbsp;<?=(isset($_SESSION['user_id']) ? $i['titulo'] : $i[0]['titulo'])?></p>
+															<div class="col-9 float-left mt-0">
+																	<p class="mb-0 displayblock text-center fontecatorze">&nbsp;R$<?=(isset($_SESSION['user_id']) ? $i['preco'] : $i[0]['preco'])?></i></p>
+															</div>
+															<div class="col-3 float-left mt-0">
+																	<a class="" href="php/CRUDS/carrinhoSystem.php?acao=del&id=<?=$b?>" class="btn COLOREICON"><i class="fonteonze COLOREICON fas fa-trash"></i></a>
+															</div>
 													</div>
-													<div class="col-3 float-left">
-															<a href="php/CRUDS/carrinhoSystem.php?acao=del&id=<?=$b?>" class="btn COLOREICON"><i class="fonteonze COLOREICON fas fa-trash"></i></a>
-													</div>
+
 											</div>
 										</li>
 										<div class="dropdown-divider"></div><!--/ primeiro item carrinho -->
 									<?php } } else {
-										echo "Não existem produtos no carrinho";
+										echo "&nbsp;O carrinho está vazio";
 									} ?>
-										<!--/ preenchidos pra teste -->
+
 										<?php if (isset($carrinho) && is_array($carrinho)) { ?>
-										<div class="form-group">
-												<div class="col-6 pl-1 float-left">
+										<div class="form-group mb-5">
+												<div class="col-6 pl-3 float-left">
 													<form action="carrinho" method="POST">
 														<button type="submit" class="btn fontedoze mr-1 pr-2 COLORE1" alt="ir para o carrinho de compras" name="" value="checkout" onclick="carrinho">ver carrinho</button>
 													</form>
@@ -140,12 +144,12 @@ require_once 'php/CRUDS/serviceCarrinho.php';
 												</div>
 										</div>
 									<?php } ?>
-                                </ul><!-- fecha aqui -->
-						  </div>
-            </div>
+                  </ul><!-- fecha aqui -->
+            	</div>
+						</div> <!--fim da div que junta os links -->
             </div> <!-- FIM DA DIV COLLAPSE HAMBURGER -->
         <!-- CAMPO DE BUSCA -->
-            <form class="form-inline mt-2 mt-md-0 col-md-4 col-lg-4 centraliza" action="busca" method="GET">
+            <form class="form mt-2 mt-md-0 col-12 col-sm-6 col-md-5 col-lg-4 col-xl-4 pr-3 pl-2 navbar-left" action="busca" method="GET">
                 <div class="input-group">
                     <span class="input-group-append">
 

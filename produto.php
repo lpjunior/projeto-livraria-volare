@@ -28,10 +28,7 @@ $app->get('/produto', function ($request, $response, $args) {
                       ?>
                     <img class="d-block w-100" src="php/CRUDS/upload/<?=$i['imagemcapa']?>" alt="capa do livro">
 
-                    <!-- FAVORITAR-->
-                    <div class="rating fontequinze">
-                         <a href="php/CRUDS/itemDesejado.php?idProd=<?=$i['id']?>"><h4 class="mt-2">Adicionar aos favoritos</h4></a>
-                    </div>
+
                     <br/>
                     <?php
                     $i['sinopse'] = resume($i['sinopse'], 300);
@@ -41,10 +38,12 @@ $app->get('/produto', function ($request, $response, $args) {
                 <!-- div para informações -->
                 <section class="col-xs-12 col-sm-8 col-md-8 col-lg-8 mt-4 bordasb">
                     <div class="col-md-12 paddingtexto">
-                        <h1 class="paddingtexto fontevinteecinco"><?=$i['titulo']?></h1>
-                        <h2 class="fontevinte">Autor: <?=$i['autor']?> </h2>
-                        <h2><span style="font-size: 20px;"><i class="fas fa-dollar-sign"></i></span>&nbsp;<span style="font-size: 24px;"><?=number_format($i['preco'], 2, ',', '.')?></span></h2>
-                        <!--frete--><h4 class="paddingtexto fontedezesseis"><i class="fas fa-dollar-sign"></i></span>&nbsp;Frete:</h4>
+                      <h1 class="paddingtexto fontevinteecinco"><?=$i['titulo']?></h1>
+                      <h2 class="fontevinte">Autor: <?=$i['autor']?> </h2>
+                      <!-- FAVORITAR-->
+                        <a class="afav" href="php/CRUDS/itemDesejado.php?idProd=<?=$i['id']?>"><span style="font-size: 20px;">&#9829;</span>&nbsp;<span style="font-size: 18px;">favoritar</span></a>
+                      <h2><span style="font-size: 20px;">R$&nbsp;<span style="font-size: 24px;"><?=number_format($i['preco'], 2, ',', '.')?></span></h2>
+                        <!--frete--><h4 class="paddingtexto fontedezesseis">R$&nbsp;Frete:</h4>
                         <div class="input-group mb-4 input-sm col-xs-4 largurainput">
                             <input type="text" class="form-control cep" placeholder="Digite o CEP" aria-label="Digite o cep" aria-describedby="button-addon2">
                             <div class="input-group-append">
@@ -98,7 +97,7 @@ $app->get('/produto', function ($request, $response, $args) {
                                 <h4 class="fontedezesseis"><?=$i['autor']?></h4>
                                 <h3 class="fontevinte">R$ <?=number_format($i['preco'], 2, ',', '.')?></h3>
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">&nbsp;&nbsp;&nbsp;<i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;&nbsp;</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" aria-label="adicionar ao carrinho">&nbsp;&nbsp;&nbsp;<i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;&nbsp;</button>
                                 </div>
                             </div>
                         </div> <!--fim da coluna 1-->
@@ -134,7 +133,7 @@ $app->get('/produto', function ($request, $response, $args) {
                             <?php
                             $comentarios = serviceListarComentarios(8, $_GET['id']);
                             if (!is_array($comentarios)){
-                              $comentarios = array('0' => array('id' => 'a', 'comentario' => '<h1>Não existem comentários nesse livro, seja o primeiro!</h1>'));
+                              $comentarios = array('0' => array('id' => 'a', 'comentario' => '<h5><i>Não existem comentários nesse livro, seja o primeiro!</i></h5>'));
                             }
                             foreach ($comentarios as $i) {
                             ?>

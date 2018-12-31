@@ -95,7 +95,7 @@ $app->map(['GET', 'POST'], '/busca', function ($request, $response, $args) {?>
                       <h3 class="fontevinte">R$ <?=number_format($i['preco'], 2, ',', '.')?></h3>
                       <div class="btn-group">
                         <form action="php/CRUDS/carrinhoSystem.php?acao=add&id=<?=$i['id']?>" method="POST">
-                          <button type="submit" class="btn btn-sm btn-outline-secondary">&nbsp;&nbsp;&nbsp;<i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;&nbsp;</button>
+                          <button type="submit" class="btn btn-sm btn-outline-secondary" aria-label="adicionar ao carrinho">&nbsp;&nbsp;&nbsp;<i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;&nbsp;</button>
                         </form>
                       </div>
                     </div>

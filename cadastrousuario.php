@@ -94,7 +94,7 @@ $app->get('/cadastro', function ($request, $response, $args) {
 								</div>
 								<div class="col-md">
 									<label for="iComplemento">Complemento:</label>
-									<input type="text"  id="iComplemento" name="txtComplemento" class="form-control" required maxlength="15">
+									<input type="text"  id="iComplemento" name="txtComplemento" class="form-control" maxlength="15">
 									<br/>
 								</div>
 								<div class="col-md">

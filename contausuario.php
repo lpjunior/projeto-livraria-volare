@@ -3,37 +3,45 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
 ?>
 
     <div class="container-fluid col-md-11 col centraliza">
-    <div class="col-md-12">
-        <h3> Olá, <?=$_SESSION['user']['nome']?></h3> <br>
-        <?php
-        if (!isset($_SESSION['user_id'])){
-          echo "<script>window.location.assign('home')</script>";
-        }
-        ?>
-        </div>
+
+
         <div class="row">
-            <div class="col-md-5">
-            <!-- Nav pills -->
-                <ul class="nav flex-column nav-pills" role="tablist">
-                    <li class="nav-item">
-                            <a class="nav-link active font-weight-bold" data-toggle="pill" href="#meusdados">Meus Dados</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link font-weight-bold" data-toggle="pill" href="#meusenderecos">Meus Endereços</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link font-weight-bold" data-toggle="pill" href="#listadesejos">Lista de Desejos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link font-weight-bold" data-toggle="pill" href="#meuspedidos">Meus Pedidos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link font-weight-bold" data-toggle="pill" href="#centralatendimento">Central de Atendimento</a>
-                    </li>
-                </ul>
+                <div class="col-md-4">
+                   <div class="col-md-12 float-left">
+                     <!--olá usuário-->
+                     <div class="col-md-12 float-left pt-4">
+
+                         <p> <span style="font-size: 2em; color:lightseagreen"><i class="fas fa-user-circle float-left opacidade pt-2"></i></span><h5 class="float-left fontevinte text-dark opacidade pb-1">&nbsp; <?=$_SESSION['user']['nome']?></h5></p>
+                         <?php
+                         if (!isset($_SESSION['user_id'])){
+                           echo "<script>window.location.assign('home')</script>";
+                         }
+                         ?>
+                     </div> <!-- fim olá usuário -->
+                   </div>
+                   <div class="col-md-12 mt-0 float-left">
+                   <!-- Nav pills -->
+                      <ul class="nav flex-column nav-pills-info COLORE" role="tablist">
+                          <li class="nav-item border-bottom">
+                              <a class="nav-link active linkstyle font-weight-bold" data-toggle="pill" href="#meusdados">Meus Dados</a>
+                          </li>
+                          <li class="nav-item border-bottom">
+                              <a class="nav-link font-weight-bold linkstyle" data-toggle="pill" href="#meusenderecos">Meus Endereços</a>
+                          </li>
+                          <li class="nav-item border-bottom">
+                              <a class="nav-link font-weight-bold linkstyle" data-toggle="pill" href="#listadesejos">Lista de Desejos</a>
+                          </li>
+                          <li class="nav-item border-bottom">
+                              <a class="nav-link font-weight-bold linkstyle" data-toggle="pill" href="#meuspedidos">Meus Pedidos</a>
+                          </li>
+                          <li class="nav-item border-bottom">
+                              <a class="nav-link font-weight-bold linkstyle" data-toggle="pill" href="#centralatendimento">Central de Atendimento</a>
+                          </li>
+                      </ul>
+                    </div>
                 </div>
                 <!-- Tab panes -->
-                <div class="tab-content col-md-7">
+                <div class="tab-content col-md-7 mb-4">
                     <div id="meusdados" class="tab-pane active"><br>
                     <h3>Meus dados</h3>
                     <fieldset><!-- *************início do formulário dados pessoais********************** -->
@@ -309,28 +317,30 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                           <div class="card mb-4 shadow-sm">
                             <img class="card-img-top" src="img/placeholder1.jpg" alt="capa do livro">
                             <div class="card-header">
-                                <h4 class="my-0 font-weight-normal fontedezoito"><a class="linkstyle" href="produto?id=<?=$i['id']?>"><?=$i['titulo']?></h4></a>
+                                <h4 class="my-0 font-weight-normal fontedoze"><a class="linkstyle" href="produto?id=<?=$i['id']?>"><?=$i['titulo']?></h4></a>
                             </div>
                             <div class="card-body">
-                                <h4 class="fontedezesseis"><?=$i['autor']?></h4>
-                                <h3 class="fontevinte">R$ <?=$i['preco']?></h3>
+                                <h4 class="fonteonze"><?=$i['autor']?></h4>
+                                <h3 class="fontedezesseis">R$ <?=$i['preco']?></h3>
                                 <div class="btn-group">
                                   <form action="php/CRUDS/carrinhoSystem.php?acao=add&id=<?=$i['id']?>" method="POST">
-                                    <button type="submit" class="btn btn-sm btn-outline-secondary">   <i class="fa fa-shopping-cart"></i>   </button>
+                                    <button type="submit" class="btn btn-sm btn-outline-secondary" aria-label="adicionar ao carrinho"> <i class="fa fa-shopping-cart"></i> </button>
+                                    <!-- BOTÃO PRA EXCLUIR DA LISTA DE DESEJOS -->
+                                    <button type="submit" class="btn btn-sm btn-outline-secondary" aria-label="excluir da lista de desejos"> <i class="fas fa-trash-alt linkstyle3"></i> </button>
                                   </form>
                                 </div>
                             </div>
                         </div>
                         </div>
                       <?php } } else {
-                        echo "<h1>Não existe nenhum item na sua lista de desejos</h1>";
+                        echo "<h5>Não existe nenhum item na sua lista de desejos</h5>";
                       } ?>
                     </div>  <!-- FIM DA DIV QUE JUNTA OS CARDS -->
                 </section>
                     </div>
                     <div id="meuspedidos" class="tab-pane fade"><br>
                     <h3>Meus Pedidos</h3>
-                    <p>Ut taysr perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                    <p><!-- COLOCAR MENSAGEM DE "NÃO HÁ PEDIDOS PARA SEREM VISUALIZADOS" QUANDO Ñ HOUVER PEDIDO--></p>
                     </div>
                     <div id="centralatendimento" class="tab-pane fade"><br>
                     <h3>Central de Atendimento</h3>
@@ -340,7 +350,7 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                         <img class="card-img-top" style="width: 60px; height: 40px" src="img/email.jpg" alt="Imagem email">
                             <div class="card-body">
                                 <h5 class="card-title">E-mail</h5>
-                                <p class="card-text">Utiize este canal de contato para tirar dúvidas, cancelar pedidos, solicitar trocas, fazer reclamação, entre outros.</p>
+                                <p class="card-text">Utilize este canal de contato para tirar dúvidas, cancelar pedidos, solicitar trocas, registrar reclamações, entre outros.</p>
                                 <a href="contato" class="btn COLORE1">Entrar em contato por e-mail</a>
                             </div>
                     </div>
