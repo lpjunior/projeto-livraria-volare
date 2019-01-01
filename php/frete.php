@@ -1,5 +1,4 @@
 <?php
-
  function calculaFrete($cep,
   $cepOrigem,
   $peso,
@@ -65,16 +64,3 @@
   }
   echo '<hr>';
 }
-/*
-if($row -> Erro == 0) {
-     echo 'Valor do frete é R$ '.$row -> Valor . '<br>';
-     echo 'Entrega em '.$row -> PrazoEntrega . ' dias <br>';
-     break;
- } else {
-     echo $row -> MsgErro;
-     break;
- }
- echo '<hr>';
- }
-*/
- ?>

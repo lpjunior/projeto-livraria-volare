@@ -1,9 +1,6 @@
 <?php
-
-        require_once'php/frete.php ';
-
 $app->map(['GET', 'POST'], '/produto', function ($request, $response, $args) {
-
+  require_once'php/frete.php';
   //Frete.
   if (isset($_POST['btnCalculaFrete'])) {
         $frete = calculaFrete($_POST['cep_prod'], '22290040', '10', '20');
@@ -29,7 +26,7 @@ $app->map(['GET', 'POST'], '/produto', function ($request, $response, $args) {
                     foreach ($livro as $i) {
                       if ($i['idioma'] == 'POR'){
                         $i['idioma'] = "Português";
-                      } elseif ($i['idioma'] == ENG){
+                      } elseif ($i['idioma'] == 'ENG'){
                         $i['idioma'] = "Inglês";
                       } else {
                         $i['idioma'] = "Espanhol";
