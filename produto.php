@@ -1,5 +1,14 @@
 <?php
-$app->get('/produto', function ($request, $response, $args) {
+
+        require_once'php/frete.php ';
+
+$app->map(['GET', 'POST'], '/produto', function ($request, $response, $args) {
+
+  //Frete.
+  if (isset($_POST['btnCalculaFrete'])) {
+        $frete = calculaFrete($_POST['cep_prod'], '22290040', '10', '20');
+}
+
   if (isset($_SESSION['mensagem'])){
     echo $_SESSION['mensagem'];
     unset($_SESSION['mensagem']);
@@ -44,12 +53,16 @@ $app->get('/produto', function ($request, $response, $args) {
                         <a class="afav" href="php/CRUDS/itemDesejado.php?idProd=<?=$i['id']?>"><span style="font-size: 20px;">&#9829;</span>&nbsp;<span style="font-size: 18px;">favoritar</span></a>
                       <h2><span style="font-size: 20px;">R$&nbsp;<span style="font-size: 24px;"><?=number_format($i['preco'], 2, ',', '.')?></span></h2>
                         <!--frete--><h4 class="paddingtexto fontedezesseis">R$&nbsp;Frete:</h4>
+                      <form calss"" action="#" method="post">
                         <div class="input-group mb-4 input-sm col-xs-4 largurainput">
-                            <input type="text" class="form-control cep" placeholder="Digite o CEP" aria-label="Digite o cep" aria-describedby="button-addon2">
+
+                            <input type="text" class="form-control cep" placeholder="Digite o CEP" name="cep_prod" aria-label="Digite o cep" aria-describedby="button-addon2">
                             <div class="input-group-append">
-                              <button class="btn btn-outline-secondary" type="button" id="button-addon2">calcule</button>
+                              <button class="btn btn-outline-secondary" type="submit" name="btnCalculaFrete" id="button-addon2">calcule</button>
                             </div>
+
                         </div>
+                      </form>
                         <!-- /frete -->
                         <!-- BOTÃO -->
                         <a class="btn COLORE1 btn-outline-secondary" href="php/CRUDS/carrinhoSystem.php?acao=add&id=<?=$i['id']?>">Adicione ao carrinho</a>

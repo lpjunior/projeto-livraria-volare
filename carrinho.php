@@ -1,5 +1,13 @@
 <?php
-$app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {?>
+        require_once'php/frete.php';
+
+$app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
+    //Frete.
+  if (isset($_POST['btn_calcula_frete'])) {
+    $frete = calculaFrete($_POST['cep'], '22290040', '10', '20');
+ }
+
+?>
     <div class="container-fluid col-md-10 col-12 ">
         <div class="row mt-4">
             <div class="col-12 col-md-8">
@@ -110,10 +118,13 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {?
                 <div class="col bordasc mt-3">
                     <h5 class="text-center mt-3">Calcule o frete</h5>
                          <div class="input-group mb-4 input-sm col-xs-4 mt-4">
-                            <input type="text" class="text-center form-control col cep " placeholder="Digite o CEP" aria-label="Digite o cep" aria-describedby="button-addon2">
+                           <form class="" action="#" method="post">
+                            <input type="text" class="text-center form-control col cep " name="cep" placeholder="Digite o CEP" aria-label="Digite o cep" aria-describedby="button-addon2">
                             <div class="input-group-append">
-                              <button class="btn btn-outline-secondary COLORE1" type="button" id="button-addon2">calcule</button>
+                              <button class="btn btn-outline-secondary COLORE1" type="submit" name="btn_calcula_frete" id="button-addon2">calcule</button>
                             </div>
+                          </form>
+
                         </div>
                         <!-- /frete -->
                 </div>
