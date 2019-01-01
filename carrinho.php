@@ -4,6 +4,7 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
     //Frete.
   if (isset($_POST['btn_calcula_frete'])) {
     $frete = calculaFrete($_POST['cep'], '22290040', '10', '20');
+
  }
 
 ?>
@@ -121,7 +122,21 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
                             <input type="text" class="text-center form-control col cep " name="cep" placeholder="Digite o CEP" aria-label="Digite o cep" aria-describedby="button-addon2">
                             <div class="input-group-append">
                               <button class="btn btn-outline-secondary COLORE1" type="submit" name="btn_calcula_frete" id="button-addon2">calcule</button>
+
                             </div>
+                            <?php
+                            if (isset($frete)){
+                              if (is_array($frete)){
+                              foreach ($frete as $b => $i) {
+                            ?>
+                            <p> <?php if ($b == 'prazo'){
+                              echo "O prazo de entrega é de: ". $i['0']. " dias";
+                            } else {
+                              echo "O valor do frete é: R$ ".$i['0'];
+                            }?> </p>
+                          <?php } } else {
+                            echo "<p>".$frete."</p>";
+                          } }?>
                           </form>
 
                         </div>

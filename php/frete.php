@@ -1,4 +1,5 @@
 <?php
+
  function calculaFrete($cep,
   $cepOrigem,
   $peso,
@@ -52,13 +53,14 @@
  foreach($result -> cServico as $row) {
  //Os dados de cada serviço estará aqui
  if($row -> Erro == 0) {
-   echo 'Valor do frete é R$ '.$row -> Valor . '<br>';
-   echo 'Entrega em '.$row -> PrazoEntrega . ' dias <br>';
-    break;
+   $valor = $row -> Valor;
+   $prazo = $row -> PrazoEntrega;
+   $frete = array('valor' => $valor, 'prazo' => $prazo);
+   return $frete;
 
  } else {
-     echo $row -> MsgErro;
-     break;
+     $erro = $row -> MsgErro;
+     return $erro;
  }
 
   }

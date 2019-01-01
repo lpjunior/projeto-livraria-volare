@@ -1,6 +1,7 @@
 <?php
 $app->map(['GET', 'POST'], '/produto', function ($request, $response, $args) {
   require_once'php/frete.php';
+
   //Frete.
   if (isset($_POST['btnCalculaFrete'])) {
         $frete = calculaFrete($_POST['cep_prod'], '22290040', '10', '20');
@@ -57,6 +58,19 @@ $app->map(['GET', 'POST'], '/produto', function ($request, $response, $args) {
                             <div class="input-group-append">
                               <button class="btn btn-outline-secondary" type="submit" name="btnCalculaFrete" id="button-addon2">calcule</button>
                             </div>
+                            <?php
+                            if (isset($frete)){
+                              if (is_array($frete)){
+                              foreach ($frete as $b => $i) {
+                            ?>
+                            <p> <?php if ($b == 'prazo'){
+                              echo "O prazo de entrega é de: ". $i['0']. " dias";
+                            } else {
+                              echo "O valor do frete é: R$ ".$i['0'];
+                            }?> </p>
+                          <?php } } else {
+                            echo "<p>".$frete."</p>";
+                          } }?>
 
                         </div>
                       </form>
