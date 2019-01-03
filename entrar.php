@@ -5,7 +5,10 @@ if (isset($_SESSION['token_face']) || isset($_SESSION['user'])) {
 } else {
   if (isset($_POST['btn-checkout'])){
     echo "<script>alert('Logue para comprar')</script>";
-  }
+}
+if (isset($_GET['cadastro'])){
+  echo "<script>alert('Cadastro feito com sucesso, você pode logar agora.')</script>";
+}
  ?>
     <div class="container-fluid col-md-8 centraliza mt-4">
         <div class="row">
@@ -50,7 +53,7 @@ if (isset($_SESSION['token_face']) || isset($_SESSION['user'])) {
                             <input type="text" class="form-control cpf" id="iCPF" placeholder="Digite o cpf" name="txtCPF" class="form-control cpf" required>
                             <?php
                             if (isset($_SESSION['cpf'])){
-                              if (!$_SESSION['cpf'] == "não_cadastrado") {
+                              if ($_SESSION['cpf'] === 1) {
                                 echo "<script>alert('Seu CPF já está cadastrado.')</script>";
                                 unset($_SESSION['cpf']);
                               } else {
@@ -65,6 +68,7 @@ if (isset($_SESSION['token_face']) || isset($_SESSION['user'])) {
                         <div class="col-sm-offset-2 col-md-10 mb-4">
                             <button type="submit" class="btn COLORE1" name="btn_cadastrar_cpf">Cadastrar</button>
                         </div>
+                      </form>
                     </div>
                     </div>
                     <h2 class="fontevinteecinco">Conectar com sua rede social</h2>

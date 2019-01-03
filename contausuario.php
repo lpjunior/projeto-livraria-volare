@@ -315,7 +315,7 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                       ?>
                         <div class="col-sm-4">
                           <div class="card mb-4 shadow-sm">
-                            <img class="card-img-top" src="img/placeholder1.jpg" alt="capa do livro">
+                            <img class="card-img-top" src="php/CRUDS/upload/<?=$i['nome']?>" alt="capa do livro">
                             <div class="card-header">
                                 <h4 class="my-0 font-weight-normal fontedoze"><a class="linkstyle" href="produto?id=<?=$i['id']?>"><?=$i['titulo']?></h4></a>
                             </div>
@@ -323,11 +323,9 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                                 <h4 class="fonteonze"><?=$i['autor']?></h4>
                                 <h3 class="fontedezesseis">R$ <?=$i['preco']?></h3>
                                 <div class="btn-group">
-                                  <form action="php/CRUDS/carrinhoSystem.php?acao=add&id=<?=$i['id']?>" method="POST">
-                                    <button type="submit" class="btn btn-sm btn-outline-secondary" aria-label="adicionar ao carrinho"> <i class="fa fa-shopping-cart"></i> </button>
+                                    <a href="php/CRUDS/carrinhoSystem.php?acao=add&id=<?=$i['id']?>" class="btn btn-sm btn-outline-secondary"> <i class="fa fa-shopping-cart"></i> </a>
                                     <!-- BOTÃO PRA EXCLUIR DA LISTA DE DESEJOS -->
-                                    <button type="submit" class="btn btn-sm btn-outline-secondary" aria-label="excluir da lista de desejos"> <i class="fas fa-trash-alt linkstyle3"></i> </button>
-                                  </form>
+                                    <a href="php/CRUDS/excluiFavorito.php?id=<?=$i['id']?>" class="btn btn-sm btn-outline-secondary"> <i class="fas fa-trash-alt linkstyle3"></i> </a>
                                 </div>
                             </div>
                         </div>
