@@ -1,6 +1,6 @@
 <?php
 $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
-  require_once'php/frete.php'; 
+  require_once'php/frete.php';
     //Frete.
   if (isset($_POST['btn_calcula_frete'])) {
     $frete = calculaFrete($_POST['cep'], '22290040', '10', '20');
@@ -25,7 +25,7 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
                                 else {
                                   $carrinho = NULL;
                                 }
-                                if ($carrinho != NULL) {
+                                if ($carrinho != NULL && is_array($carrinho)) {
                                   foreach ($carrinho as $b => $i) {
                                   ?>
                                     <div class="col-auto">
@@ -70,8 +70,15 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
                   else {
                     $carrinho = NULL;
                   }
-                  if ($carrinho != NULL) {
+                  if ($carrinho != NULL && is_array($carrinho)) {
                     foreach ($carrinho as $b => $i) {
+                    if (isset($_SESSION['user_id'])){
+                        $preco = $i['preco'];
+                        $quantidade = $i['quantidade'];
+                    } else {
+                      $preco = $i[0]['preco'];
+                      $quantidade = $i['qtd'];
+                    }
                     ?>
                     <tbody>
                         <tr>
@@ -87,8 +94,8 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
                                 <input type="text" id="qtdProd" style="display:inline" maxlength="2" class="text-center form-control col-2" value="<?=(isset($_SESSION['user_id']) ? $i['quantidade'] : $i['qtd'])?>">
                                 <button id="btnPlus" class="btn btn-light btn-sm">+</button>
                             </td>
-                            <td>R$ <span id="idpreco"><?=(isset($_SESSION['user_id']) ? number_format($i['preco'], 2, ',', '.') : number_format($i[0]['preco'], 2, ',', '.'))?></span></td>
-                            <td>R$<?=number_format($i['preco'], 2, ',', '.')?></td>
+                            <td>R$ <span id="idpreco"><?=precoBR($preco);?></span></td>
+                            <td>R$<?= precoBR($preco * $quantidade);?></td>
                         </tr>
                         <tr>
                     </tbody>
@@ -102,15 +109,41 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
                         <tbody>
                             <tr>
                             <th scope="row">Subtotal</th>
-                            <td>R$<span id="idSubtotal">00,00</span></td>
+                            <?php
+                            // Cálculo do subtotal
+                            $preco = 0;
+                            $subtotal = 0;
+                            if (isset($_SESSION['user_id'])){
+                              $carrinho = serviceListarCarrinho($_SESSION['user_id']);
+                            } else {
+                              $carrinho = $_SESSION['produto'];
+                            }
+                            foreach($carrinho as $i){
+                              // Deixando a variável para os dois com o mesmo nome
+                              if (isset($_SESSION['user_id'])){
+                                $preco = $i['preco'] * $i['quantidade'];
+                              } else {
+                                $preco = $i[0]['preco'] * $i['qtd'];
+                              }
+                              // Função para transformar o resultado num float
+                              $subtotal += serviceStringToFloat($preco);
+                          }
+                          $subtotal = precoBR($subtotal);
+                          $quantidade = $i['qtd'];
+                          ?>
+                            <td>R$<span id="idSubtotal"><?=$subtotal?></span></td>
                             </tr>
                             <tr>
                             <th scope="row">Frete</th>
-                            <td>R$<span id="idFrete">00,00</span></td>
+                            <td>R$<span id="idFrete"><?=(isset($frete) ? $frete['valor'] : '00,00')?></span></td>
                             </tr>
                             <tr>
                             <th scope="row" class="total">Total</th>
-                            <td class="total">R$<span id="idTotal">00,00</span></td>
+                            <td class="total">R$<span id="idTotal"><?=
+                            // Transformando o valor do frete para float, somando com o preço e usando a função para transformar
+                            // para o modo que os brasileiros usam o real
+                            (isset($frete) ? precoBR((serviceStringToFloat($subtotal) + serviceStringToFloat($frete['valor']))) : $subtotal);
+                            ?></span></td>
                             </tr>
                         </tbody>
                         </table>
