@@ -5,15 +5,31 @@ if (!isset($_SESSION)) {
 require_once 'conexao.php';
 ## Registrar Cliente
 function registrarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $cep, $end, $num, $complemento, $bairro, $cidade, $estado, $telefone, $interesse){
-	date_default_timezone_set('America/Sao_Paulo');
-	$datanascimento = implode('-',array_reverse(explode('/',$datanascimento)));
-	## FILTROS
+	// Caso o CPF ou o email sejam iguais a um existente, retorne para página de cadastro
 	$conexao = getConnection();
-	$nome = filtrarString($nome);
-	$sobrenome = filtrarString($sobrenome);
 	$email = filtrarEmail($email);
 	$cpf = mysqli_escape_string($conexao, $cpf);
 	$cpf = htmlspecialchars($cpf);
+	// Se o CPF e/ou email for igual a algum email no banco, retorne um erro para o cliente.
+	$sql = "SELECT cpf from usuarios where cpf = '$cpf'";
+ 	$_SESSION['erro_cadastro'] = array();
+ 	if (mysqli_query($conexao, $sql)){
+ 		$_SESSION['erro_cadastro'][0] = "CPF já registrado.";
+		 	$sql = "SELECT email from usuarios where email = '$email'";
+		 	if (mysqli_query($conexao, $sql)){
+				echo "haha";
+		 		$_SESSION['erro_cadastro'][1] = "Email já registrado.";
+				header('location: ../../cadastro?erro=true');
+				die();
+	 	}
+		header('location: ../../cadastro?erro=true');
+		die();
+}
+	date_default_timezone_set('America/Sao_Paulo');
+	$datanascimento = implode('-',array_reverse(explode('/',$datanascimento)));
+	## FILTROS
+	$nome = filtrarString($nome);
+	$sobrenome = filtrarString($sobrenome);
 	$genero = filtrarInt($genero);
 	$cep = filtrarInt($cep);
 	$end = filtrarString($end);
@@ -25,24 +41,25 @@ function registrarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $gen
 	$sql = "INSERT INTO usuarios VALUES (NULL, '$nome', '$sobrenome', '$email', '$cpf', '$datanascimento', 1, md5('$senha'), 1 , $genero)";
 	$resultado = mysqli_query($conexao, $sql);
 	$id = mysqli_insert_id($conexao);
-	$sql = "INSERT INTO endereco VALUES (NULL, '$cep', '$end', '$num', '$complemento', '$bairro', '$estado', '$cidade', $id, 4)";
+	$sql = "INSERT INTO endereco VALUES (NULL, '$cep', '$end', '$num', '$complemento', '$bairro', '$estado', '$cidade', $id, 4, NULL)";
 	$resultado = mysqli_query($conexao, $sql);
 	$sql = "INSERT INTO telefone VALUES (NULL, $telefone, $id, 1)";
 	$resultado = mysqli_query($conexao, $sql);
+	if ($interesse != NULL){
 	$sql = "INSERT INTO interesses VALUES";
-	$sql .= " ($id, $i)";
+	$sql .= " ($id, $interesse[0])";
 	if(sizeof($interesse) > 1) {
 		foreach ($interesse as $i) {
 			$sql .= ", ($id, $i)";
 		}
 	}
 	$resultado = mysqli_query($conexao, $sql);
-	if (mysqli_affected_rows($conexao) >= 1) {
-		return header('location: ../../entrar');
-	} else {
-		return "Falha ao registrar";
-	}
 }
+	if (mysqli_affected_rows($conexao) >= 1) {
+		header('location: ../../entrar?cadastro=true');
+		exit();
+	} // fim do else
+} // fim da function
 ############### Logar Usuário ################
 function logarUsuario($email, $senha){
 	$conexao = getConnection();
@@ -210,6 +227,7 @@ function checarCPF($cpf){
 	$cpf = mysqli_escape_string($conexao, $cpf);
 	$cpf = htmlspecialchars($cpf);
 	$sql = "SELECT cpf from usuarios where cpf = '$cpf'";
+	echo $sql;
 	$resultado = mysqli_query($conexao, $sql);
 	if (mysqli_affected_rows($conexao) >= 1) {
 		return 1;
@@ -242,7 +260,9 @@ function inserirItemDesejado($usuarioID, $produtoID){
 }
 function listarItemDesejado(){
 	$conexao = getConnection();
-	$sql = "SELECT prod.titulo, prod.autor, prod.preco from desejados d inner join produto prod on prod.id = d.produto_id;";
+	$sql = "SELECT prod.id,ic.nome,prod.titulo, prod.autor, prod.preco from desejados d
+	inner join produto prod on prod.id = d.produto_id
+	inner join imagemcapa ic on ic.produto_id = prod.id;";
 	$resultado = mysqli_query($conexao, $sql);
 	if (mysqli_affected_rows($conexao) >= 1){
 		$item = array();
@@ -530,5 +550,17 @@ function pesquisarCliente($n){
 				return true;
 			} else {
 				return "Falha ao editar o fornecedor";
+			}
+		}
+	function excluirItemDEsejado($produtoID){
+		$conexao = getConnection();
+			$conexao = getConnection();
+			$usuarioID = $_SESSION['user_id'];
+			$sql = "DELETE FROM desejados where usuarios_id = $usuarioID and produto_id = $produtoID";
+			$resultado = mysqli_query($conexao, $sql);
+			if (mysqli_affected_rows($conexao) >= 1) {
+				return true;
+			} else {
+				return "<script>alert('Falha ao excluir o item favorito');</script>";
 			}
 		}

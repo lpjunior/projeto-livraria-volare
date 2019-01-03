@@ -44,7 +44,7 @@ require_once("header.php");
             if (isset($_POST['pesquisa']) && $_POST['pesquisa']) {
             $produto = serviceBuscarLivro($_POST['buscar-livro-adm'], ' ', NULL, NULL, NULL);
           } else {
-            $produto = listarLivro(NULL, NULL);
+            $produto = listarLivro(NULL, TRUE);
           }
             foreach ($produto as $i) {
               $i['sinopse'] = resume($i['sinopse'], 250);
@@ -62,22 +62,7 @@ require_once("header.php");
                   <td><?=$i['quantidade']?></td>
                   <!-- botões editar e excluir -->
                   <td><a class="linkstyle2" href="editaProduto.php?id=<?=$i['id'];?>"><i class="fas fa-pen"></i><a/></td>
-                  <td><a class="linkstyle3" href="#modal<?=$i['id'];?>"><i class="fas fa-trash"></i><a/></td>
-                    <!-- Modal Structure -->
-     				            <div id="modal<?=$i['id'];?>" class="modal">
-     				              <div class="modal-content">
-     						             <h4>Atenção </h4>
-     						             <p>Tem certeza que deseja excluir esse fornecedor ?</p>
-     				           		</div>
-     				              <div class="modal-footer">
-     					                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-     													<form action="php_cruds/delete.php" method ="POST">
-     													<input type="hidden" name="id" value="<?=$i['id'];?>">
-     													<button type="submit"name="btn-deletar" class="btn red">sim, quero deletar</button>
-     													</form>
-     				           		</div>
-     				           </div>
-                     <!-- fim do modal estructure -->
+                  <td><a class="linkstyle3" href="../php/CRUDS/excluirLivro.php?id=<?=$i['id']?>"><i class="fas fa-trash"></i><a/></td>
              </tr>
 								 </tr>
                <?php } ?>

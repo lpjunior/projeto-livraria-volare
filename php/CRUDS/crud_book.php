@@ -6,7 +6,7 @@ require_once 'conexao.php';
 ## INSERIR LIVROS
 function inserirLivro($categoria, $titulo, $autor, $editora, $isbn, $numeroPaginas, $sinopse, $peso, $data, $fornecedor, $preco, $subcategorias, $capa, $dimensoes, $quantidade, $idioma, $imagem){
 	date_default_timezone_set('America/Sao_Paulo');
-	$data = implode('-',array_reverse(explode('/', $data)));
+	$preco = stringToFloat($preco);
 	$conexao = getConnection();
 	$sinopse = str_replace('\'', '',$sinopse);
 	$sql = "INSERT INTO produto VALUES (NULL, '$categoria', '$titulo', '$autor', '$editora', '$isbn', '$numeroPaginas', '$sinopse', '$peso', '$data', '$preco', '$quantidade', '$dimensoes', $subcategorias, $capa, $fornecedor)";
@@ -31,12 +31,12 @@ function inserirLivro($categoria, $titulo, $autor, $editora, $isbn, $numeroPagin
 function editarLivro($categoria, $titulo, $autor, $editora, $isbn, $numeroPaginas, $sinopse, $peso, $data, $fornecedor, $preco, $subcategorias, $capa, $dimensoes, $quantidade, $idioma, $imagem, $id){
 	$conexao = getConnection();
 	// Editando o produto
+	$preco = stringToFloat($preco);
 	$sql = "UPDATE produto SET Categoria_id = $categoria, titulo = '$titulo', autor = '$autor', editora = '$editora', isbn = '$isbn',
 	numeroPaginas = '$numeroPaginas', sinopse = '$sinopse', peso = '$peso', datapublicacao = '$data', fornecedores_id = '$fornecedor',
 	preco = '$preco', SubCategorias_id = '$subcategorias',
 	TipoDeCapa_id = '$capa', quantidade = '$quantidade', dimensoes = '$dimensoes' WHERE id = $id";
 	$resultado = mysqli_query($conexao, $sql);
-	echo $sql."<br>";
 	if ($imagem != NULL){
 	// Editando as imagens
 	$imgCapa = $imagem['capa'];
@@ -64,10 +64,14 @@ function editarLivro($categoria, $titulo, $autor, $editora, $isbn, $numeroPagina
 ## EXCLUIR LIVROS
 function excluirLivro($id){
 	$conexao = getConnection();
+	$sql = "DELETE FROM imagemcapa where produto_id = $id";
+	$resultado = mysqli_query($conexao, $sql);
+	$sql = "DELETE FROM imagemthumb where produto_id = $id";
+	$resultado = mysqli_query($conexao, $sql);
 	$sql = "DELETE FROM produto where id = $id";
 	$resultado = mysqli_query($conexao, $sql);
 	if (mysqli_affected_rows($conexao) >= 1) {
-		return true;
+		return header('location: ../../adm/pgproduto.php');
 	} else {
 		return "Falha ao excluir o livro";
 	}
@@ -109,7 +113,7 @@ function excluirLivro($id){
 		inner join fornecedores forn on forn.id = prod.fornecedores_id";
 		## Caso seja a aba de lançamentos, liste os últimos que botaram no site
 		if ($lancamento != NULL) {
-			$sql .= " ORDER BY data_publicacao desc";
+			$sql .= " ORDER BY datapublicacao desc";
 		}
 		## Botar um limite na lista dos livros
 		if ($limit != NULL) {
@@ -267,3 +271,15 @@ function excluirLivro($id){
 			return false;
 		}
 	}
+	function stringToFloat($str) {
+  if(strstr($str, ",")) {
+    $str = str_replace(".", "", $str); // replace dots (thousand seps) with blancs
+    $str = str_replace(",", ".", $str); // replace ',' with '.'
+  }
+
+  if(preg_match("#([0-9\.]+)#", $str, $match)) { // search for number that may contain '.'
+    return floatval($match[0]);
+  } else {
+    return floatval($str); // take some last chances with floatval
+  }
+}
