@@ -1,9 +1,23 @@
 <?php
 $app->get('/cadastro', function ($request, $response, $args) {
+  if (isset($_GET['erro'])){
+    echo "<script>alert('Falha no cadastro');</script>";
+  }
 ?>
             <div class="container-fluid col-md-10 centraliza mt-4">
                 <fieldset><!-- *************início do formulário ********************** -->
                     <legend><h1 class="fontevinteecinco">Cadastro</h1></legend>
+                    <?php
+                    if (isset($_SESSION['erro_cadastro'])){
+                      $erro = $_SESSION['erro_cadastro'];
+                      echo "<ul>";
+                      foreach ($erro as $i) {
+                        echo "<li class='text-danger'> $i </li>";
+                      }
+                      echo "</ul>";
+                      unset($_SESSION['erro_cadastro']);
+                    }
+                    ?>
                     <form action="php/CRUDS/registroUsuario.php" method="POST">
                         <div class="form-group"> <h4 class="fontedezoito"><b>Dados pessoais</b></h4>
 							<div class="row">
