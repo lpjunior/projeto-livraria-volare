@@ -2,7 +2,6 @@
 require_once 'php/CRUDS/serviceCheckout.php';
 $app->map(['GET', 'POST'], '/checkout', function ($request, $response, $args) {
   ## Mudar para o botão de checkout depois ##
-  if (isset($_SESSION['user_id']) && isset($_POST['btn-checkout'])){
 ?>
         <section>
             <div class="container-fluid col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 centraliza mt-4">
@@ -30,15 +29,13 @@ $app->map(['GET', 'POST'], '/checkout', function ($request, $response, $args) {
                                           <th scope="row"><i class="COLORETEXTO fas fa-book"></i></th>
                                         <td class="text-left"><?=$i['titulo']?></td>
                                         <td class="text-center"><?=$i['quantidade']?></td>
-                                        <td class="text-center">R$ <?=(floatval($i['preco'])*floatval($i['quantidade']))?></td>
-                                        <?php
-                                        ## Botar o valor dentro do array
-                                        array_push($i,(floatval($i['preco'])*floatval($i['quantidade'])));
-                                        ## Somar todos os valores do array
-                                        $valor_total += $i['0']; ?>
+                                        <td class="text-center">R$ <?= precoBR(stringToFloat($i['preco']) * stringToFloat($i['quantidade']))?></td>
                                       </tr>
                                       <!--preenchido pra teste-->
-                                      <?php } ?>
+                                      <?php
+                                      $valor_total += $i['preco'];
+                                    }
+                                    ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -48,13 +45,13 @@ $app->map(['GET', 'POST'], '/checkout', function ($request, $response, $args) {
                                   <tr>
                                     <th scope="row"><i class="fontedoze COLORETEXTO fas fa-plus"></i></th>
                                     <td class="fontetabeladois">Frete:</td>
-                                    <td colspan="2" class="fontetabeladois text-right"><?=$frete?></td>
+                                    <td colspan="2" class="fontetabeladois text-right"><?=precoBR($frete)?></td>
 
                                   </tr>
                                   <tr>
                                     <th scope="row"><i class="fontedoze COLORETEXTO fas fa-dollar-sign"></i></th>
                                     <td class="fontetabeladois"><b>Total a pagar:</b></td>
-                                    <td colspan="2" class="fontetabeladois text-right"><b>R$ <?=floatval($frete) + $valor_total?></b></td>
+                                    <td colspan="2" class="fontetabeladois text-right"><b>R$ <?=precoBR((stringToFloat($frete) + stringToFloat($valor_total)))?></b></td>
                                   </tr>
                                 </tbody>
                               </table>
@@ -191,9 +188,6 @@ $app->map(['GET', 'POST'], '/checkout', function ($request, $response, $args) {
             </div>
             </div>
 <?php
-} else {
- echo "<script>window.location.assign('carrinho')</script>";
-}
 });
 
  ?>
