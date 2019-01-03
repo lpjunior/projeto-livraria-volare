@@ -36,6 +36,11 @@ require_once 'crud_usuario.php';
 			return $user;
 		}
 	}
+	function serviceExcluirItemDesejado($produtoID){
+		if ($user = excluirItemDEsejado($produtoID)){
+			return $user;
+		}
+	}
 	function serviceListarItemDesejado(){
 		if ($user = listarItemDesejado()){
 			return $user;
@@ -134,5 +139,14 @@ require_once 'crud_usuario.php';
 	function serviceEditaStatusAtivo($ativo, $id){
 		if ($cliente = editaStatusAtivo($ativo, $id)) {
 			return $cliente;
+		}
+	}
+	function precoBR($var){
+		$var = number_format($var, 2, ',', '.');
+		return $var;
+	}
+	function serviceStringToFloat($var){
+		if ($number = stringToFloat($var)) {
+			return $number;
 		}
 	}
