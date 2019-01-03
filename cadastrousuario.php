@@ -76,6 +76,7 @@ $app->get('/cadastro', function ($request, $response, $args) {
 							</div>
                         </div>
                         <br/>
+
                         <div class="form-group"><h4 class="fontedezoito"><b>Endereço de cobrança</b></h4><br/>
                             <div class="row">
 								<div class="col-md-4">
@@ -149,4 +150,74 @@ $app->get('/cadastro', function ($request, $response, $args) {
 
                     </form>
                 </fieldset><!--********fim do formulário*************-->
+                <!-- Adicionando JQuery -->
+   <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+           integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+           crossorigin="anonymous"></script>
+
+   <!-- Adicionando Javascript -->
+   <script type="text/javascript" >
+
+       $(document).ready(function() {
+
+           function limpa_formulário_cep() {
+               // Limpa valores do formulário de cep.
+               $("#iEndCobr").val("");
+               $("#iBairro").val("");
+               $("#iCidade").val("");
+               $("#sEstado").val("");
+           }
+
+
+           $("#iCEP").blur(function() {
+
+               //Nova variável "cep" somente com dígitos.
+               var cep = $(this).val().replace(/\D/g, '');
+
+               //Verifica se campo cep possui valor informado.
+               if (cep != "") {
+
+                   //Expressão regular para validar o CEP.
+                   var validacep = /^[0-9]{8}$/;
+
+                   //Valida o formato do CEP.
+                   if(validacep.test(cep)) {
+
+                       //Preenche os campos com "..." enquanto consulta webservice.
+                       $("#iEndCobr").val("...");
+                       $("#iBairro").val("...");
+                       $("#iCidade").val("...");
+                       $("#sEstado").val("...");
+
+                       //Consulta o webservice viacep.com.br/
+                       $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
+
+                           if (!("erro" in dados)) {
+                               //Atualiza os campos com os valores da consulta.
+                               $("#iEndCobr").val(dados.logradouro);
+                               $("#iBairro").val(dados.bairro);
+                               $("#iCidade").val(dados.localidade);
+                               $("#sEstado").val(dados.uf);
+                           }
+                           else {
+                               //CEP pesquisado não foi encontrado.
+                               limpa_formulário_cep();
+                               alert("CEP não encontrado.");
+                           }
+                       });
+                   }
+                   else {
+                       //cep é inválido.
+                       limpa_formulário_cep();
+                       alert("Formato de CEP inválido.");
+                   }
+               }
+               else {
+                   //cep sem valor, limpa formulário.
+                   limpa_formulário_cep();
+               }
+           });
+       });
+
+   </script>
 <?php }); ?>

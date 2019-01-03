@@ -1,6 +1,6 @@
 <?php
 $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
-  require_once'php/frete.php';
+  require_once'php/frete.php'; 
     //Frete.
   if (isset($_POST['btn_calcula_frete'])) {
     $frete = calculaFrete($_POST['cep'], '22290040', '10', '20');
@@ -146,9 +146,10 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
         </div>
         <div class="row">
 			<div class="col">
-          <form method="POST" action="checkout">
+          <form method="POST" action="https://sandbox.pagseguro.uol.com.br/checkout/v2/cart.html?action=add">
                 <button type="submit" class="btn COLORE1" name="btn-checkout" >Concluir compra</button>
               </form>
+              <script type="text/javascript" src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
             </div>
 		</div>
     </div>
