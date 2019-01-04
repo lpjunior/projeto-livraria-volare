@@ -367,9 +367,12 @@ function listarIdioma(){
 		return false;
 	}
 }
-function listarFornecedor(){
+function listarFornecedor($id){
 	$conexao = getConnection();
 	$sql = "SELECT * FROM fornecedores";
+	if ($id != NULL){
+		$sql .= " WHERE id = $id";
+	}
 	$resultado = mysqli_query($conexao, $sql);
 	if (mysqli_affected_rows($conexao) >= 1){
 		$fornecedores = array();
@@ -452,9 +455,7 @@ function editarFornecedor($nome, $razao_social, $cnpj, $endereco, $telefone, $em
 }
 function listarComprasRealizadas(){
 	$conexao = getConnection();
-	$sql = "create or replace view vw_compras_realizadas as
-
-	select
+	$sql = " select
 
 	usu.nome,
 	usu.cpf,

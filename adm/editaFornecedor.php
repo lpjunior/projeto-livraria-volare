@@ -6,13 +6,13 @@ if (!isset($_SESSION['user_id'])){
 	header('Location: adm.php');
 }
 require_once("header.php");
-// echo  $_SESSION['logado']."<br>".$_SESSION['nome_adm'];
 ?>
 <section class="container-fluid entraliza mt-4 mb-4">
         <div class="row">
                 <div class="col-md-5 centraliza COLORE bordasb mx-auto pr-3 pl-3 pt-4 pb-3">
 									<?php
-									$fornecedor = serviceListarFornecedor();
+									// Função para listar os fornecedores nos inputs para editar
+									$fornecedor = serviceListarFornecedor($_GET['id']);
 									foreach ($fornecedor as $i) {
 									?>
                       <form method="POST" action="../php/CRUDS/editarFornecedor.php?id=<?=$_GET['id']?>">

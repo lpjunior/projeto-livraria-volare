@@ -66,8 +66,8 @@ require_once 'crud_usuario.php';
 			return $user;
 		}
 	}
-	function serviceListarFornecedor(){
-		if ($user = listarFornecedor()){
+	function serviceListarFornecedor($id){
+		if ($user = listarFornecedor($id)){
 			return $user;
 		}
 	}

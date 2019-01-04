@@ -6,7 +6,6 @@ if (!isset($_SESSION['user_id'])){
 	header('Location: adm.php');
 }
 require_once("header.php");
-// echo  $_SESSION['logado']."<br>".$_SESSION['nome_adm'];
 ?>
 <section class="row container-fluid">
   <div class="col-12 col-sm-12 col-md-8 col-lg-8 centraliza mt-3">
@@ -33,35 +32,23 @@ require_once("header.php");
 								<th scope="col">Visualizar pedido</th>
               </tr>
           </thead>
-          <tbody class="centraliza bg-white"><!-- CONTEÚDO DA TABELA
-          **********ordenar pela data do pedido-->
+          <tbody class="centraliza bg-white"><!-- CONTEÚDO DA TABELA-->
           <?php
+					// Caso a pessoa tenha feito alguma busca, liste os pedidos de acordo com a busca
             if (isset($_POST['pesquisa']) && $_POST['pesquisa']) {
             $pedido = servicePesquisarPedido($_POST['pedido']);
+					// Caso não tenha feito, liste todos os pedidos
           } else {
-            $pedido = serviceListarPedidoAdmin(NULL);
+            $pedido = serviceListarPedidoAdmin(NULL, NULL);
           }
           foreach ($pedido as $i) {?>
               <tr>
 									<td><?=$i['data_pedido']?></td>
 									<td><?=$i['id']?></td>
-									<td><?php if ($i['id_status_compra'] == 1){
-                    echo "Em análise";
-                  } elseif ($i['id_status_compra'] == 2){
-                    echo "Pagamento Efetuado";
-                  } else {
-                    echo "Cancelado";
-                  } ?></td>
-                  <td><?php if ($i['id_status_entrega'] == 1){
-                    echo "Postado";
-                  } elseif ($i['id_status_entrega'] == 2){
-                    echo "A caminho do endereço de entrega";
-                  } else {
-                    echo "Entregue";
-                  }?></td>
-                  <!-- LINKAR PELO ID DO PEDIDO O A ABAIXO -->
-									<td><a class="linkstyle1" href="visualizarpedido.php?id=<?=$i['id']?>"><i class="fas fa-sign-in-alt"></i><a/></td>
+									<td><?=$i['status_compra']?></td>
+                  <td><?=$i['status_entrega']?></td>
 
+									<td><a class="linkstyle1" href="visualizarpedido.php?id=<?=$i['id']?>"><i class="fas fa-sign-in-alt"></i><a/></td>
                     <!-- botões editar e excluir -->
      							 <td><a class="linkstyle2" href="editaPedido.php?id=<?=$i['id']?>"><i class="fas fa-pen"></i><a/></td>
      							 <td><a class="linkstyle3" href="../php/CRUDS/excluiPedido.php?id=<?=$i['id']?>"><i class="fas fa-trash"></i><a/></td>

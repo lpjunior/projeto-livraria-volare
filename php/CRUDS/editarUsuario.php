@@ -7,10 +7,9 @@ require_once 'serviceUsuario.php';
 					## Caso o usuarío retorne true, as informações foram alteradas com sucesso
 				if ($user == true) {
 						## Se não for true, retornar um alert.
-					header('location: ../../user');
+					header('location: ../../user?editarUsu=true');
 				} else {
-					$_SESSION['editarFalse'] = $user;
-					header('location: ../../user');
+					header('location: ../../user?editarUsu=false');
 				}
 			}
 		} else {

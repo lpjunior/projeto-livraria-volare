@@ -1,5 +1,23 @@
 <?php
 $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
+  ## Caso edite o endereço
+  if (isset($_GET['editar']) && $_GET['editar'] == 'erro'){
+    echo "<script>alert('Falha ao editar seu endereço!')</script>";
+  } elseif (isset($_GET['editar']) && $_GET['editar'] == true){
+    echo "<script>alert('Endereço alterado com sucesso!')</script>";
+  }
+  ## Caso edite o usuário
+  if (isset($_GET['editarUsu']) && $_GET['editarUsu'] == 'erro'){
+    echo "<script>alert('Falha ao editar seu endereço!')</script>";
+  } elseif (isset($_GET['editar']) && $_GET['editar'] == true){
+    echo "<script>alert('Endereço alterado com sucesso!')</script>";
+  }
+  ## Caso o usuário insira um endereço
+  if (isset($_GET['inserir']) && $_GET['inserir'] == false){
+    echo "<script>alert('Falha ao editar seu endereço!')</script>";
+  } elseif (isset($_GET['editar']) && $_GET['editar'] == true){
+    echo "<script>alert('Endereço alterado com sucesso!')</script>";
+  }
 ?>
 
     <div class="container-fluid col-md-11 col centraliza">

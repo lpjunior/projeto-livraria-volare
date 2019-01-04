@@ -2,6 +2,11 @@
 require_once 'php/CRUDS/serviceCheckout.php';
 $app->map(['GET', 'POST'], '/checkout', function ($request, $response, $args) {
   ## Mudar para o botão de checkout depois ##
+  if (isset($_GET['editar']) && $_GET['editar'] == 'erro'){
+    echo "<script>alert('Falha ao editar seu endereço!')</script>";
+  } elseif (isset($_GET['editar']) && $_GET['editar'] == true){
+    echo "<script>alert('Endereço alterado com sucesso!')</script>";
+  }
 ?>
         <section>
             <div class="container-fluid col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 centraliza mt-4">
@@ -114,6 +119,7 @@ $app->map(['GET', 'POST'], '/checkout', function ($request, $response, $args) {
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+                <form action="php/CRUDS/editarEndereco.php?end=1&checkout=true" method="POST">
                 <div class="modal-body">
                     <div class="form-group">
                                 <div class="row">
@@ -182,7 +188,8 @@ $app->map(['GET', 'POST'], '/checkout', function ($request, $response, $args) {
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn COLORE2" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn COLORE1">Salvar</button>
+                    <button type="submit" name="btn-enviar" class="btn COLORE1">Salvar</button>
+                  </form>
                 </div>
                 </div>
             </div>

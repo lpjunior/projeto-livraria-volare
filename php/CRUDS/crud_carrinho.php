@@ -72,17 +72,3 @@ function listarCarrinho($id){
 		return "Falha ao listar o carrinho";
 	}
 }
-function listarLivroCarrinho($id){
-	$conexao = getConnection();
-	$sql = "SELECT titulo, preco from produto WHERE id = $id";
-	$resultado = mysqli_query($conexao, $sql);
-	$arr = array();
-	if (mysqli_affected_rows($conexao) >= 1) {
-		while ($linha = mysqli_fetch_assoc($resultado)){
-			array_push($arr, $linha);
-		}
-		return $arr;
-	} else {
-		return "Falha ao listar o carrinho";
-	}
-}

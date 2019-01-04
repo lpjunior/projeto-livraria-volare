@@ -1,10 +1,11 @@
 <?php
+# Caso a sessão não tenha sido criado, crie
 if (!isset($_SESSION)) {
   session_start();
 }
 require_once 'conexao.php';
 require_once 'serviceCarrinho.php';
-listarCheckout(4, 1);
+
 function listarCheckout($id, $qtd){
   $conexao = getConnection();
   $sql = "SELECT
@@ -12,20 +13,13 @@ function listarCheckout($id, $qtd){
   itres.quantidade,
   usu.nome,
   usu.sobrenome,
-  ender.endereco,
-  ender.numero,
-  ender.complemento,
-  ender.bairro,
-  ender.cidade,
-  ender.estado,
-  ender.cep,
   prod.preco
 
   from usuarios usu
-  left join endereco ender on ender.usuarios_id = usu.id
   inner join itens_reservados itres on itres.usuarios_id = usu.id
   inner join produto prod on prod.id = itres.produto_id
   where usu.id = $id";
+  // Se a variável quantidade for diferente de nulo, limite ela para 1
   if ($qtd != NULL){
     $sql .= " LIMIT 1";
   }
@@ -38,6 +32,7 @@ function listarCheckout($id, $qtd){
     return $checkout;
   } # fim do if
 }
+
 function novoPedido($idUsuario){
   $conexao = getConnection();
   date_default_timezone_set('America/Sao_Paulo');
@@ -76,6 +71,8 @@ function listarPedido($id, $detalhesPedido){
   ped.id as pedido_id,
   'LV'|| ped.id as numero_pedido,
   ped.data_pedido,
+  ped.id_status_compra,
+  ped.id_status_entrega,
   sc.status_compra,
   se.status_entrega,
   end.destinatario,
@@ -88,12 +85,18 @@ function listarPedido($id, $detalhesPedido){
   inner join pedidos ped on ped.usuarios_id = usu.id
   inner join status_compra sc on sc.idstatus_compra = ped.id_status_compra
   inner join status_entrega se on se.idstatus_entrega = ped.id_status_entrega
-  inner join endereco end on end.usuarios_id = usu.id WHERE";
+  inner join endereco end on end.usuarios_id = usu.id";
+  // Caso seja diferente de nulo, liste apenas um pedido com o ID do pedido
   if ($detalhesPedido != NULL){
-    $sql .= " ped.id = $detalhesPedido and end.TipoEndereco_id = 1";
+    $sql .= " WHERE ped.id = $detalhesPedido and end.TipoEndereco_id = 1 order by data_pedido desc";
   }
+  // Caso seja diferente de nulo, liste todos os pedidos do usuário com o ID
   if ($id != NULL){
-  $sql .= " usu.id = $id and end.TipoEndereco_id = 1";
+  $sql .= " WHERE usu.id = $id and end.TipoEndereco_id = 1 order by data_pedido desc";
+  }
+  // Se os dois forem nulos, apenas listar ordenando pela data
+  if ($id == NULL && $detalhesPedido == NULL){
+    $sql .= " order by ped.data_pedido desc";
   }
   $resultado = mysqli_query($conexao, $sql);
   if (mysqli_affected_rows($conexao) >= 1){
@@ -116,9 +119,13 @@ function excluirPedido($id){
     return "Falha ao excluir o pedido";
   }
 }
+// Função de listar pedido para a página do admin
 function listarPedidoAdmin($id){
   $conexao = getConnection();
-  $sql = "SELECT * FROM pedidos";
+  $sql = "SELECT ped.*, sc.status_compra, se.status_entrega FROM pedidos ped
+  inner join status_compra sc on ped.id_status_compra = sc.idstatus_compra
+  inner join status_entrega se on ped.id_status_entrega = se.idstatus_entrega";
+  // Se for diferente de nulo, liste um usuário específico
   if ($id != NULL){
     $sql .= " WHERE id = $id";
   }

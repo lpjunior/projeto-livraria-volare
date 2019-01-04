@@ -6,7 +6,6 @@ if (!isset($_SESSION['user_id'])){
 	header('Location: adm.php');
 }
 require_once("header.php");
-// echo  $_SESSION['logado']."<br>".$_SESSION['nome_adm'];
 ?>
 <section class="container-fluid  centraliza pr-4 mt-4 mb-4">
   <div class=" row COLORE bordasb col-md-10 mb-4 centraliza">
@@ -41,8 +40,10 @@ require_once("header.php");
                             <select class="custom-select col-5" id="categoria" name="categoria">
                               <option selected>Selecione a categoria</option>
                               <?php
+															// Função para listar as categorias
                               $categoria = serviceListarCategoria();
                               foreach ($categoria as $b) {
+																// Caso a categoria listada seja o categoria do livro, deixe ela selecionado.
                               ?>
                                 <option value="<?=$b['id']?>" <?=($b['categoria'] == $i['categoria'] ? "selected" : '')?>><?=$b['categoria']?></option>
                               <?php } ?>
@@ -53,8 +54,10 @@ require_once("header.php");
                             <select class="custom-select col-5" id="subcat" name="subcategorias">
                                 <option selected>Selecione um assunto</option>
                                 <?php
+																// Função para listar as subcategorias
                                 $subcategoria = serviceListarSubcategoria();
                                 foreach ($subcategoria as $b) {
+																	// Caso a subcategoria listada seja o subcategoria do livro, deixe ela selecionado.
                                 ?>
                                 <option value="<?=$b['id']?>" <?=($b['assunto'] == $i['assunto'] ? "selected" : '')?>><?=$b['assunto']?></option>
                                 <?php } ?>
@@ -65,8 +68,10 @@ require_once("header.php");
                             <select class="custom-select col-6" id="tipocapa" name="capa">
                                 <option selected>Selecione o tipo de capa</option>
                                 <?php
+																// Função para listar os tipos de capa
                                 $capa = serviceListarCapa();
                                 foreach ($capa as $b) {
+																	// Caso o tipo de capa listado seja o tipo de capa do livro, deixe ele selecionado.
                                 ?>
                                 <option value="<?=$b['id']?>" <?=($b['tipodecapa'] == $i['tipo_capa'] ? "selected" : '')?>><?=$b['tipodecapa']?></option>
                               <?php } ?>
@@ -77,8 +82,10 @@ require_once("header.php");
                             <select class="custom-select col-5" id="idioma" name="idioma">
                                 <option selected>Selecione o idioma</option>
                                 <?php
+																// Função para listar os idiomas
                                 $idioma = serviceListarIdioma();
                                 foreach ($idioma as $b) {
+																	// Caso o idioma listado seja o idioma do livro, deixe ele selecionado
                                 ?>
                                 <option value="<?=$b['id']?>" <?=($b['idioma'] == $i['idioma'] ? "selected" : '')?>><?=$b['idioma']?></option>
                               <?php } ?>
@@ -89,8 +96,10 @@ require_once("header.php");
                             <select class="custom-select col-5" id="fornecedor" name="fornecedor">
                                 <option selected>Selecione o fornecedor</option>
                                 <?php
+																// Função para listar os fornecedores
                                 $capa = serviceListarFornecedor();
                                 foreach ($capa as $b) {
+																	// Caso o fornecedor listado seja o fornecedor do livro, deixe ele selecionado.
                                 ?>
                                 <option value="<?=$b['id']?>" <?=($b['nome'] == $i['fornecedor'] ? "selected" : '')?>><?=$b['nome']?></option>
                               <?php } ?>

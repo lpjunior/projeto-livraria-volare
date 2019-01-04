@@ -6,7 +6,7 @@ if (!isset($_SESSION['user_id'])){
 	header('Location: adm.php');
 }
 require_once("header.php");
-// echo  $_SESSION['logado']."<br>".$_SESSION['nome_adm'];
+// Não funcional.
 ?>
 <section class="container-fluid col-md-12 centraliza mt-4 mb-4">
         <div class="row">
@@ -26,6 +26,5 @@ require_once("header.php");
                       <!-- / input imagem --><br/>
                       <button name="btn-livro-enviar" type="submit" class="btn COLORE1 float-right btn-outline-secondary">Upload</button>
                     </div>
-
         </div>
 </section>

@@ -6,7 +6,6 @@ if (!isset($_SESSION['user_id'])){
 	header('Location: adm.php');
 }
 require_once("header.php");
-// echo  $_SESSION['logado']."<br>".$_SESSION['nome_adm'];
 $preco = 0;
 ?>
 <div class="container-fluid col-md-8 col-xs-12 centraliza">
@@ -14,6 +13,7 @@ $preco = 0;
     <div class="row bg-white">
         <section class="col-xs-12 col-sm-4 col-md-4 col-lg-4 mt-4">
 					<?php
+					// Lista todas as informações cliente do pedido.
           $pedido = listarPedido(NULL, $_GET['id']);
           foreach ($pedido as $i) {
           ?>
@@ -40,7 +40,9 @@ $preco = 0;
                     </thead>
                     <tbody>
 											<?php
+											// Lista os itens que foram pedidos
                       $itensPedidos = serviceListarItensPedidos($_GET['id']);
+											// Caso seja um array, faça o foreach, se não, retorna uma mensagem
 											if (is_array($itensPedidos)){
                       foreach ($itensPedidos as $i) {
                       ?>
@@ -51,6 +53,7 @@ $preco = 0;
                         <td class="text-center">R$ <?=precoBR($i['preco'] * $i['quantidade'])?></td> <!-- preço itens x quantidade -->
                       </tr>
 										<?php
+										// Função para transformar string em float
 										$preco += serviceStringToFloat($i['preco']) * serviceStringToFloat($i['quantidade']);
 									}
 									?>
@@ -62,6 +65,7 @@ $preco = 0;
                       <tr>
                         <th scope="row fontevinte"></th>
                         <td class="fontedezoito">Frete:</td>
+																								<!-- função que transforma o preço para o que normalmente vemos -->
                         <td colspan="2" class="fontedezoito text-center">R$ <?=precoBR($i['frete'])?></td>
                         <td></td>
                       </tr>

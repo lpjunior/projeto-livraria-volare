@@ -6,17 +6,16 @@ if (!isset($_SESSION['user_id'])){
 	header('Location: adm.php');
 }
 require_once("header.php");
-// echo  $_SESSION['logado']."<br>".$_SESSION['nome_adm'];
 ?>
 <section class="container-fluid  centraliza pr-4 mt-4 mb-4">
   <div class=" row COLORE bordasb col-md-10 mb-4 centraliza">
                   <div class="col-md-6 float-left mt-4">
                       <form action="../php/CRUDS/inserirLivro.php" method="post" enctype="multipart/form-data">
-                        <!-- uploadImg($_POST) -->
                           <!-- INPUT IMAGEM-->
                             <label for="capa">Imagem capa:</label>
                             <input type="file" class="form-control-file" id="capa" name="foto" required="required">
-                          <!-- / input imagem --><br/>
+                          <!-- / input imagem -->
+													<br/>
                           <div class="form-group">
                             <label for="titulo">Título:</label>
                             <input type="text" class="form-control col-8" name="titulo" id="titulo" maxlength="45" required="required">
@@ -35,6 +34,7 @@ require_once("header.php");
                             <select class="custom-select col-5" id="categoria" name="categoria">
                               <option selected>Selecione a categoria</option>
                               <?php
+															// Função para listar todas as categorias do banco
                               $categoria = serviceListarCategoria();
                               foreach ($categoria as $i) {
                               ?>
@@ -47,6 +47,7 @@ require_once("header.php");
                             <select class="custom-select col-5" id="subcat" name="subcategorias">
                                 <option selected>Selecione um assunto</option>
                                 <?php
+																// Função para listar todas as subcategorias do banco
                                 $subcategoria = serviceListarSubcategoria();
                                 foreach ($subcategoria as $i) {
                                 ?>
@@ -59,6 +60,7 @@ require_once("header.php");
                             <select class="custom-select col-6" id="tipocapa" name="capa">
                                 <option selected>Selecione o tipo de capa</option>
                                 <?php
+																// Função para listar todas os tipos de capa do banco
                                 $capa = serviceListarCapa();
                                 foreach ($capa as $i) {
                                 ?>
@@ -71,6 +73,7 @@ require_once("header.php");
                             <select class="custom-select col-5" id="idioma" name="idioma">
                                 <option selected>Selecione o idioma</option>
                                 <?php
+																// Função para listar todos os idiomas do banco
                                 $idioma = serviceListarIdioma();
                                 foreach ($idioma as $i) {
                                 ?>
@@ -83,6 +86,7 @@ require_once("header.php");
                             <select class="custom-select col-5" id="fornecedor" name="fornecedor">
                                 <option selected>Selecione o fornecedor</option>
                                 <?php
+																// Função para listar os fornecedores registrados
                                 $capa = serviceListarFornecedor();
                                 foreach ($capa as $i) {
                                 ?>

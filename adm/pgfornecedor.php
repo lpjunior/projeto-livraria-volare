@@ -1,14 +1,3 @@
-<!--
-- Linkar editaFornecedor, editaProduto e editaPedido no botão editar e função apagar no botão apagar /ctrl + f: botões/
-nas páginas: pgfornecedor, pgpedido, pgproduto (e verificar nessas páginas a parte Modal Structure /só dar ctrl + F e
-digitar modal/ que o Fernando fez);
-Ainda nessas três páginas implementar o php na busca;
-- Linkar meu perfil na página header;
-- Ver se a página vendas faz sentido, se não, excluir a pag e o link do header
-- em pgpedido colocar link pro visualizarpedido.php
-- pgfornecedor tá dando variável indefinida
-- Verificar o session_start, aparece a mensagem "A session had already been started - ignoring in ..."
--->
 <?php
 if (!isset($_SESSION)){
 	session_start();
@@ -17,7 +6,6 @@ if (!isset($_SESSION['user_id'])){
 	header('Location: adm.php');
 }
 require_once("header.php");
-// echo  $_SESSION['logado']."<br>".$_SESSION['nome_adm'];
 ?>
 <section class="row container-fluid">
     <div class="col-12 col-sm-12 col-md-10 col-lg-10 centraliza mt-3">
@@ -48,10 +36,12 @@ require_once("header.php");
 				 </thead>
 				 <tbody class="centraliza bg-white"><!-- CONTEÚDO DA TABELA -->
              <?php
+						 // Caso a pessoa tenha feito alguma busca, liste os fornecedores de acordo com a busca
                if (isset($_POST['pesquisa']) && $_POST['pesquisa']) {
                $fornecedor = servicePesquisarFornecedor($_POST['fornecedor']);
              } else {
-               $fornecedor = listarFornecedor();
+							 // Caso não tenha feito, liste todos os fornecedores
+               $fornecedor = listarFornecedor(NULL);
              }
              foreach ($fornecedor as $i) {
              ?>

@@ -6,7 +6,6 @@ if (!isset($_SESSION['user_id'])){
 	header('Location: adm.php');
 }
 require_once("header.php");
-// echo  $_SESSION['logado']."<br>".$_SESSION['nome_adm'];
 ?>
 <section class="row container-fluid">
   <div class="col-12 col-sm-12 col-md-10 col-lg-9 centraliza mt-3">

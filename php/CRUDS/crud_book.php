@@ -12,12 +12,14 @@ function inserirLivro($categoria, $titulo, $autor, $editora, $isbn, $numeroPagin
 	$sql = "INSERT INTO produto VALUES (NULL, '$categoria', '$titulo', '$autor', '$editora', '$isbn', '$numeroPaginas', '$sinopse', '$peso', '$data', '$preco', '$quantidade', '$dimensoes', $subcategorias, $capa, $fornecedor)";
 	$resultado = mysqli_query($conexao, $sql);
 	$id = mysqli_insert_id($conexao);
+	// Inserts nas imagens
 	$imgCapa = $imagem['capa'];
 	$imgThumb = $imagem['0'];
 	$sql = "INSERT INTO imagemcapa VALUES (NULL, '$imgCapa', $id)";
 	$resultado = mysqli_query($conexao, $sql);
 	$sql = "INSERT INTO imagemthumb VALUES (NULL, '$imgCapa', $id)";
 	$resultado = mysqli_query($conexao, $sql);
+	// Insert no idioma
 	$sql = "INSERT INTO Produto_has_Idioma VALUES ($id, $idioma)";
 	$resultado = mysqli_query($conexao, $sql);
 	// Botar o $idioma no insert
@@ -271,12 +273,12 @@ function excluirLivro($id){
 			return false;
 		}
 	}
+	// Função que transforma string em um número float
 	function stringToFloat($str) {
   if(strstr($str, ",")) {
-    $str = str_replace(".", "", $str); // replace dots (thousand seps) with blancs
-    $str = str_replace(",", ".", $str); // replace ',' with '.'
+    $str = str_replace(".", "", $str);
+    $str = str_replace(",", ".", $str);
   }
-
   if(preg_match("#([0-9\.]+)#", $str, $match)) { // search for number that may contain '.'
     return floatval($match[0]);
   } else {
