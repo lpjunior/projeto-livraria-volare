@@ -50,26 +50,26 @@ $app->map(['GET', 'POST'], '/produto', function ($request, $response, $args) {
                       <!-- FAVORITAR-->
                         <a class="afav" href="php/CRUDS/itemDesejado.php?idProd=<?=$i['id']?>"><span style="font-size: 20px;">&#9829;</span>&nbsp;<span style="font-size: 18px;">favoritar</span></a>
                       <h2><span style="font-size: 20px;">R$&nbsp;<span style="font-size: 24px;"><?=number_format($i['preco'], 2, ',', '.')?></span></h2>
-                        <!--frete--><h4 class="paddingtexto fontedezesseis">R$&nbsp;Frete:</h4>
-                      <form calss"" action="#" method="post">
-                        <div class="input-group mb-4 input-sm col-xs-4 largurainput">
+
+                      <form action="#" method="post">
+                        <div class="input-group mb-2 input-sm col-xs-4 largurainput">
 
                             <input type="text" class="form-control cep" placeholder="Digite o CEP" name="cep_prod" aria-label="Digite o cep" aria-describedby="button-addon2">
                             <div class="input-group-append">
-                              <button class="btn btn-outline-secondary" type="submit" name="btnCalculaFrete" id="button-addon2">calcule</button>
+                              <button class="btn btn-outline-secondary rounded" type="submit" name="btnCalculaFrete" id="button-addon2">calcule</button>
                             </div>
                             <?php
                             if (isset($frete)){
                               if (is_array($frete)){
                               foreach ($frete as $b => $i) {
                             ?>
-                            <p> <?php if ($b == 'prazo'){
-                              echo "O prazo de entrega é de: ". $i['0']. " dias";
+                            <span class="opacidade pl-1 pt-2"> <?php if ($b == 'prazo'){
+                              echo "Prazo de entrega: ". $i['0']. " dias";
                             } else {
-                              echo "O valor do frete é: R$ ".$i['0'];
-                            }?> </p>
+                              echo "Valor do frete: R$".$i['0'];
+                            }?> </span>
                           <?php } } else {
-                            echo "<p>".$frete."</p>";
+                            echo "<span>".$frete."</span>";
                           } }?>
 
                         </div>
@@ -157,7 +157,7 @@ $app->map(['GET', 'POST'], '/produto', function ($request, $response, $args) {
                             <?php
                             $comentarios = serviceListarComentarios(8, $_GET['id']);
                             if (!is_array($comentarios)){
-                              $comentarios = array('0' => array('id' => 'a', 'comentario' => '<h5><i>Não existem comentários nesse livro, seja o primeiro!</i></h5>'));
+                              $comentarios = array('0' => array('id' => 'a', 'comentario' => '<h5 class="fontedezesseis"><i>Não existem comentários sobre este livro, seja o primeiro!</i></h5>'));
                             }
                             foreach ($comentarios as $i) {
                             ?>

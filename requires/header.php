@@ -45,18 +45,18 @@ require_once 'php/CRUDS/serviceCarrinho.php';
                 <span class="navbar-toggler-icon"></span>
             </button>
 						<!-- LOGO -->
-            <div class="navbar-left">
-                <a href="home"><img class="mt-0 mb-0 pt-0 pb-0" src="img/logomarcab.png"  alt="logomarca volare livraria"></a>
+            <div class="navbar-left mr-2 ml-2">
+                <a href="home"><img src="img/logomarcab.png"  alt="logomarca volare livraria"></a>
             </div>
             <!-- COMEÇO DA DIV COLLAPSE HAMBURGER--> <div class="collapse navbar-collapse " id="navbarCollapse">
 
-
-            <div class="col-md-12 col-lg-12 col-xl-12 navbar-nav fontedezesseis"><!-- div que agrupa os links -->
+            <!-- div que agrupa os links -->
+            <div class="col-md-12 col-lg-12 col-xl-12 navbar-nav navbar-left fontedezesseis">
 							<!-- DROPDOWN CATEGORIAS DA NAVBAR -->
-	                <div class="ml-4 dropdown navbar-form">
-	                    <button class="btn opacidade COLORE dropdown-toggle mr-3" type="button" id="menu1" data-toggle="dropdown">Categorias
+	                <div class="dropdown navbar-form">
+	                    <button class="btn opacidade COLORE dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Categorias
 	                    <span class="caret"></span></button>
-	                    <ul class="dropdown-menu COLORE mb-0" role="menu" aria-labelledby="menu1">
+	                    <ul class="dropdown-menu COLORE" role="menu" aria-labelledby="menu1">
 												<?php
 												$categoria = listarCategoria();
 												foreach ($categoria as $i) { ?>
@@ -77,14 +77,20 @@ require_once 'php/CRUDS/serviceCarrinho.php';
                 <div class="dropdown float-left">
 								<a href="user" class="dropdown-toggle nav-link text-dark fontedezesseis opacidade" data-toggle="dropdown" role="button"> <i class="fas fa-user-circle"></i>&nbsp;Olá, <?=$_SESSION['user']['nome']?></a>
 									<ul class="dropdown-menu COLORE" role="menu">
-                                        <li>
-											<div class="fontedoze pr-2 pl-1 mb-0">
+                    <li>
+											<div class="fontecatorze pr-2 pl-3 mb-0">
 													<a href="user" class="text-dark" >Minha Conta</a>
 											</div>
 										</li>
 										<div class="dropdown-divider"></div>
-                                        <li>
-											<div class="fontedoze pr-2 pl-1 mb-0">
+										<li>
+											<div class="fontecatorze pr-2 pl-3 mb-0">
+													<a href="" class="text-dark" >Meus pedidos</a><!-- LINK PEDIDOS -->
+											</div>
+										</li>
+										<div class="dropdown-divider"></div>
+                    <li>
+											<div class="fontecatorze pr-2 pl-3 mb-0">
 													<a href="php/CRUDS/deslogarUsuario.php" class="text-dark">Sair</a>
 											</div>
 										</li>
@@ -149,7 +155,7 @@ require_once 'php/CRUDS/serviceCarrinho.php';
 						</div> <!--fim da div que junta os links -->
             </div> <!-- FIM DA DIV COLLAPSE HAMBURGER -->
         <!-- CAMPO DE BUSCA -->
-            <form class="form mt-2 mt-md-0 col-12 col-sm-6 col-md-5 col-lg-4 col-xl-4 pr-3 pl-2 navbar-left" action="busca" method="GET">
+            <form class="form mt-2 mt-md-0 col-12 col-sm-6 col-md-6 col-lg-5 col-xl-4 pr-3 pl-2 navbar-left" action="busca" method="GET">
                 <div class="input-group">
                     <span class="input-group-append">
 

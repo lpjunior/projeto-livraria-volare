@@ -29,10 +29,10 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                               <a class="nav-link font-weight-bold linkstyle" data-toggle="pill" href="#meusenderecos">Meus Endereços</a>
                           </li>
                           <li class="nav-item border-bottom">
-                              <a class="nav-link font-weight-bold linkstyle" data-toggle="pill" href="#listadesejos">Lista de Desejos</a>
+                              <a class="nav-link font-weight-bold linkstyle" href="pedidos.php">Meus Pedidos</a>
                           </li>
                           <li class="nav-item border-bottom">
-                              <a class="nav-link font-weight-bold linkstyle" data-toggle="pill" href="#meuspedidos">Meus Pedidos</a>
+                              <a class="nav-link font-weight-bold linkstyle" data-toggle="pill" href="#listadesejos">Lista de Desejos</a>
                           </li>
                           <li class="nav-item border-bottom">
                               <a class="nav-link font-weight-bold linkstyle" data-toggle="pill" href="#centralatendimento">Central de Atendimento</a>
@@ -331,14 +331,10 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                         </div>
                         </div>
                       <?php } } else {
-                        echo "<h5>Não existe nenhum item na sua lista de desejos</h5>";
-                      } ?>
-                    </div>  <!-- FIM DA DIV QUE JUNTA OS CARDS -->
+                        echo "<p>Não existe nenhum item na sua lista de desejos</p>";
+                      } ?></span>
+                    </div> <!-- FIM DA DIV QUE JUNTA OS CARDS -->
                 </section>
-                    </div>
-                    <div id="meuspedidos" class="tab-pane fade"><br>
-                    <h3>Meus Pedidos</h3>
-                    <p><!-- COLOCAR MENSAGEM DE "NÃO HÁ PEDIDOS PARA SEREM VISUALIZADOS" QUANDO Ñ HOUVER PEDIDO--></p>
                     </div>
                     <div id="centralatendimento" class="tab-pane fade"><br>
                     <h3>Central de Atendimento</h3>

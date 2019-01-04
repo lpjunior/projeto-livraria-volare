@@ -128,7 +128,14 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
             </div>
             <div class="col-md-4 col-12">
               <div class="col bordasc">
-                <h4 class="text-center mt-3">Resumo do pedido</h4>
+                <h4 class="pl-2 fontevinte mt-3">Resumo do pedido</h4>
+             <form action="#" method="post">
+               <div class="input-group mb-4 input-sm float-left largurainput">
+                 <!-- ÁREA PRA CALCULAR O FRETE -->
+                   <input type="text" class="text-center form-control col cep mb-3" placeholder="Digite o CEP" name="cep" aria-label="Digite o cep" aria-describedby="button-addon2">
+                   <div class="input-group-append mb-3">
+                     <button class="btn btn-outline-secondary rounded COLORE1" type="submit" name="btn_calcula_frete" id="button-addon2">calcule</button>
+                   </div>
                 <table class="table">
                   <tbody>
                     <tr>
@@ -173,18 +180,15 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
                       (isset($frete) ? precoBR((serviceStringToFloat($subtotal) + serviceStringToFloat($frete['valor']))) : $subtotal);
                       ?></span></td>
                     </tr>
+                    <tr class="border-top">
+                        <th scope="row" class="fontedoze">Prazo de entrega:</th>
+                        <td><span id=""> <!-- DATA DE ENTREGA --></span></td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
               <div class="col bordasc mt-3">
-                <h5 class="text-center mt-3">Calcule o frete</h5>
-                <div class="input-group mb-4 input-sm col-xs-4 mt-4">
-                  <form class="" action="#" method="post">
-                    <input type="text" class="text-center form-control col cep " name="cep" placeholder="Digite o CEP" aria-label="Digite o cep" aria-describedby="button-addon2">
-                    <div class="input-group-append">
-                      <button class="btn btn-outline-secondary COLORE1" type="submit" name="btn_calcula_frete" id="button-addon2">calcule</button>
 
-                    </div>
                     <?php
                     if (isset($frete)){
                       if (is_array($frete)){
