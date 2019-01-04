@@ -70,22 +70,31 @@ function novoPedido($idUsuario){
     }
   }
 }
-function listarPedido($id){
+function listarPedido($id, $detalhesPedido){
   $conexao = getConnection();
   $sql = "select
-
-  usu.nome,
-  usu.cpf,
+  ped.id as pedido_id,
   'LV'|| ped.id as numero_pedido,
   ped.data_pedido,
-  itped.preco
-
-
-  from usuarios usu
+  sc.status_compra,
+  se.status_entrega,
+  end.destinatario,
+  end.cep,
+  end.estado,
+  end.bairro,
+  end.endereco,
+  end.numero,
+  end.complemento from usuarios usu
   inner join pedidos ped on ped.usuarios_id = usu.id
-  inner join itens_pedido itped on itped.pedidos_id = ped.id
-  inner join produto prod on prod.id = itped.produto_id
-  WHERE ped.id = $id";
+  inner join status_compra sc on sc.idstatus_compra = ped.id_status_compra
+  inner join status_entrega se on se.idstatus_entrega = ped.id_status_entrega
+  inner join endereco end on end.usuarios_id = usu.id WHERE";
+  if ($detalhesPedido != NULL){
+    $sql .= " ped.id = $detalhesPedido and end.TipoEndereco_id = 1";
+  }
+  if ($id != NULL){
+  $sql .= " usu.id = $id and end.TipoEndereco_id = 1";
+  }
   $resultado = mysqli_query($conexao, $sql);
   if (mysqli_affected_rows($conexao) >= 1){
     $pedido = array();
@@ -148,5 +157,23 @@ function pesquisarPedido($n){
 		return $arr;
 	} else {
 		return "<h1 class='text-center'>A busca não teve resultados.</h1>";
+	}
+}
+function listarItensPedidos($idPedido){
+  $conexao = getConnection();
+	$sql = "select
+  itped.*, prod.titulo, ped.frete, it.nome from itens_pedido itped
+  inner join produto prod on prod.id = itped.produto_id
+  inner join imagemthumb it on it.produto_id = prod.id
+  inner join pedidos ped on ped.id = itped.pedidos_id
+  where ped.id = $idPedido";
+	$resultado = mysqli_query($conexao, $sql);
+	if (mysqli_affected_rows($conexao) >= 1) {
+		$arr = array();
+		## Botar o resultado dentro de um array e retornar
+		while ($linha = mysqli_fetch_assoc($resultado)){
+			array_push($arr, $linha);
+		}
+		return $arr;
 	}
 }

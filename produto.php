@@ -174,7 +174,6 @@ $app->map(['GET', 'POST'], '/produto', function ($request, $response, $args) {
                               </form>
                                 <td><p><?=$i['comentario']?></p></td>
                               </tr>
-                              <!--fim dos preenchidos pra teste-->
                           </tbody>
                     </div>
             </section> <!-- fim da section comentários -->

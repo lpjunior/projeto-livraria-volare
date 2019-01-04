@@ -10,13 +10,18 @@ function serviceListarCheckout($id, $qtd){
       return $checkout;
     }
   }
-  function serviceListarPedido($id){
-    if ($checkout = listarPedido($id)){
+  function serviceListarPedido($idUsuario, $detalhesPedido){
+    if ($checkout = listarPedido($idUsuario, $detalhesPedido)){
       return $checkout;
     }
   }
   function serviceListarPedidoAdmin($idUsuario){
     if ($checkout = listarPedidoAdmin($idUsuario)){
+      return $checkout;
+    }
+  }
+  function serviceListarDetalhesPedido($idPedido){
+    if ($checkout = listarDetalhesPedido($idPedido)){
       return $checkout;
     }
   }
@@ -32,6 +37,11 @@ function serviceListarCheckout($id, $qtd){
   }
   	function servicePesquisarPedido($n){
       if ($pedido = pesquisarPedido($n)){
+        return $pedido;
+      }
+    }
+    function serviceListarItensPedidos($idPedido){
+      if ($pedido = listarItensPedidos($idPedido)){
         return $pedido;
       }
     }

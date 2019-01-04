@@ -11,20 +11,25 @@ function registrarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $gen
 	$cpf = mysqli_escape_string($conexao, $cpf);
 	$cpf = htmlspecialchars($cpf);
 	// Se o CPF e/ou email for igual a algum email no banco, retorne um erro para o cliente.
-	$sql = "SELECT cpf from usuarios where cpf = '$cpf'";
- 	$_SESSION['erro_cadastro'] = array();
- 	if (mysqli_query($conexao, $sql)){
- 		$_SESSION['erro_cadastro'][0] = "CPF já registrado.";
-		 	$sql = "SELECT email from usuarios where email = '$email'";
-		 	if (mysqli_query($conexao, $sql)){
-				echo "haha";
-		 		$_SESSION['erro_cadastro'][1] = "Email já registrado.";
-				header('location: ../../cadastro?erro=true');
-				die();
-	 	}
+	$sql = "SELECT cpf from usuarios where cpf = '$cpf' or email = '$email'";
+	$resultado = mysqli_query($conexao, $sql);
+	if (mysqli_affected_rows($conexao) >= 1){
+		$_SESSION['erro_cadastro'] = array();
+		$sql = "SELECT cpf from usuarios where cpf = '$cpf'";
+		$resultado = mysqli_query($conexao, $sql);
+		if (mysqli_affected_rows($conexao) >= 1){
+			$_SESSION['erro_cadastro'][0] = "CPF já registrado.";
+		}
+		$sql = "SELECT email from usuarios where email = '$email'";
+		$resultado = mysqli_query($conexao, $sql);
+		if (mysqli_affected_rows($conexao) >= 1){
+			$_SESSION['erro_cadastro'][1] = "Email já registrado.";
+			header('location: ../../cadastro?erro=true');
+			die();
+		}
 		header('location: ../../cadastro?erro=true');
 		die();
-}
+	}
 	date_default_timezone_set('America/Sao_Paulo');
 	$datanascimento = implode('-',array_reverse(explode('/',$datanascimento)));
 	## FILTROS
@@ -43,20 +48,20 @@ function registrarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $gen
 	$id = mysqli_insert_id($conexao);
 	$sql = "INSERT INTO endereco VALUES (NULL, '$cep', '$end', '$num', '$complemento', '$bairro', '$estado', '$cidade', $id, 4, NULL)";
 	$resultado = mysqli_query($conexao, $sql);
-	$sql = "INSERT INTO telefone VALUES (NULL, $telefone, $id, 1)";
+	$sql = "INSERT INTO telefone VALUES (NULL, '$telefone', $id, 1)";
 	$resultado = mysqli_query($conexao, $sql);
 	if ($interesse != NULL){
-	$sql = "INSERT INTO interesses VALUES";
-	$sql .= " ($id, $interesse[0])";
-	if(sizeof($interesse) > 1) {
-		foreach ($interesse as $i) {
-			$sql .= ", ($id, $i)";
+		$sql = "INSERT INTO interesses VALUES";
+		$sql .= " ($id, $interesse[0])";
+		if(sizeof($interesse) > 1) {
+			foreach ($interesse as $i) {
+				$sql .= ", ($id, $i)";
+			}
 		}
+		$resultado = mysqli_query($conexao, $sql);
 	}
-	$resultado = mysqli_query($conexao, $sql);
-}
 	if (mysqli_affected_rows($conexao) >= 1) {
-		header('location: ../../entrar?cadastro=true');
+		return header('location: ../../entrar?cadastro=true');
 		exit();
 	} // fim do else
 } // fim da function
@@ -531,36 +536,36 @@ function pesquisarCliente($n){
 	} else {
 		return "<h1 class='text-center'>A busca não teve resultados.</h1>";
 	}
+}
+function editaStatusPerfil($perfil, $id){
+	$conexao = getConnection();
+	$sql = "UPDATE usuarios SET perfil_id = $perfil where id = $id";
+	$resultado = mysqli_query($conexao, $sql);
+	if (mysqli_affected_rows($conexao) >= 1) {
+		return true;
+	} else {
+		return "Falha ao editar o fornecedor";
 	}
-	function editaStatusPerfil($perfil, $id){
-		$conexao = getConnection();
-		$sql = "UPDATE usuarios SET perfil_id = $perfil where id = $id";
-		$resultado = mysqli_query($conexao, $sql);
-		if (mysqli_affected_rows($conexao) >= 1) {
-			return true;
-		} else {
-			return "Falha ao editar o fornecedor";
-		}
+}
+function editaStatusAtivo($ativo, $id){
+	$conexao = getConnection();
+	$sql = "UPDATE usuarios SET ativo = $ativo where id = $id";
+	$resultado = mysqli_query($conexao, $sql);
+	if (mysqli_affected_rows($conexao) >= 1) {
+		return true;
+	} else {
+		return "Falha ao editar o fornecedor";
 	}
-	function editaStatusAtivo($ativo, $id){
-			$conexao = getConnection();
-			$sql = "UPDATE usuarios SET ativo = $ativo where id = $id";
-			$resultado = mysqli_query($conexao, $sql);
-			if (mysqli_affected_rows($conexao) >= 1) {
-				return true;
-			} else {
-				return "Falha ao editar o fornecedor";
-			}
-		}
-	function excluirItemDEsejado($produtoID){
-		$conexao = getConnection();
-			$conexao = getConnection();
-			$usuarioID = $_SESSION['user_id'];
-			$sql = "DELETE FROM desejados where usuarios_id = $usuarioID and produto_id = $produtoID";
-			$resultado = mysqli_query($conexao, $sql);
-			if (mysqli_affected_rows($conexao) >= 1) {
-				return true;
-			} else {
-				return "<script>alert('Falha ao excluir o item favorito');</script>";
-			}
-		}
+}
+function excluirItemDEsejado($produtoID){
+	$conexao = getConnection();
+	$conexao = getConnection();
+	$usuarioID = $_SESSION['user_id'];
+	$sql = "DELETE FROM desejados where usuarios_id = $usuarioID and produto_id = $produtoID";
+	$resultado = mysqli_query($conexao, $sql);
+	if (mysqli_affected_rows($conexao) >= 1) {
+		return true;
+	} else {
+		return "<script>alert('Falha ao excluir o item favorito');</script>";
+	}
+}

@@ -180,28 +180,24 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
                       (isset($frete) ? precoBR((serviceStringToFloat($subtotal) + serviceStringToFloat($frete['valor']))) : $subtotal);
                       ?></span></td>
                     </tr>
+                    <?php
+                    if (isset($frete)){
+                      if (is_array($frete)) {
+                        foreach ($frete as $b => $i){
+                          if ($b == 'prazo') {
+                            $prazoEntrega = $i['0'];
+                          } }
+                         } } ?>
                     <tr class="border-top">
                         <th scope="row" class="fontedoze">Prazo de entrega:</th>
-                        <td><span id=""> <!-- DATA DE ENTREGA --></span></td>
+                        <td><span id=""><?=(isset($prazoEntrega) ? $prazoEntrega. "dias" : '')?> </span></td>
+
                     </tr>
                   </tbody>
                 </table>
               </div>
               <div class="col bordasc mt-3">
 
-                    <?php
-                    if (isset($frete)){
-                      if (is_array($frete)){
-                        foreach ($frete as $b => $i) {
-                          ?>
-                          <p> <?php if ($b == 'prazo'){
-                            echo "O prazo de entrega é de: ". $i['0']. " dias";
-                          } else {
-                            echo "O valor do frete é: R$ ".$i['0'];
-                          }?> </p>
-                        <?php } } else {
-                          echo "<p>".$frete."</p>";
-                        } }?>
                       </form>
 
                     </div>

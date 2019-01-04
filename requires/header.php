@@ -26,9 +26,6 @@ require_once 'php/CRUDS/serviceCarrinho.php';
     <script src="js/dadosFacebook.js"></script>
     <script src="js/facebook-sdk.js"></script>
   <?php }
-  if ($_SERVER['REQUEST_URI'] == '/projeto-livraria-volare/produto/') {
-    header('location: ../error');
-  }
   ?>
     <header class="navbar-expand-lg navbar-expand-md">
         <!-- TOPO DO SITE -->
@@ -85,7 +82,7 @@ require_once 'php/CRUDS/serviceCarrinho.php';
 										<div class="dropdown-divider"></div>
 										<li>
 											<div class="fontecatorze pr-2 pl-3 mb-0">
-													<a href="" class="text-dark" >Meus pedidos</a><!-- LINK PEDIDOS -->
+													<a href="pedidos" class="text-dark" >Meus pedidos</a><!-- LINK PEDIDOS -->
 											</div>
 										</li>
 										<div class="dropdown-divider"></div>
@@ -117,7 +114,12 @@ require_once 'php/CRUDS/serviceCarrinho.php';
 										<li class="row"><!--primeiro item carrinho -->
 											<div class="pr-1 pl-1 mb-0">
 													<div class="col-2 float-left pr-1">
-															<img src="http://lorempixel.com/40/40/" height="40" width="40" alt="capa do livro"/>
+														<?php
+			                      $produto = serviceDetalhesLivro($b);
+			                      foreach ($produto as $c) {
+			                      ?>
+															<img src="php/CRUDS/upload/miniaturas/<?=$c['imagemcapa']?>" height="40" width="40" alt="capa do livro"/>
+														<?php } ?>
 													</div>
 													<div class="col-9 float-left">
 																	<p class="mb-0 displayblock text-center fontedoze">&nbsp;&nbsp;<?=(isset($_SESSION['user_id']) ? $i['titulo'] : $i[0]['titulo'])?></p>

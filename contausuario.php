@@ -29,7 +29,7 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                               <a class="nav-link font-weight-bold linkstyle" data-toggle="pill" href="#meusenderecos">Meus Endereços</a>
                           </li>
                           <li class="nav-item border-bottom">
-                              <a class="nav-link font-weight-bold linkstyle" href="pedidos.php">Meus Pedidos</a>
+                              <a class="nav-link font-weight-bold linkstyle" href="pedidos">Meus Pedidos</a>
                           </li>
                           <li class="nav-item border-bottom">
                               <a class="nav-link font-weight-bold linkstyle" data-toggle="pill" href="#listadesejos">Lista de Desejos</a>
