@@ -97,7 +97,7 @@ require_once("header.php");
                                 <option selected>Selecione o fornecedor</option>
                                 <?php
 																// Função para listar os fornecedores
-                                $capa = serviceListarFornecedor();
+                                $capa = serviceListarFornecedor(NULL);
                                 foreach ($capa as $b) {
 																	// Caso o fornecedor listado seja o fornecedor do livro, deixe ele selecionado.
                                 ?>
