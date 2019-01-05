@@ -38,19 +38,22 @@ require_once 'php/CRUDS/serviceCarrinho.php';
         <!-- fim do topo -->
         <nav class="navbar navbar-light COLORE">
             <!-- HAMBURGER -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="menu de navegação">
                 <span class="navbar-toggler-icon"></span>
             </button>
 						<!-- LOGO -->
-            <div class="navbar-left mr-2 ml-2">
+            <div class="navbar-left mr-3 ml-1 d-md-none d-lg-block">
                 <a href="home"><img src="img/logomarcab.png"  alt="logomarca volare livraria"></a>
             </div>
-            <!-- COMEÇO DA DIV COLLAPSE HAMBURGER--> <div class="collapse navbar-collapse " id="navbarCollapse">
+						<div class="navbar-left d-none d-md-block d-lg-none">
+                <a href="home"><img src="img/logomarcac.png"  alt="logomarca volare livraria"></a>
+            </div>
+            <!-- COMEÇO DA DIV COLLAPSE HAMBURGER--> <div class="collapse navbar-collapse" id="navbarCollapse">
 
             <!-- div que agrupa os links -->
             <div class="col-md-12 col-lg-12 col-xl-12 navbar-nav navbar-left fontedezesseis">
 							<!-- DROPDOWN CATEGORIAS DA NAVBAR -->
-	                <div class="dropdown navbar-form">
+	                <!-- <div class="dropdown navbar-form">
 	                    <button class="btn opacidade COLORE dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Categorias
 	                    <span class="caret"></span></button>
 	                    <ul class="dropdown-menu COLORE" role="menu" aria-labelledby="menu1">
@@ -60,7 +63,7 @@ require_once 'php/CRUDS/serviceCarrinho.php';
 	                        <li class="pr-2 pl-1 pb-1" role="presentation"><a role="menuitem" class="linkstyle fontedezesseis" href="busca?cat=<?=$i['id']?>"><?=$i['categoria']?></a></li>
 												<?php  } ?>
 	                    </ul>
-	                </div>
+	                </div> -->
                <!-- LINKS NAVBAR -->
                 <div class="nav-item">
                   <a class="nav-link text-dark opacidade" href="home"><i class="fas fa-home"></i>&nbsp;Início</a>
@@ -97,7 +100,7 @@ require_once 'php/CRUDS/serviceCarrinho.php';
 
 							<!-- CARRINHO DROPDOWN -->
 							<div class="dropdown float-left">
-								<a href="carrinho" class="dropdown-toggle nav-link text-dark fontedezesseis opacidade" data-toggle="dropdown" role="button"> <i class="fas fa-shopping-cart"></i>&nbsp;Carrinho de compras</a>
+								<a href="carrinho" class="dropdown-toggle nav-link text-dark fontedezesseis opacidade" data-toggle="dropdown" role="button"> <i class="fas fa-shopping-cart"></i>&nbsp;Carrinho</a>
 								<ul class="dropdown-menu dropdown-cart COLORE opacidadecart" role="menu"><!-- abre aqui -->
 									<?php
 									if (isset($_SESSION['user_id'])){
@@ -157,11 +160,11 @@ require_once 'php/CRUDS/serviceCarrinho.php';
 						</div> <!--fim da div que junta os links -->
             </div> <!-- FIM DA DIV COLLAPSE HAMBURGER -->
         <!-- CAMPO DE BUSCA -->
-            <form class="form mt-2 mt-md-0 col-12 col-sm-6 col-md-6 col-lg-5 col-xl-4 pr-3 pl-2 navbar-left" action="busca" method="GET">
+            <form class="form col-12 col-xl-4 col-sm-6 col-md-5 col-lg-4  navbar-left" action="busca" method="GET">
                 <div class="input-group">
                     <span class="input-group-append">
 
-                            <select class="form-control py-2 COLORE fontecatorze bordas" name="modo">
+                            <select class="form-control  COLORE fontecatorze bordas" name="modo">
                             <option value=" " class="bordas fontecatorze d-none">buscar por</option>
                             <option value=" " class="bordas fontedezesseis">busca livre</option>
                             <option value="titulo" class="bordas fontedezesseis">título</option>
@@ -170,7 +173,7 @@ require_once 'php/CRUDS/serviceCarrinho.php';
                             </select>
 
                     </span>
-                    <input class="form-control py-2 border-right-0 border noradius" href="#" type="search" value="" id="" name="busca">
+                    <input class="form-control  border-right-0 border noradius" href="#" type="search" value="" id="" name="busca">
                     <span class="input-group-append">
                         <button type="submit" class="fa fa-search input-group-text bg-white noradius"></button>
                     </span>

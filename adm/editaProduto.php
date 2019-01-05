@@ -8,8 +8,8 @@ if (!isset($_SESSION['user_id'])){
 require_once("header.php");
 ?>
 <section class="container-fluid  centraliza pr-4 mt-4 mb-4">
-  <div class=" row COLORE bordasb col-md-10 mb-4 centraliza">
-                  <div class="col-md-6 float-left mt-4">
+  <div class=" row COLORE bordasb col-md-5 mb-4 centraliza">
+                <!--  <div class="col-md-6 float-left mt-4"> -->
 										<?php
 										$livro = serviceDetalhesLivro($_GET['id']);
 										foreach ($livro as $i) {
@@ -109,8 +109,8 @@ require_once("header.php");
                             <label for="isbn">ISBN:</label>
                             <input type="text" class="form-control col-4" name="ISBN" id="isbn" maxlength="13" value="<?=$i['isbn']?>">
                           </div>
-                    </div>
-                    <div class="col-md-6 float-left mt-4">
+                    <!-- </div> -->
+                    <!-- <div class="col-md-6 float-left mt-4"> div que faz ficar um do lado do outro-->
 
                           <div class="form-group">
                             <label for="datapub">Ano de publicação da edição:</label>
@@ -144,7 +144,7 @@ require_once("header.php");
                           </div>
                       <button name="btn-livro-enviar" type="submit" class="btn COLORE1 float-right btn-outline-secondary">Submeter edição</button>
                       </form>
-                  </div>
+                <!--  </div> -->
   </div>
 </section>
 <?php } ?>

@@ -128,61 +128,63 @@ $app->map(['GET', 'POST'], '/produto', function ($request, $response, $args) {
                       <?php } ?>
                        </div> <!-- fim dos cards primeira linha-->
                 </section> <!-- fim da section dos cards -->
-                </div><!-- fim da row -->
-            </div><!-- fim do primeiro container -->
-            <!-- COMEÇO DA SECTION DE COMENTÁRIOS -->
-            <section class="row">
-                    <div class="container-fluid col-xs-12 col-sm-8 col-md-8 col-lg-8 centraliza bordasb mb-5"><!-- BORDAS COMEÇO-->
-                      <div class="col-md-12 col-lg-12 col-sm-12 ml-5 mt-4 mb-4">
-                          <h4 class="fontevinteecinco"><i class="far fa-comments"></i>&nbsp;Comentários:</h4>
-                      </div>
-                      <form action="php/CRUDS/inserirComentario.php?id=<?=$_GET['id']?>" method="POST">
-                      <div class="col-md-7 col-lg-7 col-sm-10 centraliza mt-2 mb-2">
-                           <textarea class="form-control" rows="3" name="message" placeholder="Escreva seu comentário" maxlength="250" required="required"></textarea>
-                      </div>
-                      <div class="col-md-7 col-lg-7 col-sm-10 centraliza mb-4">
-                          <div class="form-group text-right opacidade pr-2">
-                              <div>
+            </div><!-- fim da row -->
+        </div><!-- fim do primeiro container -->
 
-                                  <button type="submit" class="btn fontedoze opacidade COLORE1" alt="comentar" name="btn-comentar">comentar</button>
-                                </form>
-                                  <!-- se o usuário não estiver logado deve aparecer a mensagem "Para postar um comentário entre ou faça o seu cadastro"-->
-                              </div>
-                          </div>
-                      </div>
-                      <table class="table table-striped mt-3 mb-3">
+        <!-- COMEÇO DA SECTION DE COMENTÁRIOS -->
+       <section class="container-fluid mb-4 pb-4">
+           <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 centraliza bordasb"><!-- BORDAS COMEÇO-->
+                 <div class="col-md-12 col-lg-12 col-sm-12 ml-5 mt-4 mb-4">
+                     <h4 class="fontevinteecinco"><i class="far fa-comments"></i>&nbsp;Comentários:</h4>
+                 </div>
+                 <form action="php/CRUDS/inserirComentario.php?id=<?=$_GET['id']?>" method="POST">
+                 <div class="col-md-7 col-lg-7 col-sm-10 centraliza mt-2 mb-2">
+                      <textarea class="form-control" rows="3" name="message" placeholder="Escreva seu comentário" maxlength="250" required="required"></textarea>
+                 </div>
+                 <div class="col-md-7 col-lg-7 col-sm-10 centraliza mb-4">
+                     <div class="form-group text-right opacidade pr-2">
+                         <div>
 
+                             <button type="submit" class="btn fontedoze opacidade COLORE1" alt="comentar" name="btn-comentar">comentar</button>
 
-                            <!--vai puxar os 8 últimos comentários inseridos no banco-->
-                            <?php
-                            $comentarios = serviceListarComentarios(8, $_GET['id']);
-                            if (!is_array($comentarios)){
-                              $comentarios = array('0' => array('id' => 'a', 'comentario' => '<h5 class="fontedezesseis"><i>Não existem comentários sobre este livro, seja o primeiro!</i></h5>'));
-                            }
-                            foreach ($comentarios as $i) {
-                            ?>
-                            <tbody>
-                              <tr>
-                                <form method="POST" action="php/CRUDS/excluirComentario.php">
-                                  <input name="produtoID" type="hidden" value="<?=$_GET['id']?>">
-                                <th scope="row" class="COLORETEXTO text-center">
-                                  <?php if (isset($_SESSION['user_id']) && isset($i['usuarios_id']) && $_SESSION['user_id'] == $i['usuarios_id']){ ?>
-                                  <button value="<?=$i['id']?>" name='btn-excluir' class="far fa-edit input-group-text"></button>
-                                <?php }?>
-                                </br>
-                                <?=(isset($i['nome']) ? $i['nome'] : '')?></th>
-                              </form>
-                                <td><p><?=$i['comentario']?></p></td>
-                              </tr>
-                          </tbody>
-                    </div>
-            </section> <!-- fim da section comentários -->
+                             <!-- se o usuário não estiver logado deve aparecer a mensagem "Para postar um comentário entre ou faça o seu cadastro"-->
+                         </div>
+                     </div>
+                 </div>
+                 </form>
+                 <table class="table table-striped mt-3 mb-3">
+                       <!--vai puxar os 8 últimos comentários inseridos no banco-->
+                       <?php
+                       $comentarios = serviceListarComentarios(8, $_GET['id']);
+                       if (!is_array($comentarios)){
+                         $comentarios = array('0' => array('id' => 'a', 'comentario' => '<h5 class="fontedezesseis"><i>Não existem comentários sobre este livro, seja o primeiro!</i></h5>'));
+                       }
+                       foreach ($comentarios as $i) {
+                       ?>
+                       <tbody>
+                         <tr>
+                           <form method="POST" action="php/CRUDS/excluirComentario.php">
+                             <input name="produtoID" type="hidden" value="<?=$_GET['id']?>">
+                           <th scope="row" class="COLORETEXTO text-center">
+                             <?php if (isset($_SESSION['user_id']) && isset($i['usuarios_id']) && $_SESSION['user_id'] == $i['usuarios_id']){ ?>
+                             <button value="<?=$i['id']?>" name='btn-excluir' class="far fa-edit input-group-text"></button>
+                           <?php }?>
+                           </br>
+                           <?=(isset($i['nome']) ? $i['nome'] : '')?></th>
 
-          <?php } } else{ ?>
-            </table>
-            <h1 class="text-center">Livro não encontrado</h1>
-            <?php
-          }
+                           <td><p><?=$i['comentario']?></p></td>
+                           </form>
+                         </tr>
+                       </tbody>
+                 </table>
+           </div>
+       </section> <!-- fim da section comentários -->
 
-            });
-             ?>
+     <?php } } else{ ?>
+       </table>
+       <h1 class="text-center">Livro não encontrado</h1>
+       <?php
+     }
+
+       });
+        ?>

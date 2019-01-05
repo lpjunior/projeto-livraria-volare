@@ -23,9 +23,6 @@ require_once '../php/CRUDS/serviceCheckout.php';?>
           <div class="nav-item pr-2 pl-2 mb-0">
             <a class="nav-link text-dark opacidade" href="adm.php"><i class="fas fa-home"></i>&nbsp;Home</a>
           </div>
-          <div class="nav-item pr-2 pl-2 mb-0">
-            <!-- *****LINKAR PÁGINA ******--><a class="nav-link text-dark opacidade" href="  "><i class="fas fa-user"></i>&nbsp;Meu perfil</a>
-          </div>
           <div class="dropdown pr-2 pl-2 mb-0 float-left"><!-- começo dropdown -->
           <a href="#" class="dropdown-toggle nav-link text-dark opacidade" data-toggle="dropdown" role="button"><i class="fas fa-paste"></i>&nbsp;Cadastrar</a>
             <ul class="dropdown-menu COLORE" role="menu">
