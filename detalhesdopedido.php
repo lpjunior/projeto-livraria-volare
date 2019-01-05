@@ -69,7 +69,7 @@ $app->get('/detalhes-pedido', function ($request, $response, $args) {
 </section>
 <?php
 } else {
-  echo "<h1 class='text-center mt-4'>Não existem pedidos.</h1>";
+  echo "<h5 class='fontedezoito opacidade text-center mt-4'>Não existem pedidos.</h5>";
 }
 
 });?>

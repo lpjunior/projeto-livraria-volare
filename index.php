@@ -44,7 +44,7 @@ $app->get('/home', function ($request, $response, $args) {?>
                       ?>
                         <div class="col-sm-3">
                           <div class="card mb-4 shadow-sm">
-                            <img class="card-img-top" src="php/CRUDS/upload/miniaturas/<?=$i['imagemthumb']?>" alt="capa do livro">
+                            <img class="card-img-top" src="php/CRUDS/upload/<?=$i['imagemcapa']?>" alt="capa do livro">
                             <div class="card-header border-top">
                                 <h4 class="my-0 font-weight-normal fontequinze"><a class="linkstyle" href="produto?id=<?=$i['id']?>"><?=$i['titulo']?></h4></a>
                             </div>

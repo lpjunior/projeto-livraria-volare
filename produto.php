@@ -16,9 +16,9 @@ $app->map(['GET', 'POST'], '/produto', function ($request, $response, $args) {
     unset($_SESSION['ComentarioErro']);
   }
 ?>
-        <div class="container-fluid col-md-8 col-xs-12 centraliza">
+        <div class="container-fluid col-sm-10 col-md-8 col-lg-8 col-12 centraliza">
             <div class="row">
-                <section class="col-xs-12 col-sm-4 col-md-4 col-lg-4 mt-4">
+                <section class="col-12 col-sm-4 col-md-4 col-lg-4 mt-4">
                     <!--imagem do livro-->
                     <?php
                     if (isset($_GET['id'])) {
@@ -43,7 +43,7 @@ $app->map(['GET', 'POST'], '/produto', function ($request, $response, $args) {
                     <h4 class="fontedezesseis"><i class="far fa-bookmark"></i>&nbsp;Sinopse:</h4> <p class="fontedezesseis"><?=$i['sinopse']?></p>
                 </section>
                 <!-- div para informações -->
-                <section class="col-xs-12 col-sm-8 col-md-8 col-lg-8 mt-4 bordasb">
+                <section class="col-12 col-sm-8 col-md-8 col-lg-8 mt-4 bordasb">
                     <div class="col-md-12 paddingtexto">
                       <h1 class="paddingtexto fontevinteecinco"><?=$i['titulo']?></h1>
                       <h2 class="fontevinte">Autor: <?=$i['autor']?> </h2>
@@ -106,14 +106,14 @@ $app->map(['GET', 'POST'], '/produto', function ($request, $response, $args) {
                     <h4 class="fontedezoito text-center mt-4 bg-light opacidade">Clientes que compraram este livro também aprovam:</h4><br/>
 
                     <!-- começo dos cards PRIMEIRA LINHA-->
-                        <div class="card-deck mb-3 text-center ">
+                        <div class="card-deck text-center ">
                           <?php
                           $livro = serviceListarLivro(4, NULL);
                           foreach ($livro as $i) {
                           ?>
                         <div class="card mb-3 shadow-sm">
 
-                            <img class="card-img-top" src="php/CRUDS/upload/miniaturas/<?=$i['imagemthumb']?>" alt="capa do livro">
+                            <img class="card-img-top" src="php/CRUDS/upload/<?=$i['imagemcapa']?>" alt="capa do livro">
                             <div class="card-header">
                                 <a class="linkstyle" href="produto?id=<?=$i['id']?>"><h4 class="my-0 font-weight-normal fontedezoito"><?=$i['titulo']?></h4></a>
                             </div>
@@ -132,9 +132,9 @@ $app->map(['GET', 'POST'], '/produto', function ($request, $response, $args) {
         </div><!-- fim do primeiro container -->
 
         <!-- COMEÇO DA SECTION DE COMENTÁRIOS -->
-       <section class="container-fluid mb-4 pb-4">
-           <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 centraliza bordasb"><!-- BORDAS COMEÇO-->
-                 <div class="col-md-12 col-lg-12 col-sm-12 ml-5 mt-4 mb-4">
+       <section class="container-fluid mb-4 mt-3 pb-4">
+           <div class="col-12 col-sm-8 col-md-8 col-lg-8 centraliza bordasb"><!-- BORDAS COMEÇO-->
+                 <div class="col-12 col-md-12 col-lg-12 col-sm-12 pl-4 mt-4 mb-4">
                      <h4 class="fontevinteecinco"><i class="far fa-comments"></i>&nbsp;Comentários:</h4>
                  </div>
                  <form action="php/CRUDS/inserirComentario.php?id=<?=$_GET['id']?>" method="POST">

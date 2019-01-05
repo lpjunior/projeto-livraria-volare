@@ -54,7 +54,7 @@ $app->map(['GET', 'POST'], '/busca', function ($request, $response, $args) {?>
             </div>
           </form>
         </div> <!-- FIM DA DIV LATERAL DIREITA-->
-        <div class="col-md-10 col-lg-8 col-sm-10"> <!-- DIV ONDE VAI ENTRAR O CONTEÚDO DA PAG-->
+        <div class="col-md-10 col-lg-10 col-sm-10"> <!-- DIV ONDE VAI ENTRAR O CONTEÚDO DA PAG-->
           <!-- começo dos cards PRIMEIRA LINHA-->
           <?php
           if (isset($_GET['cat'])){
@@ -86,7 +86,7 @@ $app->map(['GET', 'POST'], '/busca', function ($request, $response, $args) {?>
               <?php foreach ($livro as $i) {?>
                 <div class="col-sm-3">
                   <div class="card mb-4 shadow-sm">
-                    <img class="card-img-top" src="php/CRUDS/upload/miniaturas/<?=$i['imagemthumb']?>" alt="Capa do livro">
+                    <img class="card-img-top" src="php/CRUDS/upload/<?=$i['imagemcapa']?>" alt="Capa do livro">
                     <div class="card-header">
                       <h4 class="my-0 font-weight-normal fontedezoito"><a class="linkstyle" href="produto?id=<?=$i['id']?>"><?=$i['titulo']?></a></h4>
                     </div>
@@ -102,7 +102,7 @@ $app->map(['GET', 'POST'], '/busca', function ($request, $response, $args) {?>
                   </div>
                 </div> <!--fim da coluna 1-->
               <?php } } else {
-                echo "<h1 class='text-center'>A busca não foi encontrada</h1>";
+                echo "<h5 class='fontedezoito opacidade text-center'>Não existem produtos cadastrados com o(s) filtro(s) utilizado(s)</h5>";
               } ?> <!-- Fim do foreach -->
 
             </div>  <!-- fim dos cards -->
