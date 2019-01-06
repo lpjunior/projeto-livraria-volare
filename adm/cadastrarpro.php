@@ -87,7 +87,7 @@ require_once("header.php");
                                 <option selected>Selecione o fornecedor</option>
                                 <?php
 																// Função para listar os fornecedores registrados
-                                $capa = serviceListarFornecedor();
+                                $capa = serviceListarFornecedor(NULL);
                                 foreach ($capa as $i) {
                                 ?>
                                 <option value="<?=$i['id']?>"><?=$i['nome']?></option>
