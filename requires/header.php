@@ -167,7 +167,7 @@ require_once 'php/CRUDS/serviceCarrinho.php';
                 <div class="input-group">
                     <span class="input-group-append">
 
-                            <select class="form-control COLORE fontetreze bordas" name="modo">
+                            <select class="form-control COLORE bordas" name="modo">
                             <option value=" " class="bordas fontecatorze d-none">buscar por</option>
                             <option value=" " class="bordas fontedezesseis">busca livre</option>
                             <option value="titulo" class="bordas fontedezesseis">título</option>

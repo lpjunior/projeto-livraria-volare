@@ -31,7 +31,7 @@ require_once("header.php");
                 <th scope="col">Autor</th>
                 <th scope="col">Editora</th>
                 <th scope="col">ISBN</th>
-                <th scope="col">num_pág</th>
+                <th scope="col">Ano</th>
 								<th scope="col">Sinopse</th>
                 <th scope="col">Fornecedor</th>
 								<th scope="col">Preço</th>
@@ -57,7 +57,7 @@ require_once("header.php");
                   <td><?=$i['autor']?></td>
                   <td><?=$i['editora']?></td>
                   <td><?=$i['isbn']?></td>
-									<td><?=$i['numero_paginas']?></td>
+									<td><?=$i['data_publicacao']?></td>
                   <td><?=$i['sinopse']?></td>
                   <td><?=$i['fornecedor']?></td>
                   <td><?=$i['preco']?></td>
