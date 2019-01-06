@@ -10,6 +10,9 @@ require_once '../uploadImagem.php';
 				$_POST['data_publicacao'], $_POST['fornecedor'], $_POST['preco'],
 				$_POST['subcategorias'], $_POST['capa'], $_POST['dimensoes'], $_POST['quantidade'],
 				$_POST['idioma'], $fotos)) {
+					if ($livro == true){
+						header('location: ../../adm/cadastrarpro.php');
+					}
 			} else {
 				return $livro;
 			}
