@@ -35,7 +35,7 @@ function editarLivro($categoria, $titulo, $autor, $editora, $isbn, $numeroPagina
 	// Editando o produto
 	$preco = stringToFloat($preco);
 	$sql = "UPDATE produto SET Categoria_id = $categoria, titulo = '$titulo', autor = '$autor', editora = '$editora', isbn = '$isbn',
-	numeroPaginas = '$numeroPaginas', sinopse = '$sinopse', peso = '$peso', datapublicacao = '$data', fornecedores_id = '$fornecedor',
+	numeroPaginas = '$numeroPaginas', sinopse = '$sinopse', peso = '$peso', datapublicacao = $data, fornecedores_id = '$fornecedor',
 	preco = '$preco', SubCategorias_id = '$subcategorias',
 	TipoDeCapa_id = '$capa', quantidade = '$quantidade', dimensoes = '$dimensoes' WHERE id = $id";
 	$resultado = mysqli_query($conexao, $sql);
@@ -52,11 +52,9 @@ function editarLivro($categoria, $titulo, $autor, $editora, $isbn, $numeroPagina
 	$sql = "SELECT * from idiomas where idioma = $idioma";
 	$resultado = mysqli_query($conexao, $sql);
 	$idIdiomas = mysqli_insert_id($conexao);
-	echo $sql."<br>";
 	// Editando o idioma com o id
 	$sql = "UPDATE Produto_has_Idioma set Idioma_id = $idioma where Idioma_id = $idIdiomas";
 	$resultado = mysqli_query($conexao, $sql);
-	echo $sql."<br>";
 	if (mysqli_affected_rows($conexao) >= 1) {
 		return true;
 	} else {
@@ -101,7 +99,7 @@ function excluirLivro($id){
 		idi.idioma,
 		forn.nome as fornecedor,
 		imgcapa.nome as imagemcapa,
-        imgthumb.nome as imagemthumb
+    imgthumb.nome as imagemthumb
 
 		from produto prod
 
@@ -111,7 +109,7 @@ function excluirLivro($id){
 		inner join Produto_has_Idioma pi on pi.Produto_id = prod.id
 		inner join idioma idi on idi.id = pi.Idioma_id
 		inner join imagemcapa imgcapa on prod.id = imgcapa.produto_id
-        inner join imagemthumb imgthumb on prod.id = imgthumb.produto_id
+    inner join imagemthumb imgthumb on prod.id = imgthumb.produto_id
 		inner join fornecedores forn on forn.id = prod.fornecedores_id";
 		## Caso seja a aba de lançamentos, liste os últimos que botaram no site
 		if ($lancamento != NULL) {
@@ -265,9 +263,6 @@ function excluirLivro($id){
 			while ($linha = mysqli_fetch_assoc($resultado)){
 				array_push($arr, $linha);
 			}
-			$a = $arr[0]['data_publicacao'];
-			$a = date('d/m/Y', strtotime($a));
-			$arr[0]['data_publicacao'] = $a;
 			return $arr;
 		} else {
 			return false;

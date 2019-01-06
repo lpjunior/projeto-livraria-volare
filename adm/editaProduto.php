@@ -13,9 +13,6 @@ require_once("header.php");
 										<?php
 										$livro = serviceDetalhesLivro($_GET['id']);
 										foreach ($livro as $i) {
-											$a = $i['data_publicacao'];
-											$a = date('Y', strtotime($a));
-											$i['data_publicacao'] = $a;
 										?>
                       <form action="../php/CRUDS/editarLivro.php?id=<?=$_GET['id']?>" method="post" enctype="multipart/form-data">
                           <!-- INPUT IMAGEM-->

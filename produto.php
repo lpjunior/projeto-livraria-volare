@@ -86,7 +86,7 @@ $app->map(['GET', 'POST'], '/produto', function ($request, $response, $args) {
                     <h4 class="fontedezesseis">Idioma: <?=$i['idioma']?></h4>
                     <h4 class="fontedezesseis">Dimensões: <?=$i['dimensoes']?></h4>
                     <h4 class="fontedezesseis">Tipo de capa: <?=$i['tipo_capa']?></h4>
-                    <h4 class="fontedezesseis">Ano de publicação: <?=$data = date("Y", strtotime($i['data_publicacao']))?></h4>
+                    <h4 class="fontedezesseis">Ano de publicação: <?=$i['data_publicacao']?></h4>
                     <h4 class="fontedezesseis">Número de Páginas: <?=$i['numero_paginas']?></h4>
                     <!-- INICIO FORMULARIO BOTAO PAGSEGURO
                     <form action="https://pagseguro.uol.com.br/checkout/v2/payment.html" method="post">
