@@ -9,8 +9,11 @@ function inserirLivro($categoria, $titulo, $autor, $editora, $isbn, $numeroPagin
 	$preco = stringToFloat($preco);
 	$conexao = getConnection();
 	$sinopse = str_replace('\'', '',$sinopse);
-	$sql = "INSERT INTO produto VALUES (NULL, '$categoria', '$titulo', '$autor', '$editora', '$isbn', '$numeroPaginas', '$sinopse', '$peso', '$data', '$preco', '$quantidade', '$dimensoes', $subcategorias, $capa, $fornecedor)";
+	$sql = "INSERT INTO produto (id, Categoria_id, titulo, autor, editora, isbn, numeroPaginas, sinopse, peso, fornecedores_id, preco, SubCategorias_id, TipoDeCapa_id, quantidade, dimensoes, datapublicacao) VALUES
+	(NULL, '$categoria', '$titulo', '$autor', '$editora', '$isbn', '$numeroPaginas', '$sinopse', '$peso', $fornecedor, '$preco', $subcategorias, $capa, '$quantidade', '$dimensoes', $data)";
 	$resultado = mysqli_query($conexao, $sql);
+	echo $sql."<br>";
+	echo mysqli_error($conexao);
 	$id = mysqli_insert_id($conexao);
 	// Inserts nas imagens
 	$imgCapa = $imagem['capa'];
@@ -22,6 +25,8 @@ function inserirLivro($categoria, $titulo, $autor, $editora, $isbn, $numeroPagin
 	// Insert no idioma
 	$sql = "INSERT INTO Produto_has_Idioma VALUES ($id, $idioma)";
 	$resultado = mysqli_query($conexao, $sql);
+	echo $sql."<br>";
+	echo mysqli_error($conexao);
 	// Botar o $idioma no insert
 	if (mysqli_affected_rows($conexao) >= 1) {
 		return true;
