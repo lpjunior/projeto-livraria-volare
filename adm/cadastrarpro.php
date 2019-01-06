@@ -5,6 +5,11 @@ if (!isset($_SESSION)){
 if (!isset($_SESSION['user_id'])){
 	header('Location: adm.php');
 }
+if (isset($_GET['inserir']) && $_GET['inserir'] == true){
+	echo "<script>alert('Produto inserido com sucesso!')</script>";
+} elseif(isset($_GET['inserir']) && $_GET['inserir'] == false) {
+	echo "<script>alert('Falha ao inserir o livro!')</script>";
+}
 require_once("header.php");
 ?>
 <section class="container-fluid  centraliza pr-4 mt-4 mb-4">

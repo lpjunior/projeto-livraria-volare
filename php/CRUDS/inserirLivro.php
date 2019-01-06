@@ -11,7 +11,9 @@ require_once '../uploadImagem.php';
 				$_POST['subcategorias'], $_POST['capa'], $_POST['dimensoes'], $_POST['quantidade'],
 				$_POST['idioma'], $fotos)) {
 					if ($livro == true){
-						header('location: ../../adm/cadastrarpro.php');
+						header('location: ../../adm/cadastrarpro.php?inserir=true');
+					} else {
+						header('location: ../../adm/cadastrarpro.php?inserir=false');
 					}
 			} else {
 				return $livro;
