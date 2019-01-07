@@ -52,9 +52,19 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
                     <div class="col">
                       <div class="card-block px-2 float-right">
                         <div class="col-md mt-2">
-                          <select id="QtdProd" name="QtdProd" class="form-control">
-                            <option selected><?=$i['qtd']?></option>
-                          </select>
+                        <select id="QtdProd" name="QtdProd" class="form-control tamSel float-left">
+                          <option selected>1<!--betao, joga uma funçao aq p pegar a quantidade q tem no banco s2 ass:nat, seu xuxu?--></option>
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                          <option>4</option>
+                          <option>5</option>
+                          <option>6</option>
+                          <option>7</option>
+                          <option>8</option>
+                          <option>9</option>
+                          <option>10</option>
+                        </select>
                         </div>
                         <a class="nav-link text-dark opacidade float-right" href="#"><i class="fas fa-trash"></i></a>
                       </div>
@@ -114,6 +124,16 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
                       <td>
                         <select id="QtdProd" name="QtdProd" class="form-control tamSel float-left">
                           <option selected>1<!--betao, joga uma funçao aq p pegar a quantidade q tem no banco s2 ass:nat, seu xuxu?--></option>
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                          <option>4</option>
+                          <option>5</option>
+                          <option>6</option>
+                          <option>7</option>
+                          <option>8</option>
+                          <option>9</option>
+                          <option>10</option>
                         </select>
                         <p class="text-center float-left"><a href="" class="linkstyle"><i class="fas fa-trash pt-3 pl-1"></i></a></p>
                       </td>
