@@ -61,7 +61,7 @@ $app->get('/cadastro', function ($request, $response, $args) {
 							<div class="row">
 								<div class="col-md">
 									<label for="iEmail">E-mail:</label>
-									<input type="email" id="iEmail" name="txtEmail" class="form-control" maxlength="100" required>
+									<input type="email" id="iEmail" name="txtEmail" class="form-control" maxlength="100" required pattern="^([\w\-]+\.)*[\w\- ]+@([\w\- ]+\.)+([\w\-]{2,3})$" title="Preencha em um formato de um EMAIL">
 									<br/>
 								</div>
 								<div class="col-md">
