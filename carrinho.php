@@ -4,7 +4,6 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
   //Frete.
   if (isset($_POST['btn_calcula_frete'])) {
     $frete = calculaFrete($_POST['cep'], '22290040', '10', '20');
-
   }
 
   ?>
@@ -21,8 +20,7 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
                   $carrinho = serviceListarCarrinho($_SESSION['user_id']);
                 } elseif (isset($_SESSION['produto'])) {
                   $carrinho = $_SESSION['produto'];
-                }
-                else {
+                } else {
                   $carrinho = NULL;
                 }
                 if ($carrinho != NULL && is_array($carrinho)) {
@@ -81,8 +79,7 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
               $carrinho = serviceListarCarrinho($_SESSION['user_id']);
             } elseif (isset($_SESSION['produto'])) {
               $carrinho = $_SESSION['produto'];
-            }
-            else {
+            } else {
               $carrinho = NULL;
             }
             if ($carrinho != NULL && is_array($carrinho)) {
@@ -146,9 +143,13 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
                       $subtotal = 0;
                       if (isset($_SESSION['user_id'])){
                         $carrinho = serviceListarCarrinho($_SESSION['user_id']);
-                      } else {
+                      } elseif (isset($_SESSION['produto'])) {
                         $carrinho = $_SESSION['produto'];
+                      } else {
+                        $carrinho = NULL;
+                        $subtotal = '00,00';
                       }
+                      if ($carrinho != NULL && is_array($carrinho)) {
                       foreach($carrinho as $i){
                         // Deixando a variável para os dois com o mesmo nome
                         if (isset($_SESSION['user_id'])){
@@ -164,7 +165,7 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
                         $quantidade = $i['quantidade'];
                       } else {
                         $quantidade = $i['qtd'];
-                      }
+                      } }
                       ?>
                       <td>R$<span id="idSubtotal"><?=$subtotal?></span></td>
                     </tr>
@@ -187,7 +188,7 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
                           if ($b == 'prazo') {
                             $prazoEntrega = $i['0'];
                           } }
-                         } } ?>
+                        } } ?>
                     <tr class="border-top">
                         <th scope="row" class="fontedoze">Prazo de entrega:</th>
                         <td><span id=""><?=(isset($prazoEntrega) ? $prazoEntrega. " dias" : '')?> </span></td>

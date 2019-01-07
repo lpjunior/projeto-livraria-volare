@@ -130,7 +130,7 @@ require_once 'php/CRUDS/serviceCarrinho.php';
 													<div class="col-9 float-left">
 																	<p class="mb-0 displayblock text-center fontedoze">&nbsp;&nbsp;<?=(isset($_SESSION['user_id']) ? $i['titulo'] : $i[0]['titulo'])?></p>
 															<div class="col-9 float-left mt-0">
-																	<p class="mb-0 displayblock text-center fontecatorze">&nbsp;R$<?=(isset($_SESSION['user_id']) ? $i['preco'] : $i[0]['preco'])?></i></p>
+																	<p class="mb-0 displayblock text-center fontecatorze">&nbsp;R$<?=(isset($_SESSION['user_id']) ? precoBR($i['preco']) : precoBR($i[0]['preco']))?></i></p>
 															</div>
 															<div class="col-3 float-left mt-0">
 																	<a class="" href="php/CRUDS/carrinhoSystem.php?acao=del&id=<?=$b?>" class="btn COLOREICON"><i class="fonteonze COLOREICON fas fa-trash"></i></a>
