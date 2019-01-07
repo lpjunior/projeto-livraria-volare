@@ -33,9 +33,19 @@ $app->get('/home', function ($request, $response, $args) {?>
                 </div>
             </section>
             <!-- ********************** FIM DO CAROUSEL ****************** -->
-                <!-- COMEÇO DA PRIMEIRA SECTION-->
-                <h1 class="fontevinte COLORETEXTO col-md-8 centraliza mt-4"><i>Lançamentos</i></h1>
-                <section class="bordaspraconteudo col-md-8 centraliza mt-1">
+                <!-- -->
+            <div class="col-md-10 centraliza mb-4 mt-4">
+                <section class="col-md-2  float-left">
+                  <h1 class="fontedezoito ml-2"><i>Categorias</i></h1>
+                  <?php
+                  $categoria = listarCategoria();
+                  foreach ($categoria as $i) {
+                    ?>
+                    <a class="border-bottom  ml-2 linkstyle" href="busca?cat=<?=$i['id']?>" class="linkstyle fontedezesseis"><?=$i['categoria']?></a><br>
+                  <?php } ?>
+                </section>
+                <h1 class="fontevinte COLORETEXTO col-md-8 "><i>Lançamentos</i></h1>
+                <section class="bordaspraconteudo col-md-8 float-left">
 
                     <div class="row text-center"> <!-- DIV QUE JUNTA OS CARDS, todos tem que ficar dentro dela -->
                       <?php
@@ -62,4 +72,5 @@ $app->get('/home', function ($request, $response, $args) {?>
                       <?php } ?>
                     </div>  <!-- FIM DA DIV QUE JUNTA OS CARDS -->
                 </section>
+        </div>
 <?php }); ?>
