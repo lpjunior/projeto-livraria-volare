@@ -208,9 +208,9 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
               </div>
               <div class="row">
                 <div class="col">
-                  <form method="POST" action="https://sandbox.pagseguro.uol.com.br/checkout/v2/cart.html?action=add">
-                    <button type="submit" class="btn COLORE1" name="btn-checkout" >Concluir compra</button>
-                  </form>
+                  <?php
+                  require_once'payment.html';
+                  ?>
                   <script type="text/javascript" src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
                 </div>
               </div>
