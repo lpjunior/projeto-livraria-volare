@@ -3,8 +3,7 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
   require_once'php/frete.php';
   //Frete.
   if (isset($_POST['btn_calcula_frete'])) {
-    $frete = calculaFrete($_POST['cep'], '22290040', '10', '20');
-
+    $frete = calculaFrete($_POST['cep'], '22290040', '5', '10');
   }
 
   ?>
@@ -190,7 +189,7 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
                          } } ?>
                     <tr class="border-top">
                         <th scope="row" class="fontedoze">Prazo de entrega:</th>
-                        <td><span id=""><?=(isset($prazoEntrega) ? $prazoEntrega. "dias" : '')?> </span></td>
+                        <td><span id=""><?=(isset($prazoEntrega) ? $prazoEntrega. " dias" : '')?> </span></td>
 
                     </tr>
                   </tbody>
