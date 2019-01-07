@@ -169,6 +169,9 @@ html {
     width: 200px;
 }
 
+.tamSel{
+  width: 65px;
+}
 .noradius{
     border-radius: 0px;
 }
