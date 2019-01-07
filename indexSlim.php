@@ -1,4 +1,7 @@
 <?php
+if (!isset($_SESSION)){
+  session_start();
+}
 require_once 'vendor/autoload.php';
 $app = new \Slim\App;
 require_once "requires/header.php";
