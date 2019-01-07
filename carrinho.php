@@ -3,7 +3,8 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
   require_once'php/frete.php';
   //Frete.
   if (isset($_POST['btn_calcula_frete'])) {
-    $frete = calculaFrete($_POST['cep'], '22290040', '5', '10');
+    $frete = calculaFrete($_POST['cep'], '22290040', '10', '20');
+
   }
 
   ?>
