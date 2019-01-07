@@ -64,64 +64,67 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
               </li>
             </ul>
           </div>
-          <table class="table text-center table-responsive d-none d-md-block ">
-            <thead>
-              <tr>
-                <th scope="col">Produto</th>
-                <th scope="col">Titulo</th>
-                <th scope="col">Quantidade</th>
-                <th scope="col">Preço</th>
-                <th scope="col">Subtotal</th>
-              </tr>
-            </thead>
-            <?php
-            if (isset($_SESSION['user_id'])){
-              $carrinho = serviceListarCarrinho($_SESSION['user_id']);
-            } elseif (isset($_SESSION['produto'])) {
-              $carrinho = $_SESSION['produto'];
-            } else {
-              $carrinho = NULL;
-            }
-            if ($carrinho != NULL && is_array($carrinho)) {
-              foreach ($carrinho as $b => $i) {
-                if (isset($_SESSION['user_id'])){
-                  $preco = $i['preco'];
-                  $quantidade = $i['quantidade'];
-                } else {
-                  $preco = $i[0]['preco'];
-                  $quantidade = $i['qtd'];
-                }
-                ?>
-                <tbody>
-                  <tr>
-                    <td>
-                      <?php
-                      if (isset($_SESSION['user_id'])){
-                      $produto = serviceDetalhesLivro($i['id']);
-                      } else {
-                      $produto = serviceDetalhesLivro($b);
-                      }
-                      foreach ($produto as $c) {
-                      ?>
-                      <img src="php/CRUDS/upload/<?=$c['imagemcapa']?>" height="50" width="50" alt="capa do livro"></a>
-                    <?php } ?>
-                    </td>
-                    <td>
+          <div>
+            <table class="table text-center table-responsive d-none d-md-block ">
+              <thead>
+                <tr>
+                  <th scope="col">Produto</th>
+                  <th scope="col">Titulo</th>
+                  <th scope="col">Quantidade</th>
+                  <th scope="col">Preço</th>
+                  <th scope="col">Subtotal</th>
+                </tr>
+              </thead>
+              <?php
+              if (isset($_SESSION['user_id'])){
+                $carrinho = serviceListarCarrinho($_SESSION['user_id']);
+              } elseif (isset($_SESSION['produto'])) {
+                $carrinho = $_SESSION['produto'];
+              } else {
+                $carrinho = NULL;
+              }
+              if ($carrinho != NULL && is_array($carrinho)) {
+                foreach ($carrinho as $b => $i) {
+                  if (isset($_SESSION['user_id'])){
+                    $preco = $i['preco'];
+                    $quantidade = $i['quantidade'];
+                  } else {
+                    $preco = $i[0]['preco'];
+                    $quantidade = $i['qtd'];
+                  }
+                  ?>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <?php
+                        if (isset($_SESSION['user_id'])){
+                        $produto = serviceDetalhesLivro($i['id']);
+                        } else {
+                        $produto = serviceDetalhesLivro($b);
+                        }
+                        foreach ($produto as $c) {
+                        ?>
+                        <img src="php/CRUDS/upload/<?=$c['imagemcapa']?>" height="50" width="50" alt="capa do livro"></a>
+                      <?php } ?>
+                      </td>
+                      <td>
 
-                      <?=(isset($_SESSION['user_id']) ? $i['titulo'] : $i[0]['titulo'])?>
-                    </td>
-                    <td>
-                      <button id="btnMenus" class="btn btn-light btn-sm">-</button>
-                      <input type="text" id="qtdProd" style="display:inline" maxlength="2" class="text-center form-control col-2" value="<?=(isset($_SESSION['user_id']) ? $i['quantidade'] : $i['qtd'])?>">
-                      <button id="btnPlus" class="btn btn-light btn-sm">+</button>
-                    </td>
-                    <td>R$ <span id="idpreco"><?=precoBR($preco);?></span></td>
-                    <td>R$<?= precoBR($preco * $quantidade);?></td>
-                  </tr>
-                  <tr>
-                  </tbody>
-                <?php } } ?>
-              </table>
+                        <?=(isset($_SESSION['user_id']) ? $i['titulo'] : $i[0]['titulo'])?>
+                      </td>
+                      <td>
+                        <select id="QtdProd" name="QtdProd" class="form-control tamSel float-left">
+                          <option selected>1<!--betao, joga uma funçao aq p pegar a quantidade q tem no banco s2 ass:nat, seu xuxu?--></option>
+                        </select>
+                        <p class="text-center float-left"><a href="" class="linkstyle"><i class="fas fa-trash pt-3 pl-1"></i></a></p>
+                      </td>
+                      <td>R$ <span id="idpreco"><?=precoBR($preco);?></span></td>
+                      <td>R$<?= precoBR($preco * $quantidade);?></td>
+                    </tr>
+                    <tr>
+                    </tbody>
+                  <?php } } ?>
+                </table>
+              </div>
             </div>
             <div class="col-md-4 col-12">
               <div class="col bordasc">
@@ -218,52 +221,6 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
           <?php }); ?>
           <script>
 
-          $(function(){
-            $("#qtdProd").keyup(function() {
-              $txtQtd = $("#qtdProd").val();
-              $qtd = parseInt($txtQtd);
-              if($txtQtd.length > 2) {
-                $("#qtdProd").val(99);
-              } else if($qtd >= 99) {
-                $("#qtdProd").val(99);
-              } else if($qtd <= 0) {
-                $("#qtdProd").val(0);
-              }
-            });
-          });
-
-          $(function(){
-            $("#qtdProd").keyup(function() {
-              $qtd = parseInt($("#qtdProd").val());
-              if($qtd == "") {
-                $("#qtdProd").val(0);
-              } else if(isNaN($qtd)) {
-                $("#qtdProd").val(0);
-              }
-            });
-          });
-
-          $(function(){
-            $("#btnPlus").click(function() {
-              $qtd = parseInt($("#qtdProd").val());
-              if($qtd >= 99) {
-                $("#qtdProd").val(99);
-              } else {
-                $("#qtdProd").val(++$qtd);
-              }
-            });
-          });
-
-          $(function(){
-            $("#btnMenus").click(function() {
-              $qtd = parseInt($("#qtdProd").val());
-              if($qtd <= 0) {
-                $("#qtdProd").val(0);
-              } else {
-                $("#qtdProd").val(--$qtd);
-              }
-            });
-          });
 
           // Install input filters.
           setInputFilter(document.getElementById("qtdProd"), function(value) {
