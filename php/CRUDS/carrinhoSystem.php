@@ -39,6 +39,8 @@ if(isset($_GET['acao'])) {
             if (isset($_SESSION['user_id'])){
               serviceUpdateAdd($quant, $id);
             }
+            header("Location: ../../carrinho");
+            die();
         }
         ## Pegar a quantidade total
         $quant_total = $_SESSION['carrinho'][$id];
