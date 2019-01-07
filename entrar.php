@@ -32,9 +32,38 @@ if (isset($_GET['cadastro'])){
                             if (isset($_SESSION['erro'])) { ?>
                               <p class="ml-4 text-danger"><?=$_SESSION['erro']?></p>
                           <?php } ?>
-                            <div class="col-md-10 mt-0">
-                              <a href="#" class="fonteonze text-right mr-3 mt-0 opacidade float-right linkstyle"><b>Esqueci minha senha</b></a><br/>
+                            <div class="col-md-10 mt-0 mb-2">
+                              <button type="submit" class="btn bg-white fontedoze float-right" data-toggle="modal" data-target="#exampleModal">Esqueci minha senha</button>
                             </div>
+
+                            <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Digite o seu e-mail</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <form action="" method="POST">
+                                    <div class="modal-body">
+                                      <div class="input-group mb-3">
+                                      <input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                          <span class="input-group-text" id="basic-addon2">enviar</span>
+                                        </div>
+                                      </div>
+
+                                    </div>
+
+                                    </div>
+                                </div>
+                                </div>
+
+                            <!-- fim do modal -->
+
+
                             <div class="form-group mt-0">
                                 <div class="col-sm-offset-2 col-md-10">
                                     <button type="submit" class="btn COLORE1 mb-4" name="btn-enviar" onclick="return validarSenha()">Entrar</button>
