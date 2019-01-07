@@ -88,10 +88,10 @@ $app->map(['GET', 'POST'], '/busca', function ($request, $response, $args) {?>
                   <div class="card mb-4 shadow-sm">
                     <img class="card-img-top" src="php/CRUDS/upload/<?=$i['imagemcapa']?>" alt="Capa do livro">
                     <div class="card-header">
-                      <h4 class="my-0 font-weight-normal fontedezoito"><a class="linkstyle" href="produto?id=<?=$i['id']?>"><?=$i['titulo']?></a></h4>
+                      <h4 class="my-0 font-weight-normal fontequinze"><a class="linkstyle" href="produto?id=<?=$i['id']?>"><?=$i['titulo']?></a></h4>
                     </div>
                     <div class="card-body">
-                      <h4 class="fontedezesseis"><?=$i['autor']?></h4>
+                      <h4 class="fontequinze"><?=$i['autor']?></h4>
                       <h3 class="fontevinte">R$ <?=number_format($i['preco'], 2, ',', '.')?></h3>
                       <div class="btn-group">
                         <form action="php/CRUDS/carrinhoSystem.php?acao=add&id=<?=$i['id']?>" method="POST">

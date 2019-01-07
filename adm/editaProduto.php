@@ -21,7 +21,7 @@ require_once("header.php");
                           <!-- / input imagem --><br/>
                           <div class="form-group">
                             <label for="titulo">Título:</label>
-                            <input type="text" class="form-control col-8" name="titulo" id="titulo" maxlength="45" value="<?=$i['titulo']?>">
+                            <input type="text" class="form-control col-8" name="titulo" id="titulo" maxlength="60" value="<?=$i['titulo']?>">
                           </div>
                           <div class="form-group">
                             <label for="autor">Autor:</label>

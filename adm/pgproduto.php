@@ -49,7 +49,7 @@ require_once("header.php");
           }
             foreach ($produto as $i) {
 							// Função que bota reticencias se passar de 250 caracteres.
-              $i['sinopse'] = resume($i['sinopse'], 250);
+              $i['sinopse'] = resume($i['sinopse'], 105);
             ?>
               <tr>
                   <td><?=$i['id']?></td>

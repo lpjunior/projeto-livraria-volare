@@ -23,7 +23,7 @@ require_once("header.php");
 													<br/>
                           <div class="form-group">
                             <label for="titulo">Título:</label>
-                            <input type="text" class="form-control col-8" name="titulo" id="titulo" maxlength="45" required="required">
+                            <input type="text" class="form-control col-8" name="titulo" id="titulo" maxlength="60" required="required">
                           </div>
                           <div class="form-group">
                             <label for="autor">Autor:</label>
