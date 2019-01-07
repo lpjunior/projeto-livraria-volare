@@ -66,7 +66,7 @@ $app->get('/cadastro', function ($request, $response, $args) {
 								</div>
 								<div class="col-md">
 									<label for="isenha">Senha:</label>
-									<input type="password" class="form-control" id="isenha" name="isenha" required pattern="[a-zA-Z0-9]{8-30}" title="Letras e números com até 8 caracteres">
+									<input type="password" class="form-control" id="isenha" name="isenha" required pattern="[a-zA-Z0-9]{8-30}" title="Letras e números, mínimo de 8 caracteres">
 								</div>
 								<div class="col-md">
 									<label for="isenha2">Confirmação de Senha:</label>
