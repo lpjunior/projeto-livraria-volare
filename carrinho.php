@@ -229,9 +229,9 @@
                   </div>
                 </div>
               </div>
-              <form action="checkout.php" method="POST">
-              <button type="submit" class="btn COLORE1" name="btn-checkout" >Concluir compra</button>
-              </form>
+                <form action="<?=(isset($_SESSION['user_id']) ? 'checkout.php' : 'entrar.php');?>" method="POST">
+                    <button type="submit" class="btn COLORE1" name="btn-checkout">Concluir compra</button>
+                  </form>
               <div class="row">
                 <div class="col">
                   <script type="text/javascript" src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>

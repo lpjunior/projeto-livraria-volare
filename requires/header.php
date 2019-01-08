@@ -152,8 +152,8 @@ require_once 'php/CRUDS/serviceCarrinho.php';
 													</form>
 												</div>
 												<div class="col-3 mr-1 float-left">
-													<form action="<?=(isset($_SESSION['user']) ? 'checkout' : 'entrar.php');?>" method="POST">
-														<button type="submit" class="btn fontedoze mr-2 pl-2 pr-1 COLORE1" name="btn-checkout" onclick="carrinho.php">comprar&nbsp;</button>
+													<form action="<?=(isset($_SESSION['user']) ? 'checkout.php' : 'entrar.php');?>" method="POST">
+														<button type="submit" class="btn fontedoze mr-2 pl-2 pr-1 COLORE1" name="btn-checkout">comprar&nbsp;</button>
 														</form>
 												</div>
 										</div>
