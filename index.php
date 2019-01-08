@@ -2,26 +2,26 @@
 require_once 'php/CRUDS/serviceBook.php';
 $app->get('/home', function ($request, $response, $args) {?>
             <!-- CAROUSEL -->
-            <section class="row container-fluid mx-auto d-none d-sm-block">
+            <section class="row container-fluid mx-auto d-none d-sm-block" aria-hidden=”true”>
                 <div class="col-md-10 col-lg-10 mx-auto">
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
+                    <ol class="carousel-indicators pb-1">
                       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                       <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                       <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                     </ol>
                     <div class="carousel-inner">
                       <div class="carousel-item active">
-                          <img class="d-block w-100" src="img/banner1.jpg" alt="imagem promocional">
+                          <a href="#lancamentos"><img class="d-block w-100" src="img/banner1.jpg" alt="imagem promocional"></a>
                       </div>
                       <div class="carousel-item">
-                        <img class="d-block w-100" src="img/banner2.jpg" alt="imagem promocional">
+                        <a href="#recomendacoes"><img class="d-block w-100" src="img/banner2.jpg" alt="imagem promocional"></a>
                       </div>
                       <div class="carousel-item">
-                        <img class="d-block w-100" src="img/banner3.jpg" alt="imagem promocional">
+                        <a href="busca?cat=3"><img class="d-block w-100" src="img/banner3.jpg" alt="imagem promocional"></a>
                       </div>
                     </div>
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev"></a>
                       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                       <span class="sr-only">Previous</span>
                     </a>
@@ -34,9 +34,9 @@ $app->get('/home', function ($request, $response, $args) {?>
             </section>
             <!-- ********************** FIM DO CAROUSEL ****************** -->
                 <!-- -->
-            <div class="container-fluid col-md-10 centraliza mb-4 mt-4">
+            <div class="container-fluid col-md-10 centraliza mb-4 mt-1">
                 <section class="col-sm-2 col-md-2 col-lg-2 pb-4 float-left">
-                  <h1 class="fontedezesseis mr-2 pr-1"><i>Categorias</i></h1>
+                  <h1 class="fontedezesseis mr-2 pr-1 pl-1"><i>&nbsp;Categorias</i></h1>
                   <?php
                   $categoria = listarCategoria();
                   foreach ($categoria as $i) {
@@ -45,10 +45,10 @@ $app->get('/home', function ($request, $response, $args) {?>
                   <?php } ?>
                 </section>
 <!-- conjunto cards 1 -->
-                <div class="col-md-12"><h1 class="fontedezoito COLORETEXTO"><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 14px;"><i class="far fa-bookmark" aria-hidden=”true”></i></span>&nbsp;&nbsp;Lançamentos</i></h1></div>
-                <section class="bordaspraconteudo pb-2 col-sm-10 col-md-10 mb-2 pt-3 float-left">
 
-                    <div class="row text-center"> <!-- DIV QUE JUNTA OS CARDS, todos tem que ficar dentro dela -->
+                <section id="lancamentos" class="col-sm-10 col-md-10 mb-2  float-left">
+                  <div class="col-md-12"><h1 class="fontedezoito COLORETEXTO"><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 14px;"><i class="far fa-bookmark" aria-hidden=”true”></i></span>&nbsp;&nbsp;Lançamentos</i></h1></div>
+                    <div class="row text-center bordaspraconteudo pt-3"> <!-- DIV QUE JUNTA OS CARDS, todos tem que ficar dentro dela -->
                       <?php
                       $livro = serviceListarLivro(8, TRUE);
                       foreach($livro as $i){
@@ -75,10 +75,10 @@ $app->get('/home', function ($request, $response, $args) {?>
                 </section>
 <!-- conjunto cards dois -->
                 <div class="col-sm-2 col-md-2 col-lg-2 pb-4 float-left">&nbsp; </div>
-                <div class="col-md-12"> <h1 class="fontedezoito COLORETEXTO  "><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 14px;"><i class="far fa-bookmark" aria-hidden=”true”></i></span>&nbsp;&nbsp;Recomendações</i></h1></div>
-                <section class="bordaspraconteudo pb-5 col-sm-10 col-md-10 mb-5 pt-3 float-left">
+                <section id="recomendacoes" class="col-sm-10 col-md-10 mb-5 pb-5 float-left">
+                  <div class="col-md-12"><h1 class="fontedezoito COLORETEXTO"><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 14px;"><i class="far fa-bookmark" aria-hidden=”true”></i></span>&nbsp;&nbsp;Recomendações</i></h1></div>
+                    <div class="row text-center bordaspraconteudo pt-3 "> <!-- DIV QUE JUNTA OS CARDS, todos tem que ficar dentro dela -->
 
-                    <div class="row text-center"> <!-- DIV QUE JUNTA OS CARDS, todos tem que ficar dentro dela -->
                       <?php
                       $livro = servicelistarLivro(8, TRUE);
                       foreach($livro as $i){
