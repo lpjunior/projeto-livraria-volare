@@ -1,6 +1,5 @@
 <?php
-$app->get('/faleConosco', function ($request, $response, $args) {
-?>
+  require_once 'requires/header.php';?>
 <!-- CONTACT SECTION -->
 <section id="contact" class="parallax-section">
      <div class="container col-md-6 col-lg-6">
@@ -46,4 +45,6 @@ $app->get('/faleConosco', function ($request, $response, $args) {
           </div>
      </div>
 </section>
-<?php }); ?>
+<?php
+  require_once 'requires/footer.php';
+ ?>

@@ -10,5 +10,5 @@ session_start();
 header("Content-Type: application/json; charset=UTF-8");
 $dados = json_decode($_GET["x"], false);
 $_SESSION['token_face'] = $dados;
-header('location: ../../home');
+header('location: ../../index.php');
 ?>

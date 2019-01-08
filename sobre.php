@@ -1,5 +1,5 @@
 <?php
-$app->get('/sobre', function ($request, $response, $args) {
+require_once 'requires/header.php';
 ?>
 <script type="text/javascript" src="js/sobre.js"></script>
 <section class="col-md-4 col-lg-4 centraliza text-center pt-4">
@@ -15,4 +15,6 @@ $app->get('/sobre', function ($request, $response, $args) {
       <img src="https://placeimg.com/640/480/nature" alt="" width="600" />
     </div>
 </section>
-<?php }); ?>
+<?php
+  require_once 'requires/footer.php';
+ ?>

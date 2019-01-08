@@ -1,5 +1,0 @@
-RewriteEngine on
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.*)$ indexSlim.php [QSA,L]
-Redirect /index.php https://livrariavolare.herokuapp.com/home

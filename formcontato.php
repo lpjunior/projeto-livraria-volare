@@ -1,6 +1,5 @@
 <?php
-$app->map(['GET', 'POST'], '/contato', function ($request, $response, $args) {
-?>
+  require_once 'requires/header.php';?>
 <div class="container-fluid col-md-11 col centraliza">
     <div class="col-md-12">
         <h3> Olá, <?=$_SESSION['user']['nome']?></h3> <br>
@@ -83,4 +82,6 @@ $app->map(['GET', 'POST'], '/contato', function ($request, $response, $args) {
                       <?php } ?>
                     </fieldset><!--********fim do formulário central de atendimento*************-->
                     </div>
-<?php }); ?>
+                    <?php
+                      require_once 'requires/footer.php';
+                     ?>

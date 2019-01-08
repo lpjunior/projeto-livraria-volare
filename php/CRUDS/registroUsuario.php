@@ -13,5 +13,5 @@ require_once 'serviceUsuario.php';
 		## Caso a senha seja diferente da confirmação, retorne para o cadastro
 	} else {
 		$_SESSION['erroSenha'] = 'Confirmação de senha diferente da senha original';
-		header('location: cadastro');
+		header('location: cadastrousuario.php');
 	}

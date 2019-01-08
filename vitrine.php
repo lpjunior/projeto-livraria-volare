@@ -1,5 +1,5 @@
 <?php
-$app->map(['GET', 'POST'], '/busca', function ($request, $response, $args) {?>
+require_once 'requires/header.php';?>
   <section>
     <div class="container-fluid col-md-10 centraliza mt-4 margintop">
       <div class="row">
@@ -111,6 +111,6 @@ $app->map(['GET', 'POST'], '/busca', function ($request, $response, $args) {?>
         </div> <!-- fim da row -->
       </div> <!-- FIM DO CONTAINER -->
     </section><!-- FIM DA PRIMEIRA SECTION -->
-
     <?php
-  });
+      require_once 'requires/footer.php';
+     ?>

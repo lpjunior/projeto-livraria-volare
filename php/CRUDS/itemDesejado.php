@@ -7,10 +7,10 @@ require_once 'serviceUsuario.php';
 				if ($favoritos == true) {
 						## Se não for true, retornar um alert.
           $_SESSION['mensagem'] = "<script>alert('Item adicionado aos favoritos com sucesso!')</script>";
-					header("location: ../../produto?id=".$_GET['idProd']);
+					header("location: ../../produto.php?id=".$_GET['idProd']);
 				} else {
 					$_SESSION['mensagem'] = "<script>alert('Erro ao adicionar aos favoritos')</script>";
-					header("location: ../../produto?id=".$_GET['idProd']);
+					header("location: ../../produto.php?id=".$_GET['idProd']);
 				}
 			}
 		} else {

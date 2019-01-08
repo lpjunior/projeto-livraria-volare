@@ -1,5 +1,5 @@
 <?php
-$app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
+  require_once 'requires/header.php';
   ## Caso edite o endereço
   if (isset($_GET['editar']) && $_GET['editar'] == 'erro'){
     echo "<script>alert('Falha ao editar seu endereço!')</script>";
@@ -379,4 +379,6 @@ $app->map(['GET', 'POST'], '/user', function ($request, $response, $args) {
                 </div>
             </div>
         </div>
-<?php }); ?>
+        <?php
+          require_once 'requires/footer.php';
+         ?>

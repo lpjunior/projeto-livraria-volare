@@ -1,7 +1,7 @@
 <?php
-$app->map(['GET', 'POST'], '/entrar', function ($request, $response, $args) {
+session_start();
 if (isset($_SESSION['token_face']) || isset($_SESSION['user'])) {
-  echo "<script>window.location.assign('home')</script>";
+  header('location: index.php');
 } else {
   if (isset($_POST['btn-checkout'])){
     echo "<script>alert('Logue para comprar')</script>";
@@ -9,6 +9,17 @@ if (isset($_SESSION['token_face']) || isset($_SESSION['user'])) {
 if (isset($_GET['cadastro'])){
   echo "<script>alert('Cadastro feito com sucesso, você pode logar agora.')</script>";
 }
+if (isset($_SESSION['cpf'])){
+  if ($_SESSION['cpf'] === 1) {
+    echo "<script>alert('Seu CPF já está cadastrado.')</script>";
+    unset($_SESSION['cpf']);
+  } else {
+    echo "<script>alert('Seu CPF não está cadastrado.')</script>";
+    echo "<script>window.location.assign('cadastrousuario.php')</script>";
+    unset($_SESSION['cpf']);
+  }
+}
+require_once 'requires/header.php';
  ?>
     <div class="container-fluid col-md-8 centraliza mt-4">
         <div class="row">
@@ -33,7 +44,7 @@ if (isset($_GET['cadastro'])){
                               <p class="ml-4 text-danger"><?=$_SESSION['erro']?></p>
                           <?php } ?>
                             <div class="col-md-10 mt-0 mb-2">
-                              <button type="submit" class="btn bg-white fontedoze float-right" data-toggle="modal" data-target="#exampleModal">Esqueci minha senha</button>
+                              <button name="btn-enviar" type="submit" class="btn bg-white fontedoze float-right" data-toggle="modal" data-target="#exampleModal">Esqueci minha senha</button>
                             </div>
 
                             <!-- Modal -->
@@ -60,10 +71,7 @@ if (isset($_GET['cadastro'])){
                                     </div>
                                 </div>
                                 </div>
-
                             <!-- fim do modal -->
-
-
                             <div class="form-group mt-0">
                                 <div class="col-sm-offset-2 col-md-10">
                                     <button type="submit" class="btn COLORE1 mb-4" name="btn-enviar" onclick="return validarSenha()">Entrar</button>
@@ -80,18 +88,7 @@ if (isset($_GET['cadastro'])){
                     <div class="col-md-10">
                         <form action="php/CRUDS/checarCPF.php" method="POST">
                             <input type="text" class="form-control cpf" id="iCPF" placeholder="Digite o cpf" name="txtCPF" class="form-control cpf" required>
-                            <?php
-                            if (isset($_SESSION['cpf'])){
-                              if ($_SESSION['cpf'] === 1) {
-                                echo "<script>alert('Seu CPF já está cadastrado.')</script>";
-                                unset($_SESSION['cpf']);
-                              } else {
-                                echo "<script>alert('Seu CPF não está cadastrado.')</script>";
-                                echo "<script>window.location.assign('cadastro')</script>";
-                                unset($_SESSION['cpf']);
-                              }
-                            }
-                            ?>
+
                         <br/>
 
                         <div class="col-sm-offset-2 col-md-10 mb-4">
@@ -111,5 +108,5 @@ if (isset($_GET['cadastro'])){
         </div>
 <?php
 }
-});
+require_once 'requires/footer.php';
  ?>

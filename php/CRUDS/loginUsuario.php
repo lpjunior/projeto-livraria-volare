@@ -4,13 +4,13 @@ require_once 'serviceUsuario.php';
 			if ($user = serviceLogin($_POST['txtEmail'], $_POST['isenha'])){
 				if ($user === true){
 						if (isset($_GET['red']) && $_GET['red'] == 'checkout'){
-						header('location: ../../checkout');
+						header('location: ../../checkout.php');
 					} else {
-						header('location: ../../home');
+						header('location: ../../index.php');
 					}
 				} else {
 					$_SESSION['erro'] = $user;
-					header('location: ../../entrar');
+					header('location: ../../entrar.php');
 				}
 			}
 		} elseif (isset($_POST['btn-entrar'])){

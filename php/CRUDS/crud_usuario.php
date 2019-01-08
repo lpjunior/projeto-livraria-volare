@@ -24,10 +24,10 @@ function registrarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $gen
 		$resultado = mysqli_query($conexao, $sql);
 		if (mysqli_affected_rows($conexao) >= 1){
 			$_SESSION['erro_cadastro'][1] = "Email já registrado.";
-			header('location: ../../cadastro?erro=true');
+			header('location: ../../cadastrousuario.php?erro=true');
 			die();
 		}
-		header('location: ../../cadastro?erro=true');
+		header('location: ../../cadastrousuario.php?erro=true');
 		die();
 	}
 	date_default_timezone_set('America/Sao_Paulo');
@@ -61,7 +61,7 @@ function registrarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $gen
 		$resultado = mysqli_query($conexao, $sql);
 	}
 	if (mysqli_affected_rows($conexao) >= 1) {
-		return header('location: ../../entrar?cadastro=true');
+		return header('location: ../../entrar.php?cadastro=true');
 		exit();
 	} // fim do else
 } // fim da function

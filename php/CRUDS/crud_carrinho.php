@@ -57,7 +57,7 @@ function updateAlt($qtd, $id, $quant_total){
 }
 function listarCarrinho($id){
   $conexao = getConnection();
-  $sql = "SELECT prod.id, usu.nome, prod.titulo, itres.quantidade, prod.preco from usuarios usu
+  $sql = "SELECT prod.id, prod.peso, usu.nome, prod.titulo, itres.quantidade, prod.preco from usuarios usu
   inner join itens_reservados itres on itres.usuarios_id = usu.id
   inner join produto prod on prod.id = itres.produto_id
 	where itres.usuarios_id = $id";

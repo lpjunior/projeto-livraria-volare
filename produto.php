@@ -1,6 +1,6 @@
 <?php
-$app->map(['GET', 'POST'], '/produto', function ($request, $response, $args) {
-  require_once'php/frete.php';
+require_once 'requires/header.php';
+require_once'php/frete.php';
 
   //Frete.
   if (isset($_POST['btnCalculaFrete'])) {
@@ -185,6 +185,4 @@ $app->map(['GET', 'POST'], '/produto', function ($request, $response, $args) {
        <h1 class="text-center">Livro não encontrado</h1>
        <?php
      }
-
-       });
-        ?>
+          require_once 'requires/footer.php';

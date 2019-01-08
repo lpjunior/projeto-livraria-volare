@@ -1,5 +1,5 @@
 <?php
-$app->get('/detalhes-pedido', function ($request, $response, $args) {
+  require_once 'requires/header.php';
   if (isset($_GET['id'])){
     $preco = 0;
   ?>
@@ -71,5 +71,6 @@ $app->get('/detalhes-pedido', function ($request, $response, $args) {
 } else {
   echo "<h5 class='fontedezoito opacidade text-center mt-4'>Não existem pedidos.</h5>";
 }
-
-});?>
+<?php
+  require_once 'requires/footer.php';
+ ?>

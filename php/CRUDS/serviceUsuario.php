@@ -145,6 +145,10 @@ require_once 'crud_usuario.php';
 		$var = number_format($var, 2, ',', '.');
 		return $var;
 	}
+	function precoBanco($var){
+		$var = number_format($var, 2, '.', ',');
+		return $var;
+	}
 	function serviceStringToFloat($var){
 		if ($number = stringToFloat($var)) {
 			return $number;

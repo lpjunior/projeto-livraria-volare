@@ -9,7 +9,7 @@ if (!isset($_SESSION)) {
     $dataComentario = date('Y-m-d H:i', time());
     $sql = "INSERT INTO comentarios VALUES (NULL, $usuarioID, $produtoID, '$comentario', '$dataComentario')";
     if (mysqli_query($conexao, $sql)){
-      return header('location: ../../produto?id='.$produtoID);
+      return header('location: ../../produto.php?id='.$produtoID);
     } else {
 			$_SESSION['ComentarioErro'] = "<script>alert('Falha ao comentar')</script>";
       return false;

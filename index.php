@@ -1,6 +1,7 @@
 <?php
+  require_once 'requires/header.php';
 require_once 'php/CRUDS/serviceBook.php';
-$app->get('/home', function ($request, $response, $args) {?>
+?>
             <!-- CAROUSEL -->
             <section class="row container-fluid mx-auto d-none d-sm-block" aria-hidden=”true”>
                 <div class="col-md-10 col-lg-10 mx-auto">
@@ -105,4 +106,6 @@ $app->get('/home', function ($request, $response, $args) {?>
                 </section>
 
 </div> <!-- fim do container fluid -->
-<?php }); ?>
+<?php
+  require_once 'requires/footer.php';
+ ?>

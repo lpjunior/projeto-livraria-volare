@@ -1,6 +1,10 @@
 <?php
+session_start();
+if (!isset($_SESSION['user_id'])){
+  header('location: index.php');
+}
+require_once 'requires/header.php';
 require_once 'php/CRUDS/serviceCheckout.php';
-$app->map(['GET', 'POST'], '/checkout', function ($request, $response, $args) {
   ## Mudar para o botão de checkout depois ##
   if (isset($_GET['editar']) && $_GET['editar'] == 'erro'){
     echo "<script>alert('Falha ao editar seu endereço!')</script>";
@@ -90,8 +94,7 @@ $app->map(['GET', 'POST'], '/checkout', function ($request, $response, $args) {
                 </div>
                 <div class="row mt-4 mb-4"><!-- div onde vai entrar o pag seguro -->
                     <div class="col-md-12 col-lg-12">
-                        <hr/><h1 class="fontevinte">Forma de pagamento</h1>
-                        integração pag seguro
+                        <?php require_once 'payment.php'; ?>
 
                     <!-- tem que fazer um if pra aparecer a mensagem pedido efetuado com sucesso-->
                         <div class="form-group float-right mr-0 pr-2">
@@ -194,7 +197,6 @@ $app->map(['GET', 'POST'], '/checkout', function ($request, $response, $args) {
                 </div>
             </div>
             </div>
-<?php
-});
-
- ?>
+            <?php
+              require_once 'requires/footer.php';
+             ?>

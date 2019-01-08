@@ -1,5 +1,5 @@
 <?php
-$app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
+  require_once 'requires/header.php';
   require_once'php/frete.php';
   //Frete.
   if (isset($_POST['btn_calcula_frete'])) {
@@ -83,6 +83,7 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
                   <th scope="col">Quantidade</th>
                   <th scope="col">Preço</th>
                   <th scope="col">Subtotal</th>
+                  <th scope="col"></th>
                 </tr>
               </thead>
               <?php
@@ -105,6 +106,7 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
                   ?>
                   <tbody>
                     <tr>
+                      <form action="#" method="POST">
                       <td>
                         <?php
                         if (isset($_SESSION['user_id'])){
@@ -117,8 +119,7 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
                         <img src="php/CRUDS/upload/<?=$c['imagemcapa']?>" height="50" width="50" alt="capa do livro"></a>
                       <?php } ?>
                       </td>
-                      <td>
-
+                    <td>
                         <?=(isset($_SESSION['user_id']) ? $i['titulo'] : $i[0]['titulo'])?>
                       </td>
                       <td>
@@ -134,14 +135,16 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
                           <option>9</option>
                           <option>10</option>
                         </select>
-                        <p class="text-center float-left"><a href="" class="linkstyle"><i class="fas fa-trash pt-3 pl-1"></i></a></p>
                       </td>
                       <td>R$ <span id="idpreco"><?=precoBR($preco);?></span></td>
-                      <td>R$<?= precoBR($preco * $quantidade);?></td>
+                      <td id="subtotalProd">R$<?= precoBR($preco * $quantidade);?></td>
+                      <td class="text-center mb-3"><a href="" class="linkstyle"><i class="fas fa-trash"></i></a></td>
                     </tr>
                     <tr>
                     </tbody>
                   <?php } } ?>
+                </form>
+
                 </table>
               </div>
             </div>
@@ -155,9 +158,11 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
                    <div class="input-group-append mb-3">
                      <button class="btn btn-outline-secondary rounded COLORE1" type="submit" name="btn_calcula_frete" id="button-addon2">calcule</button>
                    </div>
+                 </form>
                 <table class="table">
                   <tbody>
                     <tr>
+
                       <th scope="row">Subtotal</th>
                       <?php
                       // Cálculo do subtotal
@@ -213,51 +218,26 @@ $app->map(['GET', 'POST'], '/carrinho', function ($request, $response, $args) {
                         } } ?>
                     <tr class="border-top">
                         <th scope="row" class="fontedoze">Prazo de entrega:</th>
-                        <td><span id=""><?=(isset($prazoEntrega) ? $prazoEntrega. " dias" : '')?> </span></td>
-
+                        <td><span id="abc"><?=(isset($prazoEntrega) ? $prazoEntrega. " dias" : '')?> </span></td>
                     </tr>
                   </tbody>
                 </table>
               </div>
               <div class="col bordasc mt-3">
-
-                      </form>
-
                     </div>
                     <!-- /frete -->
                   </div>
                 </div>
               </div>
+              <form action="checkout.php" method="POST">
+              <button type="submit" class="btn COLORE1" name="btn-checkout" >Concluir compra</button>
+              </form>
               <div class="row">
                 <div class="col">
-                  <?php
-                  require_once'payment.html';
-                  ?>
                   <script type="text/javascript" src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
                 </div>
               </div>
             </div>
-          <?php }); ?>
-          <script>
-
-
-          // Install input filters.
-          setInputFilter(document.getElementById("qtdProd"), function(value) {
-            return /^-?\d*$/.test(value); });
-
-            // Restricts input for the given textbox to the given inputFilter.
-            function setInputFilter(textbox, inputFilter) {
-              ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
-                textbox.addEventListener(event, function() {
-                  if (inputFilter(this.value)) {
-                    this.oldValue = this.value;
-                    this.oldSelectionStart = this.selectionStart;
-                    this.oldSelectionEnd = this.selectionEnd;
-                  } else if (this.hasOwnProperty("oldValue")) {
-                    this.value = this.oldValue;
-                    this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
-                  }
-                });
-              });
-            }
-          </script>
+            <?php
+              require_once 'requires/footer.php';
+             ?>

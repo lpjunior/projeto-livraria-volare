@@ -1,6 +1,6 @@
 <?php
-$app->get('/cadastro', function ($request, $response, $args) {
-  if (isset($_GET['erro'])){
+  require_once 'requires/header.php';
+ if (isset($_GET['erro'])){
     echo "<script>alert('Falha no cadastro');</script>";
   }
 ?>
@@ -234,4 +234,6 @@ $app->get('/cadastro', function ($request, $response, $args) {
        });
 
    </script>
-<?php }); ?>
+<?php
+  require_once 'requires/footer.php';
+ ?>

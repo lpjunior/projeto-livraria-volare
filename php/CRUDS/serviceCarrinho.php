@@ -34,3 +34,8 @@ require_once 'crud_carrinho.php';
       return $carrinho;
     }
   }
+  function serviceEditarQuantidade($qtd){
+    if ($carrinho = editarQuantidade($id)) {
+      return $carrinho;
+    }
+  }

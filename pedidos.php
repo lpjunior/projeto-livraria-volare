@@ -1,6 +1,7 @@
 <?php
+  require_once 'requires/header.php';
 require_once 'php/CRUDS/serviceBook.php';
-$app->get('/pedidos', function ($request, $response, $args) {?>
+?>
 <section class="col-md-10 col-lg-10 centraliza">
 
    <div class="col-md-10 d-inline-flex ">
@@ -37,4 +38,6 @@ $app->get('/pedidos', function ($request, $response, $args) {?>
 
 </section>
 <h1 class="text-center"><?=(isset($pedidoserro) ? $pedidoserro : '')?></h1>
-<?php }); ?>
+<?php
+  require_once 'requires/footer.php';
+ ?>

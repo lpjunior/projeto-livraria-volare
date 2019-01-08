@@ -43,10 +43,10 @@ require_once 'php/CRUDS/serviceCarrinho.php';
             </button>
 						<!-- LOGO -->
             <div class="navbar-left mr-3 d-md-none d-lg-block">
-                <a href="home"><img src="img/logomarcab.png"  alt="logomarca volare livraria"></a>
+                <a href="index.php"><img src="img/logomarcab.png"  alt="logomarca volare livraria"></a>
             </div>
 						<div class="navbar-left d-none d-md-block d-lg-none">
-                <a href="home"><img src="img/logomarcac.png"  alt="logomarca volare livraria"></a>
+                <a href="index.php"><img src="img/logomarcac.png"  alt="logomarca volare livraria"></a>
             </div>
             <!-- COMEÇO DA DIV COLLAPSE HAMBURGER--> <div class="collapse navbar-collapse" id="navbarCollapse">
 
@@ -66,12 +66,12 @@ require_once 'php/CRUDS/serviceCarrinho.php';
 	                </div> -->
                <!-- LINKS NAVBAR -->
                 <div class="nav-item">
-                  <a class="nav-link text-dark opacidade" href="home"><i class="fas fa-home" aria-hidden=”true”></i>&nbsp;Início</a>
+                  <a class="nav-link text-dark opacidade" href="index.php"><i class="fas fa-home" aria-hidden=”true”></i>&nbsp;Início</a>
                 </div>
                 <?php
                 if (!isset($_SESSION['user']) && !isset($_SESSION['token_face'])) { ?>
                 <div class="nav-item">
-                  <a class="nav-link text-dark opacidade" href="entrar"><i class="fas fa-user-circle" aria-hidden=”true”></i>&nbsp;Entre ou cadastre-se</a>
+                  <a class="nav-link text-dark opacidade" href="entrar.php"><i class="fas fa-user-circle" aria-hidden=”true”></i>&nbsp;Entre ou cadastre-se</a>
                 </div>
               <?php } else { ?>
                 <div class="dropdown float-left">
@@ -79,7 +79,7 @@ require_once 'php/CRUDS/serviceCarrinho.php';
 									<ul class="dropdown-menu COLORE" role="menu">
                     <li>
 											<div class="fontecatorze pr-2 pl-3 mb-0">
-													<a href="user" class="text-dark" >Minha Conta</a>
+													<a href="contausuario.php" class="text-dark" >Minha Conta</a>
 											</div>
 										</li>
 										<div class="dropdown-divider"></div>
@@ -103,7 +103,7 @@ require_once 'php/CRUDS/serviceCarrinho.php';
 							</div>
 							<!-- CARRINHO DROPDOWN -->
 							<div class="dropdown float-left d-none d-sm-none d-md-none d-lg-block">
-								<a href="carrinho" class="dropdown-toggle nav-link text-dark fontedezesseis opacidade" data-toggle="dropdown" role="button"> <i class="fas fa-shopping-cart" aria-hidden=”true”></i>&nbsp;Carrinho de compras</a>
+								<a href="carrinho.php" class="dropdown-toggle nav-link text-dark fontedezesseis opacidade" data-toggle="dropdown" role="button"> <i class="fas fa-shopping-cart" aria-hidden=”true”></i>&nbsp;Carrinho de compras</a>
 								<ul class="dropdown-menu dropdown-cart COLORE opacidadecart" role="menu"><!-- abre aqui -->
 									<?php
 									if (isset($_SESSION['user_id'])){
@@ -147,13 +147,13 @@ require_once 'php/CRUDS/serviceCarrinho.php';
 										<?php if (isset($carrinho) && is_array($carrinho)) { ?>
 										<div class="form-group mb-5">
 												<div class="col-6 pl-3 float-left">
-													<form action="carrinho" method="POST">
+													<form action="carrinho.php" method="POST">
 														<button type="submit" class="btn fontedoze mr-1 pr-2 COLORE1" name="" value="checkout" onclick="carrinho">ver carrinho</button>
 													</form>
 												</div>
 												<div class="col-3 mr-1 float-left">
-													<form action="<?=(isset($_SESSION['user']) ? 'checkout' : 'entrar');?>" method="POST">
-														<button type="submit" class="btn fontedoze mr-2 pl-2 pr-1 COLORE1" name="btn-checkout" onclick="carrinho">comprar&nbsp;</button>
+													<form action="<?=(isset($_SESSION['user']) ? 'checkout' : 'entrar.php');?>" method="POST">
+														<button type="submit" class="btn fontedoze mr-2 pl-2 pr-1 COLORE1" name="btn-checkout" onclick="carrinho.php">comprar&nbsp;</button>
 														</form>
 												</div>
 										</div>
@@ -163,7 +163,7 @@ require_once 'php/CRUDS/serviceCarrinho.php';
 						</div> <!--fim da div que junta os links -->
             </div> <!-- FIM DA DIV COLLAPSE HAMBURGER -->
         <!-- CAMPO DE BUSCA -->
-            <form class="form col-12 col-xl-4 col-sm-6 col-md-5 col-lg-3 navbar-left" action="busca" method="GET">
+            <form class="form col-12 col-xl-4 col-sm-6 col-md-5 col-lg-3 navbar-left" action="vitrine.php" method="GET">
                 <div class="input-group">
                     <span class="input-group-append">
 
