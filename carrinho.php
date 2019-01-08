@@ -54,7 +54,7 @@
                       <div class="card-block px-2 float-right">
                         <div class="col-md mt-2">
                         <select id="QtdProd" name="QtdProd" class="form-control tamSel float-left">
-                          <option selected>1<!--betao, joga uma funçao aq p pegar a quantidade q tem no banco s2 ass:nat, seu xuxu?--></option>
+                          <option selected>1<!--betao, joga uma funçao aq p pegar a quantidade q tem no banco s2 ass:Rafael, seu xuxu?--></option>
                           <option>2</option>
                           <option>3</option>
                           <option>4</option>
@@ -124,7 +124,7 @@
                       </td>
                       <td>
                         <select id="QtdProd" name="QtdProd" class="form-control tamSel float-left">
-                          <option selected>1<!--betao, joga uma funçao aq p pegar a quantidade q tem no banco s2 ass:nat, seu xuxu?--></option>
+                          <option selected>1<!--betao, joga uma funçao aq p pegar a quantidade q tem no banco s2 ass:Rafael, seu xuxu?--></option>
                           <option>2</option>
                           <option>3</option>
                           <option>4</option>
