@@ -30,24 +30,29 @@ if(isset($_GET['acao'])) {
             # Se o usuário estiver logado, mandar pro banco o item reservado.
             if (isset($_SESSION['user_id'])){
             $user_id = $_SESSION['user_id'];
-            serviceInserirCarrinho($user_id, $id, $quant);
-            }
+            $carttrue = serviceInserirCarrinho($user_id, $id, $quant);
+            header('location: ../../carrinho.php');
+            die();
+          }
         } else {
           # Caso o produto esteja no carrinho, aumente a quantidade dele.
             $_SESSION['carrinho'][$id] += $quant;
             # Se o usuário estiver logado, somar com a quantidade da reserva no banco.
             if (isset($_SESSION['user_id'])){
               serviceUpdateAdd($quant, $id);
+              header('location: ../../carrinho.php');
+              die();
             }
-            header("Location: ../../carrinho.php");
-            die();
         }
         ## Pegar a quantidade total
         $quant_total = $_SESSION['carrinho'][$id];
+        if ($quant_total >= 10){
+          $quant_total = 10;
+        }
         ## Listar todos os livros que estão no carrinho
         $_SESSION['produto'][$id] = serviceDetalhesLivroCarrinho($id);
         $_SESSION['produto'][$id]['qtd'] = $quant_total;
-        header("Location: ../../carrinho.php");
+        header('location: ../../carrinho.php');
         die();
     }
     # Remove o produto

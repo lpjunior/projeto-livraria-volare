@@ -42,7 +42,7 @@ require_once 'php/CRUDS/serviceBook.php';
                   $categoria = listarCategoria();
                   foreach ($categoria as $i) {
                     ?>
-                    <a class="border-bottom  ml-2 linkstyle" href="busca?cat=<?=$i['id']?>" class="linkstyle fontedezesseis"><?=$i['categoria']?></a><br>
+                    <a class="border-bottom  ml-2 linkstyle" href="vitrine.php?cat=<?=$i['id']?>" class="linkstyle fontedezesseis"><?=$i['categoria']?></a><br>
                   <?php } ?>
                 </section>
 <!-- conjunto cards 1 -->
@@ -58,7 +58,7 @@ require_once 'php/CRUDS/serviceBook.php';
                           <div class="card mb-4 shadow-sm">
                             <img class="card-img-top" src="php/CRUDS/upload/<?=$i['imagemcapa']?>" alt="capa do livro">
                             <div class="COLORE border-bottom pt-2 border-top alturatitulo">
-                                <h4 class="my-0 font-weight-normal fontequinze"><a class="linkstyle" href="produto?id=<?=$i['id']?>"><?=$i['titulo']?></h4></a>
+                                <h4 class="my-0 font-weight-normal fontequinze"><a class="linkstyle" href="produto.php?id=<?=$i['id']?>"><?=$i['titulo']?></h4></a>
                             </div>
                             <div class="card-body">
                                 <h4 class="fontequinze"><?=$i['autor']?></h4>
@@ -81,14 +81,14 @@ require_once 'php/CRUDS/serviceBook.php';
                     <div class="row text-center bordaspraconteudo pt-3 "> <!-- DIV QUE JUNTA OS CARDS, todos tem que ficar dentro dela -->
 
                       <?php
-                      $livro = servicelistarLivro(8, TRUE);
+                      $livro = serviceListarRecomendacao(TRUE, 8);
                       foreach($livro as $i){
                       ?>
                         <div class="col-sm-4 col-lg-3">
                           <div class="card mb-4 shadow-sm">
                             <img class="card-img-top" src="php/CRUDS/upload/<?=$i['imagemcapa']?>" alt="capa do livro">
                             <div class="COLORE border-bottom pt-2 border-top alturatitulo">
-                                <h4 class="my-0 font-weight-normal fontequinze"><a class="linkstyle" href="produto?id=<?=$i['id']?>"><?=$i['titulo']?></h4></a>
+                                <h4 class="my-0 font-weight-normal fontequinze"><a class="linkstyle" href="produto.php?id=<?=$i['id']?>"><?=$i['titulo']?></h4></a>
                             </div>
                             <div class="card-body">
                                 <h4 class="fontequinze"><?=$i['autor']?></h4>

@@ -245,6 +245,7 @@ function excluirLivro($id){
 		prod.dimensoes,
 		prod.quantidade,
 		cat.categoria,
+		cat.id as categoria_id,
 		subc.assunto,
 		idi.idioma,
 		forn.nome as fornecedor,
@@ -284,4 +285,116 @@ function excluirLivro($id){
   } else {
     return floatval($str); // take some last chances with floatval
   }
+}
+function listarQuantidade($id){
+	$conexao = getConnection();
+	$sql = "SELECT quantidade from produto where id = $id";
+	$resultado = mysqli_query($conexao, $sql);
+	if (mysqli_affected_rows($conexao) >= 1){
+		$arr = array();
+		while($linha = mysqli_fetch_assoc($resultado)){
+			array_push($arr, $linha);
+		}
+		return $arr;
+	}
+}
+function listarRecomendacao($recomendacao, $limit){
+	$conexao = getConnection();
+	$sql = "SELECT
+	prod.id,
+	prod.titulo,
+	prod.autor,
+	prod.editora,
+	prod.isbn,
+	prod.numeropaginas as numero_paginas,
+	prod.sinopse,
+	prod.peso,
+	prod.datapublicacao as data_publicacao,
+	tcap.tipodecapa as tipo_capa,
+	prod.preco,
+	prod.dimensoes,
+	prod.quantidade,
+	cat.categoria,
+	subc.assunto,
+	idi.idioma,
+	forn.nome as fornecedor,
+	imgcapa.nome as imagemcapa,
+	imgthumb.nome as imagemthumb
+
+	from produto prod
+
+	inner join categoria cat on cat.id = prod.categoria_id
+	inner join subcategorias subc on subc.id = prod.subcategorias_id
+	inner join tipodecapa tcap on tcap.id = prod.tipodecapa_id
+	inner join Produto_has_Idioma pi on pi.Produto_id = prod.id
+	inner join idioma idi on idi.id = pi.Idioma_id
+	inner join imagemcapa imgcapa on prod.id = imgcapa.produto_id
+	inner join imagemthumb imgthumb on prod.id = imgthumb.produto_id
+	inner join fornecedores forn on forn.id = prod.fornecedores_id";
+	## Caso seja a aba de lançamentos, liste os últimos que botaram no site
+	if ($recomendacao != NULL) {
+		$sql .= " ORDER BY datapublicacao asc";
+	}
+	## Botar um limite na lista dos livros
+	if ($limit != NULL) {
+		$sql .= " LIMIT $limit;";
+	}
+	$resultado = mysqli_query($conexao, $sql);
+	if (mysqli_affected_rows($conexao) >= 1) {
+		$arr = array();
+		while ($linha = mysqli_fetch_assoc($resultado)){
+			array_push($arr, $linha);
+		}
+		return $arr;
+	} else {
+		return "Falha ao exibir resultados";
+	}
+}
+function listarLivroCategoria($limit, $categoria_id, $prodID){
+	$conexao = getConnection();
+	$sql = "SELECT
+	prod.id,
+	prod.titulo,
+	prod.autor,
+	prod.editora,
+	prod.isbn,
+	prod.numeropaginas as numero_paginas,
+	prod.sinopse,
+	prod.peso,
+	prod.datapublicacao as data_publicacao,
+	tcap.tipodecapa as tipo_capa,
+	prod.preco,
+	prod.dimensoes,
+	prod.quantidade,
+	cat.categoria,
+	subc.assunto,
+	idi.idioma,
+	forn.nome as fornecedor,
+	imgcapa.nome as imagemcapa,
+	imgthumb.nome as imagemthumb
+
+	from produto prod
+
+	inner join categoria cat on cat.id = prod.categoria_id
+	inner join subcategorias subc on subc.id = prod.subcategorias_id
+	inner join tipodecapa tcap on tcap.id = prod.tipodecapa_id
+	inner join Produto_has_Idioma pi on pi.Produto_id = prod.id
+	inner join idioma idi on idi.id = pi.Idioma_id
+	inner join imagemcapa imgcapa on prod.id = imgcapa.produto_id
+	inner join imagemthumb imgthumb on prod.id = imgthumb.produto_id
+	inner join fornecedores forn on forn.id = prod.fornecedores_id where (Categoria_id = $categoria_id and prod.id != $prodID)";
+	## Botar um limite na lista dos livros
+	if ($limit != NULL) {
+		$sql .= " LIMIT $limit;";
+	}
+	$resultado = mysqli_query($conexao, $sql);
+	if (mysqli_affected_rows($conexao) >= 1) {
+		$arr = array();
+		while ($linha = mysqli_fetch_assoc($resultado)){
+			array_push($arr, $linha);
+		}
+		return $arr;
+	} else {
+		return "Falha ao exibir resultados";
+	}
 }

@@ -108,14 +108,14 @@ require_once'php/frete.php';
                     <!-- começo dos cards PRIMEIRA LINHA-->
                         <div class="card-deck text-center ">
                           <?php
-                          $livro = serviceListarLivro(4, NULL);
+                          $livro = serviceListarLivroCategoria(4, $i['categoria_id'], $_GET['id']);
                           foreach ($livro as $i) {
                           ?>
                         <div class="card mb-3 shadow-sm">
 
                             <img class="card-img-top" src="php/CRUDS/upload/<?=$i['imagemcapa']?>" alt="capa do livro">
                             <div class="COLORE border-bottom pt-2 border-top alturatitulo">
-                                <a class="linkstyle" href="produto?id=<?=$i['id']?>"><h4 class="my-0 font-weight-normal fontedezoito"><?=$i['titulo']?></h4></a>
+                                <a class="linkstyle" href="produto.php?id=<?=$i['id']?>"><h4 class="my-0 font-weight-normal fontedezoito"><?=$i['titulo']?></h4></a>
                             </div>
                             <div class="card-body">
                                 <h4 class="fontedezesseis"><?=$i['autor']?></h4>

@@ -36,3 +36,18 @@
 		}
 		return $var;
 	}
+	function serviceListarQuantidade($id){
+		if ($livro = listarQuantidade($id)) {
+			return $livro;
+		}
+	}
+	function serviceListarRecomendacao($recomendacao, $limit){
+		if ($livro = listarRecomendacao($recomendacao, $limit)) {
+			return $livro;
+		}
+	}
+	function serviceListarLivroCategoria($limit, $categoria_id, $prodID){
+		if ($livro = listarLivroCategoria($limit, $categoria_id, $prodID)) {
+			return $livro;
+		}
+	}

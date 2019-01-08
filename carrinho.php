@@ -54,16 +54,14 @@
                       <div class="card-block px-2 float-right">
                         <div class="col-md mt-2">
                         <select id="QtdProd" name="QtdProd" class="form-control tamSel float-left">
-                          <option selected>1<!--betao, joga uma funçao aq p pegar a quantidade q tem no banco s2 ass:Rafael, seu xuxu?--></option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                          <option>5</option>
-                          <option>6</option>
-                          <option>7</option>
-                          <option>8</option>
-                          <option>9</option>
-                          <option>10</option>
+                          <?php
+                          $qtdProduto = serviceListarQuantidade($b);
+                          foreach ($qtdProduto as $c) {
+                          ?>
+                          <option value="<?=$c['quantidade']?>" <?=($c['quantidade'] == $i['quantidade'] ? "selected" : '')?>><?=$i['quantidade']?></option>
+                          <?php
+                          }
+                           ?>
                         </select>
                         </div>
                         <a class="nav-link text-dark opacidade float-right" href="#"><i class="fas fa-trash"></i></a>
@@ -114,6 +112,7 @@
                         } else {
                         $produto = serviceDetalhesLivro($b);
                         }
+                        // Foreach para listar a 'capa do livro
                         foreach ($produto as $c) {
                         ?>
                         <img src="php/CRUDS/upload/<?=$c['imagemcapa']?>" height="50" width="50" alt="capa do livro"></a>
@@ -124,16 +123,9 @@
                       </td>
                       <td>
                         <select id="QtdProd" name="QtdProd" class="form-control tamSel float-left">
-                          <option selected>1<!--betao, joga uma funçao aq p pegar a quantidade q tem no banco s2 ass:Rafael, seu xuxu?--></option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                          <option>5</option>
-                          <option>6</option>
-                          <option>7</option>
-                          <option>8</option>
-                          <option>9</option>
-                          <option>10</option>
+                          <?php for($i = 1; $i <= 10; $i++){?>
+                          <option value="<?=$i?>" <?=($quantidade == $i ? "selected" : '')?>><?=$i?></option>
+                        <?php } ?>
                         </select>
                       </td>
                       <td>R$ <span id="idpreco"><?=precoBR($preco);?></span></td>

@@ -10,7 +10,7 @@ require_once 'requires/header.php';?>
           $categoria = listarCategoria();
           foreach ($categoria as $i) {
             ?>
-            <a href="busca?cat=<?=$i['id']?>" class="linkstyle fontedezesseis"><?=$i['categoria']?></a><br>
+            <a href="busca.php?cat=<?=$i['id']?>" class="linkstyle fontedezesseis"><?=$i['categoria']?></a><br>
           <?php } ?>
           <hr/>
           <h4 class="fontedezoito"><i>Adicionar filtro</i></h4>
@@ -88,7 +88,7 @@ require_once 'requires/header.php';?>
                   <div class="card mb-4 shadow-sm">
                     <img class="card-img-top" src="php/CRUDS/upload/<?=$i['imagemcapa']?>" alt="Capa do livro">
                     <div class="COLORE border-bottom pt-2 border-top alturatitulo">
-                      <h4 class="my-0 font-weight-normal fontequinze"><a class="linkstyle" href="produto?id=<?=$i['id']?>"><?=$i['titulo']?></a></h4>
+                      <h4 class="my-0 font-weight-normal fontequinze"><a class="linkstyle" href="produto.php?id=<?=$i['id']?>"><?=$i['titulo']?></a></h4>
                     </div>
                     <div class="card-body">
                       <h4 class="fontequinze"><?=$i['autor']?></h4>

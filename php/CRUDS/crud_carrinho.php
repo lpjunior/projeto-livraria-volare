@@ -19,15 +19,19 @@ function inserirCarrinho($user_id, $id, $quant){
 # Aumentar o número de produtos reservados
 function updateAdd($quant, $id){
   $conexao = getConnection();
-  $sql = "update itens_reservados set quantidade = quantidade + $quant where produto_id = $id";
+  $sql = "update itens_reservados set quantidade = quantidade + $quant where (produto_id = $id and quantidade < 10)";
   $resultado = mysqli_query($conexao, $sql);
+	echo $sql;
+	if (mysqli_affected_rows($conexao) >= 1){
   $sql = "update produto set quantidade = quantidade - $quant where id = $id";
+	echo $sql;
   $resultado = mysqli_query($conexao, $sql);
   if (mysqli_affected_rows($conexao) >= 1) {
 		return true;
 	} else {
 		return 'Falha em botar produtos no carrinho';
 	}
+}
 }
 # Deletar os produto reservados
 function deleteCarrinho($quant_total, $id){
@@ -57,7 +61,7 @@ function updateAlt($qtd, $id, $quant_total){
 }
 function listarCarrinho($id){
   $conexao = getConnection();
-  $sql = "SELECT prod.id, prod.peso, usu.nome, prod.titulo, itres.quantidade, prod.preco from usuarios usu
+  $sql = "SELECT prod.id, prod.peso, prod.quantidade as prod_quantidade, usu.nome, prod.titulo, itres.quantidade, prod.preco from usuarios usu
   inner join itens_reservados itres on itres.usuarios_id = usu.id
   inner join produto prod on prod.id = itres.produto_id
 	where itres.usuarios_id = $id";
