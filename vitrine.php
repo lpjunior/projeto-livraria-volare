@@ -10,7 +10,7 @@ require_once 'requires/header.php';?>
           $categoria = listarCategoria();
           foreach ($categoria as $i) {
             ?>
-            <a href="busca.php?cat=<?=$i['id']?>" class="linkstyle fontedezesseis"><?=$i['categoria']?></a><br>
+            <a href="vitrine.php?cat=<?=$i['id']?>" class="linkstyle fontedezesseis"><?=$i['categoria']?></a><br>
           <?php } ?>
           <hr/>
           <h4 class="fontedezoito"><i>Adicionar filtro</i></h4>
