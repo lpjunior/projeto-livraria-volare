@@ -84,10 +84,10 @@ $app->map(['GET', 'POST'], '/busca', function ($request, $response, $args) {?>
           if (is_array($livro)) {?>
             <div class="row text-center">
               <?php foreach ($livro as $i) {?>
-                <div class="col-sm-3">
+                <div class="col-sm-4 col-lg-3">
                   <div class="card mb-4 shadow-sm">
                     <img class="card-img-top" src="php/CRUDS/upload/<?=$i['imagemcapa']?>" alt="Capa do livro">
-                    <div class="card-header">
+                    <div class="COLORE border-bottom pt-2 border-top alturatitulo">
                       <h4 class="my-0 font-weight-normal fontequinze"><a class="linkstyle" href="produto?id=<?=$i['id']?>"><?=$i['titulo']?></a></h4>
                     </div>
                     <div class="card-body">

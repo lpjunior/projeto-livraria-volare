@@ -40,7 +40,7 @@ $app->map(['GET', 'POST'], '/produto', function ($request, $response, $args) {
                     <?php
                     $i['sinopse'] = resume($i['sinopse'], 300);
                      ?>
-                    <h4 class="fontedezesseis"><i class="far fa-bookmark"></i>&nbsp;Sinopse:</h4> <p class="fontedezesseis"><?=$i['sinopse']?></p>
+                    <h4 class="fontedezesseis"><i class="far fa-bookmark" aria-hidden=”true”></i>&nbsp;Sinopse:</h4> <p class="fontedezesseis"><?=$i['sinopse']?></p>
                 </section>
                 <!-- div para informações -->
                 <section class="col-12 col-sm-8 col-md-8 col-lg-8 mt-4 bordasb">
@@ -114,14 +114,14 @@ $app->map(['GET', 'POST'], '/produto', function ($request, $response, $args) {
                         <div class="card mb-3 shadow-sm">
 
                             <img class="card-img-top" src="php/CRUDS/upload/<?=$i['imagemcapa']?>" alt="capa do livro">
-                            <div class="card-header">
+                            <div class="COLORE border-bottom pt-2 border-top alturatitulo">
                                 <a class="linkstyle" href="produto?id=<?=$i['id']?>"><h4 class="my-0 font-weight-normal fontedezoito"><?=$i['titulo']?></h4></a>
                             </div>
                             <div class="card-body">
                                 <h4 class="fontedezesseis"><?=$i['autor']?></h4>
                                 <h3 class="fontevinte">R$ <?=number_format($i['preco'], 2, ',', '.')?></h3>
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary" aria-label="adicionar ao carrinho">&nbsp;&nbsp;&nbsp;<i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;&nbsp;</button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary" aria-label="adicionar ao carrinho">&nbsp;&nbsp;&nbsp;<i class="fa fa-shopping-cart" alt="icone carrinho"></i>&nbsp;&nbsp;&nbsp;</button>
                                 </div>
                             </div>
                         </div> <!--fim da coluna 1-->
@@ -135,7 +135,7 @@ $app->map(['GET', 'POST'], '/produto', function ($request, $response, $args) {
        <section class="container-fluid mb-4 mt-3 pb-4">
            <div class="col-12 col-sm-8 col-md-8 col-lg-8 centraliza bordasb"><!-- BORDAS COMEÇO-->
                  <div class="col-12 col-md-12 col-lg-12 col-sm-12 pl-4 mt-4 mb-4">
-                     <h4 class="fontevinteecinco"><i class="far fa-comments"></i>&nbsp;Comentários:</h4>
+                     <h4 class="fontevinteecinco"><i class="far fa-comments" aria-hidden=”true”></i>&nbsp;Comentários:</h4>
                  </div>
                  <form action="php/CRUDS/inserirComentario.php?id=<?=$_GET['id']?>" method="POST">
                  <div class="col-md-7 col-lg-7 col-sm-10 centraliza mt-2 mb-2">
@@ -145,7 +145,7 @@ $app->map(['GET', 'POST'], '/produto', function ($request, $response, $args) {
                      <div class="form-group text-right opacidade pr-2">
                          <div>
 
-                             <button type="submit" class="btn fontedoze opacidade COLORE1" alt="comentar" name="btn-comentar">comentar</button>
+                             <button type="submit" class="btn fontedoze opacidade COLORE1" name="btn-comentar">comentar</button>
 
                              <!-- se o usuário não estiver logado deve aparecer a mensagem "Para postar um comentário entre ou faça o seu cadastro"-->
                          </div>

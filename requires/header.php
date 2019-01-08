@@ -31,8 +31,8 @@ require_once 'php/CRUDS/serviceCarrinho.php';
         <!-- TOPO DO SITE -->
         <nav class=" navbar-dark bg-dark">
             <div class="container-fluid topoformatacao pt-1 pl-1">
-            <a class="linkstyle pr-1" href="sobre">&nbsp;&nbsp;<i class="fas fa-users"></i> Sobre a Volare</a>
-            <a class="linkstyle" href="faleConosco"> <i class="fas fa-phone-volume"></i> Fale Conosco</a>
+            <a class="linkstyle pr-1" href="sobre">&nbsp;&nbsp;<i class="fas fa-users" aria-hidden=”true”></i> Sobre a Volare</a>
+            <a class="linkstyle" href="faleConosco"> <i class="fas fa-phone-volume" aria-hidden=”true”></i> Fale Conosco</a>
             </div>
         </nav>
         <!-- fim do topo -->
@@ -66,16 +66,16 @@ require_once 'php/CRUDS/serviceCarrinho.php';
 	                </div> -->
                <!-- LINKS NAVBAR -->
                 <div class="nav-item">
-                  <a class="nav-link text-dark opacidade" href="home"><i class="fas fa-home"></i>&nbsp;Início</a>
+                  <a class="nav-link text-dark opacidade" href="home"><i class="fas fa-home" aria-hidden=”true”></i>&nbsp;Início</a>
                 </div>
                 <?php
                 if (!isset($_SESSION['user']) && !isset($_SESSION['token_face'])) { ?>
                 <div class="nav-item">
-                  <a class="nav-link text-dark opacidade" href="entrar"><i class="fas fa-user-circle"></i>&nbsp;Entre ou cadastre-se</a>
+                  <a class="nav-link text-dark opacidade" href="entrar"><i class="fas fa-user-circle" aria-hidden=”true”></i>&nbsp;Entre ou cadastre-se</a>
                 </div>
               <?php } else { ?>
                 <div class="dropdown float-left">
-								<a href="user" class="dropdown-toggle nav-link text-dark fontedezesseis opacidade" data-toggle="dropdown" role="button"> <i class="fas fa-user-circle"></i>&nbsp;Olá, <?=$_SESSION['user']['nome']?></a>
+								<a href="user" class="dropdown-toggle nav-link text-dark fontedezesseis opacidade" data-toggle="dropdown" role="button"> <i class="fas fa-user-circle" aria-hidden=”true”></i>&nbsp;Olá, <?=$_SESSION['user']['nome']?></a>
 									<ul class="dropdown-menu COLORE" role="menu">
                     <li>
 											<div class="fontecatorze pr-2 pl-3 mb-0">
@@ -99,11 +99,11 @@ require_once 'php/CRUDS/serviceCarrinho.php';
               <?php }?>
 							<!-- carrinho sem dropdown -->
 							<div class="float-left d-lg-none d-xl-none">
-								<a href="carrinho" value="checkout" class="nav-link text-dark fontedezesseis opacidade"> <i class="fas fa-shopping-cart"></i>&nbsp;Carrinho</a>
+								<a href="carrinho" value="checkout" class="nav-link text-dark fontedezesseis opacidade"> <i class="fas fa-shopping-cart" aria-hidden=”true”></i>&nbsp;Carrinho</a>
 							</div>
 							<!-- CARRINHO DROPDOWN -->
 							<div class="dropdown float-left d-none d-sm-none d-md-none d-lg-block">
-								<a href="carrinho" class="dropdown-toggle nav-link text-dark fontedezesseis opacidade" data-toggle="dropdown" role="button"> <i class="fas fa-shopping-cart"></i>&nbsp;Carrinho de compras</a>
+								<a href="carrinho" class="dropdown-toggle nav-link text-dark fontedezesseis opacidade" data-toggle="dropdown" role="button"> <i class="fas fa-shopping-cart" aria-hidden=”true”></i>&nbsp;Carrinho de compras</a>
 								<ul class="dropdown-menu dropdown-cart COLORE opacidadecart" role="menu"><!-- abre aqui -->
 									<?php
 									if (isset($_SESSION['user_id'])){
@@ -176,9 +176,9 @@ require_once 'php/CRUDS/serviceCarrinho.php';
                             </select>
 
                     </span>
-                    <input class="form-control  border-right-0 border noradius" href="#" type="search" value="" id="" name="busca">
+                    <input class="form-control  border-right-0 border noradius" aria-label="campo de busca" type="search" value="" id="" name="busca">
                     <span class="input-group-append">
-                        <button type="submit" class="fa fa-search input-group-text bg-white noradius"></button>
+                        <button type="submit" aria-label="pesquisar" class="fa fa-search input-group-text bg-white noradius"></button>
                     </span>
                 </div>
             </form> <!--fim do campo de busca-->

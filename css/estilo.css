@@ -29,15 +29,19 @@
     color: white;
 }
 
+.alturatitulo{
+  height: 50px;
+  width: auto;
+}
+
 .bordas {
     border: 2px solid rgb(248,251,255);
     border-radius: 0px;
 }
 
 .bordaspraconteudo{
-    border-top: 1px solid rgb(244,248,259);
-    padding-top: 25px;
-    margin-bottom: 30px;
+    border-top: 2px solid rgb(200,251,255);
+
 /*usado na index*/
 }
 
