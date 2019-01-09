@@ -64,7 +64,7 @@
                            ?>
                         </select>
                         </div>
-                        <a class="nav-link text-dark opacidade float-right" href="#"><i class="fas fa-trash"></i></a>
+                        <a class="nav-link text-dark opacidade float-right" href="php/CRUDS/carrinhoSystem.php?acao=del&id=<?=$b?>"><i class="fas fa-trash"></i></a>
                       </div>
                     </div>
                 </div>
@@ -97,6 +97,7 @@
                   if (isset($_SESSION['user_id'])){
                     $preco = $i['preco'];
                     $quantidade = $i['quantidade'];
+                    $b = $i['id'];
                   } else {
                     $preco = $i[0]['preco'];
                     $quantidade = $i['qtd'];
@@ -130,7 +131,7 @@
                       </td>
                       <td>R$ <span id="idpreco"><?=precoBR($preco);?></span></td>
                       <td id="subtotalProd">R$<?= precoBR($preco * $quantidade);?></td>
-                      <td class="text-center mb-3"><a href="" class="linkstyle"><i class="fas fa-trash"></i></a></td>
+                      <td class="text-center mb-3"><a href="php/CRUDS/carrinhoSystem.php?acao=del&id=<?=$b?>" class="linkstyle"><i class="fas fa-trash"></i></a></td>
                     </tr>
                     <tr>
                     </tbody>
