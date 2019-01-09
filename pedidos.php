@@ -28,7 +28,7 @@ require_once 'php/CRUDS/serviceBook.php';
         <td><?=$i['numero_pedido']?></td><!-- id do pedido -->
         <td><?=$i['status_compra']?></td>
         <td><?=$i['status_entrega']?></td>
-        <td class="linkstyle fontedoze"><a class="text-info" href="detalhes-pedido?id=<?=$i['pedido_id']?>" ><i class="fas fa-caret-right"></i>&nbsp;&nbsp;<b>detalhes do pedido</b></a></td>
+        <td class="linkstyle fontedoze"><a class="text-info" href="detalhesdopedido.php?id=<?=$i['pedido_id']?>" ><i class="fas fa-caret-right"></i>&nbsp;&nbsp;<b>detalhes do pedido</b></a></td>
       </tr>
     <?php } } else {
       $pedidoserro = "<h5 class='fontedezoito opacidade text-center'>Não existe pedido a ser visualizado</h5>";

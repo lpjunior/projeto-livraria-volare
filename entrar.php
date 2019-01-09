@@ -19,6 +19,13 @@ if (isset($_SESSION['cpf'])){
     unset($_SESSION['cpf']);
   }
 }
+if (isset($_SESSION['block']) && $_SESSION['block'] == true){
+  echo "<script>alert('O usuário está bloqueado por muitas tentativas de login!')</script>";
+  unset($_SESSION['block']);
+}
+if (!isset($_SESSION['contador'])){
+  $_SESSION['contador'] = 3;
+}
 require_once 'requires/header.php';
  ?>
     <div class="container-fluid col-md-8 centraliza mt-4">
@@ -40,12 +47,13 @@ require_once 'requires/header.php';
                                 </div>
                             </div>
                             <?php
-                            if (isset($_SESSION['erro'])) { ?>
-                              <p class="ml-4 text-danger"><?=$_SESSION['erro']?></p>
-                          <?php } ?>
-                            <div class="col-md-10 mt-0 mb-2">
-                              <button name="btn-enviar" type="submit" class="btn bg-white fontedoze float-right" data-toggle="modal" data-target="#exampleModal">Esqueci minha senha</button>
-                            </div>
+                            if (isset($_SESSION['erro']) && $_SESSION['erro'] == 'Erro') { ?>
+                              <p class="ml-4 text-danger">Usuário e/ou senha incorreto(s)</p>
+                          <?php unset($_SESSION['erro']);
+                          } elseif (isset($_SESSION['erro']) && $_SESSION['erro'] == "inativo") { ?>
+                            <p class="ml-4 text-danger">Seu usuário está inativo!</p>
+                        <?php unset($_SESSION['erro']);
+                      } ?>
 
                             <!-- Modal -->
                                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

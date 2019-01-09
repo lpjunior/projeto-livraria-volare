@@ -7,7 +7,7 @@
     <div class="row bg-white">
         <section class="col-xs-12 col-sm-4 col-md-4 col-lg-4 mt-4">
           <?php
-          $pedido = listarPedido($_SESSION['user_id'], $_GET['id']);
+          $pedido = serviceListarPedido(NULL, $_GET['id']);
           foreach ($pedido as $i) {
           ?>
                 <h1 class="fontedezoito pb-2"><i> Número do pedido: <!-- preencher id--> <?=$i['numero_pedido']?> </i></h1>
@@ -71,6 +71,5 @@
 } else {
   echo "<h5 class='fontedezoito opacidade text-center mt-4'>Não existem pedidos.</h5>";
 }
-<?php
   require_once 'requires/footer.php';
  ?>

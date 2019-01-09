@@ -6,6 +6,7 @@ require_once 'php/CRUDS/serviceBook.php';
 require_once 'php/CRUDS/serviceUsuario.php';
 require_once 'php/CRUDS/serviceComentarios.php';
 require_once 'php/CRUDS/serviceCarrinho.php';
+require_once 'php/CRUDS/serviceCheckout.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -85,7 +86,7 @@ require_once 'php/CRUDS/serviceCarrinho.php';
 										<div class="dropdown-divider"></div>
 										<li>
 											<div class="fontecatorze pr-2 pl-3 mb-0">
-													<a href="pedidos" class="text-dark" >Meus pedidos</a><!-- LINK PEDIDOS -->
+													<a href="pedidos.php" class="text-dark" >Meus pedidos</a><!-- LINK PEDIDOS -->
 											</div>
 										</li>
 										<div class="dropdown-divider"></div>

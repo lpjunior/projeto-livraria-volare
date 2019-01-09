@@ -68,9 +68,16 @@ function registrarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $gen
 ############### Logar Usuário ################
 function logarUsuario($email, $senha){
 	$conexao = getConnection();
+	## Testar se o usuário é ativo ou não ##
+	$sql = "SELECT ativo from usuarios where email = '$email' and ativo = 0";
+	$resultado = mysqli_query($conexao, $sql);
+	if (mysqli_affected_rows($conexao) >= 1) {
+		return "inativo";
+	}
+	## Caso não seja inativo
 	$email = mysqli_escape_string($conexao, $email);
 	$senha = mysqli_escape_string($conexao, $senha);
-	$sql = "SELECT nome, email, id FROM usuarios where email = '$email' and senha = md5('$senha') and ativo = 1";
+	$sql = "SELECT nome, email, id FROM usuarios where email = '$email' and senha = md5('$senha')";
 	$resultado = mysqli_query($conexao, $sql);
 	## Caso tenha achado algum usuário com esse email e senha, pegue os dados e guarde na sessão
 	if (mysqli_affected_rows($conexao) >= 1) {
@@ -116,8 +123,15 @@ function logarUsuario($email, $senha){
 		} // Fim do if caso a pessoa tenha itens no carrinho.
 		return true;
 	} else {
-		return "Falha ao logar";
-	}
+		## Se o usuário for ativo, e errar a senha, abaixe um no contador, se o contador chegar a 0, bloqueie a conta do usuário
+		$_SESSION['contador']--;
+		if($_SESSION['contador'] <= 0){
+			$_SESSION['block'] = true;
+			desativarUsuario($email);
+			$_SESSION['contador'] = 3;
+		}
+		return false;
+	} // fim do else
 }
 ## Editar informações do cliente
 function editarInformacoes($nome, $sobrenome, $email, $cpf, $datanascimento, $genero, $senha, $id, $telefone){
@@ -251,9 +265,9 @@ function loginUsuarioAdmin($email, $senha){
 		$_SESSION['user_id'] = $_SESSION['user']['id'];
 		return true;
 	} else {
-		return header('location: ../../adm/adm.php');
-	}
-}
+		return false;
+	} // fim do if
+} // fim do else
 function inserirItemDesejado($usuarioID, $produtoID){
 	$conexao = getConnection();
 	$sql = "INSERT INTO desejados VALUES ($usuarioID, $produtoID)";
@@ -560,7 +574,6 @@ function editaStatusAtivo($ativo, $id){
 }
 function excluirItemDEsejado($produtoID){
 	$conexao = getConnection();
-	$conexao = getConnection();
 	$usuarioID = $_SESSION['user_id'];
 	$sql = "DELETE FROM desejados where usuarios_id = $usuarioID and produto_id = $produtoID";
 	$resultado = mysqli_query($conexao, $sql);
@@ -568,5 +581,15 @@ function excluirItemDEsejado($produtoID){
 		return true;
 	} else {
 		return "<script>alert('Falha ao excluir o item favorito');</script>";
+	}
+}
+function desativarUsuario($email){
+	$conexao = getConnection();
+	$sql = "UPDATE usuarios set ativo = 0 where email = '$email'";
+	$resultado = mysqli_query($conexao, $sql);
+	if (mysqli_affected_rows($conexao) >= 1){
+		return true;
+	} else {
+		return false;
 	}
 }
