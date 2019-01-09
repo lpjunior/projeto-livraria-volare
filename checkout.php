@@ -138,6 +138,12 @@ if (!is_array($checkout)){
                 <div class="modal-body">
                     <div class="form-group">
                                 <div class="row">
+                                <div class="col-md">
+                                    <label for="iDest">Destinatário:</label>
+                                    <input type="text" id="iDest" name="txtDest" class="form-control" required maxlength="100">
+                                </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-md-4">
                                         <label for="iCEP">CEP:</label>
                                         <input type="text" id="iCEP" name="txtCEP" class="form-control cep" required>
@@ -168,7 +174,7 @@ if (!is_array($checkout)){
                                         <input type="text"  id="iCidade" name="txtCidade" class="form-control" required maxlength="50">
                                     </div>
                                     <div class="col-md">
-                                        <label for="sEstado">Estado</label><!-- PESSOAL DO PHP: tem que puxar esse select do banco de dados, só coloquei pra ficar mais fácil de vizualizar-->
+                                        <label for="sEstado">Estado</label>
                                         <select id="sEstado" name="txtEstado" class="form-control">
                                             <option value="AC">Acre</option>
                                             <option value="AL">Alagoas</option>
