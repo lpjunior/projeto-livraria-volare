@@ -211,7 +211,11 @@
               </div>
               <div class="col mb-4 col-md-4 col-12">
                 <form action="<?=(isset($_SESSION['user_id']) ? 'checkout.php' : 'entrar.php');?>" method="POST">
+                  <?php
+                  if (isset($frete) && intval($frete['valor']) >= 1){
+                  ?>
                   <input type="hidden" name="txtFrete" value="<?=$frete['valor']?>">
+                <?php } ?>
                     <button type="submit" class="btn COLORE1 float-left ml-2 mr-2" value="checkout" name="btn-checkout">Concluir compra</button>
                 </form>
                     </div>
