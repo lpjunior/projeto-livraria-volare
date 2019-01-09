@@ -8,7 +8,7 @@ function registrarUsuario($nome, $sobrenome, $email, $cpf, $datanascimento, $gen
 	// Caso o CPF ou o email sejam iguais a um existente, retorne para página de cadastro
 	$conexao = getConnection();
 	$email = filtrarEmail($email);
-	$cpf = mysqli_escape_string($conexao, $cpf);
+	$cpf = mysqli_real_escape_string($conexao, $cpf);
 	$cpf = htmlspecialchars($cpf);
 	// Se o CPF e/ou email for igual a algum email no banco, retorne um erro para o cliente.
 	$sql = "SELECT cpf from usuarios where cpf = '$cpf' or email = '$email'";
