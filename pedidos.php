@@ -5,7 +5,7 @@ require_once 'php/CRUDS/serviceBook.php';
 <section class="col-md-10 col-lg-10 centraliza">
 
    <div class="col-md-10 d-inline-flex ">
-     <a href="user"><h5 class="fontequinze linkstyle mt-4"> <i class="fas fa-arrow-alt-circle-left"></i>&nbsp;&nbsp;Minha conta</h5></a> <h1 class="COLORETEXTO mx-auto mt-4 fontevinteecinco"><i>Meus pedidos</i></h1>
+     <a href="contausuario.php"><h5 class="fontequinze linkstyle mt-4"> <i class="fas fa-arrow-alt-circle-left" aria-hidden=”true” ></i>&nbsp;&nbsp;Minha conta</h5></a> <h1 class="COLORETEXTO mx-auto mt-4 fontevinteecinco"><i>Meus pedidos</i></h1>
   </div>
   <table class="table mt-2">
     <thead>
