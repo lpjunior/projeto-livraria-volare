@@ -45,3 +45,8 @@ function serviceListarCheckout($id, $qtd){
         return $pedido;
       }
     }
+    function serviceCheckoutFinalizar($idProd, $quantidade, $usuarioID){
+      if ($pedido = checkoutFinalizar($idProd, $quantidade, $usuarioID)){
+        return $pedido;
+      }
+    }

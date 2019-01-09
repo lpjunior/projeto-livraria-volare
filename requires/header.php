@@ -7,6 +7,7 @@ require_once 'php/CRUDS/serviceUsuario.php';
 require_once 'php/CRUDS/serviceComentarios.php';
 require_once 'php/CRUDS/serviceCarrinho.php';
 require_once 'php/CRUDS/serviceCheckout.php';
+require_once 'php/frete.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -32,8 +33,8 @@ require_once 'php/CRUDS/serviceCheckout.php';
         <!-- TOPO DO SITE -->
         <nav class=" navbar-dark bg-dark">
             <div class="container-fluid topoformatacao pt-1 pl-1">
-            <a class="linkstyle pr-1" href="sobre">&nbsp;&nbsp;<i class="fas fa-users" aria-hidden=”true”></i> Sobre a Volare</a>
-            <a class="linkstyle" href="faleConosco"> <i class="fas fa-phone-volume" aria-hidden=”true”></i> Fale Conosco</a>
+            <a class="linkstyle pr-1" href="sobre.php">&nbsp;&nbsp;<i class="fas fa-users" aria-hidden=”true”></i> Sobre a Volare</a>
+            <a class="linkstyle" href="faleconosco.php"> <i class="fas fa-phone-volume" aria-hidden=”true”></i> Fale Conosco</a>
             </div>
         </nav>
         <!-- fim do topo -->

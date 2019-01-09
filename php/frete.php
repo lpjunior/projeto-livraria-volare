@@ -1,7 +1,6 @@
 <?php
 
- function calculaFrete($cep,
-  $cepOrigem,
+ function calculaFrete($cep, $cepOrigem,
   $peso,
   $valor){
 

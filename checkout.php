@@ -11,6 +11,19 @@ require_once 'php/CRUDS/serviceCheckout.php';
   } elseif (isset($_GET['editar']) && $_GET['editar'] == true){
     echo "<script>alert('Endereço alterado com sucesso!')</script>";
   }
+  ## Caso o usuário não tenha calculado o frete, use o frete do usuário
+if (!isset($_POST['txtFrete'])){
+  $checkout = serviceListarEndereco($_SESSION['user_id'], 1);
+if (!is_array($checkout)){
+  $checkout = serviceListarEndereco($_SESSION['user_id'], 4);
+}
+  foreach ($checkout as $i) {
+  $frete = calculaFrete($i['cep'], '22290040', '0.800', '20');
+}
+  $frete = $frete['valor'];
+} else {
+  $frete = $_POST['txtFrete'];
+}
 ?>
         <section>
             <div class="container-fluid col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 centraliza mt-4">
@@ -30,7 +43,6 @@ require_once 'php/CRUDS/serviceCheckout.php';
                                     <tbody>
                                       <?php
                                       $valor_total = 0;
-                                      $frete = '2.90';
                                       $checkout = serviceListarCheckout($_SESSION['user_id'], NULL);
                                       foreach ($checkout as $i) {
                                       ?>
@@ -42,7 +54,7 @@ require_once 'php/CRUDS/serviceCheckout.php';
                                       </tr>
                                       <!--preenchido pra teste-->
                                       <?php
-                                      $valor_total += $i['preco'];
+                                      $valor_total += $i['preco'] * intval($i['quantidade']);
                                     }
                                     ?>
                                     </tbody>
@@ -54,7 +66,7 @@ require_once 'php/CRUDS/serviceCheckout.php';
                                   <tr>
                                     <th scope="row"><i class="fontedoze COLORETEXTO fas fa-plus"></i></th>
                                     <td class="fontetabeladois">Frete:</td>
-                                    <td colspan="2" class="fontetabeladois text-right"><?=precoBR($frete)?></td>
+                                    <td colspan="2" class="fontetabeladois text-right"><?=$frete?></td>
 
                                   </tr>
                                   <tr>

@@ -3,9 +3,8 @@
   require_once'php/frete.php';
   //Frete.
   if (isset($_POST['btn_calcula_frete'])) {
-    $frete = calculaFrete($_POST['cep'], '22290040', '10', '20');
+    $frete = calculaFrete($_POST['cep'], '22290040', '0.800', '20');
   }
-
   ?>
   <div class="container-fluid col-md-10 col-12 ">
     <div class="row mt-4">
@@ -46,23 +45,18 @@
                     </div>
                     <div class="col d-flex align-items-start">
                       <div class="float-left pl-3 pt-2">
-                        <p class="mb-0 displayblock text-center"><?= $titulo = resume($titulo, 6)?></p><!--JS PARA COLOCAR RETICÊNCIAS NOS TÍTULOS GRANDES-->
+                        <p class="mb-0 displayblock text-center"><?= $titulo = resume($titulo, 9)?></p><!--JS PARA COLOCAR RETICÊNCIAS NOS TÍTULOS GRANDES-->
                         <p class="mb-0 displayblock text-center"><i class="fas fa-dollar-sign"><?=precoBR($preco)?></i></p>
                       </div>
                     </div>
                     <div class="col">
                       <div class="card-block px-2 float-right">
                         <div class="col-md mt-2">
-                        <select id="QtdProd" name="QtdProd" class="form-control tamSel float-left">
-                          <?php
-                          $qtdProduto = serviceListarQuantidade($b);
-                          foreach ($qtdProduto as $c) {
-                          ?>
-                          <option value="<?=$c['quantidade']?>" <?=($c['quantidade'] == $i['quantidade'] ? "selected" : '')?>><?=$i['quantidade']?></option>
-                          <?php
-                          }
-                           ?>
-                        </select>
+                          <select id="QtdProd" name="QtdProd" class="form-control tamSel float-left">
+                            <?php for($i = 1; $i <= 10; $i++){?>
+                            <option value="<?=$i?>" <?=($quantidade == $i ? "selected" : '')?>><?=$i?></option>
+                          <?php } ?>
+                          </select>
                         </div>
                         <a class="nav-link text-dark opacidade float-right" href="php/CRUDS/carrinhoSystem.php?acao=del&id=<?=$b?>"><i class="fas fa-trash"></i></a>
                       </div>
@@ -105,7 +99,6 @@
                   ?>
                   <tbody>
                     <tr>
-                      <form action="#" method="POST">
                       <td>
                         <?php
                         if (isset($_SESSION['user_id'])){
@@ -136,7 +129,6 @@
                     <tr>
                     </tbody>
                   <?php } } ?>
-                </form>
                 </table>
 
 
@@ -219,7 +211,8 @@
               </div>
               <div class="col mb-4 col-md-4 col-12">
                 <form action="<?=(isset($_SESSION['user_id']) ? 'checkout.php' : 'entrar.php');?>" method="POST">
-                    <button type="submit" class="btn COLORE1 float-left ml-2 mr-2" name="btn-checkout">Concluir compra</button>
+                  <input type="hidden" name="txtFrete" value="<?=$frete['valor']?>">
+                    <button type="submit" class="btn COLORE1 float-left ml-2 mr-2" value="checkout" name="btn-checkout">Concluir compra</button>
                 </form>
                     </div>
                     <!-- /frete -->

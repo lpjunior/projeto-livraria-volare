@@ -184,3 +184,16 @@ function listarItensPedidos($idPedido){
 		return $arr;
 	}
 }
+function checkoutFinalizar($idProd, $quantidade, $usuarioID){
+  $conexao = getConnection();
+  $sql = "SELECT quantidade from itens_reservados where produto_id = $idProd and usuarios_id = $usuarioID";
+  $resultado = mysqli_query($conexao, $sql);
+  $linha = mysqli_fetch_assoc($resultado);
+  if ($linha['quantidade'] == $quantidade){
+    return true;
+  } else {
+    $sql = "UPDATE itens_reservados set quantidade = $quantidade where produto_id = $idProd";
+    $resultado = mysqli_query($conexao, $sql);
+    return true;
+  }
+}

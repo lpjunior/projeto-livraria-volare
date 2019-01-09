@@ -50,6 +50,7 @@ require_once("header.php");
             foreach ($produto as $i) {
 							// Função que bota reticencias se passar de 250 caracteres.
               $i['sinopse'] = resume($i['sinopse'], 105);
+							$id = $i['id'];
             ?>
               <tr>
                   <td><?=$i['id']?></td>
@@ -65,8 +66,9 @@ require_once("header.php");
                   <!-- botões editar e excluir -->
                   <td><a class="linkstyle2" href="editaProduto.php?id=<?=$i['id'];?>"><i class="fas fa-pen"></i><a/></td>
 									<td><a class="linkstyle3" href="../php/CRUDS/excluirLivro.php?id=<?=$i['id']?>"><i class="fas fa-trash"></i><a/></td>
-								<!-- **** excluir - versão com modal ****
-									<td><i class="fas fa-trash linkstyle3" data-toggle="modal" data-target="#bexcluir"></i></td>
+								<!--excluir - versão com modal -->
+
+								<!-- <td><i class="fas fa-trash linkstyle3" data-toggle="modal" data-target="#bexcluir"></i></td>
 
 												<div class="modal fade" id="bexcluir" tabindex="-1" role="dialog" aria-labelledby="ea" aria-hidden="true">
 												<div class="modal-dialog" role="document">
@@ -77,16 +79,15 @@ require_once("header.php");
 																<span aria-hidden="true">&times;</span>
 																</button>
 														</div>
-														<form action="" method="POST">
+														<form action="../php/CRUDS/excluirLivro.php?id=<?=$id?>" method="POST">
 														<div class="modal-body">
-														 <button type="button" class="btn btn-info mr-2" onclick="">Sim</button>
+														 <button type="submit" class="btn btn-info mr-2"><?=$id?></button>
 															<button type="button" class="btn btn-info" data-dismiss="modal" aria-label="fechar">não</button>
 														</div>
 
 														</div>
 												</div>
-												</div>
-								 **** fim do excluir versão com modal -->
+											</div> -->
 
              </tr>
                <?php } ?>
