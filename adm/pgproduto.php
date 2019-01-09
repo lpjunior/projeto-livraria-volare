@@ -32,7 +32,7 @@ require_once("header.php");
                 <th scope="col">Editora</th>
                 <th scope="col">ISBN</th>
                 <th scope="col">Ano</th>
-								<th scope="col">Sinopse</th>
+								<!-- <th scope="col">Sinopse</th> -->
                 <th scope="col">Fornecedor</th>
 								<th scope="col">Preço</th>
 								<th scope="col">Qtd.</th>
@@ -58,15 +58,37 @@ require_once("header.php");
                   <td><?=$i['editora']?></td>
                   <td><?=$i['isbn']?></td>
 									<td><?=$i['data_publicacao']?></td>
-                  <td><?=$i['sinopse']?></td>
+                <!--  <td><?= $i['sinopse']?></td> -->
                   <td><?=$i['fornecedor']?></td>
                   <td><?=$i['preco']?></td>
                   <td><?=$i['quantidade']?></td>
                   <!-- botões editar e excluir -->
                   <td><a class="linkstyle2" href="editaProduto.php?id=<?=$i['id'];?>"><i class="fas fa-pen"></i><a/></td>
-                  <td><a class="linkstyle3" href="../php/CRUDS/excluirLivro.php?id=<?=$i['id']?>"><i class="fas fa-trash"></i><a/></td>
+									<td><a class="linkstyle3" href="../php/CRUDS/excluirLivro.php?id=<?=$i['id']?>"><i class="fas fa-trash"></i><a/></td>
+								<!-- **** excluir - versão com modal ****
+									<td><i class="fas fa-trash linkstyle3" data-toggle="modal" data-target="#bexcluir"></i></td>
+
+												<div class="modal fade" id="bexcluir" tabindex="-1" role="dialog" aria-labelledby="ea" aria-hidden="true">
+												<div class="modal-dialog" role="document">
+														<div class="modal-content">
+														<div class="modal-header">
+																<h5 class="modal-title fontedezesseis" id="ea">Tem certeza que deseja excluir esse produto?</h5>
+																<button type="button" class="close" data-dismiss="modal" aria-label="fechar">
+																<span aria-hidden="true">&times;</span>
+																</button>
+														</div>
+														<form action="" method="POST">
+														<div class="modal-body">
+														 <button type="button" class="btn btn-info mr-2" onclick="">Sim</button>
+															<button type="button" class="btn btn-info" data-dismiss="modal" aria-label="fechar">não</button>
+														</div>
+
+														</div>
+												</div>
+												</div>
+								 **** fim do excluir versão com modal -->
+
              </tr>
-								 </tr>
                <?php } ?>
           </tbody><!-- fim do conteúdo da tabela-->
         </table>

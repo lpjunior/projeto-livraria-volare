@@ -96,7 +96,7 @@ require_once 'php/CRUDS/serviceCheckout.php';
                     <div class="col-md-12 col-lg-12">
                         <?php require_once 'payment.php'; ?>
 
-                    <!-- tem que fazer um if pra aparecer a mensagem pedido efetuado com sucesso-->
+                    <!-- 
                         <div class="form-group float-right mr-0 pr-2">
                             <div>
                                 <button type="submit" class="btn fontedoze COLORE1" alt="ir para o topo da página" name="" onclick=""><i class="fontequinze text-light fas fa-arrow-alt-circle-up"></i>&nbsp;&nbsp;ir para o topo</button>
@@ -106,7 +106,7 @@ require_once 'php/CRUDS/serviceCheckout.php';
                             <div>
                                 <button type="submit" class="btn fontedoze COLORE1" alt="ir para a página anterior" name="" onclick=""><i class="fontequinze text-light fas fa-arrow-alt-circle-left"></i>&nbsp;&nbsp;voltar</button>
                             </div>
-                        </div>
+                        </div> -->
 
                     </div>
                 </div>  <!-- fim do pagseguro -->
