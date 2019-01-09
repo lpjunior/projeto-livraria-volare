@@ -100,7 +100,7 @@ require_once 'php/CRUDS/serviceCheckout.php';
               <?php }?>
 							<!-- carrinho sem dropdown -->
 							<div class="float-left d-lg-none d-xl-none">
-								<a href="carrinho" value="checkout" class="nav-link text-dark fontedezesseis opacidade"> <i class="fas fa-shopping-cart" aria-hidden=”true”></i>&nbsp;Carrinho</a>
+								<a href="carrinho.php" value="checkout" class="nav-link text-dark fontedezesseis opacidade"> <i class="fas fa-shopping-cart" aria-hidden=”true”></i>&nbsp;Carrinho</a>
 							</div>
 							<!-- CARRINHO DROPDOWN -->
 							<div class="dropdown float-left d-none d-sm-none d-md-none d-lg-block">
