@@ -136,15 +136,16 @@
                     </tbody>
                   <?php } } ?>
                 </form>
-
                 </table>
+
+
               </div>
             </div>
             <div class="col-md-4 col-12">
               <div class="col bordasc">
                 <h4 class="pl-2 fontevinte mt-3">Resumo do pedido</h4>
              <form action="#" method="post">
-               <div class="input-group mb-4 input-sm float-left largurainput">
+               <div class="input-group mb-1 input-sm float-left largurainput">
                  <!-- ÁREA PRA CALCULAR O FRETE -->
                    <input type="text" class="text-center form-control col cep mb-3" placeholder="Digite o CEP" name="cep" aria-label="Digite o cep" aria-describedby="button-addon2">
                    <div class="input-group-append mb-3">
@@ -215,15 +216,16 @@
                   </tbody>
                 </table>
               </div>
-              <div class="col bordasc mt-3">
+              <div class="col mb-4 col-md-4 col-12">
+                <form action="<?=(isset($_SESSION['user_id']) ? 'checkout.php' : 'entrar.php');?>" method="POST">
+                    <button type="submit" class="btn COLORE1 float-left ml-2 mr-2" name="btn-checkout">Concluir compra</button>
+                </form>
                     </div>
                     <!-- /frete -->
                   </div>
                 </div>
               </div>
-                <form action="<?=(isset($_SESSION['user_id']) ? 'checkout.php' : 'entrar.php');?>" method="POST">
-                    <button type="submit" class="btn COLORE1" name="btn-checkout">Concluir compra</button>
-                  </form>
+
               <div class="row">
                 <div class="col">
                   <script type="text/javascript" src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
