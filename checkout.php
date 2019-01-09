@@ -139,8 +139,8 @@ if (!is_array($checkout)){
                     <div class="form-group">
                                 <div class="row">
                                 <div class="col-md">
-                                    <label for="iDest">Destinatário:</label>
-                                    <input type="text" id="iDest" name="txtDest" class="form-control" required maxlength="100">
+                                    <label for="idestinatario">Destinatário:</label>
+                                    <input type="text" id="idestinatario" name="idestinatario" class="form-control" required maxlength="100">
                                 </div>
                                 </div>
                                 <div class="row">
